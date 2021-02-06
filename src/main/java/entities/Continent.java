@@ -15,8 +15,8 @@ public class Continent {
 	
 	/**
 	 * Constructor for continent
-	 * @param p_name
-	 * @param p_controlValue
+	 * @param p_name name of continent
+	 * @param p_controlValue control value
 	 */
 	public Continent(String p_name, int p_controlValue) {
 		d_name = p_name;
@@ -26,7 +26,7 @@ public class Continent {
 
 	/**
 	 * Add country to the continent
-	 * @param p_country 
+	 * @param p_country  country
 	 */
 	public void addCountry(Country p_country) {
 		d_countriesSet.add(p_country);
@@ -34,7 +34,7 @@ public class Continent {
 	
 	/**
 	 * Remove country from continent
-	 * @param p_country
+	 * @param p_country country
 	 */
 	public void removeCountry(Country p_country) {
 		d_countriesSet.remove(p_country);

@@ -27,7 +27,7 @@ public class Country {
 	
 	/**
 	 * Place number of armies
-	 * @param p_armiesNumber
+	 * @param p_armiesNumber armies to be added
 	 */
 	public void placeArmies(int p_armiesNumber) {
 		d_armiesPresent += p_armiesNumber;
@@ -35,7 +35,7 @@ public class Country {
 	
 	/**
 	 * Remove armies from country 
-	 * @param p_armiesNumber
+	 * @param p_armiesNumber armies to be removed
 	 */
 	public void removeArmies(int p_armiesNumber) {
 		d_armiesPresent -= p_armiesNumber;
