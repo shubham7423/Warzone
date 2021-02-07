@@ -95,4 +95,16 @@ public class Country {
 		d_neighbourCountries.remove(p_country);
 		return true;
 	}
+	
+	/**
+	 * Get neighbours names
+	 * @return Set of neighbour names
+	 */
+	public Set<String> getNeighbourNames() {
+		Set<String> l_neighbourNameSet = new HashSet<>();
+		for(Country l_country: d_neighbourCountries) {
+			l_neighbourNameSet.add(l_country.getName());
+		}
+		return l_neighbourNameSet;
+	}
 }

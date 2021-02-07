@@ -64,5 +64,17 @@ public class Continent {
 		return d_countriesSet;
 	}
 	
+	/**
+	 * Get all countries name present 
+	 * @return set of country names
+	 */
+	public Set<String> getCountriesName() {
+		Set<String> l_countryNameSet = new HashSet<>();
+		for(Country l_country: d_countriesSet) {
+			;l_countryNameSet.add(l_country.getName());
+		}
+		return l_countryNameSet;
+	}
+	
 	
 }
