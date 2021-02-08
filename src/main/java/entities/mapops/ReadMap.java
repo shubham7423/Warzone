@@ -44,7 +44,6 @@ public class ReadMap {
 					while ((l_line = d_reader.nextLine()) != null && l_line.length() > 0) {
 						String[] l_continents = l_line.split(" ");
 						++l_continentCtn;
-						
 						d_continentsMap.put(l_continentCtn, l_continents[0]);
 						d_gameMap.addContinent(l_continents[0], Integer.parseInt(l_continents[1]));
 					}
@@ -55,10 +54,14 @@ public class ReadMap {
 					while ((l_line = d_reader.nextLine()) != null && l_line.length() > 0) {
 						String[] l_countries = l_line.split(" ");
 						++l_countryCtn;
-						System.out.println(l_countries[1]);
 						d_countriesMap.put(l_countryCtn, l_countries[1]);
 						d_gameMap.addCountry(l_countries[1], d_continentsMap.get(Integer.parseInt(l_countries[2])));
 					}
+					
+				}
+				
+				else if(l_dataString.equals("[borders]")) {
+					System.out.println("Borders: ");
 					
 				}
 				
