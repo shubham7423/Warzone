@@ -1,0 +1,46 @@
+; Yura Mamyrin
+; Risk Map
+
+; Risk Map - Battle of Britain
+; Dimensions: 677 x 425 Pixels
+
+; Alternative Map Requirement
+; cards file: nomission.cards (this is not the best cards file, but it works)
+
+; Ambiguities
+; link between Angus and Fife? assume yes
+; link between Argyllshire and Renfrew-shire? assume no due to botchy image editing to make it look like it doesn't
+; link between Surrey and Buckinghamshire? assume yes zooming up close appears to show a link
+; link between Essex/Hertfordshire and Kent? assume no since we don't have boats to paddle across the Thames
+; Esses and Kent are now linked (we have bridges) -yura
+; Some of the hyphenations can be removed from the territories i'm sure.
+; Merioneth (43) and Cardiganshire (45) assume yes
+; Monmouth-shire (50) Somerset (54) assume yes
+
+name UK Map
+
+[files]
+pic uk_pic.png
+map uk_map.gif
+crd nomission.cards
+prv uk.jpg
+
+[continents]
+North-Scotland 2 blue
+South-Scotland 4 green
+North-England 4 red
+
+[countries]
+1 Ross-shire 1 640 60
+2 Sutherland 1 644 175
+3 Caithness 2 657 230
+4 Shetland 2 618 408
+5 Ross-shire-and-Chromartyshire 3 603 148
+
+[borders]
+1 2 3
+2 1 3 4
+3 1 2 4 5
+4 2 3 5
+5 3 4 
+

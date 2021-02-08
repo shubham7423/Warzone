@@ -3,6 +3,8 @@ package entities;
 import java.util.HashMap;
 import java.util.Set;
 
+import entities.mapops.ReadMap;
+
 /**
  * GameMap Class
  *
@@ -118,6 +120,20 @@ public class GameMap {
 		}	
 		l_country.removeNeighbour(l_neighbour);
 		return String.format("Country \"%s\" removed from neighbours of \"%s\"", p_neighbourName, p_countryName);
+	}
+	
+	/**
+	 * Load Map from .map file
+	 * @param p_fileName Name of .map file
+	 * @return Positive response if map file loaded successfully
+	 */
+	public String loadMap(String p_fileName) {
+		ReadMap l_mapRead = new ReadMap(this);
+		Boolean l_loadCheck = l_mapRead.readFullMap(p_fileName);
+		if(!l_loadCheck) {
+			return String.format("Map \"%s\" cannot be loaded", p_fileName);
+		}
+		return String.format("Map \"%s\" loaded successfully", p_fileName);
 	}
 	
 	/**

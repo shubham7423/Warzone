@@ -93,5 +93,14 @@ public class GameMapTest {
 		assertEquals(0, d_map.getCountries().get("India").getNeighbourCountries().size());
 		assertEquals("Country \"Pakistan\" removed from neighbours of \"India\"", l_resultString);
 	}
+	
+	/**
+	 * Test load map
+	 */
+	@Test
+	public void testLoadMap() {
+		assertEquals(String.format("Map \"uk.map\" loaded successfully"), d_map.loadMap("uk.map"));
+		assertEquals(String.format("Map \"uk123.map\" cannot be loaded"), d_map.loadMap("uk123.map"));
+	}
 
 }
