@@ -3,30 +3,35 @@ package entities.mapops;
 import java.util.Set;
 import java.util.HashMap;
 import java.util.Scanner;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 
 import entities.GameMap;
 
+/**
+ * Class to read map file
+ *
+ */
 public class ReadMap {
 	GameMap d_gameMap;
 	HashMap<Integer, String> d_continentsMap;
 	HashMap<Integer, String> d_countriesMap;
 	Scanner d_reader;
 	
+	/**
+	 * Constructor
+	 * @param p_gameMap GameMap object
+	 */
 	public ReadMap(GameMap p_gameMap) {
 		d_gameMap = p_gameMap;
 		d_continentsMap = new HashMap<>();
 		d_countriesMap = new HashMap<>();
 	}
 	
-	
-	
-	public ReadMap() {
-		
-	}
-	
+	/**
+	 * Read file and feed data to GameMap object
+	 * @param p_filePath path to .map file
+	 */
 	public void readFullMap(String p_filePath) {
 		File l_mapFile = new File(p_filePath);
 		boolean d_isContinents = false;
@@ -40,6 +45,7 @@ public class ReadMap {
 			while (d_reader.hasNextLine()) {
 				l_dataString = d_reader.nextLine();
 				
+//				Read continents
 				if(l_dataString.equals("[continents]")) {
 					while (d_reader.hasNextLine()) {
 						l_line = d_reader.nextLine();
@@ -55,6 +61,7 @@ public class ReadMap {
 					}
 				}
 				
+//				Read countries
 				else if(l_dataString.equals("[countries]")) {
 					while (d_reader.hasNextLine()) {
 						l_line = d_reader.nextLine();
@@ -72,6 +79,7 @@ public class ReadMap {
 					
 				}
 				
+//				Read boundries
 				else if(l_dataString.equals("[borders]")) {
 					System.out.println("Borders: ");
 					while (d_reader.hasNextLine()) {
@@ -91,9 +99,7 @@ public class ReadMap {
 						}
 						
 					}
-				}
-				
-				
+				}		
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -101,26 +107,20 @@ public class ReadMap {
 		}
 	
 	}
-
 	
+	/**
+	 * Get continent names
+	 * @return Set of continent names read
+	 */
 	public Set<String> getContinentNames() {
 		return d_gameMap.getContinents().keySet();
 	}
 	
+	/**
+	 * Get countries name
+	 * @return Set of countries names read
+	 */
 	public Set<String> getCountriesNames() {
 		return d_gameMap.getCountries().keySet();
-	}
-	
-	public Set<String> getNeighbourNames() {
-		return d_gameMap.getCountries().get("Frankreich").getNeighbourNames();
-	}
-	
-	
-	public static void main(String[] args) {
-		ReadMap map = new ReadMap(new GameMap()) ;
-		map.readFullMap("/Users/shubhampatel/Downloads/Warzone-master/src/main/resources/maps/eurasien.map");
-		System.out.println(map.getContinentNames());
-		System.out.println(map.getCountriesNames());
-		System.out.println(map.getNeighbourNames());
 	}
 }
