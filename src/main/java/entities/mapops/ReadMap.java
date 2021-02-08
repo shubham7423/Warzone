@@ -32,9 +32,8 @@ public class ReadMap {
 	 * Read file and feed data to GameMap object
 	 * @param p_filePath path to .map file
 	 */
-	public void readFullMap(String p_filePath) {
+	public boolean readFullMap(String p_filePath) {
 		File l_mapFile = new File(p_filePath);
-		boolean d_isContinents = false;
 		String l_line;
 		String l_dataString;
 		int l_countryCtn = 0, l_continentCtn = 0;
@@ -101,9 +100,11 @@ public class ReadMap {
 					}
 				}		
 			}
+			d_reader.close();
+			return true;
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			d_reader.close();
+			return false;
 		}
 	
 	}
