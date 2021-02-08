@@ -94,6 +94,9 @@ public class GameMapTest {
 		assertEquals("Country \"Pakistan\" removed from neighbours of \"India\"", l_resultString);
 	}
 	
+	/**
+	 * Test load map
+	 */
 	@Test
 	public void testLoadMap() {
 		assertEquals(String.format("Map \"uk.map\" loaded successfully"), d_map.loadMap("uk.map"));

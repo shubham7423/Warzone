@@ -122,6 +122,11 @@ public class GameMap {
 		return String.format("Country \"%s\" removed from neighbours of \"%s\"", p_neighbourName, p_countryName);
 	}
 	
+	/**
+	 * Load Map from .map file
+	 * @param p_fileName Name of .map file
+	 * @return Positive response if map file loaded successfully
+	 */
 	public String loadMap(String p_fileName) {
 		ReadMap l_mapRead = new ReadMap(this);
 		Boolean l_loadCheck = l_mapRead.readFullMap(p_fileName);
