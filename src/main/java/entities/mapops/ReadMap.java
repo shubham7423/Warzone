@@ -33,9 +33,11 @@ public class ReadMap {
 	 * @param p_filePath path to .map file
 	 */
 	public boolean readFullMap(String p_filePath) {
-		File l_mapFile = new File(p_filePath);
-		String l_line;
-		String l_dataString;
+//		File l_mapFile = new File(p_filePath);
+		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+		
+		File l_mapFile = new java.io.File(classLoader.getResource(p_filePath).getFile());
+		String l_line, l_dataString;
 		int l_countryCtn = 0, l_continentCtn = 0;
 		
 		try {
@@ -64,7 +66,6 @@ public class ReadMap {
 				else if(l_dataString.equals("[countries]")) {
 					while (d_reader.hasNextLine()) {
 						l_line = d_reader.nextLine();
-						
 						if(l_line.length() > 0) {
 							String[] l_countries = l_line.split(" ");
 							++l_countryCtn;
@@ -80,14 +81,12 @@ public class ReadMap {
 				
 //				Read boundries
 				else if(l_dataString.equals("[borders]")) {
-					System.out.println("Borders: ");
 					while (d_reader.hasNextLine()) {
 						l_line = d_reader.nextLine();
 						if(l_line.length() > 0) {
 							String[] l_borders = l_line.split(" ");
 							String l_countryName = d_countriesMap.get(Integer.parseInt(l_borders[0]));
 							String l_neighbourName;
-							System.out.println(l_borders[0]);
 							for(int i=1; i<l_borders.length; i++) {
 								l_neighbourName = d_countriesMap.get(Integer.parseInt(l_borders[i]));
 								d_gameMap.addNeighbour(l_countryName, l_neighbourName);
