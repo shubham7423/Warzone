@@ -12,7 +12,6 @@ import entities.GameMap;
 
 /**
  * Test for ReadMap
- * @author shubhampatel
  *
  */
 public class ReadMapTest {
