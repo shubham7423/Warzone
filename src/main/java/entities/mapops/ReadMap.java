@@ -50,6 +50,17 @@ public class ReadMap {
 					}
 				}
 				
+				else if(l_dataString.equals("[countries]")) {
+					System.out.println("Countries: ");
+					while ((l_line = d_reader.nextLine()) != null && l_line.length() > 0) {
+						String[] l_countries = l_line.split(" ");
+						++l_countryCtn;
+						System.out.println(l_countries[1]);
+						d_countriesMap.put(l_countryCtn, l_countries[1]);
+						d_gameMap.addCountry(l_countries[1], d_continentsMap.get(Integer.parseInt(l_countries[2])));
+					}
+					
+				}
 				
 				
 			}
