@@ -36,33 +36,61 @@ public class ReadMap {
 		
 		try {
 			d_reader = new Scanner(l_mapFile);
+			
 			while (d_reader.hasNextLine()) {
 				l_dataString = d_reader.nextLine();
 				
 				if(l_dataString.equals("[continents]")) {
-					System.out.println("Continents: ");
-					while ((l_line = d_reader.nextLine()) != null && l_line.length() > 0) {
-						String[] l_continents = l_line.split(" ");
-						++l_continentCtn;
-						d_continentsMap.put(l_continentCtn, l_continents[0]);
-						d_gameMap.addContinent(l_continents[0], Integer.parseInt(l_continents[1]));
+					while (d_reader.hasNextLine()) {
+						l_line = d_reader.nextLine();
+						if(l_line.length() > 0) {
+							String[] l_continents = l_line.split(" ");
+							++l_continentCtn;
+							d_continentsMap.put(l_continentCtn, l_continents[0]);
+							d_gameMap.addContinent(l_continents[0], Integer.parseInt(l_continents[1]));
+						}
+						else {
+							break;
+						}
 					}
 				}
 				
 				else if(l_dataString.equals("[countries]")) {
-					System.out.println("Countries: ");
-					while ((l_line = d_reader.nextLine()) != null && l_line.length() > 0) {
-						String[] l_countries = l_line.split(" ");
-						++l_countryCtn;
-						d_countriesMap.put(l_countryCtn, l_countries[1]);
-						d_gameMap.addCountry(l_countries[1], d_continentsMap.get(Integer.parseInt(l_countries[2])));
+					while (d_reader.hasNextLine()) {
+						l_line = d_reader.nextLine();
+						
+						if(l_line.length() > 0) {
+							String[] l_countries = l_line.split(" ");
+							++l_countryCtn;
+							d_countriesMap.put(l_countryCtn, l_countries[1]);
+							d_gameMap.addCountry(l_countries[1], d_continentsMap.get(Integer.parseInt(l_countries[2])));
+						}
+						else {
+							break;
+						}
 					}
 					
 				}
 				
 				else if(l_dataString.equals("[borders]")) {
 					System.out.println("Borders: ");
-					
+					while (d_reader.hasNextLine()) {
+						l_line = d_reader.nextLine();
+						if(l_line.length() > 0) {
+							String[] l_borders = l_line.split(" ");
+							String l_countryName = d_countriesMap.get(Integer.parseInt(l_borders[0]));
+							String l_neighbourName;
+							System.out.println(l_borders[0]);
+							for(int i=1; i<l_borders.length; i++) {
+								l_neighbourName = d_countriesMap.get(Integer.parseInt(l_borders[i]));
+								d_gameMap.addNeighbour(l_countryName, l_neighbourName);
+							}
+						}
+						else {
+							break;
+						}
+						
+					}
 				}
 				
 				
@@ -83,12 +111,16 @@ public class ReadMap {
 		return d_gameMap.getCountries().keySet();
 	}
 	
+	public Set<String> getNeighbourNames() {
+		return d_gameMap.getCountries().get("Frankreich").getNeighbourNames();
+	}
+	
 	
 	public static void main(String[] args) {
 		ReadMap map = new ReadMap(new GameMap()) ;
-		map.readFullMap("/Users/shubhampatel/Downloads/Warzone-master/src/main/resources/maps/ameroki.map");
+		map.readFullMap("/Users/shubhampatel/Downloads/Warzone-master/src/main/resources/maps/eurasien.map");
 		System.out.println(map.getContinentNames());
 		System.out.println(map.getCountriesNames());
-		
+		System.out.println(map.getNeighbourNames());
 	}
 }
