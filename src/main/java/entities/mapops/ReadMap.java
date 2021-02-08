@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.net.URL;
 
 import entities.GameMap;
 
@@ -35,8 +36,11 @@ public class ReadMap {
 	public boolean readFullMap(String p_filePath) {
 //		File l_mapFile = new File(p_filePath);
 		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-		
-		File l_mapFile = new java.io.File(classLoader.getResource(p_filePath).getFile());
+		URL l_fileUrl = classLoader.getResource(p_filePath);
+		if(l_fileUrl == null) {
+			return false;
+		}
+		File l_mapFile = new File(l_fileUrl.getFile());
 		String l_line, l_dataString;
 		int l_countryCtn = 0, l_continentCtn = 0;
 		
