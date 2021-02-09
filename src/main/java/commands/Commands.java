@@ -3,9 +3,6 @@ package commands;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.jaxen.function.ContainsFunction;
-import org.junit.experimental.theories.Theories;
-
 public class Commands {
 	
 //	Contains all the commands available
