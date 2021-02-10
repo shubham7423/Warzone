@@ -38,10 +38,18 @@ public class CommandsTest {
 
 	/*@Test
 	public void testEditCountry() {
-		fail("Not yet implemented");
-	}
+		String[] l_addContinent = new String[]{"editcontinent", "-add", "Asia", "2"};
+		d_commands.executeCommand(l_addContinent);
+		String[] l_addCountry = new String[]{"editcountry", "-add", "india","Asia"};
+		String l_addResult = d_commands.executeCommand(l_addCountry);
+		assertEquals("Country \"india\" successfully removed to map", l_addResult);
+		
+		String[] l_removeCountry = new String[]{"editcountry", "-remove", "india"};
+		String l_removeResult = d_commands.executeCommand(l_removeCountry);
+		assertEquals("Country \"india\" successfully removed from map", l_removeResult);
+	}*/
 
-	@Test
+	/*@Test
 	public void testEditNeighbour() {
 		fail("Not yet implemented");
 	}*/
