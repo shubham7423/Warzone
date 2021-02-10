@@ -152,7 +152,6 @@ public class Commands {
 	
 	
 	
-	
 	public static void main(String[] args) {
 		Commands commands = new Commands();
 		String[] newStrings = new String[]{"loadmap", "uk.map"};
