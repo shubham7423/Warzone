@@ -57,7 +57,7 @@ public class CommandsTest {
 		d_commands.executeCommand(l_addCountry);
 		String[] l_addNeighbour = new String[]{"editneighbour", "-add", "india" ,"can"};
 		String l_addResult = d_commands.executeCommand(l_addNeighbour);
-		assertEquals("Country \"india\" successfully removed to map", l_addResult);
+		assertEquals("Country \"can\" is now a neighbour of country \"india\"", l_addResult);
 		
 	}
 
