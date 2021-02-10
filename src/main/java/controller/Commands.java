@@ -7,13 +7,15 @@ import java.util.Set;
 
 import com.sun.net.httpserver.Authenticator.Result;
 
+/**
+ * Class to execute user commands
+ *
+ */
 public class Commands {
 	
-//	Contains all the commands available
-	private Set<String> d_commands = new HashSet<>(Arrays.asList("loadmap", "editcountry"));
+	private Set<String> d_commands = new HashSet<>(Arrays.asList("loadmap", "editcountry", "editcontinent", "editneighbour"));
 	GameStarter d_gameStarter = new GameStarter();
 	
-//	execute commands use switch case 
 	public String executeCommand(String[] p_splittedCommand) {
 		String l_result = "";
 		if(!d_commands.contains(p_splittedCommand[0])) {
@@ -27,6 +29,7 @@ public class Commands {
 			case "editcontinent":
 				l_result = editContinent(p_splittedCommand);
 				break;
+				
 		}
 		
 		return l_result;
@@ -154,18 +157,19 @@ public class Commands {
 	
 	public static void main(String[] args) {
 		Commands commands = new Commands();
-		String[] newStrings = new String[]{"loadmap", "uk.map"};
-		String[] editCommandStrings = new String[]{"editcontinent", "-add", "Asia", "2", "Africa", "2", "-add", "America", "1"};
-		//String[] editCommandStrings1 = new String[]{"editcontinent", "-remove", "Asia"};
+		String[] newStrings = new String[]{"loadmap", "u.map"};
+		String[] editCommandStrings = new String[]{"editcontinent", "-add", "Asia", "2"};
+		String[] editCommandStrings1 = new String[]{"editcontinent", "-remove", "Asia"};
 		String[] editCommandStrings2 = new String[]{"editcountry", "-add", "india","Asia", "-add", "can", "Asia"};
 		String[] editCommandStrings3 = new String[]{"editneighbour", "-add", "india" ,"can"};
 		System.out.println(commands.executeCommand(newStrings));
 		System.out.println(commands.editContinent(editCommandStrings));
-		System.out.println(commands.editCountry(editCommandStrings2));
-		System.out.println(commands.editNeighbour(editCommandStrings3));
+		System.out.println(commands.editContinent(editCommandStrings1));
+//		System.out.println(commands.editCountry(editCommandStrings2));
+//		System.out.println(commands.editNeighbour(editCommandStrings3));
 		System.out.println(commands.d_gameStarter.d_gameMap.getContinents().keySet());
 		System.out.println(commands.d_gameStarter.d_gameMap.getCountries().keySet());
-		System.out.println(commands.d_gameStarter.d_gameMap.getCountries().get("india").getNeighbourNames());
+//		System.out.println(commands.d_gameStarter.d_gameMap.getCountries().get("india").getNeighbourNames());
 
 	}
 }
