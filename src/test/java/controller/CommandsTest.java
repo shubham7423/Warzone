@@ -49,9 +49,16 @@ public class CommandsTest {
 		assertEquals("Country \"india\" successfully removed from map", l_removeResult);
 	}
 
-	/*@Test
+	@Test
 	public void testEditNeighbour() {
-		fail("Not yet implemented");
-	}*/
+		String[] l_addContinent = new String[]{"editcontinent", "-add", "Asia", "2"};
+		d_commands.executeCommand(l_addContinent);
+		String[] l_addCountry = new String[] {"editcountry", "-add", "india","Asia", "-add", "can", "Asia"};
+		d_commands.executeCommand(l_addCountry);
+		String[] l_addNeighbour = new String[]{"editneighbour", "-add", "india" ,"can"};
+		String l_addResult = d_commands.executeCommand(l_addNeighbour);
+		assertEquals("Country \"india\" successfully removed to map", l_addResult);
+		
+	}
 
 }
