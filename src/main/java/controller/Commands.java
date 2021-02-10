@@ -166,7 +166,7 @@ public class Commands {
 		System.out.println(commands.editNeighbour(editCommandStrings3));
 		System.out.println(commands.d_gameStarter.d_gameMap.getContinents().keySet());
 		System.out.println(commands.d_gameStarter.d_gameMap.getCountries().keySet());
-		System.out.println(commands.d_gameStarter.d_gameMap.getCountries().get("Asia").getNeighbourNames());
+		System.out.println(commands.d_gameStarter.d_gameMap.getCountries().get("india").getNeighbourNames());
 
 	}
 }
