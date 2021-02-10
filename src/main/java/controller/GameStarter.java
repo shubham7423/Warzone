@@ -26,4 +26,26 @@ public class GameStarter {
 		}
 		return l_result;
 	}
+	
+public String editCountry(String[] p_commandSplitted) {
+		String l_result;
+		if (p_commandSplitted[0].equals("-add")) {
+			l_result = d_gameMap.addCountry(p_commandSplitted[1], p_commandSplitted[2]);
+		}
+		else {
+			l_result = d_gameMap.removeCountry(p_commandSplitted[1]);
+		}
+		return l_result;
+	}
+	
+	public String editNeighbour(String[] p_commandSplitted) {
+		String l_result;
+		if (p_commandSplitted[0].equals("-add")) {
+			l_result = d_gameMap.addNeighbour(p_commandSplitted[1], p_commandSplitted[2]);
+		}
+		else {
+			l_result = d_gameMap.removeNeighbour(p_commandSplitted[1], p_commandSplitted[2]);
+		}
+		return l_result;
+	}
 }
