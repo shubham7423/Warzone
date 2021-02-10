@@ -182,27 +182,5 @@ public class Commands {
 		}
 		return l_result;
 	}
-	
-	
-	
-	public static void main(String[] args) {
-		Commands commands = new Commands();
-//		String[] newStrings = new String[]{"loadmap", "u.map"};
-		String[] editCommandStrings = new String[]{"editcontinent", "-add", "Asia", "2"};
-		String[] editCommandStrings1 = new String[]{"editcontinent", "-remove", "Asia"};
-		String[] editCommandStrings2 = new String[]{"editcountry", "-add", "india","Asia", "-add", "can", "Asia"};
-		String[] editCommandStrings3 = new String[]{"editneighbour", "-add", "india" ,"can"};
-		String[] editCommandStrings4 = new String[]{"editcountry", "-remove", "india"};
-//		System.out.println(commands.executeCommand(newStrings));
-		System.out.println(commands.executeCommand(editCommandStrings));
-		//System.out.println(commands.editContinent(editCommandStrings1));
- 		System.out.println(commands.executeCommand(editCommandStrings2));
- 		//System.out.println(commands.executeCommand(editCommandStrings4));
-		System.out.println(commands.editNeighbour(editCommandStrings3));
-		System.out.println(commands.d_gameStarter.d_gameMap.getContinents().keySet());
-		System.out.println(commands.d_gameStarter.d_gameMap.getCountries().keySet());
-//		System.out.println(commands.d_gameStarter.d_gameMap.getCountries().get("india").getNeighbourNames());
-
-	}
 }
 
