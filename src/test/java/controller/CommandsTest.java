@@ -22,14 +22,16 @@ public class CommandsTest {
 	@Test
 	public void testEditContinent() {
 		fail("Not yet implemented");
-	}
+	}*/
 
 	@Test
 	public void testEditCountry() {
-		fail("Not yet implemented");
+		String[] l_addCountry = new String[]{"editcountry", "-add", "india","Asia"}; 
+		String l_result = d_commands.executeCommand(l_addCountry);
+		assertEquals("Country \"india\" successfully removed to map", l_result);
 	}
 
-	@Test
+	/*@Test
 	public void testEditNeighbour() {
 		fail("Not yet implemented");
 	}*/

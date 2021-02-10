@@ -27,6 +27,10 @@ public class Commands {
 			case "editcontinent":
 				l_result = editContinent(p_splittedCommand);
 				break;
+				
+			case "editcountry":
+				l_result = editCountry(p_splittedCommand);
+				break;
 		}
 		
 		return l_result;
