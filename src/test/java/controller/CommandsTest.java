@@ -4,9 +4,17 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+/**
+ * 
+ * Test Commands
+ *
+ */
 public class CommandsTest {
 	Commands d_commands = new Commands();
 
+	/**
+	 * main executeCommand test
+	 */
 	@Test
 	public void testExecuteCommand() {
 		String[] l_newStrings = new String[]{"loadmap", "uk.map"};
@@ -14,6 +22,9 @@ public class CommandsTest {
 		assertEquals("Map \"uk.map\" loaded successfully", l_result );
 	}
 
+	/**
+	 * Test to check loaded map
+	 */
 	@Test
 	public void testLoadMap() {
 		String[] l_loadCommand_1 = new String[]{"loadmap", "uk.map"};
@@ -25,6 +36,9 @@ public class CommandsTest {
 		assertEquals("Map \"u.map\" cannot be loaded", l_loadResultString_2);
 	}
 
+	/**
+	 * Test to check addition deletion of continents
+	 */
 	@Test
 	public void testEditContinent() {
 		String[] l_addContinent = new String[]{"editcontinent", "-add", "Asia", "2"};
@@ -36,6 +50,9 @@ public class CommandsTest {
 		assertEquals("Continent \"Asia\" successfully removed from map", l_removeResult);
 	}
 
+	/**
+	 * Test to check addition deletion of countries
+	 */
 	@Test
 	public void testEditCountry() {
 		String[] l_addContinent = new String[]{"editcontinent", "-add", "Asia", "2"};
@@ -49,6 +66,9 @@ public class CommandsTest {
 		assertEquals("Country \"india\" successfully removed from map", l_removeResult);
 	}
 
+	/**
+	 * Test to check addition deletion of neighbours
+	 */
 	@Test
 	public void testEditNeighbour() {
 		String[] l_addContinent = new String[]{"editcontinent", "-add", "Asia", "2"};

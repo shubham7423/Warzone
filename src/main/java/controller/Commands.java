@@ -14,6 +14,11 @@ public class Commands {
 	private Set<String> d_commands = new HashSet<>(Arrays.asList("loadmap", "editcountry", "editcontinent", "editneighbour"));
 	GameStarter d_gameStarter = new GameStarter();
 	
+	/**
+	 * Main execution command to run other command types
+	 * @param p_splittedCommand splitting of commands to pass to methods
+	 * @return l_result result after execution of command
+	 */
 	public String executeCommand(String[] p_splittedCommand) {
 		String l_result = "";
 		if(!d_commands.contains(p_splittedCommand[0])) {
@@ -40,6 +45,11 @@ public class Commands {
 		return l_result;
 	}
 	
+	/**
+	 * method to load maps
+	 * @param p_splittedCommand splitted commands
+	 * @return loaded map(responses positive or negative)
+	 */
 	public String loadMap(String[] p_splittedCommand) {
 		if(p_splittedCommand.length < 2) {
 			return "Please enter file name";
@@ -47,6 +57,11 @@ public class Commands {
 		return d_gameStarter.loadMap(p_splittedCommand[1]);
 	}
 	
+	/**
+	 * Edit continents 
+	 * @param p_splittedCommand splitted commands
+	 * @return shows whether continents are added or removed
+	 */
 	public String editContinent(String[] p_splittedCommand) {
 		String[] l_commandParts;
 		String l_result = "";
@@ -84,6 +99,11 @@ public class Commands {
 		return l_result;
 	}
 	
+	/**
+	 * edit countries
+	 * @param p_splittedCommand splitted commands
+	 * @return shows whether countries are added or removed with respect to their continents
+	 */
 	public String editCountry(String[] p_splittedCommand) {
 		String[] l_commandParts;
 		String l_result = "";
@@ -121,6 +141,11 @@ public class Commands {
 		return l_result;
 	}
 	
+	/**
+	 * edit neighbours
+	 * @param p_splittedCommand splitted commands
+	 * @return shows neighbours added or removed to the country
+	 */
 	public String editNeighbour(String[] p_splittedCommand) {
 		String[] l_commandParts;
 		String l_result = "";
