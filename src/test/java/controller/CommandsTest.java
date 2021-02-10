@@ -36,7 +36,7 @@ public class CommandsTest {
 		assertEquals("Continent \"Asia\" successfully removed from map", l_removeResult);
 	}
 
-	/*@Test
+	@Test
 	public void testEditCountry() {
 		String[] l_addContinent = new String[]{"editcontinent", "-add", "Asia", "2"};
 		d_commands.executeCommand(l_addContinent);
@@ -47,7 +47,7 @@ public class CommandsTest {
 		String[] l_removeCountry = new String[]{"editcountry", "-remove", "india"};
 		String l_removeResult = d_commands.executeCommand(l_removeCountry);
 		assertEquals("Country \"india\" successfully removed from map", l_removeResult);
-	}*/
+	}
 
 	/*@Test
 	public void testEditNeighbour() {
