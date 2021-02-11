@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.net.URL;
+import java.nio.file.Paths;
 
 import entities.GameMap;
 
@@ -32,15 +32,10 @@ public class ReadMap {
 	/**
 	 * Read file and feed data to GameMap object
 	 * @param p_filePath path to .map file
+	 * @return true if map loaded successfully else false
 	 */
 	public boolean readFullMap(String p_filePath) {
-//		File l_mapFile = new File(p_filePath);
-		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-		URL l_fileUrl = classLoader.getResource(p_filePath);
-		if(l_fileUrl == null) {
-			return false;
-		}
-		File l_mapFile = new File(l_fileUrl.getFile());
+		File l_mapFile = new File(Paths.get(Paths.get("").toAbsolutePath().toString() + "/maps/" + p_filePath).toString());
 		String l_line, l_dataString;
 		int l_countryCtn = 0, l_continentCtn = 0;
 		
@@ -106,7 +101,6 @@ public class ReadMap {
 			d_reader.close();
 			return true;
 		} catch (FileNotFoundException e) {
-			d_reader.close();
 			return false;
 		}
 	
