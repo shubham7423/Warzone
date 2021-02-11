@@ -64,7 +64,7 @@ public class WriteMap{
 				for(String p_countriesName: l_countriesName) {
 					d_countriesMap.put(p_countriesName, ++l_countriesCtn);
 					d.writer(l_countriesCtn + " " + p_countries + " " + d_continentsMap.get(p_continents));
-					dwriter.newLine();
+					d_writer.newLine();
 				}
 			}
 
@@ -72,7 +72,7 @@ public class WriteMap{
 
 			HashMap<String, Country> l_countries = new HashMap<>();
 			l_countries = d_gameMap.getCountries();
-			d.writer("[borders]");
+			d_writer.write("[borders]");
 
 			for (String p_countries: d_countriesMap.keySet()) {
 				Set<String> l_neighbourNames = new Set<>();
@@ -84,6 +84,7 @@ public class WriteMap{
 				for (String p_neighbourNames: l_neighbourNames) {
 					l_sb.append(d_countriesmap.get(p_neighbourNames).toString() + " ");
 				}
+				d_writer.write(l_sb);
 			}
 
 
