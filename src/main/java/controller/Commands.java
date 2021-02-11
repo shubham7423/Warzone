@@ -1,9 +1,6 @@
 package controller;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-
+import java.util.Scanner;
 
 /**
  * Class to execute user commands
@@ -11,7 +8,6 @@ import java.util.Set;
  */
 public class Commands {
 	
-	private Set<String> d_commands = new HashSet<>(Arrays.asList("loadmap", "editcountry", "editcontinent", "editneighbour"));
 	GameStarter d_gameStarter = new GameStarter();
 	
 	/**
@@ -21,9 +17,6 @@ public class Commands {
 	 */
 	public String executeCommand(String[] p_splittedCommand) {
 		String l_result = "";
-		if(!d_commands.contains(p_splittedCommand[0])) {
-			return "Command not found";
-		}
 		switch(p_splittedCommand[0]) {
 			case "loadmap": 
 				l_result = loadMap(p_splittedCommand);
@@ -40,6 +33,9 @@ public class Commands {
 			case "editneighbour":
 				l_result = editNeighbour(p_splittedCommand);
 				break;
+				
+			default:
+				l_result = "Command not found";		
 		}
 		
 		return l_result;
@@ -181,6 +177,28 @@ public class Commands {
 			}
 		}
 		return l_result;
+	}
+	
+	/**
+	 * Game can be started from here
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		Commands l_commands = new Commands();
+		Scanner l_scannerScanner = new Scanner(System.in);
+		String l_userCommand;
+		System.out.println("Welcome to Warzone");
+		while(true) {
+			System.out.print("$ ");
+			l_userCommand = l_scannerScanner.nextLine();
+			if(l_userCommand.equals("exit()")) {
+				break;
+			}
+			String[] l_splittedCommandString = l_userCommand.split(" ");
+			System.out.println(l_commands.executeCommand(l_splittedCommandString));
+		}
+		System.out.print("\nThank you for playing Warzone :)");
+		l_scannerScanner.close();
 	}
 }
 
