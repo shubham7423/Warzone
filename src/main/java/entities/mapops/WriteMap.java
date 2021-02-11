@@ -1,5 +1,6 @@
 package entities.mapops;
 import java.io.*;
+import java.nio.file.Paths;
 import java.util.*;
 import entities.*;
 
@@ -26,12 +27,13 @@ public class WriteMap{
 	/**
 	 * Opens a file and writes the data to that file
 	 * @param p_filePath to .map file 
+	 * @return
 	 * 
 	 */
 	public boolean writeFullMap (String p_filePath) {
 		int l_countryCtn = 0, l_continentCtn = 0;
 		try {
-			FileWriter l_fw = new FileWriter(p_filePath);
+			FileWriter l_fw = new FileWriter(Paths.get(Paths.get("").toAbsolutePath().toString() + "/maps/" + p_filePath).toString());
 			d_writer = new BufferedWriter(l_fw);
 			
 			//Writing Continents
@@ -77,11 +79,12 @@ public class WriteMap{
 			}
 			d_writer.close();
 			l_fw.close();
+			return true;
 		} catch (Exception e) {
 			System.out.println("Exception " + e.getMessage());
 			e.printStackTrace();
+			return false;
 		}
-		return true;
 	}
 }
 
