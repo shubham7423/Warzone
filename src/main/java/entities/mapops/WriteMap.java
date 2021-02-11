@@ -42,7 +42,7 @@ public class WriteMap{
 			d_writer = new BufferedWriter(l_mapFile);
 			
 			//Writing Continents
-			void continentWriter() throws IOException  {
+			private void continentWriter() throws IOException  {
 				HashMap<String, Continent> l_continents = new HashMap<String, Continent>();
 				l_continents = d_gameMap.getContinents();
 				d_writer.write("[continents]");
@@ -56,7 +56,7 @@ public class WriteMap{
 			
 			
 			//Writing countries
-			void countryWriter () throws IOExecption {
+			private void countryWriter () throws IOExecption {
 				HashMap<String, Continent> l_continents = new HashMap<>();
 				l_continents = d_gameMap.getContinents();
 				d_writer.write("[countries]");
@@ -73,7 +73,7 @@ public class WriteMap{
 			}
 			
 			//Writing borders
-			void borderWriter () throws IOException {
+			private void borderWriter () throws IOException {
 				HashMap<String, Country> l_countries = new HashMap<>();
 				l_countries = d_gameMap.getCountries();
 				d.writer("[borders]");
