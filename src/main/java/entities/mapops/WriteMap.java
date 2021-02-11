@@ -93,4 +93,22 @@ public class WriteMap{
 		return true;
 	}
 
+	public static void main(String[] args) {
+		GameMap gm = new GameMap();
+		gm.addContinent("NorthAmerica", 1);
+		gm.addContinent("SouthAmerica", 2);
+		gm.addContinent("Asia", 3);
+		
+		gm.addCountry("Alaska", "NorthAmerica");
+		gm.addCountry("Peru", "SouthAmerica");
+		gm.addCountry("India", "Asia");
+		
+		gm.addNeighbour("India", "Alaska");
+		gm.addNeighbour("Alaska", "Peru");
+		
+		WriteMap wMap = new WriteMap(gm);
+		wMap.writeFullMap("D:/MACS/SOEN 6441 - Advanced programmig practices/Project/Warzone/src/main/java/entities/mapops/WorldMap.txt");
+	}
 }
+
+
