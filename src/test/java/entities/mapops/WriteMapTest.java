@@ -3,7 +3,6 @@ package entities.mapops;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-import entities.*;
 import entities.GameMap;
 
 /**
@@ -16,10 +15,7 @@ public class WriteMapTest {
 	 */
 	@Test
 	public void testWriteFullMap() {
-		GameMap gMap = new GameMap();
-		ReadMap rMap = new ReadMap(gMap);
-		gMap.loadMap("uk.map");
-		WriteMap l_writeMap = new WriteMap(gMap);
+		WriteMap l_writeMap = new WriteMap(new GameMap());
 		boolean l_testVar = l_writeMap.writeFullMap("WorldMap.txt");
 		assertTrue(l_testVar);
 	}
