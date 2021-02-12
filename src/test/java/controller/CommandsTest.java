@@ -93,8 +93,19 @@ public class CommandsTest {
 	@Test
 	public void testEditMap() {
 		String[] l_loadCommand_1 = new String[]{"editmap", "uk.map"};
+		String l_editResultString_1 = d_commands.executeCommand(l_loadCommand_1);
+		assertEquals("Map \"uk.map\" ready for edit", l_editResultString_1);
+		
+	}
+	
+	@Test
+	public void testSaveMap() {
+		String[] l_loadCommand_1 = new String[]{"editmap", "uk.map"};
 		String l_loadResultString_1 = d_commands.executeCommand(l_loadCommand_1);
-		assertEquals("Map \"uk.map\" ready for edit", l_loadResultString_1);
+		
+		String[] l_saveCommand_1 = new String[]{"savemap", "abc.map"};
+		String l_saveResultString_1 = d_commands.executeCommand(l_saveCommand_1);
+		assertEquals("Map file \"abc.map\" saved successfully", l_saveResultString_1);
 		
 	}
 
