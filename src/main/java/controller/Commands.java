@@ -34,6 +34,10 @@ public class Commands {
 				l_result = editNeighbour(p_splittedCommand);
 				break;
 				
+			case "editmap":
+				l_result = editMap(p_splittedCommand);
+				break;
+				
 			default:
 				l_result = "Command not found";		
 		}
@@ -186,6 +190,13 @@ public class Commands {
 			}
 		}
 		return l_result;
+	}
+	
+	public String editMap(String[] p_splittedCommand) {
+		if(p_splittedCommand.length < 2) {
+			return "Please enter valid command";
+		}
+		return d_gameStarter.editMap(p_splittedCommand[1]);
 	}
 	
 	/**
