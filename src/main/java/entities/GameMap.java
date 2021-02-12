@@ -60,7 +60,7 @@ public class GameMap {
 	 * @return Positive response if country added
 	 */
 	public String addCountry(int p_countryId, int p_continentId) {
-		if(d_countries.containsKey(p_continentId)) {
+		if(d_countries.containsKey(p_countryId)) {
 			return String.format("Country \"%d\" already present in map", p_countryId);
 		}
 		Country l_newCountry = new Country(p_countryId, d_continents.get(p_continentId));
