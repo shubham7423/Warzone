@@ -68,7 +68,7 @@ public class Continent {
 	 * Get all countries ids present 
 	 * @return set of country ids
 	 */
-	public Set<Integer> getCountriesName() {
+	public Set<Integer> getCountriesIds() {
 		Set<Integer> l_countryNameSet = new HashSet<>();
 		for(Country l_country: d_countriesSet) {
 			;l_countryNameSet.add(l_country.getId());

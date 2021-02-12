@@ -10,8 +10,8 @@ import entities.*;
  */
 public class WriteMap{
 	GameMap d_gameMap;
-	LinkedHashMap<String, Integer> d_continentsMap;
-	LinkedHashMap<String, Integer> d_countriesMap;
+	LinkedHashMap<Integer, Integer> d_continentsMap;
+	LinkedHashMap<Integer, Integer> d_countriesMap;
 	BufferedWriter d_writer;
 
 	/**
@@ -27,7 +27,7 @@ public class WriteMap{
 	/**
 	 * Opens a file and writes the data to that file
 	 * @param p_filePath to .map file 
-	 * @return
+	 * @return true if map saved successfully else false
 	 * 
 	 */
 	public boolean writeFullMap (String p_filePath) {
@@ -37,11 +37,11 @@ public class WriteMap{
 			d_writer = new BufferedWriter(l_fw);
 			
 			//Writing Continents
-			HashMap<String, Continent> l_continents = new HashMap<String, Continent>();
+			HashMap<Integer, Continent> l_continents = new HashMap<>();
 			l_continents = d_gameMap.getContinents();
 			d_writer.write("[continents]");
 			d_writer.newLine();
-			for (String p_continents: l_continents.keySet()) {
+			for (int p_continents: l_continents.keySet()) {
 				d_continentsMap.put(p_continents, ++l_continentCtn);
 				d_writer.write(p_continents + " " + l_continents.get(p_continents).getControlValue());
 				d_writer.newLine();
@@ -51,28 +51,28 @@ public class WriteMap{
 			d_writer.write("\n");
 			d_writer.write("[countries]");
 			d_writer.newLine();
-			for (String p_continents: d_continentsMap.keySet()) {
-				Set<String> l_countriesName = l_continents.get(p_continents).getCountriesName();
-				for(String p_countriesName: l_countriesName) {
-					d_countriesMap.put(p_countriesName, ++l_countryCtn);
-					d_writer.write(l_countryCtn + " " + p_countriesName + " " + d_continentsMap.get(p_continents));
+			for (int p_continents: d_continentsMap.keySet()) {
+				Set<Integer> l_countriesId = l_continents.get(p_continents).getCountriesIds();
+				for(int p_countriesId: l_countriesId) {
+					d_countriesMap.put(p_countriesId, ++l_countryCtn);
+					d_writer.write(l_countryCtn + " " + p_countriesId + " " + d_continentsMap.get(p_continents));
 					d_writer.newLine();
 				}
 			}
 			
 			//Writing borders
-			HashMap<String, Country> l_countries = new HashMap<>();
+			HashMap<Integer, Country> l_countries = new HashMap<>();
 			l_countries = d_gameMap.getCountries();
 			d_writer.write("\n");
 			d_writer.write("[borders]");
 			d_writer.newLine();
-			for (String p_countries: d_countriesMap.keySet()) {
-				Set<String> l_neighbourNames = l_countries.get(p_countries).getNeighbourNames();
+			for (int p_countries: d_countriesMap.keySet()) {
+				Set<Integer> l_neighbourIds = l_countries.get(p_countries).getNeighbourIds();
 				StringBuilder l_sb = new StringBuilder("");
 				l_sb.append(d_countriesMap.get(p_countries).toString() + " ");
 
-				for (String p_neighbourNames: l_neighbourNames) {
-					l_sb.append(d_countriesMap.get(p_neighbourNames).toString() + " ");
+				for (int p_neighbourIds: l_neighbourIds) {
+					l_sb.append(d_countriesMap.get(p_neighbourIds).toString() + " ");
 				}
 				d_writer.write(l_sb.toString());
 				d_writer.newLine();
