@@ -9,17 +9,17 @@ import java.util.Set;
  *
  */
 public class Continent {
-	private String d_name;
+	private int d_id;
 	private int d_controlValue;
 	private Set<Country> d_countriesSet;
 	
 	/**
 	 * Constructor for continent
-	 * @param p_name name of continent
+	 * @param p_id id of continent
 	 * @param p_controlValue control value
 	 */
-	public Continent(String p_name, int p_controlValue) {
-		d_name = p_name;
+	public Continent(int p_id, int p_controlValue) {
+		d_id = p_id;
 		d_controlValue = p_controlValue;
 		d_countriesSet = new HashSet<Country>();
 	}
@@ -44,8 +44,8 @@ public class Continent {
 	 * Get name of the continent
 	 * @return name of continent
 	 */
-	public String getName() {
-		return d_name;
+	public int getId() {
+		return d_id;
 	}
 
 	/**
@@ -65,13 +65,13 @@ public class Continent {
 	}
 	
 	/**
-	 * Get all countries name present 
-	 * @return set of country names
+	 * Get all countries ids present 
+	 * @return set of country ids
 	 */
-	public Set<String> getCountriesName() {
-		Set<String> l_countryNameSet = new HashSet<>();
+	public Set<Integer> getCountriesName() {
+		Set<Integer> l_countryNameSet = new HashSet<>();
 		for(Country l_country: d_countriesSet) {
-			;l_countryNameSet.add(l_country.getName());
+			;l_countryNameSet.add(l_country.getId());
 		}
 		return l_countryNameSet;
 	}
