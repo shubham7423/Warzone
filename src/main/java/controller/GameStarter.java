@@ -127,6 +127,18 @@ public class GameStarter {
 		return l_result;
 	}
 	
+	public String saveMap(String p_fileName) {
+		String l_result;
+		if(is_editMap && !is_loadedMap) {
+			l_result = d_gameMap.saveMap(p_fileName);
+			is_loadedMap = true;
+		}
+		else {
+			l_result = String.format("Cannot save map");
+		}
+		return l_result;	
+	}
+	
 	public static void main(String[] args) {
 		GameStarter gStarter = new GameStarter();
 		System.out.print(gStarter.editMap("hajsgdjh.map"));

@@ -38,6 +38,10 @@ public class Commands {
 				l_result = editMap(p_splittedCommand);
 				break;
 				
+			case "savemap":
+				l_result = saveMap(p_splittedCommand);
+				break;
+				
 			default:
 				l_result = "Command not found";		
 		}
@@ -47,7 +51,7 @@ public class Commands {
 	
 	/**
 	 * method to load maps
-	 * @param p_splittedCommand splitted commands
+	 * @param p_splittedCommand splitted commands to extract sub parts
 	 * @return loaded map(responses positive or negative)
 	 */
 	public String loadMap(String[] p_splittedCommand) {
@@ -59,7 +63,7 @@ public class Commands {
 	
 	/**
 	 * Edit continents 
-	 * @param p_splittedCommand splitted commands
+	 * @param p_splittedCommand splitted commands to extract sub parts
 	 * @return shows whether continents are added or removed
 	 */
 	public String editContinent(String[] p_splittedCommand) {
@@ -104,7 +108,7 @@ public class Commands {
 	
 	/**
 	 * edit countries
-	 * @param p_splittedCommand splitted commands
+	 * @param p_splittedCommand splitted commands to extract sub parts
 	 * @return shows whether countries are added or removed with respect to their continents
 	 */
 	public String editCountry(String[] p_splittedCommand) {
@@ -149,7 +153,7 @@ public class Commands {
 	
 	/**
 	 * edit neighbours
-	 * @param p_splittedCommand splitted commands
+	 * @param p_splittedCommand splitted commands to extract sub parts
 	 * @return shows neighbours added or removed to the country
 	 */
 	public String editNeighbour(String[] p_splittedCommand) {
@@ -192,11 +196,24 @@ public class Commands {
 		return l_result;
 	}
 	
+	/**
+	 * edit map
+	 * @param p_splittedCommand splitted commands to extract sub parts
+	 * @return shows if map is available to edit or not
+	 */
 	public String editMap(String[] p_splittedCommand) {
 		if(p_splittedCommand.length < 2) {
 			return "Please enter valid command";
 		}
 		return d_gameStarter.editMap(p_splittedCommand[1]);
+	}
+	
+	
+	public String saveMap(String[] p_splittedCommand) {
+		if(p_splittedCommand.length < 2) {
+			return "Please enter valid command";
+		}
+		return d_gameStarter.saveMap(p_splittedCommand[1]);
 	}
 	
 	/**
