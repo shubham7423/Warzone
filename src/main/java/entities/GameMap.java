@@ -55,8 +55,8 @@ public class GameMap {
 	
 	/**
 	 * Add country to the map
-	 * @param p_countryId Name of country
-	 * @param p_continentId Name of continent where country present
+	 * @param p_countryId Id of country
+	 * @param p_continentId Id of continent where country present
 	 * @return Positive response if country added
 	 */
 	public String addCountry(int p_countryId, int p_continentId) {
@@ -90,7 +90,7 @@ public class GameMap {
 	/**
 	 * Add neighbour to country
 	 * @param p_sourceCountryId Country id
-	 * @param p_destCountryName Neighbour country id
+	 * @param p_destCountryId Neighbour country id
 	 * @return Positive response if neighbour added
 	 */
 	public String addNeighbour(int p_sourceCountryId, int p_destCountryId) {
