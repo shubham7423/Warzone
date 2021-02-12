@@ -67,7 +67,7 @@ public class GameMap {
 		Country l_newCountry = new Country(p_countryId, d_continents.get(p_continentId));
 		d_countries.put(p_countryId, l_newCountry);
 		d_continents.get(p_continentId).addCountry(l_newCountry);
-		return String.format("Country \"%d\" successfully removed to map", p_countryId);
+		return String.format("Country \"%d\" successfully added to map", p_countryId);
 	}
 	
 	/**

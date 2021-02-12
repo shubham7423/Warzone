@@ -29,7 +29,6 @@ public class GameStarter {
 		if (!is_editMap && !is_loadedMap) {
 			this.loadMap(p_fileName);
 			if(!Files.exists(Paths.get(Paths.get("").toAbsolutePath().toString() + "/maps/" + p_fileName))) {
-				System.out.println(Paths.get("").toAbsolutePath().toString());
 				try {
 					Files.createDirectories(Paths.get(Paths.get("").toAbsolutePath().toString() + "/maps"));
 					Files.createFile(Paths.get(Paths.get("").toAbsolutePath().toString() + "/maps/" + p_fileName));

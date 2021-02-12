@@ -20,4 +20,3 @@ public class WriteMapTest {
 		assertTrue(l_testVar);
 	}
 }
-	
