@@ -45,7 +45,7 @@ public class Country {
 	 * Get id of country
 	 * @return country id
 	 */
-	public Integer getId() {
+	public int getId() {
 		return d_id;
 	}
 
