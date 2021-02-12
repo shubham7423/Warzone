@@ -26,7 +26,7 @@ public class MapValidation {
 	/**
 	 * this is the prime function to validate whole graph
 	 * it will show the status of validation of map
-	 * @return
+	 * @return return the validation result to print based on all the validation criteria.
 	 */
 	public String validate() {
 		StringBuilder l_validationResult = new StringBuilder();
@@ -35,7 +35,8 @@ public class MapValidation {
 
 	/**
 	 * this function gathers information about all types of validation 
-	 * @return
+	 * @return if all the validation of the Map are successfull or not. If everything in map is correct,
+	 * then it will return true
 	 */
 	public boolean checkAllMapValidationRules() {
 		{
@@ -61,7 +62,7 @@ public class MapValidation {
 	 * starting from any one country
 	 * @param p_firstCountry it starts traversing through one country to check the connection of graph
 	 * @param p_countryNames it compares with this parameter if all the countries are traversed
-	 * @return
+	 * @return returns the status if map is connected or not. Returns true if connected.
 	 */
 	public boolean isMapConnected(Country p_firstCountry, Set<String> p_countryNames) {
 		Set<String> l_countryNamesVisited = new HashSet<String>();
