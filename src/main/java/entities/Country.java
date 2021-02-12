@@ -8,18 +8,18 @@ import java.util.Set;
  *
  */
 public class Country {
-	private String d_name;
+	private int d_id;
 	private Set<Country> d_neighbourCountries;
 	private int d_armiesPresent;
 	Continent d_continent;
 	
 	/**
 	 * Constructor
-	 * @param p_name name of the country
+	 * @param p_id id of the country
 	 * @param p_continent Parent continent
 	 */
-	public Country(String p_name, Continent p_continent) {
-		d_name = p_name;
+	public Country(int p_id, Continent p_continent) {
+		d_id = p_id;
 		d_continent = p_continent;
 		d_neighbourCountries = new HashSet<Country>();
 		d_armiesPresent = 0;
@@ -42,11 +42,11 @@ public class Country {
 	}
 
 	/**
-	 * Get name of country
-	 * @return country name
+	 * Get id of country
+	 * @return country id
 	 */
-	public String getName() {
-		return d_name;
+	public Integer getId() {
+		return d_id;
 	}
 
 
@@ -60,7 +60,7 @@ public class Country {
 
 
 	/**
-	 * Add neighcouring country
+	 * Add neighbouring country
 	 * @param p_country Country to be added
 	 */
 	public void addNeighbour(Country p_country) {
@@ -100,10 +100,10 @@ public class Country {
 	 * Get neighbours names
 	 * @return Set of neighbour names
 	 */
-	public Set<String> getNeighbourNames() {
-		Set<String> l_neighbourNameSet = new HashSet<>();
+	public Set<Integer> getNeighbourIds() {
+		Set<Integer> l_neighbourNameSet = new HashSet<>();
 		for(Country l_country: d_neighbourCountries) {
-			l_neighbourNameSet.add(l_country.getName());
+			l_neighbourNameSet.add(l_country.getId());
 		}
 		return l_neighbourNameSet;
 	}
