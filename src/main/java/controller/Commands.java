@@ -208,7 +208,11 @@ public class Commands {
 		return d_gameStarter.editMap(p_splittedCommand[1]);
 	}
 	
-	
+	/**
+	 * 
+	 * @param p_splittedCommand splitted commands to extract sub parts
+	 * @return shows if map is saved or not
+	 */
 	public String saveMap(String[] p_splittedCommand) {
 		if(p_splittedCommand.length < 2) {
 			return "Please enter valid command";

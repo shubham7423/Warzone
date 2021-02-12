@@ -90,6 +90,9 @@ public class CommandsTest {
 		
 	}
 	
+	/**
+	 * Test to check map editing is allowed and executed correctly or not
+	 */
 	@Test
 	public void testEditMap() {
 		String[] l_loadCommand_1 = new String[]{"editmap", "uk.map"};
@@ -98,6 +101,9 @@ public class CommandsTest {
 		
 	}
 	
+	/**
+	 * Test to check map saving is allowed and executed correctly or not
+	 */
 	@Test
 	public void testSaveMap() {
 		String[] l_loadCommand_1 = new String[]{"editmap", "uk.map"};

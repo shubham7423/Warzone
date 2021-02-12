@@ -127,6 +127,11 @@ public class GameStarter {
 		return l_result;
 	}
 	
+	/**
+	 * method to save map, it creates new file with specified file name.
+	 * @param p_fileName filename of map to be saved
+	 * @return shows whether map is saved or not
+	 */
 	public String saveMap(String p_fileName) {
 		String l_result;
 		if(is_editMap && !is_loadedMap) {
