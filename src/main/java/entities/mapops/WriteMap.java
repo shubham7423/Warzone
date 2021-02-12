@@ -18,7 +18,7 @@ public class WriteMap{
 	 * Constructor 
 	 * @param p_gameMap GameMap object
 	 */
-	WriteMap (GameMap p_gameMap) {
+	public WriteMap (GameMap p_gameMap) {
 		d_gameMap = p_gameMap;
 		d_continentsMap = new LinkedHashMap<>();
 		d_countriesMap = new LinkedHashMap<>();
