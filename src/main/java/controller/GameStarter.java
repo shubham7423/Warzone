@@ -135,7 +135,8 @@ public class GameStarter {
 		String l_result;
 		if(is_editMap && !is_loadedMap) {
 			l_result = d_gameMap.saveMap(p_fileName);
-			is_loadedMap = true;
+			is_loadedMap = false;
+			is_editMap = false;
 		}
 		else {
 			l_result = String.format("Cannot save map");
