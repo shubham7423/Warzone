@@ -39,6 +39,7 @@ public class GameStarter {
 			}
 			l_result = String.format("Map \"%s\" ready for edit", p_fileName);
 			is_editMap = true;
+			is_loadedMap = false;
 		}
 		else {
 			l_result = String.format("Edit map not available");
