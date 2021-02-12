@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Set;
 
 import entities.mapops.ReadMap;
+import entities.mapops.WriteMap;
 
 /**
  * GameMap Class
@@ -134,6 +135,19 @@ public class GameMap {
 			return String.format("Map \"%s\" cannot be loaded", p_fileName);
 		}
 		return String.format("Map \"%s\" loaded successfully", p_fileName);
+	}
+	
+	/**
+	 * Write map to file
+	 * @param p_fileNam File name
+	 * @return Positive response if map written to file successfully
+	 */
+	public String saveMap(String p_fileNam) {
+		WriteMap l_writeMap = new WriteMap(this);
+		if(!l_writeMap.writeFullMap(p_fileNam)) {
+			return String.format("Map file \"%s\" cannot be saved", p_fileNam);
+		}
+		return String.format("Map file \"%s\" saved successfully", p_fileNam);
 	}
 	
 	/**
