@@ -40,6 +40,10 @@ public class MapValidation {
 				l_validationResult.append("One of the Continent is empty.");
 			}
 		} else {
+			if(d_emptyMap) {
+				l_validationResult.append("Map does not contain any country.");
+			}
+			
 			if(d_connectedGraph) {
 				l_validationResult.append("The graph is connected.\nCountries are traverseble.");
 			} else {
