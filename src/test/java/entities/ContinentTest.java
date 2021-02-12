@@ -22,7 +22,7 @@ public class ContinentTest {
 	}
 	
 	/**
-	 * Check name of continent
+	 * Check id of continent
 	 */
 	@Test
 	public void nameTest() {

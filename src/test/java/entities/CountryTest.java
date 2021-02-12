@@ -23,7 +23,7 @@ public class CountryTest {
 	}
 	
 	/**
-	 * Check name of country
+	 * Check id of country
 	 */
 	@Test
 	public void nameTest() {
