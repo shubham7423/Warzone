@@ -48,7 +48,7 @@ public class Commands {
 	 */
 	public String loadMap(String[] p_splittedCommand) {
 		if(p_splittedCommand.length < 2) {
-			return "Please enter file name";
+			return "Please enter valid command";
 		}
 		return d_gameStarter.loadMap(p_splittedCommand[1]);
 	}
@@ -62,6 +62,9 @@ public class Commands {
 		String[] l_commandParts;
 		String l_result = "";
 		int i=1;
+		if(p_splittedCommand.length < 2) {
+			return "Please enter valid command";
+		}
 		while(i < p_splittedCommand.length) {			
 			if(p_splittedCommand[i].equals("-add")) {
 				l_commandParts = new String[3];
@@ -104,6 +107,9 @@ public class Commands {
 		String[] l_commandParts;
 		String l_result = "";
 		int i=1;
+		if(p_splittedCommand.length < 2) {
+			return "Please enter valid command";
+		}
 		while(i < p_splittedCommand.length) {			
 			if(p_splittedCommand[i].equals("-add")) {
 				l_commandParts = new String[3];
@@ -146,6 +152,9 @@ public class Commands {
 		String[] l_commandParts;
 		String l_result = "";
 		int i=1;
+		if(p_splittedCommand.length < 2) {
+			return "Please enter valid command";
+		}
 		while(i < p_splittedCommand.length) {			
 			if(p_splittedCommand[i].equals("-add")) {
 				l_commandParts = new String[3];
