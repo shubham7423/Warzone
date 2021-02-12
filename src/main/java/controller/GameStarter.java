@@ -56,10 +56,10 @@ public class GameStarter {
 	public String editContinent(String[] p_commandSplitted) {
 		String l_result;
 		if (p_commandSplitted[0].equals("-add")) {
-			l_result = d_gameMap.addContinent(p_commandSplitted[1], Integer.parseInt(p_commandSplitted[2]));
+			l_result = d_gameMap.addContinent(Integer.parseInt(p_commandSplitted[1]), Integer.parseInt(p_commandSplitted[2]));
 		}
 		else {
-			l_result = d_gameMap.removeContinent(p_commandSplitted[1]);
+			l_result = d_gameMap.removeContinent(Integer.parseInt(p_commandSplitted[1]));
 		}
 		return l_result;
 	}
@@ -72,10 +72,10 @@ public class GameStarter {
 	public String editCountry(String[] p_commandSplitted) {
 		String l_result;
 		if (p_commandSplitted[0].equals("-add")) {
-			l_result = d_gameMap.addCountry(p_commandSplitted[1], p_commandSplitted[2]);
+			l_result = d_gameMap.addCountry(Integer.parseInt(p_commandSplitted[1]), Integer.parseInt(p_commandSplitted[2]));
 		}
 		else {
-			l_result = d_gameMap.removeCountry(p_commandSplitted[1]);
+			l_result = d_gameMap.removeCountry(Integer.parseInt(p_commandSplitted[1]));
 		}
 		return l_result;
 	}
@@ -88,10 +88,10 @@ public class GameStarter {
 	public String editNeighbour(String[] p_commandSplitted) {
 		String l_result;
 		if (p_commandSplitted[0].equals("-add")) {
-			l_result = d_gameMap.addNeighbour(p_commandSplitted[1], p_commandSplitted[2]);
+			l_result = d_gameMap.addNeighbour(Integer.parseInt(p_commandSplitted[1]), Integer.parseInt(p_commandSplitted[2]));
 		}
 		else {
-			l_result = d_gameMap.removeNeighbour(p_commandSplitted[1], p_commandSplitted[2]);
+			l_result = d_gameMap.removeNeighbour(Integer.parseInt(p_commandSplitted[1]), Integer.parseInt(p_commandSplitted[2]));
 		}
 		return l_result;
 	}
