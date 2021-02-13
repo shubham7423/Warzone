@@ -100,11 +100,11 @@ public class Player {
 	 */
 	public void setNumberOfArmies() {
 		d_numberOfArmies = d_countries.size() / 3;
-		if(d_numberOfArmies < 3) {
-			d_numberOfArmies = 3;
-		}
 		for(Continent l_continent: d_continents.values()) {
 			d_numberOfArmies += l_continent.getControlValue();
+		}
+		if(d_numberOfArmies < 3) {
+			d_numberOfArmies = 3;
 		}
 	}
 }
