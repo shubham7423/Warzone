@@ -13,6 +13,7 @@ import entities.mapops.WriteMap;
 public class GameMap {
 	private HashMap<Integer, Continent> d_continents;
 	private HashMap<Integer, Country> d_countries;
+	private HashMap<String, Player> d_players;
 	
 	/**
 	 * Constructor for GameMap
@@ -164,5 +165,21 @@ public class GameMap {
 	 */
 	public HashMap<Integer, Country> getCountries() {
 		return d_countries;
+	}
+	
+	public String addPlayer(String p_playerName) {
+		if(d_players.containsKey(p_playerName)) {
+			return String.format("Player \"%s\" already present in game", p_playerName);
+		}
+		d_players.put(p_playerName, new Player(p_playerName));
+		return String.format("Player \"%s\" added to map", p_playerName);
+	}
+	
+	public String removePlayer(String p_playerName) {
+		if(!d_players.containsKey(p_playerName)) {
+			return String.format("Player \"%s\" not present in game", p_playerName);
+		}
+		d_players.remove(p_playerName);
+		return String.format("Player \"%s\" successfully removed from map", p_playerName);
 	}
 }

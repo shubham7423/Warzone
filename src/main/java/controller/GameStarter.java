@@ -144,6 +144,21 @@ public class GameStarter {
 		return l_result;	
 	}
 	
+	public String gamePlayer(String[] p_commandSplitted) {
+		String l_result;
+		if(is_editMap && !is_loadedMap) {
+			if (p_commandSplitted[0].equals("-add")) {
+				l_result = d_gameMap.addPlayer(p_commandSplitted[1]);
+			}
+			else {
+				l_result = d_gameMap.removePlayer(p_commandSplitted[1]);
+			}
+		}
+		else {
+			l_result = String.format("Map can only be edited when file is open in edit phase");
+		}
+		return l_result;
+	}
 	public static void main(String[] args) {
 		GameStarter gStarter = new GameStarter();
 		System.out.print(gStarter.editMap("hajsgdjh.map"));
