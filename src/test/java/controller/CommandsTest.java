@@ -115,9 +115,14 @@ public class CommandsTest {
 
 	}
 	
-	/*
+	/**
+	 * Test to check whether players are added/removed correctly or not
+	 */
 	@Test
 	public void testGamePlayer() {
+		String[] l_newStrings = new String[] { "loadmap", "WorldMap.map" };
+		String l_result = d_commands.executeCommand(l_newStrings);
+		
 		String[] l_addPlayer = new String[] { "gameplayer", "-add", "Jay" };
 		String l_addResult = d_commands.executeCommand(l_addPlayer);
 		assertEquals("Player \"Jay\" added to map", l_addResult);
@@ -126,6 +131,6 @@ public class CommandsTest {
 		String l_removeResult = d_commands.executeCommand(l_removePlayer);
 		assertEquals("Player \"Jay\" removed from map", l_removeResult);
 
-	}*/
+	}
 
 }

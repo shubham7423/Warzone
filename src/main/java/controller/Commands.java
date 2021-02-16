@@ -43,7 +43,7 @@ public class Commands {
 				break;
 				
 			case "gameplayer":
-				l_result = saveMap(p_splittedCommand);
+				l_result = gamePlayer(p_splittedCommand);
 				break;
 				
 			default:
@@ -241,7 +241,6 @@ public class Commands {
 				l_commandParts = new String[3];
 				l_commandParts[0] = p_splittedCommand[i];
 				l_commandParts[1] = p_splittedCommand[i+1];
-				l_commandParts[2] = p_splittedCommand[i+2];
 				if(!l_result.equals("")) {
 					l_result += "\n";
 				}

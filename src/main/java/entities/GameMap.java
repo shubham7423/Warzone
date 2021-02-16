@@ -193,4 +193,6 @@ public class GameMap {
 		d_players.remove(p_playerName);
 		return String.format("Player \"%s\" removed from map", p_playerName);
 	}
+	
+	
 }

@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import entities.GameMap;
+import entities.Player;
 
 /**
  * 
@@ -18,6 +19,7 @@ public class GameStarter {
 	
 	GameMap d_gameMap = new GameMap();
 	boolean is_loadedMap = false, is_editMap = false;
+	
 	
 	/**
 	 * method to edit map, it creates new file when specified file name does not exists else loads existing map file.
@@ -164,6 +166,10 @@ public class GameStarter {
 		}
 		return l_result;
 	}
+	
+	
+	
+	
 	public static void main(String[] args) {
 		GameStarter gStarter = new GameStarter();
 		System.out.print(gStarter.editMap("hajsgdjh.map"));
