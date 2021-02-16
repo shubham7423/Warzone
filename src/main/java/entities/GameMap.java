@@ -21,6 +21,7 @@ public class GameMap {
 	public GameMap() {
 		d_continents = new HashMap<>();
 		d_countries = new HashMap<>();
+		d_players = new HashMap<>();
 	}
 	
 	/**
@@ -190,6 +191,6 @@ public class GameMap {
 			return String.format("Player \"%s\" not present in game", p_playerName);
 		}
 		d_players.remove(p_playerName);
-		return String.format("Player \"%s\" successfully removed from map", p_playerName);
+		return String.format("Player \"%s\" removed from map", p_playerName);
 	}
 }

@@ -42,7 +42,7 @@ public class Commands {
 				l_result = saveMap(p_splittedCommand);
 				break;
 				
-			case "gamePlayer":
+			case "gameplayer":
 				l_result = saveMap(p_splittedCommand);
 				break;
 				

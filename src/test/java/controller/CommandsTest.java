@@ -114,5 +114,18 @@ public class CommandsTest {
 		assertEquals("Map file \"abc.map\" saved successfully", l_saveResultString_1);
 
 	}
+	
+	/*
+	@Test
+	public void testGamePlayer() {
+		String[] l_addPlayer = new String[] { "gameplayer", "-add", "Jay" };
+		String l_addResult = d_commands.executeCommand(l_addPlayer);
+		assertEquals("Player \"Jay\" added to map", l_addResult);
+
+		String[] l_removePlayer = new String[] { "gameplayer", "-remove", "Jay" };
+		String l_removeResult = d_commands.executeCommand(l_removePlayer);
+		assertEquals("Player \"Jay\" removed from map", l_removeResult);
+
+	}*/
 
 }

@@ -159,9 +159,9 @@ public class GameStarter {
 				l_result = d_gameMap.removePlayer(p_commandSplitted[1]);
 			}
 		}
-		else {
-			l_result = String.format("Map can only be edited when file is open in edit phase");
-		}
+		/*else {
+			l_result = String.format("Players cannot be added/removed in this phase");
+		}*/
 		return l_result;
 	}
 	public static void main(String[] args) {
