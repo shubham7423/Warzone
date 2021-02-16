@@ -11,8 +11,8 @@ import org.junit.Test;
  */
 public class CountryTest {
 
-	Continent d_Continent = new Continent("Asia", 2);
-	Country d_country = new Country("India", d_Continent);
+	Continent d_Continent = new Continent(1, 2);
+	Country d_country = new Country(1, d_Continent);
 
 	/**
 	 * Check if country object is null. 
@@ -23,11 +23,11 @@ public class CountryTest {
 	}
 	
 	/**
-	 * Check name of country
+	 * Check id of country
 	 */
 	@Test
 	public void nameTest() {
-		assertEquals("India", d_country.getName());
+		assertEquals(1, d_country.getId());
 	}
 	
 	@Test
@@ -59,12 +59,12 @@ public class CountryTest {
 	 */
 	@Test
 	public void addNeighbourTest() {
-		Country l_neighbourCountry_1 = new Country("Nepal", new Continent("Asia", 2));
+		Country l_neighbourCountry_1 = new Country(1, new Continent(1, 2));
 		d_country.addNeighbour(l_neighbourCountry_1);
 		assertEquals(1, d_country.getNeighbourCountries().size());
 		assertTrue(d_country.getNeighbourCountries().contains(l_neighbourCountry_1));
 		
-		Country l_neighbourCountry_2 = new Country("Pakistan", new Continent("Asia", 2));
+		Country l_neighbourCountry_2 = new Country(2, new Continent(1, 2));
 		d_country.addNeighbour(l_neighbourCountry_2);
 		assertEquals(2, d_country.getNeighbourCountries().size());
 		assertTrue(d_country.getNeighbourCountries().contains(l_neighbourCountry_2));
@@ -75,7 +75,7 @@ public class CountryTest {
 	 */
 	@Test
 	public void removeNeighbourTest() {
-		Country l_neighbourCountry = new Country("Nepal", new Continent("Asia", 2));
+		Country l_neighbourCountry = new Country(1, new Continent(1, 2));
 		d_country.addNeighbour(l_neighbourCountry);
 		d_country.removeNeighbour(l_neighbourCountry);
 		assertEquals(0, d_country.getNeighbourCountries().size());

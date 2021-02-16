@@ -3,7 +3,7 @@ package entities.mapops;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
-import entities.*;
+import entities.GameMap;
 
 /**
  * Test for WriteMap
@@ -20,4 +20,3 @@ public class WriteMapTest {
 		assertTrue(l_testVar);
 	}
 }
-	
