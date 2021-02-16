@@ -6,6 +6,7 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
 
 import entities.GameMap;
 import entities.Player;
@@ -19,6 +20,7 @@ public class GameStarter {
 	
 	GameMap d_gameMap = new GameMap();
 	boolean is_loadedMap = false, is_editMap = false;
+	private HashMap<String, Player> d_players = new HashMap<>();
 	
 	
 	/**
@@ -155,10 +157,10 @@ public class GameStarter {
 		String l_result;
 		if(!is_editMap && is_loadedMap) {
 			if (p_commandSplitted[0].equals("-add")) {
-				l_result = d_gameMap.addPlayer(p_commandSplitted[1]);
+				l_result = addPlayer(p_commandSplitted[1]);
 			}
 			else {
-				l_result = d_gameMap.removePlayer(p_commandSplitted[1]);
+				l_result = removePlayer(p_commandSplitted[1]);
 			}
 		}
 		else {
@@ -167,7 +169,31 @@ public class GameStarter {
 		return l_result;
 	}
 	
+	/**
+	 * add a player to the game
+	 * @param p_playerName name of the player
+	 * @return Positive response if player is added
+	 */
+	public String addPlayer(String p_playerName) {
+		if(d_players.containsKey(p_playerName)) {
+			return String.format("Player \"%s\" already present in game", p_playerName);
+		}
+		d_players.put(p_playerName, new Player(p_playerName));
+		return String.format("Player \"%s\" added to map", p_playerName);
+	}
 	
+	/**
+	 * remove a player to the game
+	 * @param p_playerName name of the player
+	 * @return Positive response if player is removed
+	 */
+	public String removePlayer(String p_playerName) {
+		if(!d_players.containsKey(p_playerName)) {
+			return String.format("Player \"%s\" not present in game", p_playerName);
+		}
+		d_players.remove(p_playerName);
+		return String.format("Player \"%s\" removed from map", p_playerName);
+	}
 	
 	
 	public static void main(String[] args) {
