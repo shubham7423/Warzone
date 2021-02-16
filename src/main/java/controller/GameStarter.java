@@ -151,7 +151,7 @@ public class GameStarter {
 	 */
 	public String gamePlayer(String[] p_commandSplitted) {
 		String l_result;
-		if(is_editMap && !is_loadedMap) {
+		if(!is_editMap && is_loadedMap) {
 			if (p_commandSplitted[0].equals("-add")) {
 				l_result = d_gameMap.addPlayer(p_commandSplitted[1]);
 			}
@@ -159,9 +159,9 @@ public class GameStarter {
 				l_result = d_gameMap.removePlayer(p_commandSplitted[1]);
 			}
 		}
-		/*else {
+		else {
 			l_result = String.format("Players cannot be added/removed in this phase");
-		}*/
+		}
 		return l_result;
 	}
 	public static void main(String[] args) {
