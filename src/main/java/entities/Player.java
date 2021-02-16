@@ -1,6 +1,11 @@
 package entities;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Queue;
+
+import java.util.Scanner;
 
 /**
  * Player in a game
@@ -10,6 +15,7 @@ public class Player {
 	private String d_name;
 	private HashMap<Integer, Country> d_countries;
 	private HashMap<Integer, Continent> d_continents;
+	private Queue<String> d_Orders;
 	private int d_numberOfArmies;
 	
 	/**
@@ -20,6 +26,7 @@ public class Player {
 		d_name = p_name;
 		d_countries = new HashMap<>();
 		d_continents = new HashMap<>();
+		d_Orders = new LinkedList<>();
 		d_numberOfArmies = 0;
 	}
 
@@ -106,5 +113,19 @@ public class Player {
 		if(d_numberOfArmies < 3) {
 			d_numberOfArmies = 3;
 		}
+	}
+	
+	public void issueOrder() {
+		Scanner l_orderScanner = new Scanner(System.in);
+		String l_order = l_orderScanner.nextLine();
+		String[] l_splittedOrder = l_order.split(" ");
+		if(l_splittedOrder.length < 3) {
+			System.out.println("Invalid command");
+		}
+		d_Orders.add(l_order);
+	}
+	
+	public String nextOrder() {
+		return d_Orders.remove();
 	}
 }

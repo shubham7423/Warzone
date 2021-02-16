@@ -6,6 +6,7 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import entities.GameMap;
@@ -21,6 +22,8 @@ public class GameStarter {
 	GameMap d_gameMap = new GameMap();
 	boolean is_loadedMap = false, is_editMap = false;
 	private HashMap<String, Player> d_players = new HashMap<>();
+	private ArrayList<String> d_playerName =  new ArrayList<>(); 
+	int d_currentPlayer = 0; 
 	
 	
 	/**
@@ -179,6 +182,7 @@ public class GameStarter {
 			return String.format("Player \"%s\" already present in game", p_playerName);
 		}
 		d_players.put(p_playerName, new Player(p_playerName));
+		d_playerName.add(p_playerName);
 		return String.format("Player \"%s\" added to map", p_playerName);
 	}
 	
@@ -192,9 +196,17 @@ public class GameStarter {
 			return String.format("Player \"%s\" not present in game", p_playerName);
 		}
 		d_players.remove(p_playerName);
+		d_playerName.remove(p_playerName);
 		return String.format("Player \"%s\" removed from map", p_playerName);
 	}
 	
+	/**
+	 * To get map
+	 * @return object of gamemap
+	 */
+	public GameMap getGameMap() {
+		return d_gameMap;
+	}
 	
 	public static void main(String[] args) {
 		GameStarter gStarter = new GameStarter();
