@@ -224,6 +224,11 @@ public class Commands {
 		return d_gameStarter.saveMap(p_splittedCommand[1]);
 	}
 	
+	/**
+	 * 
+	 * @param p_splittedCommand splitted commands to extract sub parts
+	 * @return shows if players are added or not
+	 */
 	public String gamePlayer(String[] p_splittedCommand) {
 		String[] l_commandParts;
 		String l_result = "";

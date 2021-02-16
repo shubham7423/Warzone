@@ -144,6 +144,11 @@ public class GameStarter {
 		return l_result;	
 	}
 	
+	/**
+	 * method to add players to the game
+	 * @param p_commandSplitted splitted commands
+	 * @return shows whether players are added or removed
+	 */
 	public String gamePlayer(String[] p_commandSplitted) {
 		String l_result;
 		if(is_editMap && !is_loadedMap) {

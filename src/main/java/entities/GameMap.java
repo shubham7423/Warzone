@@ -167,6 +167,11 @@ public class GameMap {
 		return d_countries;
 	}
 	
+	/**
+	 * add a player to the game
+	 * @param p_playerName name of the player
+	 * @return Positive response if player is added
+	 */
 	public String addPlayer(String p_playerName) {
 		if(d_players.containsKey(p_playerName)) {
 			return String.format("Player \"%s\" already present in game", p_playerName);
@@ -175,6 +180,11 @@ public class GameMap {
 		return String.format("Player \"%s\" added to map", p_playerName);
 	}
 	
+	/**
+	 * remove a player to the game
+	 * @param p_playerName name of the player
+	 * @return Positive response if player is removed
+	 */
 	public String removePlayer(String p_playerName) {
 		if(!d_players.containsKey(p_playerName)) {
 			return String.format("Player \"%s\" not present in game", p_playerName);
