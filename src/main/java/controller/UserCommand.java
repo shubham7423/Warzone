@@ -6,6 +6,10 @@ public class UserCommand {
 	
 	Scanner l_scannerScanner = new Scanner(System.in);
 	
+	/**
+	 * Get commands from user
+	 * @return array containing command splitted using " ".
+	 */
 	public String[] getCommand() {
 		String l_userCommand;
 		System.out.print("$ ");

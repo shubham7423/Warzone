@@ -7,6 +7,8 @@ import java.util.Queue;
 
 import java.util.Scanner;
 
+import controller.UserCommand;
+
 /**
  * Player in a game
  *
@@ -116,12 +118,17 @@ public class Player {
 	}
 	
 	public void issueOrder() {
-		Scanner l_orderScanner = new Scanner(System.in);
-		System.out.print("$ ");
-		String l_order = l_orderScanner.nextLine();
-		String[] l_splittedOrder = l_order.split(" ");
-		if(l_splittedOrder.length < 3) {
-			System.out.println("Invalid command");
+		
+		UserCommand l_userCommand = new UserCommand();
+		String[] l_splittedOrder = null;
+		boolean isCorrect = false;
+		while(!isCorrect) {
+			l_splittedOrder = l_userCommand.getCommand();
+			if(l_splittedOrder.length < 3) {
+				System.out.println("Invalid command");
+				continue;
+			}
+			isCorrect = true;
 		}
 		if(l_splittedOrder[0].equals("deploy")) {
 			Deploy d_deploy = new Deploy(this, Integer.parseInt(l_splittedOrder[1]),Integer.parseInt(l_splittedOrder[2]));
