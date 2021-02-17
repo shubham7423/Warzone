@@ -267,27 +267,5 @@ public class Commands {
 		}
 		return l_result;
 	}
-	
-	/**
-	 * Game can be started from here
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		Commands l_commands = new Commands();
-		Scanner l_scannerScanner = new Scanner(System.in);
-		String l_userCommand;
-		System.out.println("Welcome to Warzone");
-		while(true) {
-			System.out.print("$ ");
-			l_userCommand = l_scannerScanner.nextLine();
-			if(l_userCommand.equals("exit()")) {
-				break;
-			}
-			String[] l_splittedCommandString = l_userCommand.split(" ");
-			System.out.println(l_commands.executeCommand(l_splittedCommandString));
-		}
-		System.out.print("\nThank you for playing Warzone :)");
-		l_scannerScanner.close();
-	}
 }
 

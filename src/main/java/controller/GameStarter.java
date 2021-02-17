@@ -208,8 +208,21 @@ public class GameStarter {
 		return d_gameMap;
 	}
 	
+	public void deployPhase() {
+		System.out.println("Deploy phase entered");
+		for(String l_playerName: d_playerName) {
+			System.out.println("Player " +l_playerName+ "'s turn");
+			d_players.get(l_playerName).issueOrder();
+			System.out.println(d_players.get(l_playerName).nextOrder().executeOrder(this));
+		}
+	}
+	
 	public static void main(String[] args) {
 		GameStarter gStarter = new GameStarter();
-		System.out.print(gStarter.editMap("hajsgdjh.map"));
+		gStarter.loadMap("uk.map");
+		gStarter.addPlayer("Shubham");
+		gStarter.addPlayer("Patel");
+		gStarter.deployPhase();
+		
 	}
 }

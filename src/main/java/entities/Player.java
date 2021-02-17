@@ -117,6 +117,7 @@ public class Player {
 	
 	public void issueOrder() {
 		Scanner l_orderScanner = new Scanner(System.in);
+		System.out.print("$ ");
 		String l_order = l_orderScanner.nextLine();
 		String[] l_splittedOrder = l_order.split(" ");
 		if(l_splittedOrder.length < 3) {
