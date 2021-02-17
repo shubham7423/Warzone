@@ -210,13 +210,25 @@ public class GameStarter {
 		return d_gameMap;
 	}
 	
+	
 	public void deployPhase() {
+		int l_currentPlayer = 0, l_playersCompleted=0;
+		boolean l_continue = true;
 		System.out.println("Deploy phase entered");
-		for(String l_playerName: d_playerName) {
-			System.out.println("Player " +l_playerName+ "'s turn");
-			System.out.println("Number of armies left: " + d_players.get(l_playerName).getNumberOfArmies());
-			d_players.get(l_playerName).issueOrder();
-			System.out.println(d_players.get(l_playerName).nextOrder().executeOrder(this));
+		while(l_playersCompleted < d_playerName.size()) {
+			if(d_players.get(d_playerName.get(l_currentPlayer)).getNumberOfArmies() > 0) {
+				System.out.println("Player " +d_playerName.get(l_currentPlayer)+ "'s turn");
+				System.out.println("Number of armies left: " + d_players.get(d_playerName.get(l_currentPlayer)).getNumberOfArmies());
+				d_players.get(d_playerName.get(l_currentPlayer)).issueOrder();
+				System.out.println(d_players.get(d_playerName.get(l_currentPlayer)).nextOrder().executeOrder(this));
+			}
+			else {
+				++l_playersCompleted;
+			}
+			++l_currentPlayer;
+			if(l_currentPlayer == d_playerName.size()) {
+				l_currentPlayer = 0;
+			}
 		}
 	}
 	
@@ -225,17 +237,9 @@ public class GameStarter {
 		gStarter.loadMap("uk.map");
 		gStarter.addPlayer("Shubham");
 		gStarter.addPlayer("Patel");
-		Continent asiaContinent = new Continent(1, 3);
-		Continent africaContinent = new Continent(2, 5);
-		Country indiaCountry1 = new Country(1, asiaContinent);
-		Country indiaCountry2 = new Country(2, asiaContinent);
-		Country indiaCountry3 = new Country(3, asiaContinent);
-		Country indiaCountry4 = new Country(4, asiaContinent);
-		Country indiaCountry5 = new Country(5, asiaContinent);
-		Country indiaCountry6 = new Country(6, asiaContinent);
 		
-		gStarter.getGameMap().addContinent(1, 3);
-		gStarter.getGameMap().addContinent(2, 5);
+		gStarter.getGameMap().addContinent(1, 6);
+		gStarter.getGameMap().addContinent(7, 5);
 		gStarter.getGameMap().addCountry(1, 1);
 		gStarter.getGameMap().addCountry(2, 1);
 		gStarter.getGameMap().addCountry(3, 1);
@@ -244,22 +248,32 @@ public class GameStarter {
 		gStarter.getGameMap().addCountry(6, 2);
 		gStarter.getGameMap().addCountry(7, 2);
 		gStarter.getGameMap().addCountry(8, 2);
+		gStarter.getGameMap().addCountry(9, 2);
 		
-		System.out.print(gStarter.getGameMap().getCountries().keySet());
+//		System.out.println(gStarter.getGameMap().getContinents().get(1).getId() +", "+ gStarter.getGameMap().getContinents().get(1).getControlValue());
+		
 		
 		gStarter.d_players.get("Shubham").addCountry(gStarter.getGameMap().getCountries().get(1));
 		gStarter.d_players.get("Shubham").addCountry(gStarter.getGameMap().getCountries().get(2));
 		gStarter.d_players.get("Shubham").addCountry(gStarter.getGameMap().getCountries().get(3));
 		gStarter.d_players.get("Shubham").addCountry(gStarter.getGameMap().getCountries().get(4));
+		gStarter.d_players.get("Shubham").addCountry(gStarter.getGameMap().getCountries().get(9));
+//		gStarter.d_players.get("Shubham").addContinent(gStarter.getGameMap().getContinents().get(1));
+		gStarter.d_players.get("Shubham").addContinent(gStarter.getGameMap().getContinents().get(7));
 		
 		gStarter.d_players.get("Patel").addCountry(gStarter.getGameMap().getCountries().get(5));
 		gStarter.d_players.get("Patel").addCountry(gStarter.getGameMap().getCountries().get(6));
 		gStarter.d_players.get("Patel").addCountry(gStarter.getGameMap().getCountries().get(7));
 		gStarter.d_players.get("Patel").addCountry(gStarter.getGameMap().getCountries().get(8));
 		
+		System.out.println(gStarter.d_players.get("Shubham").getCountries().keySet());
+		System.out.println(gStarter.d_players.get("Shubham").getContinents().keySet());
 		gStarter.d_players.get("Shubham").setNumberOfArmies();
-		gStarter.d_players.get("Patel").setNumberOfArmies();
-		gStarter.deployPhase();
+//		gStarter.d_players.get("Patel").setNumberOfArmies();
+		
+		System.out.println(gStarter.d_players.get("Shubham").getNumberOfArmies());
+//		System.out.println(gStarter.d_players.get("Patel").getNumberOfArmies());
+//		gStarter.deployPhase();
 		
 	}
 }
