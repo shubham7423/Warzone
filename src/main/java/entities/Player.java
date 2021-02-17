@@ -15,7 +15,7 @@ public class Player {
 	private String d_name;
 	private HashMap<Integer, Country> d_countries;
 	private HashMap<Integer, Continent> d_continents;
-	private Queue<String> d_Orders;
+	private Queue<Orders> d_orders;
 	private int d_numberOfArmies;
 	
 	/**
@@ -26,7 +26,7 @@ public class Player {
 		d_name = p_name;
 		d_countries = new HashMap<>();
 		d_continents = new HashMap<>();
-		d_Orders = new LinkedList<>();
+		d_orders = new LinkedList<>();
 		d_numberOfArmies = 0;
 	}
 
@@ -122,10 +122,13 @@ public class Player {
 		if(l_splittedOrder.length < 3) {
 			System.out.println("Invalid command");
 		}
-		d_Orders.add(l_order);
+		if(l_splittedOrder[0].equals("deploy")) {
+			Deploy d_deploy = new Deploy(this, Integer.parseInt(l_splittedOrder[1]),Integer.parseInt(l_splittedOrder[2]));
+			d_orders.add(d_deploy);
+		}
 	}
 	
-	public String nextOrder() {
-		return d_Orders.remove();
+	public Orders nextOrder() {
+		return d_orders.remove();
 	}
 }
