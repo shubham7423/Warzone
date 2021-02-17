@@ -120,6 +120,9 @@ public class Player {
 		}
 	}
 	
+	/**
+	 * Issue order called by Game engine
+	 */
 	public void issueOrder() {
 		
 		UserCommand l_userCommand = new UserCommand();
@@ -139,6 +142,10 @@ public class Player {
 		}
 	}
 	
+	/**
+	 * Get next order from the orders queue
+	 * @return order
+	 */
 	public Orders nextOrder() {
 		return d_orders.remove();
 	}

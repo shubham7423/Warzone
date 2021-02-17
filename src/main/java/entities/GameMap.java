@@ -102,6 +102,9 @@ public class GameMap {
 		}
 		Country l_country1 = d_countries.get(p_sourceCountryId);
 		Country l_country2 = d_countries.get(p_destCountryId);	
+		if(l_country1 == null || l_country2 == null) {
+			return String.format("Country not present");
+		}
 		if(l_country1.getNeighbourCountries().contains(l_country2)) {
 			return String.format("Country \"%d\" already a neighbour of \"%d\"", p_destCountryId, p_sourceCountryId);
 		}

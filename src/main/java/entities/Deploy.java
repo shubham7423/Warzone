@@ -2,18 +2,34 @@ package entities;
 
 import controller.GameStarter;
 
+/**
+ * Deploy order class
+ *
+ */
 public class Deploy implements Orders {
 	
 	Player d_player;
 	int d_country;
 	int d_armies;
 	
+	/**
+	 * Constructor to assign initial values
+	 * @param p_player player who is firing deploy command
+	 * @param p_country country to which reinforcements are to be placed
+	 * @param p_armies number of reinforcements to be placed
+	 */
 	public Deploy(Player p_player, int p_country, int p_armies) {
 		d_player = p_player;
 		d_country = p_country;
 		d_armies = p_armies;
 	}
 
+	
+	/**
+	 * Execute deploy command
+	 * @param p_game object calling this function
+	 * @return Positive response if command was successful, otherwise negative reply 
+	 */
 	@Override
 	public String executeOrder(GameStarter p_game) {
 		if(!d_player.getCountries().containsKey(d_country)) {

@@ -213,7 +213,7 @@ public class Commands {
 	}
 	
 	/**
-	 * 
+	 * save map
 	 * @param p_splittedCommand splitted commands to extract sub parts
 	 * @return shows if map is saved or not
 	 */
@@ -225,7 +225,7 @@ public class Commands {
 	}
 	
 	/**
-	 * 
+	 * Add or remove player
 	 * @param p_splittedCommand splitted commands to extract sub parts
 	 * @return shows if players are added or not
 	 */

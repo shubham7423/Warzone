@@ -211,6 +211,9 @@ public class GameStarter {
 	}
 	
 	
+	/**
+	 * Loop over players and player deploys their reinforcements to their countries
+	 */
 	public void deployPhase() {
 		int l_currentPlayer = 0, l_playersCompleted=0;
 		boolean l_continue = true;
