@@ -70,19 +70,19 @@ public class MapValidation {
 	 */
 	public boolean checkAllMapValidationRules() {
 		{
-			Set<String> l_countryNames = d_gameMap.getCountries().keySet();
-			d_connectedGraph = isMapConnected(d_gameMap.getCountries().values().iterator().next(), l_countryNames);
+			Set<Integer> l_countryIds = d_gameMap.getCountries().keySet();
+			d_connectedGraph = isMapConnected(d_gameMap.getCountries().values().iterator().next(), l_countryIds);
 		}
 		
 		{
 			d_connectedSubGraph = true;
 			for (Continent l_continent : d_gameMap.getContinents().values()) {
-				Set<String> l_countryNames = l_continent.getCountriesName();
-				if (l_countryNames.isEmpty()) {
+				Set<Integer> l_countryIds = l_continent.getCountriesIds();
+				if (l_countryIds.isEmpty()) {
 					d_emptyContinent = true;
 					continue;	
 				}
-				d_connectedSubGraph &= isMapConnected(l_continent.getCountriesSet().iterator().next(), l_countryNames);
+				d_connectedSubGraph &= isMapConnected(l_continent.getCountriesSet().iterator().next(), l_countryIds);
 			}
 
 		}
@@ -93,35 +93,35 @@ public class MapValidation {
 	 * This function validates whether all the countries are traversable or not
 	 * starting from any one country
 	 * @param p_firstCountry it starts traversing through one country to check the connection of graph
-	 * @param p_countryNames it compares with this parameter if all the countries are traversed
+	 * @param p_countryIds it compares with this parameter if all the countries are traversed
 	 * @return returns the status if map is connected or not. Returns true if connected.
 	 */
-	public boolean isMapConnected(Country p_firstCountry, Set<String> p_countryNames) {
-		if(p_countryNames.size() == 0) {
+	public boolean isMapConnected(Country p_firstCountry, Set<Integer> p_countryIds) {
+		if(p_countryIds.size() == 0) {
 			d_emptyMap = true;
 		}
-		Set<String> l_countryNamesVisited = new HashSet<String>();
-		l_countryNamesVisited = countryIterator(p_firstCountry, l_countryNamesVisited);
-		return l_countryNamesVisited.equals(p_countryNames);
+		Set<Integer> l_countryIdsVisited = new HashSet<Integer>();
+		l_countryIdsVisited = countryIterator(p_firstCountry, l_countryIdsVisited);
+		return l_countryIdsVisited.equals(p_countryIds);
 	}
 
 	/**
 	 * This is a recursive function that visits all the adjacent country 
 	 * and traverse in the BFS manner to the adjacent countries.
 	 * @param p_currentCountry this is the current country that is being visited for traversing
-	 * @param p_visitedCountryNames set of all the countries that are already visited
-	 * @return will return the set of visited countries 
+	 * @param p_visitedCountryIds set of all the countries that are already visited
+	 * @return will return the set of visited countries
 	 */
-	public Set<String> countryIterator(Country p_currentCountry, Set<String> p_visitedCountryNames){
-		if(p_visitedCountryNames.contains(p_currentCountry.getName())){
-			return p_visitedCountryNames;
+	public Set<Integer> countryIterator(Country p_currentCountry, Set<Integer> p_visitedCountryIds){
+		if(p_visitedCountryIds.contains(p_currentCountry.getId())){
+			return p_visitedCountryIds;
 		}
 		else {
-			p_visitedCountryNames.add(p_currentCountry.getName());
+			p_visitedCountryIds.add(p_currentCountry.getId());
 			for(Country l_nextCountry: p_currentCountry.getNeighbourCountries()) {
-				p_visitedCountryNames = countryIterator(l_nextCountry, p_visitedCountryNames);
+				p_visitedCountryIds = countryIterator(l_nextCountry, p_visitedCountryIds);
 			}
 		}
-		return p_visitedCountryNames;
+		return p_visitedCountryIds;
 	}
 }
