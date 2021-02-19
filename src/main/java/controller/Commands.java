@@ -66,6 +66,12 @@ public class Commands {
 		if(p_splittedCommand.length < 2) {
 			return "Please enter valid command";
 		}
+		if(p_splittedCommand[1].split("\\.").length <= 1) {
+			return "File extension should be .map";
+		}
+		if(!p_splittedCommand[1].split("\\.")[1].equals("map")) {
+			return "File extension should be .map";
+		}
 		return d_gameStarter.loadMap(p_splittedCommand[1]);
 	}
 	
@@ -213,6 +219,12 @@ public class Commands {
 		if(p_splittedCommand.length < 2) {
 			return "Please enter valid command";
 		}
+		if(p_splittedCommand[1].split("\\.").length <= 1) {
+			return "File extension should be .map";
+		}
+		if(!p_splittedCommand[1].split("\\.")[1].equals("map")) {
+			return "File extension should be .map";
+		}
 		return d_gameStarter.editMap(p_splittedCommand[1]);
 	}
 	
@@ -224,6 +236,12 @@ public class Commands {
 	public String saveMap(String[] p_splittedCommand) {
 		if(p_splittedCommand.length < 2) {
 			return "Please enter valid command";
+		}
+		if(p_splittedCommand[1].split("\\.").length <= 1) {
+			return "File extension should be .map";
+		}
+		if(!p_splittedCommand[1].split("\\.")[1].equals("map")) {
+			return "File extension should be .map";
 		}
 		return d_gameStarter.saveMap(p_splittedCommand[1]);
 	}
