@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 
 import entities.Continent;
 import entities.Country;
@@ -210,15 +211,35 @@ public class GameStarter {
 		return d_gameMap;
 	}
 	
+//	public String assign() {
+//		for(String playerName:d_playerName) {
+//			if(playerName.equals("Shubham")) {
+//				d_players.get(playerName).addCountry(this.getGameMap().getCountries().get(1));
+//				d_players.get(playerName).addCountry(this.getGameMap().getCountries().get(2));
+//				d_players.get(playerName).addCountry(this.getGameMap().getCountries().get(3));
+//				d_players.get(playerName).addContinent(this.getGameMap().getContinents().get(1));
+//			}
+//			else {
+//				d_players.get(playerName).addCountry(this.getGameMap().getCountries().get(4));
+//				d_players.get(playerName).addCountry(this.getGameMap().getCountries().get(5));
+//				d_players.get(playerName).addContinent(this.getGameMap().getContinents().get(3));
+//			}
+//			d_players.get(playerName).setNumberOfArmies();
+//		}
+//		deployPhase();
+//		return String.format("Countries and armies assigned");
+//		
+//	}
+	
 	
 	/**
 	 * Loop over players and player deploys their reinforcements to their countries
 	 */
 	public void deployPhase() {
-		int l_currentPlayer = 0, l_playersCompleted=0;
-		boolean l_continue = true;
+		int l_currentPlayer = 0;
+		HashSet<String> l_playersCompleted = new HashSet<>();
 		System.out.println("Deploy phase entered");
-		while(l_playersCompleted < d_playerName.size()) {
+		while(l_playersCompleted.size() < d_playerName.size()) {
 			if(d_players.get(d_playerName.get(l_currentPlayer)).getNumberOfArmies() > 0) {
 				System.out.println("Player " +d_playerName.get(l_currentPlayer)+ "'s turn");
 				System.out.println("Number of armies left: " + d_players.get(d_playerName.get(l_currentPlayer)).getNumberOfArmies());
@@ -226,7 +247,7 @@ public class GameStarter {
 				System.out.println(d_players.get(d_playerName.get(l_currentPlayer)).nextOrder().executeOrder(this));
 			}
 			else {
-				++l_playersCompleted;
+				l_playersCompleted.add(d_playerName.get(l_currentPlayer));
 			}
 			++l_currentPlayer;
 			if(l_currentPlayer == d_playerName.size()) {

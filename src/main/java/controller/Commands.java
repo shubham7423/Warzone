@@ -45,6 +45,10 @@ public class Commands {
 			case "gameplayer":
 				l_result = gamePlayer(p_splittedCommand);
 				break;
+			
+//			case "assigncountries":
+//				l_result = assignCountries(p_splittedCommand);
+//				break;
 				
 			default:
 				l_result = "Command not found";		
@@ -245,7 +249,7 @@ public class Commands {
 					l_result += "\n";
 				}
 				l_result += d_gameStarter.gamePlayer(l_commandParts);
-				i = i + 3;
+				i = i + 2;
 			}
 			else if (p_splittedCommand[i].equals("-remove")) {
 				l_commandParts = new String[2];
@@ -267,5 +271,12 @@ public class Commands {
 		}
 		return l_result;
 	}
+	
+//	public String assignCountries(String[] p_splittedCommand) {
+//		if(p_splittedCommand.length > 1) {
+//			return String.format("Invalid Command");
+//		}
+//		return d_gameStarter.assign();
+//	}
 }
 
