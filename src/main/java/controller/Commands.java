@@ -190,14 +190,15 @@ public class Commands {
 				i = i + 3;
 			}
 			else if (p_splittedCommand[i].equals("-remove")) {
-				l_commandParts = new String[2];
+				l_commandParts = new String[3];
 				l_commandParts[0] = p_splittedCommand[i];
 				l_commandParts[1] = p_splittedCommand[i+1];
+				l_commandParts[2] = p_splittedCommand[i+2];
 				if(!l_result.equals("")) {
 					l_result += "\n";
 				}
 				l_result += d_gameStarter.editNeighbour(l_commandParts);
-				i = i + 2;
+				i = i + 3;
 			}
 			else {
 				if(!l_result.equals("")) {
