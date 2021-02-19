@@ -109,11 +109,8 @@ public class Player {
 	 */
 	public void setNumberOfArmies() {
 		d_numberOfArmies = d_countries.size() / 3;
-		System.out.println("Countries: "+d_countries.size());
-		System.out.println(d_numberOfArmies);
 		for(Continent l_continent: d_continents.values()) {
 			d_numberOfArmies += l_continent.getControlValue();
-			System.out.println(l_continent.getControlValue());
 		}
 		if(d_numberOfArmies < 3) {
 			d_numberOfArmies = 3;

@@ -256,6 +256,14 @@ public class GameStarter {
 		}
 	}
 	
+	/**
+	 * Get the hash map of player names corresponding to its object
+	 * @return players hashmap
+	 */
+	public HashMap<String, Player> getPlayers() {
+		return d_players;
+	}
+	
 	public static void main(String[] args) {
 		GameStarter gStarter = new GameStarter();
 		gStarter.loadMap("uk.map");
