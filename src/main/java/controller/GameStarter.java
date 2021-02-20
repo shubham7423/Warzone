@@ -211,6 +211,11 @@ public class GameStarter {
 		return d_gameMap;
 	}
 	
+	/**
+	 * method to validate a map
+	 * @param p_commandSplitted
+	 * @return result of map validation
+	 */
 	public String validateMap(String[] p_commandSplitted) {
 		String l_result;
 		if(!is_editMap && !is_loadedMap) {

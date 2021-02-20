@@ -156,6 +156,10 @@ public class GameMap {
 		return String.format("Map file \"%s\" saved successfully", p_fileNam);
 	}
 	
+	/**
+	 * Method to Validate the map
+	 * @return the result of map validation
+	 */
 	public String validateMap() {
 		MapValidation l_mapValidation = new MapValidation(this);
 		String l_valCheck = l_mapValidation.validate();
