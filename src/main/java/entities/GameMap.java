@@ -147,10 +147,9 @@ public class GameMap {
 	 * @return l_final_data String of Countries, Continent, Corresponding Neighbors
 	 */
 	
-	public String[] showMap()
 	public void showMap()
 	{
-		String[] l_column = ["Country","Continent","Neighbors"]
+		String[] l_column = ["Country","Continent","Neighbors"];
 		Object[][] l_data = new Object[d_countries).size()][l_column.length];
 		Country l_country;
 		TextTable l_tt;
@@ -192,17 +191,14 @@ public class GameMap {
 	{
 		ArrayList<String> l_result = new List<>();
 
-        String l_neighborsAsCsv = String.join(",", p_country.getAdjacentCountries()
-                .stream()
-                .map(Country::getName)
-                .collect(Collectors.toList()));
+        String l_neighborsAsCsv = String.join(",", p_country.getAdjacentCountries().stream().map(Country::getId).collect(Collectors.toList()));
 
         l_result.add(p_country.getID().toString());
        /* if (p_type == FormatType.DETAIL) {
             l_values.add(p_country.getNumberOfArmies() + "");
             l_values.add(p_country.getOwner() != null ? p_country.getOwner().getName() : "");
         }*/
-        l_result.add(p_country.getContinent().getName() + " (" + p_country.getContinent().getValue() + ")");
+        l_result.add(p_country.getContinent().getId() + " (" + p_country.getContinent().getValue() + ")");
         l_result.add(l_neighborsAsCsv);
         
         return l_result.toArray(new String[0]);
