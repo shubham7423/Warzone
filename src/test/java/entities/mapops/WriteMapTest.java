@@ -16,7 +16,7 @@ public class WriteMapTest {
 	@Test
 	public void testWriteFullMap() {
 		WriteMap l_writeMap = new WriteMap(new GameMap());
-		boolean l_testVar = l_writeMap.writeFullMap("WorldMap.txt");
+		boolean l_testVar = l_writeMap.writeFullMap("WorldMapTest.map");
 		assertTrue(l_testVar);
 	}
 }

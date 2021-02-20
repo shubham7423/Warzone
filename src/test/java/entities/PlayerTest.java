@@ -69,6 +69,19 @@ public class PlayerTest {
 		d_player.removeContinent(2);
 		assertFalse(d_player.getContinents().containsKey(2));
 	}
+	
+	/**
+	 * Test to check if all country in a continent are owned by player
+	 */
+	@Test
+	public void testContinentOwnership() {
+		Continent l_continent = new Continent(1, 3);
+		Country l_country1 = new Country(1, l_continent);
+		d_player.addCountry(l_country1);
+		Country l_country2 = new Country(2, l_continent);
+		d_player.addCountry(l_country2);
+		assertTrue(d_player.checkContinent(l_continent));
+	}
 
 	/*
 	 * Test if correct number of armies assigned to player

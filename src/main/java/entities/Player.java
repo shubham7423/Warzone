@@ -105,7 +105,7 @@ public class Player {
 	}
 	
 	/**
-	 * Set number of armies, which depends upon number of countries and continents accupied by player
+	 * Set number of armies, which depends upon number of countries and continents occupied by player
 	 */
 	public void setNumberOfArmies() {
 		d_numberOfArmies = d_countries.size() / 3;
@@ -137,6 +137,18 @@ public class Player {
 			Deploy d_deploy = new Deploy(this, Integer.parseInt(l_splittedOrder[1]),Integer.parseInt(l_splittedOrder[2]));
 			d_orders.add(d_deploy);
 		}
+	}
+	
+	/**
+	 * Check if player owns all countries of a continent
+	 * @param p_continent continent for which ownership is to be checked
+	 * @return true if player owns all the countries of continent; else false
+	 */
+	public boolean checkContinent(Continent p_continent) {
+		if(d_countries.keySet().containsAll(p_continent.getCountriesIds())) {
+			return true;
+		}
+		return false;
 	}
 	
 	/**

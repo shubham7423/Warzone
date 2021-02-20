@@ -1,0 +1,14 @@
+[continents]
+Asia 3
+SouthAmerica 2
+NorthAmerica 1
+
+[countries]
+1 India 1
+2 Peru 2
+3 Alaska 3
+
+[borders]
+3 2 
+2 
+1

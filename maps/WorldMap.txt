@@ -1,5 +1,0 @@
-[continents]
-
-[countries]
-
-[borders]
