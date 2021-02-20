@@ -65,7 +65,6 @@ public class GameStarter {
 		String l_result;
 		if(!is_editMap) {
 			l_result = d_gameMap.loadMap(p_fileName);
-			validateMap();
 			is_loadedMap = true;
 		}
 		else {
