@@ -105,7 +105,7 @@ public class Player {
 	}
 	
 	/**
-	 * Set number of armies, which depends upon number of countries and continents accupied by player
+	 * Set number of armies, which depends upon number of countries and continents occupied by player
 	 */
 	public void setNumberOfArmies() {
 		d_numberOfArmies = d_countries.size() / 3;
