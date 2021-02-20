@@ -199,14 +199,18 @@ public class GameMap {
 	 */
 	public String[] fillCountryData(Country p_country)
 	{
-		List<String> l_result = new ArrayList<>();
+		Set<String> l_result = new HashSet<String>();
+		Set<String> l_neighborsAsCsv = new HashSet<String>();
 
-        String l_neighborsAsCsv = String.join(",", p_country.getNeighbourCountries()
+		int l_id;
+
+        l_neighborsAsCsv = p_country.getNeighbourCountries()
         	.stream()
         	.map(Country::getId)
-        	.collect(Collectors.toList()));
+        	.collect(Collectors.toList());
 
-        l_result.add(p_country.getId().toString());
+        l_id = p_country.getId();
+        l_result.add(l_id.toString());
        /* if (p_type == FormatType.DETAIL) {
             l_values.add(p_country.getNumberOfArmies() + "");
             l_values.add(p_country.getOwner() != null ? p_country.getOwner().getName() : "");
