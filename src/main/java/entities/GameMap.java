@@ -142,6 +142,7 @@ public class GameMap {
 	 */
 	
 	public String[] showMap()
+	public void showMap()
 	{
 		String[] l_column = ["Country","Continent","Neighbors"]
 		Object[][] l_data = new Object[d_countries).size()][l_column.length];
