@@ -168,9 +168,9 @@ public class GameMap {
 		
 		int l_count = 0;
 		
-		for (HashMap.Entry<Integer, Country> l_item : countries.entrySet()) {
-            l_country = item.getValue();
-            l_data[count] = fillCountryData(l_country);
+		for (HashMap.Entry<Integer, Country> l_item : d_countries.entrySet()) {
+            l_country = l_item.getValue();
+            l_data[l_count] = fillCountryData(l_country);
             l_count++;
         }
 		
@@ -189,7 +189,7 @@ public class GameMap {
         
         l_final_data = new String(l_baos.toByteArray(), StandardCharsets.UTF_8);
 		
-		return l_final_data;
+		System.out.println(l_final_data);
 	}
 	
 	/**
@@ -199,19 +199,19 @@ public class GameMap {
 	 */
 	public String[] fillCountryData(Country p_country)
 	{
-		ArrayList<String> l_result = new List<>();
+		List<String> l_result = new ArrayList<>();
 
-        String l_neighborsAsCsv = String.join(",", p_country.getAdjacentCountries()
+        String l_neighborsAsCsv = String.join(",", p_country.getNeighbourCountries()
         	.stream()
         	.map(Country::getId)
         	.collect(Collectors.toList()));
 
-        l_result.add(p_country.getID().toString());
+        l_result.add(p_country.getId().toString());
        /* if (p_type == FormatType.DETAIL) {
             l_values.add(p_country.getNumberOfArmies() + "");
             l_values.add(p_country.getOwner() != null ? p_country.getOwner().getName() : "");
         }*/
-        l_result.add(p_country.getContinent().getId() + " (" + p_country.getContinent().getValue() + ")");
+        l_result.add(p_country.getContinent().getId() + " (" + p_country.getContinent().getControlValue() + ")");
         l_result.add(l_neighborsAsCsv);
         
         return l_result.toArray(new String[0]);
