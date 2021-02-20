@@ -1,7 +1,11 @@
-package entities;
+package entities.mapops;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import entities.Continent;
+import entities.Country;
+import entities.GameMap;
 
 /**
  * This class will validate the map of the game
