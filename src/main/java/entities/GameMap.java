@@ -149,8 +149,8 @@ public class GameMap {
 	
 	public void showMap()
 	{
-		String[] l_column = ["Country","Continent","Neighbors"];
-		Object[][] l_data = new Object[d_countries).size()][l_column.length];
+		String[] l_column = {"Country","Continent","Neighbors"};
+		Object[][] l_data = new Object[d_countries.size()][l_column.length];
 		Country l_country;
 		TextTable l_tt;
 		final ByteArrayOutputStream l_baos = new ByteArrayOutputStream();
@@ -191,7 +191,10 @@ public class GameMap {
 	{
 		ArrayList<String> l_result = new List<>();
 
-        String l_neighborsAsCsv = String.join(",", p_country.getAdjacentCountries().stream().map(Country::getId()).collect(Collectors.toList()));
+        String l_neighborsAsCsv = String.join(",", p_country.getAdjacentCountries()
+        	.stream()
+        	.map(Country::getId())
+        	.collect(Collectors.toList()));
 
         l_result.add(p_country.getID().toString());
        /* if (p_type == FormatType.DETAIL) {
