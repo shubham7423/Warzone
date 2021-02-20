@@ -140,6 +140,18 @@ public class Player {
 	}
 	
 	/**
+	 * Check if player owns all countries of a continent
+	 * @param p_continent continent for which ownership is to be checked
+	 * @return true if player owns all the countries of continent; else false
+	 */
+	public boolean checkContinent(Continent p_continent) {
+		if(d_countries.keySet().containsAll(p_continent.getCountriesIds())) {
+			return true;
+		}
+		return false;
+	}
+	
+	/**
 	 * Get next order from the orders queue
 	 * @return order
 	 */

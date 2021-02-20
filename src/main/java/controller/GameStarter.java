@@ -253,7 +253,8 @@ public class GameStarter {
 	public void deployPhase() {
 		int l_currentPlayer = 0;
 		HashSet<String> l_playersCompleted = new HashSet<>();
-		System.out.println("Deploy phase entered");
+		System.out.println("\nDeploy phase entered");
+		System.out.println(org.apache.commons.lang3.StringUtils.repeat("-", 20));
 		while(l_playersCompleted.size() < d_playerName.size()) {
 			if(d_players.get(d_playerName.get(l_currentPlayer)).getNumberOfArmies() > 0) {
 				System.out.println("Player " +d_playerName.get(l_currentPlayer)+ "'s turn");
@@ -284,6 +285,9 @@ public class GameStarter {
 	 * @return returns the message to the caller
 	 */
 	public String assignCountries() {
+		if (d_players.size() < 2) {
+			return "There must be at least two player";
+		}
 		HashMap<Integer, Country> l_countries = d_gameMap.getCountries();
 		List<Country> l_countryObjects = new ArrayList<Country>();
 		l_countryObjects.addAll(l_countries.values());
@@ -296,24 +300,50 @@ public class GameStarter {
 				}
 				int l_idOfCountry = l_random.nextInt(l_countryObjects.size());
 				p_player.addCountry(l_countryObjects.get(l_idOfCountry));
+				l_countryObjects.get(l_idOfCountry).setPlayer(p_player);
 				l_countryObjects.remove(l_countryObjects.get(l_idOfCountry));
 			}
 			if(l_countryObjects.size() == 0) {
 				break;
 			}
 		}
-		for (Player p_player: d_players.values()) {
-			p_player.setNumberOfArmies();
-			System.out.println("Size" + p_player.getCountries().size() + " no of armies " + p_player.getNumberOfArmies());
-			System.out.println(p_player.getName() + " : " + p_player.getCountries().keySet());
+		
+		System.out.print("Countries Assigned");
+		checkContinentOwnership();
+		assignArmies();
+		deployPhase();
+		return "Deployment done";
+	}
+	
+	/**
+	 * check if any player acquired any continent if any then add the continent to player acquired continents list
+	 */
+	public void checkContinentOwnership() {
+		for (Player l_player: d_players.values()) {
+			for (Continent l_continent: d_gameMap.getContinents().values()) {
+				if(l_player.checkContinent(l_continent)) {
+					System.out.println(l_player.getName() + " owns "+ l_continent.getId());
+					l_player.addContinent(l_continent);
+				}
+			}
+		}
+	}
+	
+	/**
+	 * Assign armies to players
+	 */
+	public void assignArmies() {
+		for (Player l_player: d_players.values()) {
+			l_player.setNumberOfArmies();
+			System.out.println("Size" + l_player.getCountries().size() + " no of armies " + l_player.getNumberOfArmies());
+			System.out.println(l_player.getName() + " : " + l_player.getCountries().keySet());
 			
 		}
-		return "Country assigned";
 	}
 	
 	public static void main(String[] args) {
 		GameStarter gStarter = new GameStarter();
-		gStarter.loadMap("risk.map");
+		gStarter.loadMap("uk.map");
 		gStarter.addPlayer("Shubham");
 		gStarter.addPlayer("Patel");
 		gStarter.addPlayer("Virag");

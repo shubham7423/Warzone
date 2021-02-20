@@ -12,6 +12,7 @@ public class Country {
 	private Set<Country> d_neighbourCountries;
 	private int d_armiesPresent;
 	Continent d_continent;
+	Player d_owner;
 	
 	/**
 	 * Constructor
@@ -23,6 +24,22 @@ public class Country {
 		d_continent = p_continent;
 		d_neighbourCountries = new HashSet<Country>();
 		d_armiesPresent = 0;
+	}
+	
+	/**
+	 * Set owner of the country
+	 * @param p_player player object
+	 */
+	public void setPlayer(Player p_player) {
+		d_owner = p_player;
+	}
+	
+	/**
+	 * Get the owner of country
+	 * @return owner player object
+	 */
+	public Player getPlayer() {
+		return d_owner;
 	}
 	
 	/**

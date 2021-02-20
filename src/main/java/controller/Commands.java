@@ -46,9 +46,9 @@ public class Commands {
 				l_result = gamePlayer(p_splittedCommand);
 				break;
 			
-//			case "assigncountries":
-//				l_result = assignCountries(p_splittedCommand);
-//				break;
+			case "assigncountries":
+				l_result = assignCountries(p_splittedCommand);
+				break;
 				
 			case "validatemap":
 				l_result = validateMap(p_splittedCommand);
@@ -306,11 +306,11 @@ public class Commands {
 		return d_gameStarter.validateMap();
 	}
 	
-//	public String assignCountries(String[] p_splittedCommand) {
-//		if(p_splittedCommand.length > 1) {
-//			return String.format("Invalid Command");
-//		}
-//		return d_gameStarter.assign();
-//	}
+	public String assignCountries(String[] p_splittedCommand) {
+		if(p_splittedCommand.length > 1) {
+			return String.format("Invalid Command");
+		}
+		return d_gameStarter.assignCountries();
+	}
 }
 
