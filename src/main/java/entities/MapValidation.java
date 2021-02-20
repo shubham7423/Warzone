@@ -69,22 +69,17 @@ public class MapValidation {
 	 * then it will return true
 	 */
 	public boolean checkAllMapValidationRules() {
-		{
-			Set<Integer> l_countryIds = d_gameMap.getCountries().keySet();
-			d_connectedGraph = isMapConnected(d_gameMap.getCountries().values().iterator().next(), l_countryIds);
-		}
-		
-		{
-			d_connectedSubGraph = true;
-			for (Continent l_continent : d_gameMap.getContinents().values()) {
-				Set<Integer> l_countryIds = l_continent.getCountriesIds();
-				if (l_countryIds.isEmpty()) {
-					d_emptyContinent = true;
-					continue;	
-				}
-				d_connectedSubGraph &= isMapConnected(l_continent.getCountriesSet().iterator().next(), l_countryIds);
-			}
+		Set<Integer> l_countryIds = d_gameMap.getCountries().keySet();
+		d_connectedGraph = isMapConnected(d_gameMap.getCountries().values().iterator().next(), l_countryIds);
 
+		d_connectedSubGraph = true;
+		for (Continent l_continent : d_gameMap.getContinents().values()) {
+			l_countryIds = l_continent.getCountriesIds();
+			if (l_countryIds.isEmpty()) {
+				d_emptyContinent = true;
+				continue;	
+			}
+			d_connectedSubGraph &= isMapConnected(l_continent.getCountriesSet().iterator().next(), l_countryIds);
 		}
 		return d_connectedGraph && d_connectedSubGraph;
 	}
@@ -115,8 +110,7 @@ public class MapValidation {
 	public Set<Integer> countryIterator(Country p_currentCountry, Set<Integer> p_visitedCountryIds){
 		if(p_visitedCountryIds.contains(p_currentCountry.getId())){
 			return p_visitedCountryIds;
-		}
-		else {
+		} else {
 			p_visitedCountryIds.add(p_currentCountry.getId());
 			for(Country l_nextCountry: p_currentCountry.getNeighbourCountries()) {
 				p_visitedCountryIds = countryIterator(l_nextCountry, p_visitedCountryIds);
