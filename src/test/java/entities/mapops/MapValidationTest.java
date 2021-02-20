@@ -33,7 +33,7 @@ public class MapValidationTest {
 		assertTrue(l_testVar);
 		assertEquals(true, l_testVar);
 
-		d_gameMap1.loadMap("WorldMap.txt");
+		d_gameMap1.loadMap("WorldMapFail.map");
 		l_mapValidation1 = new MapValidation(d_gameMap1);
 		l_testVar1 = l_mapValidation1.isMapConnected(d_gameMap1.getCountries().values().iterator().next() , d_gameMap1.getCountries().keySet());
 		assertFalse(l_testVar1);
@@ -60,7 +60,7 @@ public class MapValidationTest {
 		assertEquals(d_gameMap.getCountries().keySet(), l_iterationOutputIntegers);
 		assertTrue(l_iterationOutputIntegers.equals(d_gameMap.getCountries().keySet()));		
 		
-		d_gameMap1.loadMap("WorldMap.txt");		
+		d_gameMap1.loadMap("WorldMapFail.map");		
 		l_mapValidation1 = new MapValidation(d_gameMap1);
 		l_countryIdsVisited1 = new HashSet<Integer>();
 		l_iterationOutputIntegers1 = l_mapValidation1.countryIterator(d_gameMap1.getCountries().values().iterator().next(), l_countryIdsVisited1);
