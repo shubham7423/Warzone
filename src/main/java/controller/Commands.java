@@ -42,6 +42,14 @@ public class Commands {
 				l_result = saveMap(p_splittedCommand);
 				break;
 				
+			case "gameplayer":
+				l_result = gamePlayer(p_splittedCommand);
+				break;
+			
+//			case "assigncountries":
+//				l_result = assignCountries(p_splittedCommand);
+//				break;
+				
 			default:
 				l_result = "Command not found";		
 		}
@@ -57,6 +65,12 @@ public class Commands {
 	public String loadMap(String[] p_splittedCommand) {
 		if(p_splittedCommand.length < 2) {
 			return "Please enter valid command";
+		}
+		if(p_splittedCommand[1].split("\\.").length <= 1) {
+			return "File extension should be .map";
+		}
+		if(!p_splittedCommand[1].split("\\.")[1].equals("map")) {
+			return "File extension should be .map";
 		}
 		return d_gameStarter.loadMap(p_splittedCommand[1]);
 	}
@@ -176,14 +190,15 @@ public class Commands {
 				i = i + 3;
 			}
 			else if (p_splittedCommand[i].equals("-remove")) {
-				l_commandParts = new String[2];
+				l_commandParts = new String[3];
 				l_commandParts[0] = p_splittedCommand[i];
 				l_commandParts[1] = p_splittedCommand[i+1];
+				l_commandParts[2] = p_splittedCommand[i+2];
 				if(!l_result.equals("")) {
 					l_result += "\n";
 				}
 				l_result += d_gameStarter.editNeighbour(l_commandParts);
-				i = i + 2;
+				i = i + 3;
 			}
 			else {
 				if(!l_result.equals("")) {
@@ -205,11 +220,17 @@ public class Commands {
 		if(p_splittedCommand.length < 2) {
 			return "Please enter valid command";
 		}
+		if(p_splittedCommand[1].split("\\.").length <= 1) {
+			return "File extension should be .map";
+		}
+		if(!p_splittedCommand[1].split("\\.")[1].equals("map")) {
+			return "File extension should be .map";
+		}
 		return d_gameStarter.editMap(p_splittedCommand[1]);
 	}
 	
 	/**
-	 * 
+	 * save map
 	 * @param p_splittedCommand splitted commands to extract sub parts
 	 * @return shows if map is saved or not
 	 */
@@ -217,29 +238,64 @@ public class Commands {
 		if(p_splittedCommand.length < 2) {
 			return "Please enter valid command";
 		}
+		if(p_splittedCommand[1].split("\\.").length <= 1) {
+			return "File extension should be .map";
+		}
+		if(!p_splittedCommand[1].split("\\.")[1].equals("map")) {
+			return "File extension should be .map";
+		}
 		return d_gameStarter.saveMap(p_splittedCommand[1]);
 	}
 	
 	/**
-	 * Game can be started from here
-	 * @param args
+	 * Add or remove player
+	 * @param p_splittedCommand splitted commands to extract sub parts
+	 * @return shows if players are added or not
 	 */
-	public static void main(String[] args) {
-		Commands l_commands = new Commands();
-		Scanner l_scannerScanner = new Scanner(System.in);
-		String l_userCommand;
-		System.out.println("Welcome to Warzone");
-		while(true) {
-			System.out.print("$ ");
-			l_userCommand = l_scannerScanner.nextLine();
-			if(l_userCommand.equals("exit()")) {
-				break;
-			}
-			String[] l_splittedCommandString = l_userCommand.split(" ");
-			System.out.println(l_commands.executeCommand(l_splittedCommandString));
+	public String gamePlayer(String[] p_splittedCommand) {
+		String[] l_commandParts;
+		String l_result = "";
+		int i=1;
+		if(p_splittedCommand.length < 2) {
+			return "Please enter valid command";
 		}
-		System.out.print("\nThank you for playing Warzone :)");
-		l_scannerScanner.close();
+		while(i < p_splittedCommand.length) {			
+			if(p_splittedCommand[i].equals("-add")) {
+				l_commandParts = new String[3];
+				l_commandParts[0] = p_splittedCommand[i];
+				l_commandParts[1] = p_splittedCommand[i+1];
+				if(!l_result.equals("")) {
+					l_result += "\n";
+				}
+				l_result += d_gameStarter.gamePlayer(l_commandParts);
+				i = i + 2;
+			}
+			else if (p_splittedCommand[i].equals("-remove")) {
+				l_commandParts = new String[2];
+				l_commandParts[0] = p_splittedCommand[i];
+				l_commandParts[1] = p_splittedCommand[i+1];
+				if(!l_result.equals("")) {
+					l_result += "\n";
+				}
+				l_result += d_gameStarter.gamePlayer(l_commandParts);
+				i = i + 2;
+			}
+			else {
+				if(!l_result.equals("")) {
+					l_result += "\n";
+				}
+				l_result += "Command needs to have -add or -remove.";
+				i++;
+			}
+		}
+		return l_result;
 	}
+	
+//	public String assignCountries(String[] p_splittedCommand) {
+//		if(p_splittedCommand.length > 1) {
+//			return String.format("Invalid Command");
+//		}
+//		return d_gameStarter.assign();
+//	}
 }
 

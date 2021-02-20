@@ -1,6 +1,13 @@
 package entities;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Queue;
+
+import java.util.Scanner;
+
+import controller.UserCommand;
 
 /**
  * Player in a game
@@ -10,6 +17,7 @@ public class Player {
 	private String d_name;
 	private HashMap<Integer, Country> d_countries;
 	private HashMap<Integer, Continent> d_continents;
+	private Queue<Orders> d_orders;
 	private int d_numberOfArmies;
 	
 	/**
@@ -20,6 +28,7 @@ public class Player {
 		d_name = p_name;
 		d_countries = new HashMap<>();
 		d_continents = new HashMap<>();
+		d_orders = new LinkedList<>();
 		d_numberOfArmies = 0;
 	}
 
@@ -106,5 +115,35 @@ public class Player {
 		if(d_numberOfArmies < 3) {
 			d_numberOfArmies = 3;
 		}
+	}
+	
+	/**
+	 * Issue order called by Game engine
+	 */
+	public void issueOrder() {
+		
+		UserCommand l_userCommand = new UserCommand();
+		String[] l_splittedOrder = null;
+		boolean isCorrect = false;
+		while(!isCorrect) {
+			l_splittedOrder = l_userCommand.getCommand();
+			if(l_splittedOrder.length < 3) {
+				System.out.println("Invalid command");
+				continue;
+			}
+			isCorrect = true;
+		}
+		if(l_splittedOrder[0].equals("deploy")) {
+			Deploy d_deploy = new Deploy(this, Integer.parseInt(l_splittedOrder[1]),Integer.parseInt(l_splittedOrder[2]));
+			d_orders.add(d_deploy);
+		}
+	}
+	
+	/**
+	 * Get next order from the orders queue
+	 * @return order
+	 */
+	public Orders nextOrder() {
+		return d_orders.remove();
 	}
 }

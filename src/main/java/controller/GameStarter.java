@@ -6,8 +6,14 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 
+import entities.Continent;
+import entities.Country;
 import entities.GameMap;
+import entities.Player;
 
 /**
  * 
@@ -18,6 +24,10 @@ public class GameStarter {
 	
 	GameMap d_gameMap = new GameMap();
 	boolean is_loadedMap = false, is_editMap = false;
+	private HashMap<String, Player> d_players = new HashMap<>();
+	private ArrayList<String> d_playerName =  new ArrayList<>(); 
+	int d_currentPlayer = 0; 
+	
 	
 	/**
 	 * method to edit map, it creates new file when specified file name does not exists else loads existing map file.
@@ -117,7 +127,7 @@ public class GameStarter {
 				l_result = d_gameMap.addNeighbour(Integer.parseInt(p_commandSplitted[1]), Integer.parseInt(p_commandSplitted[2]));
 			}
 			else {
-        l_result = d_gameMap.removeNeighbour(Integer.parseInt(p_commandSplitted[1]), Integer.parseInt(p_commandSplitted[2]));
+				l_result = d_gameMap.removeNeighbour(Integer.parseInt(p_commandSplitted[1]), Integer.parseInt(p_commandSplitted[2]));
 			}
 		}
 		else {
@@ -144,8 +154,158 @@ public class GameStarter {
 		return l_result;	
 	}
 	
+	/**
+	 * method to add players to the game
+	 * @param p_commandSplitted splitted commands
+	 * @return shows whether players are added or removed
+	 */
+	public String gamePlayer(String[] p_commandSplitted) {
+		String l_result;
+		if(!is_editMap && is_loadedMap) {
+			if (p_commandSplitted[0].equals("-add")) {
+				l_result = addPlayer(p_commandSplitted[1]);
+			}
+			else {
+				l_result = removePlayer(p_commandSplitted[1]);
+			}
+		}
+		else {
+			l_result = String.format("Players cannot be added/removed in this phase");
+		}
+		return l_result;
+	}
+	
+	/**
+	 * add a player to the game
+	 * @param p_playerName name of the player
+	 * @return Positive response if player is added
+	 */
+	public String addPlayer(String p_playerName) {
+		if(d_players.containsKey(p_playerName)) {
+			return String.format("Player \"%s\" already present in game", p_playerName);
+		}
+		d_players.put(p_playerName, new Player(p_playerName));
+		d_playerName.add(p_playerName);
+		return String.format("Player \"%s\" added to map", p_playerName);
+	}
+	
+	/**
+	 * remove a player to the game
+	 * @param p_playerName name of the player
+	 * @return Positive response if player is removed
+	 */
+	public String removePlayer(String p_playerName) {
+		if(!d_players.containsKey(p_playerName)) {
+			return String.format("Player \"%s\" not present in game", p_playerName);
+		}
+		d_players.remove(p_playerName);
+		d_playerName.remove(p_playerName);
+		return String.format("Player \"%s\" removed from map", p_playerName);
+	}
+	
+	/**
+	 * To get map
+	 * @return object of gamemap
+	 */
+	public GameMap getGameMap() {
+		return d_gameMap;
+	}
+	
+//	public String assign() {
+//		for(String playerName:d_playerName) {
+//			if(playerName.equals("Shubham")) {
+//				d_players.get(playerName).addCountry(this.getGameMap().getCountries().get(1));
+//				d_players.get(playerName).addCountry(this.getGameMap().getCountries().get(2));
+//				d_players.get(playerName).addCountry(this.getGameMap().getCountries().get(3));
+//				d_players.get(playerName).addContinent(this.getGameMap().getContinents().get(1));
+//			}
+//			else {
+//				d_players.get(playerName).addCountry(this.getGameMap().getCountries().get(4));
+//				d_players.get(playerName).addCountry(this.getGameMap().getCountries().get(5));
+//				d_players.get(playerName).addContinent(this.getGameMap().getContinents().get(3));
+//			}
+//			d_players.get(playerName).setNumberOfArmies();
+//		}
+//		deployPhase();
+//		return String.format("Countries and armies assigned");
+//		
+//	}
+	
+	
+	/**
+	 * Loop over players and player deploys their reinforcements to their countries
+	 */
+	public void deployPhase() {
+		int l_currentPlayer = 0;
+		HashSet<String> l_playersCompleted = new HashSet<>();
+		System.out.println("Deploy phase entered");
+		while(l_playersCompleted.size() < d_playerName.size()) {
+			if(d_players.get(d_playerName.get(l_currentPlayer)).getNumberOfArmies() > 0) {
+				System.out.println("Player " +d_playerName.get(l_currentPlayer)+ "'s turn");
+				System.out.println("Number of armies left: " + d_players.get(d_playerName.get(l_currentPlayer)).getNumberOfArmies());
+				d_players.get(d_playerName.get(l_currentPlayer)).issueOrder();
+				System.out.println(d_players.get(d_playerName.get(l_currentPlayer)).nextOrder().executeOrder(this));
+			}
+			else {
+				l_playersCompleted.add(d_playerName.get(l_currentPlayer));
+			}
+			++l_currentPlayer;
+			if(l_currentPlayer == d_playerName.size()) {
+				l_currentPlayer = 0;
+			}
+		}
+	}
+	
+	/**
+	 * Get the hash map of player names corresponding to its object
+	 * @return players hashmap
+	 */
+	public HashMap<String, Player> getPlayers() {
+		return d_players;
+	}
+	
 	public static void main(String[] args) {
 		GameStarter gStarter = new GameStarter();
-		System.out.print(gStarter.editMap("hajsgdjh.map"));
+		gStarter.loadMap("uk.map");
+		gStarter.addPlayer("Shubham");
+		gStarter.addPlayer("Patel");
+		
+		gStarter.getGameMap().addContinent(1, 6);
+		gStarter.getGameMap().addContinent(7, 5);
+		gStarter.getGameMap().addCountry(1, 1);
+		gStarter.getGameMap().addCountry(2, 1);
+		gStarter.getGameMap().addCountry(3, 1);
+		gStarter.getGameMap().addCountry(4, 1);
+		gStarter.getGameMap().addCountry(5, 2);
+		gStarter.getGameMap().addCountry(6, 2);
+		gStarter.getGameMap().addCountry(7, 2);
+		gStarter.getGameMap().addCountry(8, 2);
+		gStarter.getGameMap().addCountry(9, 2);
+		
+//		System.out.println(gStarter.getGameMap().getContinents().get(1).getId() +", "+ gStarter.getGameMap().getContinents().get(1).getControlValue());
+		
+		
+		gStarter.d_players.get("Shubham").addCountry(gStarter.getGameMap().getCountries().get(1));
+		gStarter.d_players.get("Shubham").addCountry(gStarter.getGameMap().getCountries().get(2));
+		gStarter.d_players.get("Shubham").addCountry(gStarter.getGameMap().getCountries().get(3));
+		gStarter.d_players.get("Shubham").addCountry(gStarter.getGameMap().getCountries().get(4));
+		gStarter.d_players.get("Shubham").addCountry(gStarter.getGameMap().getCountries().get(9));
+//		gStarter.d_players.get("Shubham").addContinent(gStarter.getGameMap().getContinents().get(1));
+		gStarter.d_players.get("Shubham").addContinent(gStarter.getGameMap().getContinents().get(7));
+		
+		gStarter.d_players.get("Patel").addCountry(gStarter.getGameMap().getCountries().get(5));
+		gStarter.d_players.get("Patel").addCountry(gStarter.getGameMap().getCountries().get(6));
+		gStarter.d_players.get("Patel").addCountry(gStarter.getGameMap().getCountries().get(7));
+		gStarter.d_players.get("Patel").addCountry(gStarter.getGameMap().getCountries().get(8));
+		
+		System.out.println(gStarter.d_players.get("Shubham").getCountries().keySet());
+		System.out.println(gStarter.d_players.get("Shubham").getContinents().keySet());
+		gStarter.d_players.get("Shubham").setNumberOfArmies();
+//		gStarter.d_players.get("Patel").setNumberOfArmies();
+		
+		System.out.println(gStarter.d_players.get("Shubham").getNumberOfArmies());
+//		System.out.println(gStarter.d_players.get("Patel").getNumberOfArmies());
+//		gStarter.deployPhase();
+		
 	}
 }

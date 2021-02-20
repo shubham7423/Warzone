@@ -13,6 +13,7 @@ import entities.mapops.WriteMap;
 public class GameMap {
 	private HashMap<Integer, Continent> d_continents;
 	private HashMap<Integer, Country> d_countries;
+	private HashMap<String, Player> d_players;
 	
 	/**
 	 * Constructor for GameMap
@@ -20,6 +21,7 @@ public class GameMap {
 	public GameMap() {
 		d_continents = new HashMap<>();
 		d_countries = new HashMap<>();
+		d_players = new HashMap<>();
 	}
 	
 	/**
@@ -100,6 +102,9 @@ public class GameMap {
 		}
 		Country l_country1 = d_countries.get(p_sourceCountryId);
 		Country l_country2 = d_countries.get(p_destCountryId);	
+		if(l_country1 == null || l_country2 == null) {
+			return String.format("Country not present");
+		}
 		if(l_country1.getNeighbourCountries().contains(l_country2)) {
 			return String.format("Country \"%d\" already a neighbour of \"%d\"", p_destCountryId, p_sourceCountryId);
 		}
@@ -165,4 +170,8 @@ public class GameMap {
 	public HashMap<Integer, Country> getCountries() {
 		return d_countries;
 	}
+	
+	
+	
+	
 }
