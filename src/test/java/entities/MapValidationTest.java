@@ -2,7 +2,6 @@ package entities;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
-import entities.mapops.ReadMap;
 
 import java.util.*;
 
@@ -31,20 +30,11 @@ public class MapValidationTest {
 		assertTrue(l_testVar);
 		assertEquals(true, l_testVar);
 
-
 		d_gameMap1.loadMap("WorldMap.txt");
 		l_mapValidation1 = new MapValidation(d_gameMap1);
 		l_testVar1 = l_mapValidation1.isMapConnected(d_gameMap1.getCountries().values().iterator().next() , d_gameMap1.getCountries().keySet());
 		assertFalse(l_testVar1);
 		assertEquals(false, l_testVar1);
-		
-//		assertFalse(l_testVar);
-//		assertEquals(false, l_testVar);
-		
-//		d_gameMap.loadMap("risk.map");
-//		l_mapValidation = new MapValidation(d_gameMap);
-//		l_testVar = l_mapValidation.isMapConnected(d_gameMap.getCountries().values().iterator().next() , d_gameMap.getCountries().keySet());
-		
 	}
 	
 	/**
