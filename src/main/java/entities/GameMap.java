@@ -3,6 +3,7 @@ package entities;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.Map;
+import java.util.HashSet;
 import java.util.stream.Collectors;
 
 import dnl.utils.text.table.TextTable;
@@ -200,14 +201,13 @@ public class GameMap {
 	public String[] fillCountryData(Country p_country)
 	{
 		Set<String> l_result = new HashSet<String>();
-		Set<String> l_neighborsAsCsv = new HashSet<String>();
 
 		int l_id;
 
-        l_neighborsAsCsv = p_country.getNeighbourCountries()
+        String l_neighborsAsCsv = String.join(",", p_country.getNeighbourCountries()
         	.stream()
         	.map(Country::getId)
-        	.collect(Collectors.toList());
+        	.collect(Collectors.toSet()));
 
         l_id = p_country.getId();
         l_result.add(l_id.toString());

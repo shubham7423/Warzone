@@ -55,7 +55,7 @@ public class Country {
 	 * @return set of neighbouring countries 
 	 */
 	public Set<Country> getNeighbourCountries() {
-		return d_neighbourCountries;
+		return d_adjacentCountries.entrySet().stream().map(entry -> entry.getControlValue()).collect(Collectors.toSet());
 	}
 
 
