@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.net.URL;
+import java.nio.file.Paths;
 
 import entities.GameMap;
 
@@ -15,7 +15,7 @@ import entities.GameMap;
  */
 public class ReadMap {
 	GameMap d_gameMap;
-	HashMap<Integer, String> d_continentsMap;
+	HashMap<String, Integer> d_continentsMap;
 	HashMap<Integer, String> d_countriesMap;
 	Scanner d_reader;
 	
@@ -32,15 +32,10 @@ public class ReadMap {
 	/**
 	 * Read file and feed data to GameMap object
 	 * @param p_filePath path to .map file
+	 * @return true if map loaded successfully else false
 	 */
 	public boolean readFullMap(String p_filePath) {
-//		File l_mapFile = new File(p_filePath);
-		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-		URL l_fileUrl = classLoader.getResource(p_filePath);
-		if(l_fileUrl == null) {
-			return false;
-		}
-		File l_mapFile = new File(l_fileUrl.getFile());
+		File l_mapFile = new File(Paths.get(Paths.get("").toAbsolutePath().toString() + "/maps/" + p_filePath).toString());
 		String l_line, l_dataString;
 		int l_countryCtn = 0, l_continentCtn = 0;
 		
@@ -57,8 +52,8 @@ public class ReadMap {
 						if(l_line.length() > 0) {
 							String[] l_continents = l_line.split(" ");
 							++l_continentCtn;
-							d_continentsMap.put(l_continentCtn, l_continents[0]);
-							d_gameMap.addContinent(l_continents[0], Integer.parseInt(l_continents[1]));
+							d_continentsMap.put(l_continents[0], l_continentCtn);
+							d_gameMap.addContinent(l_continentCtn, Integer.parseInt(l_continents[1]));
 						}
 						else {
 							break;
@@ -74,7 +69,7 @@ public class ReadMap {
 							String[] l_countries = l_line.split(" ");
 							++l_countryCtn;
 							d_countriesMap.put(l_countryCtn, l_countries[1]);
-							d_gameMap.addCountry(l_countries[1], d_continentsMap.get(Integer.parseInt(l_countries[2])));
+							d_gameMap.addCountry(Integer.parseInt(l_countries[0]), Integer.parseInt(l_countries[2]));
 						}
 						else {
 							break;
@@ -89,11 +84,11 @@ public class ReadMap {
 						l_line = d_reader.nextLine();
 						if(l_line.length() > 0) {
 							String[] l_borders = l_line.split(" ");
-							String l_countryName = d_countriesMap.get(Integer.parseInt(l_borders[0]));
-							String l_neighbourName;
+							int l_countryId = Integer.parseInt(l_borders[0]);
+							int l_neighbourId;
 							for(int i=1; i<l_borders.length; i++) {
-								l_neighbourName = d_countriesMap.get(Integer.parseInt(l_borders[i]));
-								d_gameMap.addNeighbour(l_countryName, l_neighbourName);
+								l_neighbourId = Integer.parseInt(l_borders[i]);
+								d_gameMap.addNeighbour(l_countryId, l_neighbourId);
 							}
 						}
 						else {
@@ -106,25 +101,24 @@ public class ReadMap {
 			d_reader.close();
 			return true;
 		} catch (FileNotFoundException e) {
-			d_reader.close();
 			return false;
 		}
 	
 	}
 	
 	/**
-	 * Get continent names
-	 * @return Set of continent names read
+	 * Get continent ids
+	 * @return Set of continent ids read
 	 */
-	public Set<String> getContinentNames() {
+	public Set<Integer> getContinentIds() {
 		return d_gameMap.getContinents().keySet();
 	}
 	
 	/**
 	 * Get countries name
-	 * @return Set of countries names read
+	 * @return Set of countries id read
 	 */
-	public Set<String> getCountriesNames() {
+	public Set<Integer> getCountriesIds() {
 		return d_gameMap.getCountries().keySet();
 	}
 }

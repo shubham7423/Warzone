@@ -4,14 +4,16 @@ import java.util.HashMap;
 import java.util.Set;
 
 import entities.mapops.ReadMap;
+import entities.mapops.WriteMap;
 
 /**
  * GameMap Class
  *
  */
 public class GameMap {
-	private HashMap<String, Continent> d_continents;
-	private HashMap<String, Country> d_countries;
+	private HashMap<Integer, Continent> d_continents;
+	private HashMap<Integer, Country> d_countries;
+	private HashMap<String, Player> d_players;
 	
 	/**
 	 * Constructor for GameMap
@@ -19,107 +21,111 @@ public class GameMap {
 	public GameMap() {
 		d_continents = new HashMap<>();
 		d_countries = new HashMap<>();
+		d_players = new HashMap<>();
 	}
 	
 	/**
 	 * Add continent to the map
-	 * @param p_continentName Name of continent
+	 * @param p_continentId Id of continent
 	 * @param p_controlValue Control value of continent
 	 * @return Positive response if continent added
 	 */
-	public String addContinent(String p_continentName, int p_controlValue) {
-		if(d_continents.containsKey(p_continentName)) {
-			return String.format("Continent \"%s\" already present in map", p_continentName);
+	public String addContinent(int p_continentId, int p_controlValue) {
+		if(d_continents.containsKey(p_continentId)) {
+			return String.format("Continent \"%d\" already present in map", p_continentId);
 		}
-		d_continents.put(p_continentName, new Continent(p_continentName, p_controlValue));
-		return String.format("Continent \"%s\" added to map", p_continentName);
+		d_continents.put(p_continentId, new Continent(p_continentId, p_controlValue));
+		return String.format("Continent \"%d\" added to map", p_continentId);
 	}
 	
 	/**
 	 * Remove continent from map
-	 * @param p_continentName Continent name to be removed
+	 * @param p_continentId Continent id to be removed
 	 * @return Positive response if continent removed
 	 */
-	public String removeContinent(String p_continentName) {
-		if(!d_continents.containsKey(p_continentName)) {
-			return String.format("Continent \"%s\" not present in map", p_continentName);
+	public String removeContinent(int p_continentId) {
+		if(!d_continents.containsKey(p_continentId)) {
+			return String.format("Continent \"%d\" not present in map", p_continentId);
 		}
-		if(d_continents.get(p_continentName).getCountriesSet().size() > 0) {
-			for(Country l_country: d_continents.get(p_continentName).getCountriesSet()) {
-				removeCountry(l_country.getName());
+		if(d_continents.get(p_continentId).getCountriesSet().size() > 0) {
+			for(Country l_country: d_continents.get(p_continentId).getCountriesSet()) {
+				removeCountry(l_country.getId());
 			}
 		}
-		d_continents.remove(p_continentName);
-		return String.format("Continent \"%s\" successfully removed from map", p_continentName);
+		d_continents.remove(p_continentId);
+		return String.format("Continent \"%s\" successfully removed from map", p_continentId);
 	}
 	
 	/**
 	 * Add country to the map
-	 * @param p_countryName Name of country
-	 * @param p_continentName Name of continent where country present
+	 * @param p_countryId Id of country
+	 * @param p_continentId Id of continent where country present
 	 * @return Positive response if country added
 	 */
-	public String addCountry(String p_countryName, String p_continentName) {
-		if(d_countries.containsKey(p_continentName)) {
-			return String.format("Country \"%s\" already present in map", p_countryName);
+	public String addCountry(int p_countryId, int p_continentId) {
+		if(d_countries.containsKey(p_countryId)) {
+			return String.format("Country \"%d\" already present in map", p_countryId);
 		}
-		Country l_newCountry = new Country(p_countryName, d_continents.get(p_continentName));
-		d_countries.put(p_countryName, l_newCountry);
-		d_continents.get(p_continentName).addCountry(l_newCountry);
-		return String.format("Country \"%s\" successfully removed to map", p_countryName);
+		Country l_newCountry = new Country(p_countryId, d_continents.get(p_continentId));
+		d_countries.put(p_countryId, l_newCountry);
+		d_continents.get(p_continentId).addCountry(l_newCountry);
+		return String.format("Country \"%d\" successfully added to map", p_countryId);
 	}
 	
 	/**
 	 * Remove country from map
-	 * @param p_countryName Name of country
+	 * @param p_countryId id of country
 	 * @return Positive response if country removed
 	 */
-	public String removeCountry(String p_countryName) {
-		if(!d_countries.containsKey(p_countryName)) {
-			return String.format("Country \"%s\" not present in map", p_countryName);
+	public String removeCountry(int p_countryId) {
+		if(!d_countries.containsKey(p_countryId)) {
+			return String.format("Country \"%d\" not present in map", p_countryId);
 		}
 		for(Country l_country: d_countries.values()) {
-			if(l_country.getNeighbourNames().contains(p_countryName)) {
-				removeNeighbour(l_country.getName(), p_countryName);
+			if(l_country.getNeighbourIds().contains(p_countryId)) {
+				removeNeighbour(l_country.getId(), p_countryId);
 			}
 		}
-		d_countries.remove(p_countryName);
-		return String.format("Country \"%s\" successfully removed from map", p_countryName);
+		d_countries.remove(p_countryId);
+		return String.format("Country \"%d\" successfully removed from map", p_countryId);
 	}
 	
 	/**
 	 * Add neighbour to country
-	 * @param p_sourceCountryName Country name
-	 * @param p_destCountryName Neighbour country name
+	 * @param p_sourceCountryId Country id
+	 * @param p_destCountryId Neighbour country id
 	 * @return Positive response if neighbour added
 	 */
-	public String addNeighbour(String p_sourceCountryName, String p_destCountryName) {
-		if(!d_countries.containsKey(p_sourceCountryName) && !d_countries.containsKey(p_destCountryName)) {
+	public String addNeighbour(int p_sourceCountryId, int p_destCountryId) {
+		if(!d_countries.containsKey(p_sourceCountryId) && !d_countries.containsKey(p_destCountryId)) {
 			return String.format("Ensure that both countries are present in map");
 		}
-		Country l_country1 = d_countries.get(p_sourceCountryName);
-		Country l_country2 = d_countries.get(p_destCountryName);	
+		Country l_country1 = d_countries.get(p_sourceCountryId);
+		Country l_country2 = d_countries.get(p_destCountryId);	
+		if(l_country1 == null || l_country2 == null) {
+			return String.format("Country not present");
+		}
 		if(l_country1.getNeighbourCountries().contains(l_country2)) {
-			return String.format("Country \"%s\" already a neighbour of \"%s\"", p_destCountryName, p_sourceCountryName);
+			return String.format("Country \"%d\" already a neighbour of \"%d\"", p_destCountryId, p_sourceCountryId);
 		}
 		l_country1.addNeighbour(l_country2);
-		return String.format("Country \"%s\" is now a neighbour of country \"%s\"", p_destCountryName, p_sourceCountryName);
+		return String.format("Country \"%d\" is now a neighbour of country \"%d\"", p_destCountryId, p_sourceCountryId);
 	}
 	
 	/**
 	 * Remove a neighbour
-	 * @param p_countryName Country name
-	 * @param p_neighbourName Neighbour country name
+	 * @param p_countryId Country id
+	 * @param p_neighbourId Neighbour country id
 	 * @return Positive response if neighbour removed
 	 */
-	public String removeNeighbour(String p_countryName, String p_neighbourName) {
-		Country l_country = d_countries.get(p_countryName);
-		Country l_neighbour = d_countries.get(p_neighbourName);	
+	public String removeNeighbour(int p_countryId, int p_neighbourId) {
+		Country l_country = d_countries.get(p_countryId);
+		Country l_neighbour = d_countries.get(p_neighbourId);	
 		if(!l_country.getNeighbourCountries().contains(l_neighbour)) {
-			return String.format("Country \"%s\" is not a neighbour of \"%s\"", p_neighbourName, p_countryName);
+			return String.format("Country \"%d\" is not a neighbour of \"%d\"", p_neighbourId, p_countryId);
 		}	
 		l_country.removeNeighbour(l_neighbour);
-		return String.format("Country \"%s\" removed from neighbours of \"%s\"", p_neighbourName, p_countryName);
+		return String.format("Country \"%d\" removed from neighbours of \"%d\"", p_neighbourId, p_countryId);
 	}
 	
 	/**
@@ -204,10 +210,23 @@ public class GameMap {
 	}
 	
 	/**
+	 * Write map to file
+	 * @param p_fileNam File name
+	 * @return Positive response if map written to file successfully
+	 */
+	public String saveMap(String p_fileNam) {
+		WriteMap l_writeMap = new WriteMap(this);
+		if(!l_writeMap.writeFullMap(p_fileNam)) {
+			return String.format("Map file \"%s\" cannot be saved", p_fileNam);
+		}
+		return String.format("Map file \"%s\" saved successfully", p_fileNam);
+	}
+	
+	/**
 	 * Return all continents
 	 * @return Set of continents
 	 */
-	public HashMap<String, Continent> getContinents() {
+	public HashMap<Integer, Continent> getContinents() {
 		return d_continents;
 	}
 	
@@ -215,7 +234,11 @@ public class GameMap {
 	 * Return all countries
 	 * @return Set of countries
 	 */
-	public HashMap<String, Country> getCountries() {
+	public HashMap<Integer, Country> getCountries() {
 		return d_countries;
 	}
+	
+	
+	
+	
 }
