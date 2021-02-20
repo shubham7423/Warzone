@@ -6,9 +6,11 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.*;
+
+
+import org.apache.commons.digester.SetNestedPropertiesRule;
+
 
 import entities.Continent;
 import entities.Country;
@@ -27,7 +29,6 @@ public class GameStarter {
 	private HashMap<String, Player> d_players = new HashMap<>();
 	private ArrayList<String> d_playerName =  new ArrayList<>(); 
 	int d_currentPlayer = 0; 
-	
 	
 	/**
 	 * method to edit map, it creates new file when specified file name does not exists else loads existing map file.
@@ -278,13 +279,50 @@ public class GameStarter {
 		return d_players;
 	}
 	
+	/**
+	 * method to assign the countries to the players at the start of the game
+	 * @return returns the message to the caller
+	 */
+	public String assignCountries() {
+		HashMap<Integer, Country> l_countries = d_gameMap.getCountries();
+		List<Country> l_countryObjects = new ArrayList<Country>();
+		l_countryObjects.addAll(l_countries.values());
+		System.out.println(l_countries.keySet());
+		Random l_random = new Random();
+		while (true) {
+			for (Player p_player : d_players.values()) {
+				if(l_countryObjects.size() == 0) {
+					break;
+				}
+				int l_idOfCountry = l_random.nextInt(l_countryObjects.size());
+				p_player.addCountry(l_countryObjects.get(l_idOfCountry));
+				l_countryObjects.remove(l_countryObjects.get(l_idOfCountry));
+			}
+			if(l_countryObjects.size() == 0) {
+				break;
+			}
+		}
+		for (Player p_player: d_players.values()) {
+			p_player.setNumberOfArmies();
+			System.out.println("Size" + p_player.getCountries().size() + " no of armies " + p_player.getNumberOfArmies());
+			System.out.println(p_player.getName() + " : " + p_player.getCountries().keySet());
+			
+		}
+		return "Country assigned";
+	}
+	
 	public static void main(String[] args) {
 		GameStarter gStarter = new GameStarter();
-		gStarter.loadMap("uk.map");
+		gStarter.loadMap("risk.map");
 		gStarter.addPlayer("Shubham");
 		gStarter.addPlayer("Patel");
+		gStarter.addPlayer("Virag");
+		gStarter.addPlayer("Vandit");
 		
-		gStarter.getGameMap().addContinent(1, 6);
+		String result = gStarter.assignCountries();
+		System.out.println(result);
+		
+		/**gStarter.getGameMap().addContinent(1, 6);
 		gStarter.getGameMap().addContinent(7, 5);
 		gStarter.getGameMap().addCountry(1, 1);
 		gStarter.getGameMap().addCountry(2, 1);
@@ -310,7 +348,7 @@ public class GameStarter {
 		gStarter.d_players.get("Patel").addCountry(gStarter.getGameMap().getCountries().get(5));
 		gStarter.d_players.get("Patel").addCountry(gStarter.getGameMap().getCountries().get(6));
 		gStarter.d_players.get("Patel").addCountry(gStarter.getGameMap().getCountries().get(7));
-		gStarter.d_players.get("Patel").addCountry(gStarter.getGameMap().getCountries().get(8));
+		gStarter.d_players.get("Patel").addCountry(gStarter.getGameMap().getCountries().get(8)); 
 		
 		System.out.println(gStarter.d_players.get("Shubham").getCountries().keySet());
 		System.out.println(gStarter.d_players.get("Shubham").getContinents().keySet());
@@ -318,7 +356,7 @@ public class GameStarter {
 //		gStarter.d_players.get("Patel").setNumberOfArmies();
 		
 		System.out.println(gStarter.d_players.get("Shubham").getNumberOfArmies());
-//		System.out.println(gStarter.d_players.get("Patel").getNumberOfArmies());
+//		System.out.println(gStarter.d_players.get("Patel").getNumberOfArmies());*/
 //		gStarter.deployPhase();
 		
 	}
