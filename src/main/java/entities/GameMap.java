@@ -144,7 +144,7 @@ public class GameMap {
 
 	/**
 	 * Show Map from Map file in specific representation
-	 * @return l_final_data String of Countries, Continent, Corresponding Neighbors
+	 * @return String of Countries, Continent, Corresponding Neighbors
 	 */
 	
 	public void showMap()
@@ -191,7 +191,7 @@ public class GameMap {
 	{
 		ArrayList<String> l_result = new List<>();
 
-        String l_neighborsAsCsv = String.join(",", p_country.getAdjacentCountries().stream().map(Country::getId).collect(Collectors.toList()));
+        String l_neighborsAsCsv = String.join(",", p_country.getAdjacentCountries().stream().map(Country::getId()).collect(Collectors.toList()));
 
         l_result.add(p_country.getID().toString());
        /* if (p_type == FormatType.DETAIL) {
