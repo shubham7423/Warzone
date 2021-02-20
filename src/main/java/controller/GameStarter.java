@@ -289,8 +289,10 @@ public class GameStarter {
 			}
 		}
 		for (Player p_player: d_players.values()) {
-			System.out.println(p_player.getCountries().size());
+			p_player.setNumberOfArmies();
+			System.out.println("Size" + p_player.getCountries().size() + " no of armies " + p_player.getNumberOfArmies());
 			System.out.println(p_player.getName() + " : " + p_player.getCountries().keySet());
+			
 		}
 		return "Country assigned";
 	}
