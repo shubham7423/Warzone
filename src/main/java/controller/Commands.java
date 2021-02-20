@@ -297,6 +297,7 @@ public class Commands {
 	
 	/**
 	 * command to validate the map
+	 * @param p_splittedCommand command for map validation
 	 * @return result of validating a map
 	 */
 	public String validateMap(String[] p_splittedCommand) {

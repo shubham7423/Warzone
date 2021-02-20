@@ -213,7 +213,6 @@ public class GameStarter {
 	
 	/**
 	 * method to validate a map
-	 * @param p_commandSplitted
 	 * @return result of map validation
 	 */
 	public String validateMap() {
