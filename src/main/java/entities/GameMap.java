@@ -2,6 +2,16 @@ package entities;
 
 import java.util.HashMap;
 import java.util.Set;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+import dnl.utils.text.table.TextTable;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
+
 
 import entities.mapops.ReadMap;
 import entities.mapops.WriteMap;
@@ -193,7 +203,7 @@ public class GameMap {
 
         String l_neighborsAsCsv = String.join(",", p_country.getAdjacentCountries()
         	.stream()
-        	.map(Country::getId())
+        	.map(Country::getId)
         	.collect(Collectors.toList()));
 
         l_result.add(p_country.getID().toString());
