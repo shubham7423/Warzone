@@ -17,10 +17,10 @@ public class MapValidationTest {
 	GameMap d_gameMap1 = new GameMap();
 	
 	/**
-	 * This will validate "isMapConnected" function with different maps provided in resource
+	 * This will validate "isConnected" function with different maps provided in resource
 	 */
 	@Test
-	public void testIsMapConnected() {
+	public void testisConnected() {
 		
 		MapValidation l_mapValidation;
 		MapValidation l_mapValidation1;
@@ -29,13 +29,13 @@ public class MapValidationTest {
 		
 		d_gameMap.loadMap("risk.map");
 		l_mapValidation = new MapValidation(d_gameMap);
-		l_testVar = l_mapValidation.isMapConnected(d_gameMap.getCountries().values().iterator().next() , d_gameMap.getCountries().keySet());
+		l_testVar = l_mapValidation.isConnected(d_gameMap.getCountries().values().iterator().next() , d_gameMap.getCountries().keySet());
 		assertTrue(l_testVar);
 		assertEquals(true, l_testVar);
 
 		d_gameMap1.loadMap("WorldMapFail.map");
 		l_mapValidation1 = new MapValidation(d_gameMap1);
-		l_testVar1 = l_mapValidation1.isMapConnected(d_gameMap1.getCountries().values().iterator().next() , d_gameMap1.getCountries().keySet());
+		l_testVar1 = l_mapValidation1.isConnected(d_gameMap1.getCountries().values().iterator().next() , d_gameMap1.getCountries().keySet());
 		assertFalse(l_testVar1);
 		assertEquals(false, l_testVar1);
 	}

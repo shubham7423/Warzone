@@ -36,7 +36,7 @@ public class MapValidation {
 	 */
 	public String validate() {
 		StringBuilder l_validationResult = new StringBuilder();
-		boolean l_result = checkAllMapValidationRules();
+		boolean l_result = checkAll();
 		if(l_result) {
 			l_validationResult.append("The graph is connected.\nCountries are traverseble.\nContinents are connected.");
 			
@@ -69,12 +69,12 @@ public class MapValidation {
 
 	/**
 	 * this function gathers information about all types of validation 
-	 * @return if all the validation of the Map are successful or not. If everything in map is correct,
+	 * @return false if all the validation of the Map are successful or not. If everything in map is correct,
 	 * then it will return true
 	 */
-	public boolean checkAllMapValidationRules() {
+	public boolean checkAll() {
 		Set<Integer> l_countryIds = d_gameMap.getCountries().keySet();
-		d_connectedGraph = isMapConnected(d_gameMap.getCountries().values().iterator().next(), l_countryIds);
+		d_connectedGraph = isConnected(d_gameMap.getCountries().values().iterator().next(), l_countryIds);
 
 		d_connectedSubGraph = true;
 		for (Continent l_continent : d_gameMap.getContinents().values()) {
@@ -83,7 +83,7 @@ public class MapValidation {
 				d_emptyContinent = true;
 				continue;	
 			}
-			d_connectedSubGraph &= isMapConnected(l_continent.getCountriesSet().iterator().next(), l_countryIds);
+			d_connectedSubGraph &= isConnected(l_continent.getCountriesSet().iterator().next(), l_countryIds);
 		}
 		return d_connectedGraph && d_connectedSubGraph;
 	}
@@ -95,7 +95,7 @@ public class MapValidation {
 	 * @param p_countryIds it compares with this parameter if all the countries are traversed
 	 * @return returns the status if map is connected or not. Returns true if connected.
 	 */
-	public boolean isMapConnected(Country p_firstCountry, Set<Integer> p_countryIds) {
+	public boolean isConnected(Country p_firstCountry, Set<Integer> p_countryIds) {
 		if(p_countryIds.size() == 0) {
 			d_emptyMap = true;
 		}

@@ -65,6 +65,7 @@ public class GameStarter {
 		String l_result;
 		if(!is_editMap) {
 			l_result = d_gameMap.loadMap(p_fileName);
+			validateMap();
 			is_loadedMap = true;
 		}
 		else {
@@ -216,9 +217,9 @@ public class GameStarter {
 	 * @param p_commandSplitted
 	 * @return result of map validation
 	 */
-	public String validateMap(String[] p_commandSplitted) {
+	public String validateMap() {
 		String l_result;
-		if(!is_editMap && !is_loadedMap) {
+		if(this.d_gameMap != null) {
 			l_result = d_gameMap.validateMap();
 		}
 		else {

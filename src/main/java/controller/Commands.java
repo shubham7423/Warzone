@@ -301,9 +301,9 @@ public class Commands {
 	 * @return result of validating a map
 	 */
 	public String validateMap(String[] p_splittedCommand) {
-		if(p_splittedCommand.length < 1) {
+		if(p_splittedCommand.length > 1) {
 			return "Please enter valid command";}
-		return d_gameStarter.validateMap(p_splittedCommand[0]);
+		return d_gameStarter.validateMap();
 	}
 	
 //	public String assignCountries(String[] p_splittedCommand) {
