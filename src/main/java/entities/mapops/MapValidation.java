@@ -22,7 +22,7 @@ public class MapValidation {
 
 	/**
 	 * Constructor of MapValidation
-	 * @param gameMap the map which you want to validate
+	 * @param p_gameMap the map which you want to validate
 	 */
 	public MapValidation(GameMap p_gameMap) {
 		this.d_gameMap = p_gameMap;
