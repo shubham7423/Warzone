@@ -5,6 +5,7 @@ import java.util.Set;
 
 import entities.mapops.ReadMap;
 import entities.mapops.WriteMap;
+import entities.mapops.MapValidation;
 
 /**
  * GameMap Class
@@ -155,6 +156,11 @@ public class GameMap {
 		return String.format("Map file \"%s\" saved successfully", p_fileNam);
 	}
 	
+	public String validateMap() {
+		MapValidation l_mapValidation = new MapValidation(this);
+		String l_valCheck = l_mapValidation.validate();
+		return String.format(l_valCheck);
+	}
 	/**
 	 * Return all continents
 	 * @return Set of continents

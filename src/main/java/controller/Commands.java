@@ -50,6 +50,10 @@ public class Commands {
 //				l_result = assignCountries(p_splittedCommand);
 //				break;
 				
+			case "validatemap":
+				l_result = validateMap(p_splittedCommand);
+				break;
+				
 			default:
 				l_result = "Command not found";		
 		}
@@ -289,6 +293,12 @@ public class Commands {
 			}
 		}
 		return l_result;
+	}
+	
+	public String validateMap(String[] p_splittedCommand) {
+		if(p_splittedCommand.length < 1) {
+			return "Please enter valid command";}
+		return d_gameStarter.validateMap(p_splittedCommand[0]);
 	}
 	
 //	public String assignCountries(String[] p_splittedCommand) {

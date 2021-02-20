@@ -211,6 +211,16 @@ public class GameStarter {
 		return d_gameMap;
 	}
 	
+	public String validateMap(String[] p_commandSplitted) {
+		String l_result;
+		if(!is_editMap && !is_loadedMap) {
+			l_result = d_gameMap.validateMap();
+		}
+		else {
+			l_result = String.format("Cannot validate map");
+		}
+		return l_result;
+	}
 //	public String assign() {
 //		for(String playerName:d_playerName) {
 //			if(playerName.equals("Shubham")) {
