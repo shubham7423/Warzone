@@ -46,7 +46,6 @@ public class MapValidation {
 	 * This is the prime function to validate whole graph
 	 * it will show the status of validation of map
 	 * @return return the validation result to print based on all the validation criteria like connected countries, connected continent, empty continents.
-	 * @throws Exception error is thrown
 	 */
 	public String validate() {
 		d_flag = true;
