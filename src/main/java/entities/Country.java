@@ -53,7 +53,7 @@ public class Country {
 
 
 	/**
-	 * Get neighbouring country
+	 * Get neighbouring country in form of set
 	 * @return set of neighbouring countries 
 	 */
 	public Set<Country> getNeighbourCountries() {
