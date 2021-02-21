@@ -1,4 +1,4 @@
-package entities;
+package entities.orders;
 
 import controller.GameStarter;
 

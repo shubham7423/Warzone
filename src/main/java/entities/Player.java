@@ -8,6 +8,9 @@ import java.util.Queue;
 import java.util.Scanner;
 
 import controller.UserCommand;
+import entities.orders.Deploy;
+import entities.orders.Orders;
+import entities.orders.ShowMap;
 
 /**
  * Player in a game

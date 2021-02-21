@@ -15,9 +15,9 @@ import org.apache.commons.digester.SetNestedPropertiesRule;
 import entities.Continent;
 import entities.Country;
 import entities.GameMap;
-import entities.Orders;
 import entities.Player;
-import entities.ShowMap;
+import entities.orders.Orders;
+import entities.orders.ShowMap;
 
 /**
  * 
