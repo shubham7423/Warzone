@@ -155,7 +155,7 @@ public class GameMap {
 
 	/**
 	 * Show Map from Map file in specific representation
-	 * @return String of Countries, Continent, Corresponding Neighbors
+	 * print String of Countries, Continent, Corresponding Neighbors
 	 */
 	
 	public void showMap()
