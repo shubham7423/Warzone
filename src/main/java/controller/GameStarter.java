@@ -15,7 +15,9 @@ import org.apache.commons.digester.SetNestedPropertiesRule;
 import entities.Continent;
 import entities.Country;
 import entities.GameMap;
+import entities.Orders;
 import entities.Player;
+import entities.ShowMap;
 
 /**
  * 
@@ -25,7 +27,7 @@ import entities.Player;
 public class GameStarter {
 	
 	GameMap d_gameMap = new GameMap();
-	boolean is_loadedMap = false, is_editMap = false;
+	boolean is_loadedMap = false, is_editMap = false, d_isGamePhase = false;
 	private HashMap<String, Player> d_players = new HashMap<>();
 	private ArrayList<String> d_playerName =  new ArrayList<>(); 
 	int d_currentPlayer = 0; 
@@ -252,6 +254,7 @@ public class GameStarter {
 	 */
 	public void deployPhase() {
 		int l_currentPlayer = 0;
+		Orders l_playerOrders = null;
 		HashSet<String> l_playersCompleted = new HashSet<>();
 		System.out.println("\nDeploy phase entered");
 		System.out.println(org.apache.commons.lang3.StringUtils.repeat("-", 20));
@@ -260,12 +263,16 @@ public class GameStarter {
 				System.out.println("Player " +d_playerName.get(l_currentPlayer)+ "'s turn");
 				System.out.println("Number of armies left: " + d_players.get(d_playerName.get(l_currentPlayer)).getNumberOfArmies());
 				d_players.get(d_playerName.get(l_currentPlayer)).issueOrder();
-				System.out.println(d_players.get(d_playerName.get(l_currentPlayer)).nextOrder().executeOrder(this));
+				l_playerOrders = d_players.get(d_playerName.get(l_currentPlayer)).nextOrder();
+				System.out.println(l_playerOrders.executeOrder(this));
 			}
 			else {
 				l_playersCompleted.add(d_playerName.get(l_currentPlayer));
 			}
-			++l_currentPlayer;
+			
+			if(!(l_playerOrders instanceof ShowMap)) {
+				++l_currentPlayer;
+			}
 			if(l_currentPlayer == d_playerName.size()) {
 				l_currentPlayer = 0;
 			}
@@ -311,6 +318,7 @@ public class GameStarter {
 		System.out.print("Countries Assigned");
 		checkContinentOwnership();
 		assignArmies();
+		d_isGamePhase = true;
 		deployPhase();
 		return "Deployment done";
 	}
@@ -341,8 +349,12 @@ public class GameStarter {
 		}
 	}
 	
-	public String showmap(boolean p_isEdit) {
-		if(p_isEdit) {
+	/**
+	 * Show map to player, map can be shown in edit phase and game phase
+	 * @return map in string format
+	 */
+	public String showmap() {
+		if(!d_isGamePhase) {
 			return d_gameMap.showMapEdit();
 		}
 		return d_gameMap.showMapPlay();

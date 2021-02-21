@@ -127,15 +127,23 @@ public class Player {
 		boolean isCorrect = false;
 		while(!isCorrect) {
 			l_splittedOrder = l_userCommand.getCommand();
-			if(l_splittedOrder.length < 3) {
+			if(l_splittedOrder[0].equals("deploy") && l_splittedOrder.length < 3) {
+				System.out.println("Invalid command");
+				continue;
+			}
+			else if(l_splittedOrder[0].equals("showmap") && l_splittedOrder.length > 1) {
 				System.out.println("Invalid command");
 				continue;
 			}
 			isCorrect = true;
 		}
 		if(l_splittedOrder[0].equals("deploy")) {
-			Deploy d_deploy = new Deploy(this, Integer.parseInt(l_splittedOrder[1]),Integer.parseInt(l_splittedOrder[2]));
-			d_orders.add(d_deploy);
+			Deploy l_deploy = new Deploy(this, Integer.parseInt(l_splittedOrder[1]),Integer.parseInt(l_splittedOrder[2]));
+			d_orders.add(l_deploy);
+		}
+		else if (l_splittedOrder[0].equals("showmap")) {
+			ShowMap l_ShowMap = new ShowMap();
+			d_orders.add(l_ShowMap);
 		}
 	}
 	
