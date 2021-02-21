@@ -156,7 +156,7 @@ public class GameMap {
 	}
 
 	/**
-	 * Show Map from Map file in specific representation
+	 * Show Map from Map file in specific representation in edit map phase
 	 * print String of Countries, Continent, Corresponding Neighbors
 	 */
 	public void showMapEdit()
@@ -195,8 +195,8 @@ public class GameMap {
 	}
 	
 	/**
-	 * Show Map from Map file in specific representation
-	 * print String of Countries, Continent, Corresponding Neighbors
+	 * Show Map from Map file in specific representation in Game play phase
+	 * print String of Countries, Continent, Owner, Armies present, Corresponding Neighbors
 	 */
 	public void showMapPlay()
 	{
