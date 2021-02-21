@@ -344,13 +344,14 @@ public class GameStarter {
 	public static void main(String[] args) {
 		GameStarter gStarter = new GameStarter();
 		gStarter.loadMap("uk.map");
-		gStarter.addPlayer("Shubham");
-		gStarter.addPlayer("Patel");
-		gStarter.addPlayer("Virag");
-		gStarter.addPlayer("Vandit");
-		
-		String result = gStarter.assignCountries();
-		System.out.println(result);
+		gStarter.getGameMap().showMapEdit();
+//		gStarter.addPlayer("Shubham");
+//		gStarter.addPlayer("Patel");
+//		gStarter.addPlayer("Virag");
+//		gStarter.addPlayer("Vandit");
+//		
+//		String result = gStarter.assignCountries();
+//		System.out.println(result);
 		
 		/**gStarter.getGameMap().addContinent(1, 6);
 		gStarter.getGameMap().addContinent(7, 5);
