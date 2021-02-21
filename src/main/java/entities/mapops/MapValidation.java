@@ -1,5 +1,5 @@
 package entities.mapops;
-import java.lang.*;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,28 +14,42 @@ import entities.GameMap;
  *
  */
 public class MapValidation {
-	private boolean d_connectedGraph = false; 
+	private boolean d_connectedGraph; 
 	private GameMap d_gameMap;
 	private boolean d_emptyMap = false;
 	private boolean d_emptyContinent = false;
-
+	public boolean d_flag = false;
 	/**
 	 * Constructor of MapValidation
 	 * @param p_gameMap the map which you want to validate
 	 */
 	public MapValidation(GameMap p_gameMap) {
 		this.d_gameMap = p_gameMap;
-		this.d_connectedGraph = false;
-		this.d_emptyContinent = false;
 	}
 
+	/**
+	 * This method is used to get the instant status of map validation 
+	 * in the form of boolean. True signifies that the map validation is successful 
+	 * and vice versa. (Do not call this method before calling the validate method)
+	 * @return instant status of the validated map in the form of boolean.
+	 */
+	public boolean getMapValidationStatus() {
+		if(d_flag) {			
+			return d_connectedGraph&&(!d_emptyContinent)&&(!d_emptyMap);
+		} else {
+			System.out.println("Please validate the map before getting the status of map.");
+			return false;
+		}
+	}
+	
 	/**
 	 * This is the prime function to validate whole graph
 	 * it will show the status of validation of map
 	 * @return return the validation result to print based on all the validation criteria like connected countries, connected continent, empty continents.
 	 * @throws Exception error is thrown
 	 */
-	public String validate() throws Exception{
+	public String validate() {
+		d_flag = true;
 		StringBuilder l_validationResult = new StringBuilder();
 		boolean l_result = checkAll();
 		
@@ -74,7 +88,7 @@ public class MapValidation {
 		}
 		
 		Set<Integer> l_countryIds = d_gameMap.getCountries().keySet();
-		d_connectedGraph = isConnected(d_gameMap.getCountries().values().iterator().next(), l_countryIds);
+		this.d_connectedGraph = isConnected(d_gameMap.getCountries().values().iterator().next(), l_countryIds);
 
 		for (Continent l_continent : d_gameMap.getContinents().values()) {
 			l_countryIds = l_continent.getCountriesIds();
