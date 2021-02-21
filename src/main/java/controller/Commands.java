@@ -54,6 +54,10 @@ public class Commands {
 				l_result = validateMap(p_splittedCommand);
 				break;
 				
+			case "showmap":
+				l_result = showmap();
+				break;
+				
 			default:
 				l_result = "Command not found";		
 		}
@@ -311,6 +315,10 @@ public class Commands {
 			return String.format("Invalid Command");
 		}
 		return d_gameStarter.assignCountries();
+	}
+	
+	public String showmap() {
+		return d_gameStarter.showmap(true);
 	}
 }
 

@@ -157,9 +157,10 @@ public class GameMap {
 
 	/**
 	 * Show Map from Map file in specific representation in edit map phase
-	 * print String of Countries, Continent, Corresponding Neighbors
+	 * print String of Countries, Continent, Corresponding neighbours
+	 * @return Table containing data in string format
 	 */
-	public void showMapEdit()
+	public String showMapEdit()
 	{
 		String[] l_column = {"Country","Continent; Control Value","Neighbors"};
 		Object[][] l_data = new Object[d_countries.size()][l_column.length];
@@ -190,15 +191,15 @@ public class GameMap {
         }
         
         l_final_data = new String(l_baos.toByteArray(), StandardCharsets.UTF_8);
-		
-		System.out.println(l_final_data);
+		return l_final_data;
 	}
 	
 	/**
 	 * Show Map from Map file in specific representation in Game play phase
 	 * print String of Countries, Continent, Owner, Armies present, Corresponding Neighbors
+	 * @return Table containing data in string format
 	 */
-	public void showMapPlay()
+	public String showMapPlay()
 	{
 		String[] l_column = {"Country", "Continent; Control Value", "Owner", "Armies","Neighbors"};
 		Object[][] l_data = new Object[d_countries.size()][l_column.length];
@@ -229,8 +230,7 @@ public class GameMap {
         }
         
         l_final_data = new String(l_baos.toByteArray(), StandardCharsets.UTF_8);
-		
-		System.out.println(l_final_data);
+        return l_final_data;
 	}
 	
 	/**

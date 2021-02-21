@@ -341,10 +341,17 @@ public class GameStarter {
 		}
 	}
 	
+	public String showmap(boolean p_isEdit) {
+		if(p_isEdit) {
+			return d_gameMap.showMapEdit();
+		}
+		return d_gameMap.showMapPlay();
+	}
+	
 	public static void main(String[] args) {
 		GameStarter gStarter = new GameStarter();
 		gStarter.loadMap("uk.map");
-		gStarter.getGameMap().showMapEdit();
+		System.out.println(gStarter.getGameMap().showMapEdit());
 //		gStarter.addPlayer("Shubham");
 //		gStarter.addPlayer("Patel");
 //		gStarter.addPlayer("Virag");
