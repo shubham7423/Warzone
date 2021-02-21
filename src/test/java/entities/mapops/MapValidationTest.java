@@ -37,7 +37,6 @@ public class MapValidationTest {
 	/**
 	 * This will validate "validate" function with different maps provided 
 	 * which outputs the string value based on multiple conditions of map being loaded.
-	 * @throws Exception
 	 */
 	@Test
 	public void  testValidate() {
