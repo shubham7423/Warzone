@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import controller.GameStarter;
+import entities.orders.Deploy;
 
 /**
  * Test to check that deploy command works perfectly
