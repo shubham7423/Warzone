@@ -2,6 +2,17 @@ package entities;
 
 import java.util.HashMap;
 import java.util.Set;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.stream.Collectors;
+
+import dnl.utils.text.table.TextTable;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
+
 
 import entities.mapops.ReadMap;
 import entities.mapops.WriteMap;
@@ -141,6 +152,76 @@ public class GameMap {
 			return String.format("Map \"%s\" cannot be loaded", p_fileName);
 		}
 		return String.format("Map \"%s\" loaded successfully", p_fileName);
+	}
+
+	/**
+	 * Show Map from Map file in specific representation
+	 * print String of Countries, Continent, Corresponding Neighbors
+	 */
+	
+	public void showMap()
+	{
+		String[] l_column = {"Country","Continent","Neighbors"};
+		Object[][] l_data = new Object[d_countries.size()][l_column.length];
+		Country l_country;
+		TextTable l_tt;
+		final ByteArrayOutputStream l_baos = new ByteArrayOutputStream();
+		String l_final_data;
+		
+		int l_count = 0;
+		
+		for (HashMap.Entry<Integer, Country> l_item : d_countries.entrySet()) {
+            l_country = l_item.getValue();
+            l_data[l_count] = fillCountryData(l_country);
+            l_count++;
+        }
+		
+		l_tt = new TextTable(l_column, l_data);
+        l_tt.setAddRowNumbering(false);
+        l_tt.setSort(0);
+        
+        
+        try (PrintStream l_ps = new PrintStream(l_baos, true, "UTF-8")) {
+            l_tt.printTable(l_ps, 0);
+            
+        } catch (UnsupportedEncodingException e) {
+        	
+            e.printStackTrace();
+        }
+        
+        l_final_data = new String(l_baos.toByteArray(), StandardCharsets.UTF_8);
+		
+		System.out.println(l_final_data);
+	}
+	
+	/**
+	 * Fill country data for each country
+	 * @param p_country country for which data is to be present
+	 * @return array of data of the specific country i.e. Country name, Continent Name and it's neighbors
+	 */
+	public String[] fillCountryData(Country p_country)
+	{
+		Set<String> l_result = new HashSet<String>();
+
+		Integer l_id;
+
+        String l_neighborsAsCsv = p_country.getNeighbourCountries()
+        	.stream()
+        	.map(Country::getId)
+        	.collect(Collectors.toSet())
+        	.toString();
+
+        l_id =  new Integer(p_country.getId());
+        l_result.add(l_id.toString());
+       /* if (p_type == FormatType.DETAIL) {
+            l_values.add(p_country.getNumberOfArmies() + "");
+            l_values.add(p_country.getOwner() != null ? p_country.getOwner().getName() : "");
+        }*/
+        l_result.add(p_country.getContinent().getId() + " (" + p_country.getContinent().getControlValue() + ")");
+        l_result.add(l_neighborsAsCsv);
+        
+        return l_result.toArray(new String[0]);
+				
 	}
 	
 	/**
