@@ -1,10 +1,12 @@
 package entities.mapops;
 
 import static org.junit.Assert.*;
+
+import org.junit.Ignore;
 import org.junit.Test;
 
 import entities.GameMap;
-import entities.mapops.MapValidation;
+//import entities.mapops.MapValidation;
 
 import java.util.*;
 
@@ -15,6 +17,24 @@ public class MapValidationTest {
 
 	GameMap d_gameMap = new GameMap();
 	GameMap d_gameMap1 = new GameMap();
+	
+	/**
+	 * This will validate "validate" function with different maps provided 
+	 * which outputs the string value based on multiple conditions of map being loaded.
+	 * @throws Exception
+	 */
+	@Test
+	public void  testValidate() throws Exception{
+		GameMap l_gameMap = new GameMap();
+		l_gameMap.loadMap("risk.map");
+		MapValidation l_mapValidation = new MapValidation(l_gameMap);
+		assertEquals(" The graph is connected. Countries are traverseble.", l_mapValidation.validate());
+		
+		GameMap l_gameMap1 = new GameMap();
+		l_gameMap1.loadMap("WorldMapFail.map");
+		MapValidation l_mapValidation1 = new MapValidation(l_gameMap1);
+		assertEquals(" The graph is not connected. Countries are not traverseble.", l_mapValidation1.validate());
+	}
 	
 	/**
 	 * This will validate "isConnected" function with different maps provided in resource
