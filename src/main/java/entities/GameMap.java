@@ -202,14 +202,15 @@ public class GameMap {
 	{
 		Set<String> l_result = new HashSet<String>();
 
-		int l_id;
+		Integer l_id;
 
-        String l_neighborsAsCsv = String.join(",", p_country.getNeighbourCountries()
+        String l_neighborsAsCsv = p_country.getNeighbourCountries()
         	.stream()
         	.map(Country::getId)
-        	.collect(Collectors.toSet()));
+        	.collect(Collectors.toSet())
+        	.toString();
 
-        l_id = p_country.getId();
+        l_id =  new Integer(p_country.getId());
         l_result.add(l_id.toString());
        /* if (p_type == FormatType.DETAIL) {
             l_values.add(p_country.getNumberOfArmies() + "");
