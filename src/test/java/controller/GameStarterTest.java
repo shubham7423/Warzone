@@ -16,6 +16,11 @@ public class GameStarterTest {
 		d_gameStarter = new GameStarter();		
 	}
 	
+	@After
+	public void tearDown() {
+		d_gameStarter = null;
+	}
+	
 	@Test
 	public void testLoadMap() {
 		String l_resultString;
