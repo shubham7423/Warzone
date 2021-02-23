@@ -8,6 +8,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import entities.GameMap;
 import entities.Player;
 
 public class GameStarterTest {
@@ -21,7 +22,7 @@ public class GameStarterTest {
 	 */
 	@Before
 	public void setUp() {
-		d_gameStarter = new GameStarter();		
+		d_gameStarter = new GameStarter();
 	}
 	
 	/**
@@ -92,5 +93,16 @@ public class GameStarterTest {
 		l_playerNameString = "Arnold";
 		String l_resultString4 = d_gameStarter.removePlayer(l_playerNameString);
 		assertEquals("Player \""+ l_playerNameString +"\" removed from map", l_resultString4);
+	}
+	
+	@Test
+	public void testGetGameMap() {
+
+		d_gameStarter.loadMap(d_mapName1);
+		GameMap l_resultGameMap =  d_gameStarter.getGameMap();
+		GameStarter l_resulGameStarter = d_gameStarter;
+		l_resulGameStarter.loadMap("risk.map");
+		
+		assertEquals(l_resultGameMap, l_resulGameStarter.getGameMap());
 	}
 }
