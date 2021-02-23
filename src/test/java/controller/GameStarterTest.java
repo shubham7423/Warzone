@@ -103,9 +103,15 @@ public class GameStarterTest {
 
 		d_gameStarter.loadMap(d_mapName1);
 		GameMap l_resultGameMap =  d_gameStarter.getGameMap();
-		GameStarter l_resulGameStarter = d_gameStarter;
-		l_resulGameStarter.loadMap("risk.map");
+		GameStarter l_resultGameStarter = d_gameStarter;
+		l_resultGameStarter.loadMap("risk.map");
 		
-		assertEquals(l_resultGameMap, l_resulGameStarter.getGameMap());
+		assertEquals(l_resultGameMap, l_resultGameStarter.getGameMap());
+		
+		GameStarter l_resultGameStarter1 = new GameStarter();
+		l_resultGameStarter1.loadMap("risk.map");
+		GameMap l_resultGameMap1 = l_resultGameStarter1.getGameMap();
+		assertNotEquals(l_resultGameMap1, l_resultGameStarter.getGameMap());
+		
 	}
 }
