@@ -115,6 +115,9 @@ public class GameStarterTest {
 		assertNotEquals(l_resultGameMap1, l_resultGameStarter.getGameMap());
 	}
 	
+	/**
+	 * This function tests the HashMap returned after adding the players in the Game.
+	 */
 	@Test
 	public void testGetPlayers() {
 		Boolean l_result;
