@@ -25,7 +25,7 @@ public class Continent {
 	}
 
 	/**
-	 * Add country to the continent
+	 * method to add country to the continent
 	 * @param p_country  country
 	 */
 	public void addCountry(Country p_country) {
@@ -33,7 +33,7 @@ public class Continent {
 	}
 	
 	/**
-	 * Remove country from continent
+	 * method to remove country from continent
 	 * @param p_country country
 	 */
 	public void removeCountry(Country p_country) {
@@ -42,31 +42,31 @@ public class Continent {
 	
 	/**
 	 * Get name of the continent
-	 * @return name of continent
+	 * @return d_id name of continent
 	 */
 	public int getId() {
 		return d_id;
 	}
 
 	/**
-	 * Get control value of the continent
-	 * @return control value of continent
+	 * method to get control value of the continent
+	 * @return d_controlValue control value of continent
 	 */
 	public int getControlValue() {
 		return d_controlValue;
 	}
 
 	/**
-	 * Get the set of countries in the continent
-	 * @return set of countries
+	 * method to get the set of countries in the continent
+	 * @return d_countrieSet set of countries
 	 */
 	public Set<Country> getCountriesSet() {
 		return d_countriesSet;
 	}
 	
 	/**
-	 * Get all countries ids present 
-	 * @return set of country ids
+	 * method to get all countries id present 
+	 * @return l_countryNameSet set of country id
 	 */
 	public Set<Integer> getCountriesIds() {
 		Set<Integer> l_countryNameSet = new HashSet<>();

@@ -3,13 +3,13 @@ package entities.orders;
 import controller.GameStarter;
 
 /**
- * Class implementing Orders and is used to show map in game phase
+ * Class for implementing Orders and is used to show map in game phase
  *
  */
 public class ShowMap implements Orders {
 
 	/**
-	 * Execute showmap order
+	 * method to execute showmap order
 	 * @param p_game object calling this function
 	 * @return map in string format
 	 */

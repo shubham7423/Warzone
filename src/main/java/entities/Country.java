@@ -29,7 +29,7 @@ public class Country {
 	}
 	
 	/**
-	 * Set owner of the country
+	 * method to set owner of the country
 	 * @param p_player player object
 	 */
 	public void setPlayer(Player p_player) {
@@ -37,15 +37,15 @@ public class Country {
 	}
 	
 	/**
-	 * Get the owner of country
-	 * @return owner player object
+	 * method to get the owner of country
+	 * @return d_owner owner player object
 	 */
 	public Player getPlayer() {
 		return d_owner;
 	}
 	
 	/**
-	 * Place number of armies
+	 * method to place number of armies
 	 * @param p_armiesNumber armies to be added
 	 */
 	public void placeArmies(int p_armiesNumber) {
@@ -53,7 +53,7 @@ public class Country {
 	}
 	
 	/**
-	 * Remove armies from country 
+	 * method to remove armies from country 
 	 * @param p_armiesNumber armies to be removed
 	 */
 	public void removeArmies(int p_armiesNumber) {
@@ -61,8 +61,8 @@ public class Country {
 	}
 
 	/**
-	 * Get id of country
-	 * @return country id
+	 * method to get id of country
+	 * @return d_id country id
 	 */
 	public int getId() {
 		return d_id;
@@ -70,8 +70,8 @@ public class Country {
 
 
 	/**
-	 * Get neighbouring country in form of set
-	 * @return set of neighbouring countries 
+	 * method to get neighbouring country in form of set
+	 * @return d_neighbourCountries set of neighbouring countries 
 	 */
 	public Set<Country> getNeighbourCountries() {
 		return d_neighbourCountries;
@@ -79,7 +79,7 @@ public class Country {
 
 
 	/**
-	 * Add neighbouring country
+	 * method to add neighboring country
 	 * @param p_country Country to be added
 	 */
 	public void addNeighbour(Country p_country) {
@@ -87,25 +87,25 @@ public class Country {
 	}
 	
 	/**
-	 * Get number of armies present
-	 * @return number of armies
+	 * method to get number of armies present
+	 * @return d_armiesPresent number of armies
 	 */
 	public int getNumberOfArmiesPresent() {
 		return d_armiesPresent;
 	}
 	
 	/**
-	 * Get continent to which country belongs
-	 * @return continent to which country belongs
+	 * method to get continent to which country belongs
+	 * @return d_continent continent to which country belongs
 	 */
 	public Continent getContinent() {
 		return d_continent;
 	}
 	
 	/**
-	 * Remove neighbour country
+	 * method to remove neighbor country
 	 * @param p_country country to be removed
-	 * @return true of neighbouring country present and deleted else false
+	 * @return true of neighboring country present and deleted else false
 	 */
 	public boolean removeNeighbour(Country p_country) {
 		if (!d_neighbourCountries.contains(p_country)) {
@@ -116,8 +116,8 @@ public class Country {
 	}
 	
 	/**
-	 * Get neighbours names
-	 * @return Set of neighbour names
+	 * method to get neighbors names
+	 * @return l_neighbourNameSet Set of neighbor names
 	 */
 	public Set<Integer> getNeighbourIds() {
 		Set<Integer> l_neighbourNameSet = new HashSet<>();
