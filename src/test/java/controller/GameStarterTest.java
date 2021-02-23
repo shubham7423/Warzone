@@ -9,6 +9,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import entities.Continent;
 import entities.GameMap;
 import entities.Player;
 
@@ -128,17 +129,38 @@ public class GameStarterTest {
 		HashMap<String, Player> l_resultPlayersExpected  = d_gameStarter.getPlayers();
 	 	Set<String> l_resultPlayersExpectedKeySet = l_resultPlayersExpected.keySet();
 		
-		GameStarter l_GameStarter = new GameStarter();
-		l_GameStarter.addPlayer("John");
-		l_GameStarter.addPlayer("Doe");
-		l_GameStarter.addPlayer("Erick");
+		GameStarter l_gameStarter = new GameStarter();
+		l_gameStarter.addPlayer("John");
+		l_gameStarter.addPlayer("Doe");
+		l_gameStarter.addPlayer("Erick");
 		
-		l_result = l_resultPlayersExpectedKeySet.equals(l_GameStarter.getPlayers().keySet());
+		l_result = l_resultPlayersExpectedKeySet.equals(l_gameStarter.getPlayers().keySet());
 
 		assertTrue(l_result);
 		
-		l_GameStarter.addPlayer("Arnold");
-		l_result = l_resultPlayersExpectedKeySet.equals(l_GameStarter.getPlayers().keySet());
+		l_gameStarter.addPlayer("Arnold");
+		l_result = l_resultPlayersExpectedKeySet.equals(l_gameStarter.getPlayers().keySet());
 		assertFalse(l_result);
+	}
+	
+	@Test
+	public void testValidateMap() {
+		d_gameStarter.loadMap(d_mapName1);
+		String l_resultString = d_gameStarter.validateMap();
+		assertEquals(" The graph is connected. Countries are traverseble.", l_resultString);
+		
+		GameStarter l_gameStarter = new GameStarter();
+		l_gameStarter.loadMap("WorldMapFail.map");
+		String l_resultString1 = l_gameStarter.validateMap();
+		assertEquals(" The graph is not connected. Countries are not traverseble.", l_resultString1);
+		
+		GameStarter l_gameStarter1 = new GameStarter();
+		String l_resultString2 = l_gameStarter1.validateMap();
+		assertEquals("The Map does not contain any countries.", l_resultString2);
+
+		GameStarter l_gameStarter2 = new GameStarter();
+		l_gameStarter2.d_gameMap = null;
+		String l_resultString3 = l_gameStarter2.validateMap();
+		assertEquals("Cannot validate map", l_resultString3);
 	}
 }
