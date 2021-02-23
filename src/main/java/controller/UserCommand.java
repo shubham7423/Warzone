@@ -12,7 +12,7 @@ public class UserCommand {
 	/**
 	 * Get commands from user
 	 * 
-	 * @return array containing command splitted using " ".
+	 * @return l_splittedCommandString array containing command that is split using " ".
 	 */
 	public String[] getCommand() {
 		String l_userCommand;
