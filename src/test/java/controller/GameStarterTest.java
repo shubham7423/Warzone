@@ -63,6 +63,10 @@ public class GameStarterTest {
 		assertEquals("Player \""+ l_playerNameString +"\" added to map", l_resultString3);
 	}
 	
+	/**
+	 * This test function tests the removePlayer function with 
+	 * multiple players being added first and then remove them from the game.
+	 */
 	@Test
 	public void testRemovePlayer() {
 		String l_playerNameString;
