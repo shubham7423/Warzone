@@ -3,6 +3,7 @@ package controller;
 import static org.junit.Assert.*;
 
 import java.util.HashMap;
+import java.util.Set;
 
 import org.junit.After;
 import org.junit.Before;
@@ -112,6 +113,29 @@ public class GameStarterTest {
 		l_resultGameStarter1.loadMap("risk.map");
 		GameMap l_resultGameMap1 = l_resultGameStarter1.getGameMap();
 		assertNotEquals(l_resultGameMap1, l_resultGameStarter.getGameMap());
+	}
+	
+	@Test
+	public void testGetPlayers() {
+		Boolean l_result;
 		
+		d_gameStarter.addPlayer("John");
+		d_gameStarter.addPlayer("Doe");
+		d_gameStarter.addPlayer("Erick");
+		HashMap<String, Player> l_resultPlayersExpected  = d_gameStarter.getPlayers();
+	 	Set<String> l_resultPlayersExpectedKeySet = l_resultPlayersExpected.keySet();
+		
+		GameStarter l_GameStarter = new GameStarter();
+		l_GameStarter.addPlayer("John");
+		l_GameStarter.addPlayer("Doe");
+		l_GameStarter.addPlayer("Erick");
+		
+		l_result = l_resultPlayersExpectedKeySet.equals(l_GameStarter.getPlayers().keySet());
+
+		assertTrue(l_result);
+		
+		l_GameStarter.addPlayer("Arnold");
+		l_result = l_resultPlayersExpectedKeySet.equals(l_GameStarter.getPlayers().keySet());
+		assertFalse(l_result);
 	}
 }
