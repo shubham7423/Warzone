@@ -26,5 +26,26 @@ public class GameStarterTest {
 		String l_resultString;
 		l_resultString =  d_gameStarter.loadMap(d_mapName1);
 		assertEquals("Map \""+ d_mapName1 +"\" loaded successfully", l_resultString);
+		assertNotNull(l_resultString);
 	}
+	
+	//addPlayer method testing
+	//removePlayer method testing
+	//getGameMap method testing
+	//get players
+	//check continent ownership
+	
+
+	
+	@Test
+	public void testValidateMap() {
+		
+	}
+
+	
+	@Test
+	public void testCheckContinentOwnership() {
+		fail("Not yet implemented");
+	}
+
 }
