@@ -14,12 +14,20 @@ public class GameStarterTest {
 
 	GameStarter d_gameStarter;
 	String d_mapName1 = "risk.map";
-		
+	
+	/**
+	 * This is the before method for testing, which will run before any 
+	 * other test function is being executed. This is used to instantiate the Class which this tests.
+	 */
 	@Before
 	public void setUp() {
 		d_gameStarter = new GameStarter();		
 	}
 	
+	/**
+	 * This is the before method for testing, which will run after any 
+	 * other test function is being executed. This is used to deallocate the member variables.
+	 */
 	@After
 	public void tearDown() {
 		d_gameStarter = null;
