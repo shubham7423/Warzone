@@ -11,9 +11,9 @@ public class Commands {
 	GameStarter d_gameStarter = new GameStarter();
 	
 	/**
-	 * Main execution command to run other command types
-	 * @param p_splittedCommand splitting of commands to pass to methods
-	 * @return l_result result after execution of command
+	 * Main execution method to run all the required command types
+	 * @param p_splittedCommand splitting of a command to pass to respective methods
+	 * @return l_result result after executing a specific type of command
 	 */
 	public String executeCommand(String[] p_splittedCommand) {
 		String l_result = "";
@@ -66,7 +66,7 @@ public class Commands {
 	}
 	
 	/**
-	 * method to load maps
+	 * method to load a specific maps as entered by the user
 	 * @param p_splittedCommand splitted commands to extract sub parts
 	 * @return loaded map(responses positive or negative)
 	 */

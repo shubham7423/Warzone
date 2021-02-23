@@ -60,8 +60,8 @@ public class GameStarter {
 	}
 	
 	/**
-	 * method to load map
-	 * @param p_fileName file name of map
+	 * method to load a map
+	 * @param p_fileName Name of map file 
 	 * @return loaded map(responses positive or negative)
 	 */
 	public String loadMap(String p_fileName) {

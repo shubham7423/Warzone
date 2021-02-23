@@ -20,7 +20,7 @@ public class ReadMap {
 	Scanner d_reader;
 	
 	/**
-	 * Constructor
+	 * ReadMap Constructor
 	 * @param p_gameMap GameMap object
 	 */
 	public ReadMap(GameMap p_gameMap) {

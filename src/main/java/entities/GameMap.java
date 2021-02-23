@@ -142,9 +142,9 @@ public class GameMap {
 	}
 	
 	/**
-	 * Load Map from .map file
-	 * @param p_fileName Name of .map file
-	 * @return Positive response if map file loaded successfully
+	 * Load a map from .map file
+	 * @param p_fileName Name of a .map file
+	 * @return Positive response if map file is loaded successfully or a negative response if it isn't
 	 */
 	public String loadMap(String p_fileName) {
 		ReadMap l_mapRead = new ReadMap(this);
