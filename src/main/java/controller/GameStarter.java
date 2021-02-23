@@ -308,7 +308,7 @@ public class GameStarter {
 			}
 		}
 		
-		System.out.print("Countries Assigned");
+		System.out.print("Countries Assigned\n");
 		checkContinentOwnership();
 		assignArmies();
 		deployPhase();
@@ -335,12 +335,12 @@ public class GameStarter {
 	public void assignArmies() {
 		for (Player l_player: d_players.values()) {
 			l_player.setNumberOfArmies();
-			System.out.println("Size" + l_player.getCountries().size() + " no of armies " + l_player.getNumberOfArmies());
+			System.out.println("Size " + l_player.getCountries().size() + " no of armies " + l_player.getNumberOfArmies());
 			System.out.println(l_player.getName() + " : " + l_player.getCountries().keySet());
 			
 		}
 	}
-	
+	/*
 	public static void main(String[] args) {
 		GameStarter gStarter = new GameStarter();
 		gStarter.loadMap("uk.map");
@@ -352,7 +352,7 @@ public class GameStarter {
 		String result = gStarter.assignCountries();
 		System.out.println(result);
 		
-		/**gStarter.getGameMap().addContinent(1, 6);
+		gStarter.getGameMap().addContinent(1, 6);
 		gStarter.getGameMap().addContinent(7, 5);
 		gStarter.getGameMap().addCountry(1, 1);
 		gStarter.getGameMap().addCountry(2, 1);
@@ -386,8 +386,9 @@ public class GameStarter {
 //		gStarter.d_players.get("Patel").setNumberOfArmies();
 		
 		System.out.println(gStarter.d_players.get("Shubham").getNumberOfArmies());
-//		System.out.println(gStarter.d_players.get("Patel").getNumberOfArmies());*/
+//		System.out.println(gStarter.d_players.get("Patel").getNumberOfArmies());
 //		gStarter.deployPhase();
 		
 	}
+	*/
 }
