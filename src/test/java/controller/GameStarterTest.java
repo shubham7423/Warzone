@@ -33,6 +33,9 @@ public class GameStarterTest {
 		d_gameStarter = null;
 	}
 	
+	/**
+	 * This test function tests the loadMap function with multiple criteria.
+	 */
 	@Test
 	public void testLoadMap() {
 		String l_resultString;
@@ -41,6 +44,10 @@ public class GameStarterTest {
 		assertNotNull(l_resultString);
 	}
 	
+	/**
+	 * This test function tests the addPlayer function with 
+	 * multiple players being added to the game.
+	 */
 	@Test
 	public void testAddPlayer() {
 		String l_playerNameString = "John";
