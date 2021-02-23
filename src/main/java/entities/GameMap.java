@@ -38,10 +38,10 @@ public class GameMap {
 	}
 	
 	/**
-	 * Add continent to the map
+	 * method to add a continent to the map
 	 * @param p_continentId Id of continent
 	 * @param p_controlValue Control value of continent
-	 * @return Positive response if continent added
+	 * @return Positive response if continent added successfully
 	 */
 	public String addContinent(int p_continentId, int p_controlValue) {
 		if(d_continents.containsKey(p_continentId)) {
@@ -52,9 +52,9 @@ public class GameMap {
 	}
 	
 	/**
-	 * Remove continent from map
+	 * method to remove a continent from map
 	 * @param p_continentId Continent id to be removed
-	 * @return Positive response if continent removed
+	 * @return Positive response if continent removed successfully
 	 */
 	public String removeContinent(int p_continentId) {
 		if(!d_continents.containsKey(p_continentId)) {
@@ -70,10 +70,10 @@ public class GameMap {
 	}
 	
 	/**
-	 * Add country to the map
+	 * method to add a country to the map
 	 * @param p_countryId Id of country
 	 * @param p_continentId Id of continent where country present
-	 * @return Positive response if country added
+	 * @return Positive response if country added successfully
 	 */
 	public String addCountry(int p_countryId, int p_continentId) {
 		if(d_countries.containsKey(p_countryId)) {
@@ -86,9 +86,9 @@ public class GameMap {
 	}
 	
 	/**
-	 * Remove country from map
+	 * method to remove a country from map
 	 * @param p_countryId id of country
-	 * @return Positive response if country removed
+	 * @return Positive response if country removed successfully
 	 */
 	public String removeCountry(int p_countryId) {
 		if(!d_countries.containsKey(p_countryId)) {
@@ -104,10 +104,10 @@ public class GameMap {
 	}
 	
 	/**
-	 * Add neighbour to country
+	 * method to add neighbor to a respective country
 	 * @param p_sourceCountryId Country id
 	 * @param p_destCountryId Neighbour country id
-	 * @return Positive response if neighbour added
+	 * @return Positive response if neighbor added successfully
 	 */
 	public String addNeighbour(int p_sourceCountryId, int p_destCountryId) {
 		if(!d_countries.containsKey(p_sourceCountryId) && !d_countries.containsKey(p_destCountryId)) {
@@ -126,10 +126,10 @@ public class GameMap {
 	}
 	
 	/**
-	 * Remove a neighbour
+	 * method to remove a neighbor of a respective country
 	 * @param p_countryId Country id
 	 * @param p_neighbourId Neighbour country id
-	 * @return Positive response if neighbour removed
+	 * @return Positive response if neighbor removed successfully
 	 */
 	public String removeNeighbour(int p_countryId, int p_neighbourId) {
 		Country l_country = d_countries.get(p_countryId);
@@ -142,7 +142,7 @@ public class GameMap {
 	}
 	
 	/**
-	 * Load a map from .map file
+	 * method to load a map from .map file
 	 * @param p_fileName Name of a .map file
 	 * @return Positive response if map file is loaded successfully or a negative response if it isn't
 	 */
@@ -156,9 +156,9 @@ public class GameMap {
 	}
 
 	/**
-	 * Show Map from Map file in specific representation in edit map phase
-	 * print String of Countries, Continent, Corresponding neighbours
-	 * @return Table containing data in string format
+	 * method to show Map from Map file in specific representation in edit map phase
+	 * print String of Countries, Continent, Corresponding neighbors
+	 * @return l_final_data Table containing data in string format
 	 */
 	public String showMapEdit()
 	{
@@ -195,9 +195,9 @@ public class GameMap {
 	}
 	
 	/**
-	 * Show Map from Map file in specific representation in Game play phase
+	 * method to show Map from Map file in specific representation in Game play phase
 	 * print String of Countries, Continent, Owner, Armies present, Corresponding Neighbors
-	 * @return Table containing data in string format
+	 * @return l_final_data Table containing data in string format
 	 */
 	public String showMapPlay()
 	{
@@ -234,7 +234,7 @@ public class GameMap {
 	}
 	
 	/**
-	 * Fill country data for each country
+	 * method to fill country data for each country
 	 * @param p_country country for which data is to be present
 	 * @param p_isEdit true if showmap called in edit phase, false if called in gameplay phase
 	 * @return array of data of the specific country i.e. Country name, Continent Name and it's neighbors
@@ -265,7 +265,7 @@ public class GameMap {
 	}
 	
 	/**
-	 * Write map to file
+	 * method to write map to file
 	 * @param p_fileNam File name
 	 * @return Positive response if map written to file successfully
 	 */
@@ -287,16 +287,16 @@ public class GameMap {
 		return String.format(l_valCheck);
 	}
 	/**
-	 * Return all continents
-	 * @return Set of continents
+	 * method that returns all the continents
+	 * @return d_continents Set of continents
 	 */
 	public HashMap<Integer, Continent> getContinents() {
 		return d_continents;
 	}
 	
 	/**
-	 * Return all countries
-	 * @return Set of countries
+	 * method to return all the countries
+	 * @return d_countries Set of countries
 	 */
 	public HashMap<Integer, Country> getCountries() {
 		return d_countries;
