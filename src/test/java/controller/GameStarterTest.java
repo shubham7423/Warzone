@@ -143,6 +143,10 @@ public class GameStarterTest {
 		assertFalse(l_result);
 	}
 	
+	/**
+	 * This function tests the validateMap function with different conditions like 
+	 * if the map is null, without countries, not traverseble and other different conditions.
+	 */
 	@Test
 	public void testValidateMap() {
 		d_gameStarter.loadMap(d_mapName1);
