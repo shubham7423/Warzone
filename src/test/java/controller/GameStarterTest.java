@@ -95,6 +95,9 @@ public class GameStarterTest {
 		assertEquals("Player \""+ l_playerNameString +"\" removed from map", l_resultString4);
 	}
 	
+	/**
+	 * This function tests the object returned by the getGameMap function.
+	 */
 	@Test
 	public void testGetGameMap() {
 
