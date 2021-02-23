@@ -2,9 +2,13 @@ package controller;
 
 import static org.junit.Assert.*;
 
+import java.util.HashMap;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
+import entities.Player;
 
 public class GameStarterTest {
 
@@ -29,23 +33,18 @@ public class GameStarterTest {
 		assertNotNull(l_resultString);
 	}
 	
-	//addPlayer method testing
-	//removePlayer method testing
-	//getGameMap method testing
-	//get players
-	//check continent ownership
-	
-
-	
 	@Test
-	public void testValidateMap() {
+	public void testAddPlayer() {
+		String l_playerNameString = "John";
+		String l_resultString1 = d_gameStarter.addPlayer(l_playerNameString);
+		assertEquals("Player \""+ l_playerNameString +"\" added to map", l_resultString1);
 		
+		l_playerNameString = "John";
+		String l_resultString2 = d_gameStarter.addPlayer(l_playerNameString);
+		assertEquals("Player \""+ l_playerNameString +"\" already present in game", l_resultString2);
+		
+		l_playerNameString = "Doe";
+		String l_resultString3 = d_gameStarter.addPlayer(l_playerNameString);
+		assertEquals("Player \""+ l_playerNameString +"\" added to map", l_resultString3);
 	}
-
-	
-	@Test
-	public void testCheckContinentOwnership() {
-		fail("Not yet implemented");
-	}
-
 }
