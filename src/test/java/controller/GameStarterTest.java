@@ -2,7 +2,9 @@ package controller;
 
 import static org.junit.Assert.*;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Set;
 
 import org.junit.After;
@@ -19,7 +21,7 @@ public class GameStarterTest {
 	String d_mapName1 = "risk.map";
 	
 	/**
-	 * This is the before method for testing, which will run before any 
+	 * This is the before method (fixture) for testing, which will run before any 
 	 * other test function is being executed. This is used to instantiate the Class which this tests.
 	 */
 	@Before
@@ -28,7 +30,7 @@ public class GameStarterTest {
 	}
 	
 	/**
-	 * This is the before method for testing, which will run after any 
+	 * This is the after method (fixture) for testing, which will run after any 
 	 * other test function is being executed. This is used to deallocate the member variables.
 	 */
 	@After
@@ -166,5 +168,31 @@ public class GameStarterTest {
 		l_gameStarter2.d_gameMap = null;
 		String l_resultString3 = l_gameStarter2.validateMap();
 		assertEquals("Cannot validate map", l_resultString3);
+	}
+	
+	@Test
+	public void testCheckContinentOwnership() {
+		d_gameStarter.loadMap("uk.map");
+		
+		d_gameStarter.addPlayer("John");
+		d_gameStarter.addPlayer("Doe");
+		d_gameStarter.addPlayer("Erick");
+
+		d_gameStarter.getPlayers().get("John").addCountry(d_gameStarter.getGameMap().getCountries().get(1));
+		d_gameStarter.getPlayers().get("John").addCountry(d_gameStarter.getGameMap().getCountries().get(2));
+		d_gameStarter.getPlayers().get("Doe").addCountry(d_gameStarter.getGameMap().getCountries().get(3));
+		d_gameStarter.getPlayers().get("Erick").addCountry(d_gameStarter.getGameMap().getCountries().get(4));
+		d_gameStarter.getPlayers().get("Erick").addCountry(d_gameStarter.getGameMap().getCountries().get(5));
+		
+		d_gameStarter.checkContinentOwnership();
+		
+		assertEquals(1, d_gameStarter.getPlayers().get("John").getContinents().keySet().size());
+		assertTrue(d_gameStarter.getPlayers().get("John").getContinents().keySet().equals(new HashSet<>(Arrays.asList(1))));
+
+		assertEquals(0, d_gameStarter.getPlayers().get("Doe").getContinents().keySet().size());
+		assertTrue(d_gameStarter.getPlayers().get("Doe").getContinents().keySet().equals(new HashSet<>(Arrays.asList())));
+		
+		assertEquals(1, d_gameStarter.getPlayers().get("Erick").getContinents().keySet().size());
+		assertTrue(d_gameStarter.getPlayers().get("Erick").getContinents().keySet().equals(new HashSet<>(Arrays.asList(3))));
 	}
 }
