@@ -9,9 +9,9 @@ import entities.Player;
  */
 public class Deploy implements Orders {
 	
-	Player d_player;
-	int d_country;
-	int d_armies;
+	private Player d_player;
+	private int d_country;
+	private int d_armies;
 	
 	/**
 	 * Constructor to assign initial values

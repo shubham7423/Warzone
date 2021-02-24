@@ -14,9 +14,10 @@ import entities.GameMap;
  *
  */
 public class ReadMap {
-	GameMap d_gameMap;
-	HashMap<String, Integer> d_continentsMap;
-	HashMap<Integer, String> d_countriesMap;
+	private GameMap d_gameMap;
+
+	private HashMap<String, Integer> d_continentsMap;
+	private HashMap<Integer, String> d_countriesMap;
 	Scanner d_reader;
 	
 	/**
@@ -27,6 +28,14 @@ public class ReadMap {
 		d_gameMap = p_gameMap;
 		d_continentsMap = new HashMap<>();
 		d_countriesMap = new HashMap<>();
+	}
+
+	/**
+	 * This will return the gameMap object of the map file.
+	 * @return gameMap object.
+	 */
+	public GameMap getGameMap() {
+		return d_gameMap;
 	}
 	
 	/**

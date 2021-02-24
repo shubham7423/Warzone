@@ -14,54 +14,69 @@ import entities.GameMap;
  *
  */
 public class MapValidation {
-	private boolean d_connectedGraph;
-	private boolean d_connectedSubGraph; 
+	private boolean d_connectedGraph; 
+	private boolean d_connectedSubGraph = true; 
 	private GameMap d_gameMap;
 	private boolean d_emptyMap = false;
-	private boolean d_emptyContinent;
-
+	private boolean d_emptyContinent = false;
+	private boolean d_flag = false;
 	/**
 	 * Constructor of MapValidation
 	 * @param p_gameMap the map which you want to validate
 	 */
 	public MapValidation(GameMap p_gameMap) {
 		this.d_gameMap = p_gameMap;
-		this.d_connectedGraph = true;
 	}
 
 	/**
-	 * prime method to validate whole graph
+	 * This method is used to get the instant status of map validation 
+	 * in the form of boolean. True signifies that the map validation is successful 
+	 * and vice versa. (Do not call this method before calling the validate method)
+	 * @return instant status of the validated map in the form of boolean.
+	 */
+	public boolean getMapValidationStatus() {
+		if(d_flag) {			
+			return d_connectedGraph&&(!d_emptyContinent)&&(!d_emptyMap)&&d_connectedSubGraph;
+		} else {
+			System.out.println("Please validate the map before getting the status of map.");
+			return false;
+		}
+	}
+	
+	/**
+	 * This is the prime function to validate whole graph
 	 * it will show the status of validation of map
 	 * @return the validation result to print based on all the validation criteria like connected countries, connected continent, empty continents.
 	 */
 	public String validate() {
+		d_flag = true;
 		StringBuilder l_validationResult = new StringBuilder();
 		boolean l_result = checkAll();
-		if(l_result) {
-			l_validationResult.append("The graph is connected.\nCountries are traverseble.\nContinents are connected.");
-			
-			if(d_emptyContinent) {
-				l_validationResult.append("One of the Continent is empty.");
+		
+		if(!l_result) {
+			if(d_emptyMap) {				
+				l_validationResult.append("The Map does not contain any countries.");
+			}
+			else {
+				if(!d_connectedGraph) {
+					l_validationResult.append(" The graph is not connected. Countries are not traverseble.");
+				}
+				if(d_emptyContinent) {
+					l_validationResult.append(" Empty Continent(s) found.");
+				}
+				if(!d_connectedSubGraph) {
+					l_validationResult.append(" Subgraph not connected.");
+				}
 			}
 		} else {
-			if(d_emptyMap) {
-				l_validationResult.append("Map does not contain any country.");
-			}
-			
 			if(d_connectedGraph) {
-				l_validationResult.append("The graph is connected.\nCountries are traverseble.");
-			} else {
-				l_validationResult.append("The graph is not connected.\nCountries are not traverseble.");
+				l_validationResult.append(" The graph is connected. Countries are traverseble.");
 			}
-			
-			if(d_connectedSubGraph) {
-				l_validationResult.append("Continents are connected.");
-			} else {
-				l_validationResult.append("Continents are not connected.");
-			}
-			
 			if(d_emptyContinent) {
-				l_validationResult.append("One of the Continent is empty.");
+				l_validationResult.append(" Empty Continent(s) found.");
+			}
+			if(!d_connectedSubGraph) {
+				l_validationResult.append(" Subgraph not connected.");
 			}
 		}
 		return l_validationResult.toString();
@@ -73,19 +88,23 @@ public class MapValidation {
 	 * then it will return true
 	 */
 	public boolean checkAll() {
+		if(d_gameMap.getCountries().size() == 0) {
+			d_emptyMap = true;
+			return false;
+		}
+		
 		Set<Integer> l_countryIds = d_gameMap.getCountries().keySet();
-		d_connectedGraph = isConnected(d_gameMap.getCountries().values().iterator().next(), l_countryIds);
+		this.d_connectedGraph = isConnected(d_gameMap.getCountries().values().iterator().next(), l_countryIds);
 
-		d_connectedSubGraph = true;
 		for (Continent l_continent : d_gameMap.getContinents().values()) {
 			l_countryIds = l_continent.getCountriesIds();
 			if (l_countryIds.isEmpty()) {
 				d_emptyContinent = true;
-				continue;	
+				continue;
 			}
-			d_connectedSubGraph &= isConnected(l_continent.getCountriesSet().iterator().next(), l_countryIds);
+			this.d_connectedSubGraph &= isConnected(l_continent.getCountriesSet().iterator().next(), l_countryIds);
 		}
-		return d_connectedGraph && d_connectedSubGraph;
+		return d_connectedGraph;
 	}
 
 	/**
@@ -96,12 +115,9 @@ public class MapValidation {
 	 * @return returns the status if map is connected or not. Returns true if connected.
 	 */
 	public boolean isConnected(Country p_firstCountry, Set<Integer> p_countryIds) {
-		if(p_countryIds.size() == 0) {
-			d_emptyMap = true;
-		}
 		Set<Integer> l_countryIdsVisited = new HashSet<Integer>();
 		l_countryIdsVisited = countryIterator(p_firstCountry, l_countryIdsVisited);
-		return l_countryIdsVisited.equals(p_countryIds);
+		return l_countryIdsVisited.containsAll(p_countryIds);
 	}
 
 	/**

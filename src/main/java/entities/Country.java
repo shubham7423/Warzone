@@ -13,8 +13,8 @@ public class Country {
 	private int d_id;
 	private Set<Country> d_neighbourCountries;
 	private int d_armiesPresent;
-	Continent d_continent;
-	Player d_owner;
+	private Continent d_continent;
+	private Player d_owner;
 	
 	/**
 	 * Constructor
