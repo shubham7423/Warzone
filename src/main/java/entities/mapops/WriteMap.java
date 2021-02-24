@@ -25,7 +25,7 @@ public class WriteMap{
 	}
 
 	/**
-	 * Opens a file and writes the data to that file
+	 * method that opens a file and writes the data to that file
 	 * @param p_filePath to .map file 
 	 * @return true if map saved successfully else false
 	 * 

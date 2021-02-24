@@ -107,7 +107,7 @@ public class ReadMap {
 	}
 	
 	/**
-	 * Get continent ids
+	 * method to get continent ids
 	 * @return Set of continent ids read
 	 */
 	public Set<Integer> getContinentIds() {
@@ -115,7 +115,7 @@ public class ReadMap {
 	}
 	
 	/**
-	 * Get countries name
+	 * method to get countries name
 	 * @return Set of countries id read
 	 */
 	public Set<Integer> getCountriesIds() {

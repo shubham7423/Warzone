@@ -30,9 +30,9 @@ public class MapValidation {
 	}
 
 	/**
-	 * this is the prime function to validate whole graph
+	 * prime method to validate whole graph
 	 * it will show the status of validation of map
-	 * @return return the validation result to print based on all the validation criteria like connected countries, connected continent, empty continents.
+	 * @return the validation result to print based on all the validation criteria like connected countries, connected continent, empty continents.
 	 */
 	public String validate() {
 		StringBuilder l_validationResult = new StringBuilder();
@@ -68,7 +68,7 @@ public class MapValidation {
 	}
 
 	/**
-	 * this function gathers information about all types of validation 
+	 * method to gather information about all types of validation 
 	 * @return false if all the validation of the Map are successful or not. If everything in map is correct,
 	 * then it will return true
 	 */
@@ -89,7 +89,7 @@ public class MapValidation {
 	}
 
 	/**
-	 * This function validates whether all the countries are traversable or not
+	 * method to validate whether all the countries are traversable or not
 	 * starting from any one country
 	 * @param p_firstCountry it starts traversing through one country to check the connection of graph
 	 * @param p_countryIds it compares with this parameter if all the countries are traversed
@@ -105,11 +105,11 @@ public class MapValidation {
 	}
 
 	/**
-	 * This is a recursive function that visits all the adjacent country 
+	 * a recursive method that visits all the adjacent country 
 	 * and traverse in the BFS manner to the adjacent countries.
 	 * @param p_currentCountry this is the current country that is being visited for traversing
 	 * @param p_visitedCountryIds set of all the countries that are already visited
-	 * @return will return the set of visited countries
+	 * @return p_visitedCountryIds returns the set of visited countries
 	 */
 	public Set<Integer> countryIterator(Country p_currentCountry, Set<Integer> p_visitedCountryIds){
 		if(p_visitedCountryIds.contains(p_currentCountry.getId())){
