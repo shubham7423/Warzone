@@ -15,6 +15,7 @@ import entities.GameMap;
  */
 public class MapValidation {
 	private boolean d_connectedGraph; 
+	private boolean d_connectedSubGraph = true; 
 	private GameMap d_gameMap;
 	private boolean d_emptyMap = false;
 	private boolean d_emptyContinent = false;
@@ -35,7 +36,7 @@ public class MapValidation {
 	 */
 	public boolean getMapValidationStatus() {
 		if(d_flag) {			
-			return d_connectedGraph&&(!d_emptyContinent)&&(!d_emptyMap);
+			return d_connectedGraph&&(!d_emptyContinent)&&(!d_emptyMap)&&d_connectedSubGraph;
 		} else {
 			System.out.println("Please validate the map before getting the status of map.");
 			return false;
@@ -63,6 +64,9 @@ public class MapValidation {
 				if(d_emptyContinent) {
 					l_validationResult.append(" Empty Continent(s) found.");
 				}
+				if(!d_connectedSubGraph) {
+					l_validationResult.append(" Subgraph not connected.");
+				}
 			}
 		} else {
 			if(d_connectedGraph) {
@@ -70,6 +74,9 @@ public class MapValidation {
 			}
 			if(d_emptyContinent) {
 				l_validationResult.append(" Empty Continent(s) found.");
+			}
+			if(!d_connectedSubGraph) {
+				l_validationResult.append(" Subgraph not connected.");
 			}
 		}
 		return l_validationResult.toString();
@@ -93,8 +100,9 @@ public class MapValidation {
 			l_countryIds = l_continent.getCountriesIds();
 			if (l_countryIds.isEmpty()) {
 				d_emptyContinent = true;
-				break;
+				continue;
 			}
+			this.d_connectedSubGraph &= isConnected(l_continent.getCountriesSet().iterator().next(), l_countryIds);
 		}
 		return d_connectedGraph;
 	}
@@ -109,7 +117,7 @@ public class MapValidation {
 	public boolean isConnected(Country p_firstCountry, Set<Integer> p_countryIds) {
 		Set<Integer> l_countryIdsVisited = new HashSet<Integer>();
 		l_countryIdsVisited = countryIterator(p_firstCountry, l_countryIdsVisited);
-		return l_countryIdsVisited.equals(p_countryIds);
+		return l_countryIdsVisited.containsAll(p_countryIds);
 	}
 
 	/**
