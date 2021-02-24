@@ -159,7 +159,7 @@ public class CommandsTest {
 	 */
 	@Test
 	public void testSaveMap() {
-		String[] l_loadCommand_1 = new String[] { "editmap", "WorldMap.map" };
+		String[] l_loadCommand_1 = new String[] { "editmap", "risk.map" };
 		String l_loadResultString_1 = d_commands.executeCommand(l_loadCommand_1);
 
 		String[] l_saveCommand_1 = new String[] { "savemap", "abc.map" };
