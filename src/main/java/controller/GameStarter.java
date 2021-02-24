@@ -27,7 +27,9 @@ import entities.orders.ShowMap;
 public class GameStarter {
 	
 	GameMap d_gameMap = new GameMap();
-	boolean is_loadedMap = false, is_editMap = false, d_isGamePhase = false;
+	private boolean is_loadedMap = false;
+	private boolean is_editMap = false;
+	private boolean d_isGamePhase = false;
 	private HashMap<String, Player> d_players = new HashMap<>();
 	private ArrayList<String> d_playerName =  new ArrayList<>(); 
 	int d_currentPlayer = 0; 

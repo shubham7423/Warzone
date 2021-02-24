@@ -257,7 +257,7 @@ public class GameMap {
         l_result.add(l_id.toString());
         l_result.add(p_country.getContinent().getId() + "; " + p_country.getContinent().getControlValue());
         if (!p_isEdit) {
-        	l_result.add(p_country.d_owner != null ? p_country.d_owner.getName() : "");
+        	l_result.add(p_country.getPlayer() != null ? p_country.getPlayer().getName() : "");
         	l_result.add(p_country.getNumberOfArmiesPresent() + "");
         }
         l_result.add(l_neighborsAsCsv);

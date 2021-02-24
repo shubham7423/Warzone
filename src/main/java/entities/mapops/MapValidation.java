@@ -19,7 +19,7 @@ public class MapValidation {
 	private GameMap d_gameMap;
 	private boolean d_emptyMap = false;
 	private boolean d_emptyContinent = false;
-	public boolean d_flag = false;
+	private boolean d_flag = false;
 	/**
 	 * Constructor of MapValidation
 	 * @param p_gameMap the map which you want to validate

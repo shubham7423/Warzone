@@ -9,10 +9,10 @@ import entities.*;
  * 
  */
 public class WriteMap{
-	GameMap d_gameMap;
-	LinkedHashMap<Integer, Integer> d_continentsMap;
-	LinkedHashMap<Integer, Integer> d_countriesMap;
-	BufferedWriter d_writer;
+	private GameMap d_gameMap;
+	private LinkedHashMap<Integer, Integer> d_continentsMap;
+	private LinkedHashMap<Integer, Integer> d_countriesMap;
+	private BufferedWriter d_writer;
 
 	/**
 	 * Constructor 

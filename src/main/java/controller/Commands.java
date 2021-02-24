@@ -8,7 +8,7 @@ import java.util.Scanner;
  */
 public class Commands {
 	
-	GameStarter d_gameStarter = new GameStarter();
+	private GameStarter d_gameStarter = new GameStarter();
 	
 	/**
 	 * Main execution command to run other command types
