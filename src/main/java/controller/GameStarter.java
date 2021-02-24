@@ -66,8 +66,8 @@ public class GameStarter {
 	}
 	
 	/**
-	 * method to load map
-	 * @param p_fileName file name of map
+	 * method to load a map
+	 * @param p_fileName Name of map file 
 	 * @return loaded map(responses positive or negative)
 	 */
 	public String loadMap(String p_fileName, boolean p_isEdit) {
@@ -95,9 +95,9 @@ public class GameStarter {
 	}
 	
 	/**
-	 * Edit continents
+	 * method to edit continents
 	 * @param p_commandSplitted splitted commands
-	 * @return shows whether continents are added or removed
+	 * @return l_result shows whether continents are added or removed
 	 */
 	public String editContinent(String[] p_commandSplitted) {
 		String l_result;
@@ -116,9 +116,9 @@ public class GameStarter {
 	}
 	
 	/**
-	 * edit countries
+	 * method to edit countries
 	 * @param p_commandSplitted splitted commands
-	 * @return shows whether countries are added or removed with respect to their continents
+	 * @return l_result shows whether countries are added or removed with respect to the continents they are a part of
 	 */
 	public String editCountry(String[] p_commandSplitted) {
 		String l_result;
@@ -137,9 +137,9 @@ public class GameStarter {
 	}
 	
 	/**
-	 * edit neighbours
+	 * edit neighbors
 	 * @param p_commandSplitted splitted commands
-	 * @return shows whether neighbours countries are added or removed
+	 * @return l_result shows whether neighbors countries to a given country are added or removed
 	 */
 	public String editNeighbour(String[] p_commandSplitted) {
 		String l_result;
@@ -158,9 +158,9 @@ public class GameStarter {
 	}
 	
 	/**
-	 * method to save map, it creates new file with specified file name.
+	 * method to save a map, it creates new file with specified file name.
 	 * @param p_fileName filename of map to be saved
-	 * @return shows whether map is saved or not
+	 * @return l_result shows whether map is saved or not
 	 */
 	public String saveMap(String p_fileName) {
 		String l_result;
@@ -207,7 +207,7 @@ public class GameStarter {
 	/**
 	 * add a player to the game
 	 * @param p_playerName name of the player
-	 * @return Positive response if player is added
+	 * @return Positive response if player is added successfully
 	 */
 	public String addPlayer(String p_playerName) {
 		if(d_players.containsKey(p_playerName)) {
@@ -221,7 +221,7 @@ public class GameStarter {
 	/**
 	 * remove a player to the game
 	 * @param p_playerName name of the player
-	 * @return Positive response if player is removed
+	 * @return Positive response if player is removed successfully
 	 */
 	public String removePlayer(String p_playerName) {
 		if(!d_players.containsKey(p_playerName)) {
@@ -233,8 +233,8 @@ public class GameStarter {
 	}
 	
 	/**
-	 * To get map
-	 * @return object of gamemap
+	 * method to get a map
+	 * @return d_gameMap Object of GameMap class
 	 */
 	public GameMap getGameMap() {
 		return d_gameMap;
@@ -242,7 +242,7 @@ public class GameStarter {
 	
 	/**
 	 * method to validate a map
-	 * @return result of map validation
+	 * @return l_result Result of map validation
 	 */
 	public String validateMap() {
 		String l_result;
@@ -276,7 +276,7 @@ public class GameStarter {
 	
 	
 	/**
-	 * Loop over players and player deploys their reinforcements to their countries
+	 * method to loop over players and in each subsequent loop player deploys reinforcements to one's owned countries
 	 */
 	public void deployPhase() {
 		int l_currentPlayer = 0;
@@ -306,15 +306,15 @@ public class GameStarter {
 	}
 	
 	/**
-	 * Get the hash map of player names corresponding to its object
-	 * @return players hashmap
+	 * method to get the hash map of player names corresponding to their objects
+	 * @return d_players HashMap of players
 	 */
 	public HashMap<String, Player> getPlayers() {
 		return d_players;
 	}
 	
 	/**
-	 * method to assign the countries to the players at the start of the game
+	 * method to assign the countries randomly to all the players at the start of the game
 	 * @return returns the message to the caller
 	 */
 	public String assignCountries() {
@@ -350,7 +350,7 @@ public class GameStarter {
 	}
 	
 	/**
-	 * check if any player acquired any continent if any then add the continent to player acquired continents list
+	 * method to check if any player acquired any continent, if any then add the continent to the continents list acquired by player
 	 */
 	public void checkContinentOwnership() {
 		for (Player l_player: d_players.values()) {
@@ -364,7 +364,7 @@ public class GameStarter {
 	}
 	
 	/**
-	 * Assign armies to players
+	 * method to assign armies to players
 	 */
 	public void assignArmies() {
 		for (Player l_player: d_players.values()) {
@@ -376,7 +376,7 @@ public class GameStarter {
 	}
 	
 	/**
-	 * Show map to player, map can be shown in edit phase and game phase
+	 * method to show map to player, map can be shown in edit phase and game phase
 	 * @return map in string format
 	 */
 	public String showmap() {

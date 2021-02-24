@@ -27,7 +27,7 @@ public class Deploy implements Orders {
 
 	
 	/**
-	 * Execute deploy command
+	 * method to execute deploy command
 	 * @param p_game object calling this function
 	 * @return Positive response if command was successful, otherwise negative reply 
 	 */

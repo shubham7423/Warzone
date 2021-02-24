@@ -11,9 +11,9 @@ public class Commands {
 	private GameStarter d_gameStarter = new GameStarter();
 	
 	/**
-	 * Main execution command to run other command types
-	 * @param p_splittedCommand splitting of commands to pass to methods
-	 * @return l_result result after execution of command
+	 * Main execution method to run all the required command types
+	 * @param p_splittedCommand splitting of a command to pass to respective methods
+	 * @return l_result result after executing a specific type of command
 	 */
 	public String executeCommand(String[] p_splittedCommand) {
 		String l_result = "";
@@ -66,7 +66,7 @@ public class Commands {
 	}
 	
 	/**
-	 * method to load maps
+	 * method to load a specific maps as entered by the user
 	 * @param p_splittedCommand splitted commands to extract sub parts
 	 * @return loaded map(responses positive or negative)
 	 */
@@ -84,9 +84,9 @@ public class Commands {
 	}
 	
 	/**
-	 * Edit continents 
+	 * method to edit the continents 
 	 * @param p_splittedCommand splitted commands to extract sub parts
-	 * @return shows whether continents are added or removed
+	 * @return l_result shows whether continents are added or removed
 	 */
 	public String editContinent(String[] p_splittedCommand) {
 		String[] l_commandParts;
@@ -129,9 +129,9 @@ public class Commands {
 	}
 	
 	/**
-	 * edit countries
+	 * method to edit countries
 	 * @param p_splittedCommand splitted commands to extract sub parts
-	 * @return shows whether countries are added or removed with respect to their continents
+	 * @return l_result shows whether countries are added or removed with respect to their continents
 	 */
 	public String editCountry(String[] p_splittedCommand) {
 		String[] l_commandParts;
@@ -174,9 +174,9 @@ public class Commands {
 	}
 	
 	/**
-	 * edit neighbours
+	 * method to edit neighbors
 	 * @param p_splittedCommand splitted commands to extract sub parts
-	 * @return shows neighbours added or removed to the country
+	 * @return l_result shows whether the neighbors are added or removed to the country
 	 */
 	public String editNeighbour(String[] p_splittedCommand) {
 		String[] l_commandParts;
@@ -220,9 +220,9 @@ public class Commands {
 	}
 	
 	/**
-	 * edit map
+	 * method to edit map
 	 * @param p_splittedCommand splitted commands to extract sub parts
-	 * @return shows if map is available to edit or not
+	 * @return shows whether map is available to edit or not
 	 */
 	public String editMap(String[] p_splittedCommand) {
 		if(p_splittedCommand.length < 2) {
@@ -238,9 +238,9 @@ public class Commands {
 	}
 	
 	/**
-	 * save map
+	 * method to save map
 	 * @param p_splittedCommand splitted commands to extract sub parts
-	 * @return shows if map is saved or not
+	 * @return shows whether map is saved or not
 	 */
 	public String saveMap(String[] p_splittedCommand) {
 		if(p_splittedCommand.length < 2) {
@@ -256,9 +256,9 @@ public class Commands {
 	}
 	
 	/**
-	 * Add or remove player
+	 * method to add or remove player
 	 * @param p_splittedCommand splitted commands to extract sub parts
-	 * @return shows if players are added or not
+	 * @return l_result shows whether players are added or not
 	 */
 	public String gamePlayer(String[] p_splittedCommand) {
 		String[] l_commandParts;
@@ -323,7 +323,7 @@ public class Commands {
 	}
 	
 	/**
-	 * command to show map to user
+	 * command to show a map to user
 	 * @return map in string format
 	 */
 	public String showmap() {

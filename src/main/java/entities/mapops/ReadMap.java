@@ -21,7 +21,7 @@ public class ReadMap {
 	Scanner d_reader;
 	
 	/**
-	 * Constructor
+	 * ReadMap Constructor
 	 * @param p_gameMap GameMap object
 	 */
 	public ReadMap(GameMap p_gameMap) {
@@ -116,7 +116,7 @@ public class ReadMap {
 	}
 	
 	/**
-	 * Get continent ids
+	 * method to get continent ids
 	 * @return Set of continent ids read
 	 */
 	public Set<Integer> getContinentIds() {
@@ -124,7 +124,7 @@ public class ReadMap {
 	}
 	
 	/**
-	 * Get countries name
+	 * method to get countries name
 	 * @return Set of countries id read
 	 */
 	public Set<Integer> getCountriesIds() {
