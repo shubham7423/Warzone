@@ -10,7 +10,7 @@ import org.junit.Test;
  *
  */
 public class CommandsTest {
-	Commands d_commands = new Commands();
+	private Commands d_commands = new Commands();
 
 	/**
 	 * main executeCommand test
