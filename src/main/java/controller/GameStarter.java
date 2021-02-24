@@ -66,6 +66,15 @@ public class GameStarter {
 		String l_result;
 		if(!is_editMap) {
 			l_result = d_gameMap.loadMap(p_fileName);
+			if(l_result.equals(String.format("Map \"%s\" cannot be loaded", p_fileName))) {
+				return l_result;
+			}
+			Boolean l_validateResult = d_gameMap.getValidateStatus();
+			if(!l_validateResult) {
+				l_result = d_gameMap.validateMap();
+				d_gameMap = new GameMap();
+				return l_result;
+			}
 			is_loadedMap = true;
 		}
 		else {

@@ -165,6 +165,13 @@ public class GameMap {
 		String l_valCheck = l_mapValidation.validate();
 		return String.format(l_valCheck);
 	}
+	
+	public boolean getValidateStatus() {
+		MapValidation l_mapValidation = new MapValidation(this);
+		l_mapValidation.validate();
+		return l_mapValidation.getMapValidationStatus();
+	}
+	
 	/**
 	 * Return all continents
 	 * @return Set of continents

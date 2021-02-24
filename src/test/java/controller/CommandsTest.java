@@ -18,9 +18,9 @@ public class CommandsTest {
 	 */
 	@Test
 	public void testExecuteCommand() {
-		String[] l_newStrings = new String[] { "loadmap", "WorldMap.map" };
+		String[] l_newStrings = new String[] { "loadmap", "risk.map" };
 		String l_result = d_commands.executeCommand(l_newStrings);
-		assertEquals("Map \"WorldMap.map\" loaded successfully", l_result);
+		assertEquals("Map \"risk.map\" loaded successfully", l_result);
 	}
 
 	/**
@@ -30,9 +30,9 @@ public class CommandsTest {
 	 */
 	@Test
 	public void testLoadMap() {
-		String[] l_loadCommand_1 = new String[] { "loadmap", "WorldMap.map" };
+		String[] l_loadCommand_1 = new String[] { "loadmap", "risk.map" };
 		String l_loadResultString_1 = d_commands.executeCommand(l_loadCommand_1);
-		assertEquals("Map \"WorldMap.map\" loaded successfully", l_loadResultString_1);
+		assertEquals("Map \"risk.map\" loaded successfully", l_loadResultString_1);
 
 		String[] l_loadCommand_2 = new String[] { "loadmap", "xyzabc.map" };
 		String l_loadResultString_2 = d_commands.executeCommand(l_loadCommand_2);
@@ -178,7 +178,7 @@ public class CommandsTest {
 	 */
 	@Test
 	public void testGamePlayer() {
-		String[] l_newStrings = new String[] { "loadmap", "WorldMap.map" };
+		String[] l_newStrings = new String[] { "loadmap", "risk.map" };
 		String l_result = d_commands.executeCommand(l_newStrings);
 		
 		String[] l_addPlayer1 = new String[] { "gameplayer", "-add", "Jay" };

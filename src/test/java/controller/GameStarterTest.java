@@ -47,6 +47,13 @@ public class GameStarterTest {
 		l_resultString =  d_gameStarter.loadMap(d_mapName1);
 		assertEquals("Map \""+ d_mapName1 +"\" loaded successfully", l_resultString);
 		assertNotNull(l_resultString);
+		
+		String l_resultString1;
+		d_gameStarter = new GameStarter();
+		d_mapName1 = "WorldMapFail.map";
+		l_resultString1 =  d_gameStarter.loadMap(d_mapName1);
+		assertEquals(" The graph is not connected. Countries are not traverseble.", l_resultString1);
+		assertNotNull(l_resultString);
 	}
 	
 	/**
@@ -154,12 +161,7 @@ public class GameStarterTest {
 		d_gameStarter.loadMap(d_mapName1);
 		String l_resultString = d_gameStarter.validateMap();
 		assertEquals(" The graph is connected. Countries are traverseble.", l_resultString);
-		
-		GameStarter l_gameStarter = new GameStarter();
-		l_gameStarter.loadMap("WorldMapFail.map");
-		String l_resultString1 = l_gameStarter.validateMap();
-		assertEquals(" The graph is not connected. Countries are not traverseble.", l_resultString1);
-		
+				
 		GameStarter l_gameStarter1 = new GameStarter();
 		String l_resultString2 = l_gameStarter1.validateMap();
 		assertEquals("The Map does not contain any countries.", l_resultString2);
