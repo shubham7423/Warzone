@@ -1,0 +1,19 @@
+[continents]
+Gujarat 6
+Delhi 4
+Maharashtra 4
+
+[countries]
+1 Ahmedabad 1
+2 Gandhinagar 1
+3 SouthDelhi 2
+4 Pune 3
+5 Mumbai 3
+
+[borders]
+1 2 3
+2 1 3 4
+3 1 2 4 5
+4 2 3 5
+5 3 4 
+
