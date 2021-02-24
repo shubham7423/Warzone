@@ -40,7 +40,7 @@ public class GameStarter {
 	public String editMap(String p_fileName) {
 		String l_result;
 		if (!is_editMap && !is_loadedMap) {
-			this.loadMap(p_fileName);
+			this.loadMap(p_fileName, true);
 			if(!Files.exists(Paths.get(Paths.get("").toAbsolutePath().toString() + "/maps/" + p_fileName))) {
 				try {
 					Files.createDirectories(Paths.get(Paths.get("").toAbsolutePath().toString() + "/maps"));
@@ -59,23 +59,30 @@ public class GameStarter {
 		return l_result;
 	}
 	
+	public String loadMap(String p_fileName) {
+		return loadMap(p_fileName, false);
+	}
+	
 	/**
 	 * method to load map
 	 * @param p_fileName file name of map
 	 * @return loaded map(responses positive or negative)
 	 */
-	public String loadMap(String p_fileName) {
+	public String loadMap(String p_fileName, boolean p_isEdit) {
 		String l_result;
 		if(!is_editMap) {
 			l_result = d_gameMap.loadMap(p_fileName);
 			if(l_result.equals(String.format("Map \"%s\" cannot be loaded", p_fileName))) {
 				return l_result;
 			}
-			Boolean l_validateResult = d_gameMap.getValidateStatus();
-			if(!l_validateResult) {
-				l_result = d_gameMap.validateMap();
-				d_gameMap = new GameMap();
-				return l_result;
+			if(!p_isEdit) {
+				String l_validMsg = d_gameMap.validateMap();
+				Boolean l_validateResult = d_gameMap.getValidateStatus();
+				if(!l_validateResult) {
+					l_result = l_validMsg;
+					d_gameMap = new GameMap();
+					return l_result;
+				}
 			}
 			is_loadedMap = true;
 		}
@@ -156,9 +163,10 @@ public class GameStarter {
 	public String saveMap(String p_fileName) {
 		String l_result;
 		if(is_editMap && !is_loadedMap) {
+			String l_validMsg = d_gameMap.validateMap();
 			Boolean l_validateResult = d_gameMap.getValidateStatus();
 			if(!l_validateResult) {
-				l_result = d_gameMap.validateMap();
+				l_result = l_validMsg;
 				return l_result;
 			}
 			

@@ -27,6 +27,7 @@ public class GameMap {
 	private HashMap<Integer, Continent> d_continents;
 	private HashMap<Integer, Country> d_countries;
 	private HashMap<String, Player> d_players;
+	private boolean d_isValid;
 	
 	/**
 	 * Constructor for GameMap
@@ -35,6 +36,7 @@ public class GameMap {
 		d_continents = new HashMap<>();
 		d_countries = new HashMap<>();
 		d_players = new HashMap<>();
+		d_isValid = false;
 	}
 	
 	/**
@@ -284,6 +286,7 @@ public class GameMap {
 	public String validateMap() {
 		MapValidation l_mapValidation = new MapValidation(this);
 		String l_valCheck = l_mapValidation.validate();
+		d_isValid = l_mapValidation.getMapValidationStatus();
 		return String.format(l_valCheck);
 	}
 	
@@ -292,9 +295,7 @@ public class GameMap {
 	 * @return boolean if the map is valid or not.
 	 */
 	public boolean getValidateStatus() {
-		MapValidation l_mapValidation = new MapValidation(this);
-		l_mapValidation.validate();
-		return l_mapValidation.getMapValidationStatus();
+		return d_isValid;
 	}
 	
 	/**
