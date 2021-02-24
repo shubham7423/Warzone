@@ -170,6 +170,11 @@ public class GameStarterTest {
 		assertEquals("Cannot validate map", l_resultString3);
 	}
 	
+	/**
+	 * This function tests the "checkContinentOwnership" method with various 
+	 * test cases of checking the ownership of each player and which player 
+	 * owns how many continents.
+	 */
 	@Test
 	public void testCheckContinentOwnership() {
 		d_gameStarter.loadMap("uk.map");
