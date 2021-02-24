@@ -154,6 +154,12 @@ public class GameStarter {
 	public String saveMap(String p_fileName) {
 		String l_result;
 		if(is_editMap && !is_loadedMap) {
+			Boolean l_validateResult = d_gameMap.getValidateStatus();
+			if(!l_validateResult) {
+				l_result = d_gameMap.validateMap();
+				return l_result;
+			}
+			
 			l_result = d_gameMap.saveMap(p_fileName);
 			is_loadedMap = false;
 			is_editMap = false;
@@ -163,6 +169,7 @@ public class GameStarter {
 		}
 		return l_result;	
 	}
+	
 	
 	/**
 	 * method to add players to the game

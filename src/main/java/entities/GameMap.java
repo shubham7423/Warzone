@@ -166,6 +166,10 @@ public class GameMap {
 		return String.format(l_valCheck);
 	}
 	
+	/**
+	 * This will get the status of map validation in the form of boolean.
+	 * @return boolean if the map is valid or not.
+	 */
 	public boolean getValidateStatus() {
 		MapValidation l_mapValidation = new MapValidation(this);
 		l_mapValidation.validate();
