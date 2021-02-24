@@ -54,6 +54,10 @@ public class Commands {
 				l_result = validateMap(p_splittedCommand);
 				break;
 				
+			case "showmap":
+				l_result = showmap();
+				break;
+				
 			default:
 				l_result = "Command not found";		
 		}
@@ -306,11 +310,24 @@ public class Commands {
 		return d_gameStarter.validateMap();
 	}
 	
+	/**
+	 * command to randomly assign countries to players and start game phase
+	 * @param p_splittedCommand command to assign countries
+	 * @return shows message that game phase is completed
+	 */
 	public String assignCountries(String[] p_splittedCommand) {
 		if(p_splittedCommand.length > 1) {
 			return String.format("Invalid Command");
 		}
 		return d_gameStarter.assignCountries();
+	}
+	
+	/**
+	 * command to show map to user
+	 * @return map in string format
+	 */
+	public String showmap() {
+		return d_gameStarter.showmap();
 	}
 }
 

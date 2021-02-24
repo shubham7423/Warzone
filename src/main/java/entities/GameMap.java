@@ -1,7 +1,19 @@
 package entities;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
+import java.util.Map;
+import java.util.HashSet;
+import java.util.stream.Collectors;
+
+import dnl.utils.text.table.TextTable;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
+
 
 import entities.mapops.ReadMap;
 import entities.mapops.WriteMap;
@@ -141,6 +153,115 @@ public class GameMap {
 			return String.format("Map \"%s\" cannot be loaded", p_fileName);
 		}
 		return String.format("Map \"%s\" loaded successfully", p_fileName);
+	}
+
+	/**
+	 * Show Map from Map file in specific representation in edit map phase
+	 * print String of Countries, Continent, Corresponding neighbours
+	 * @return Table containing data in string format
+	 */
+	public String showMapEdit()
+	{
+		String[] l_column = {"Country","Continent; Control Value","Neighbors"};
+		Object[][] l_data = new Object[d_countries.size()][l_column.length];
+		Country l_country;
+		TextTable l_tt;
+		final ByteArrayOutputStream l_baos = new ByteArrayOutputStream();
+		String l_final_data;
+		
+		int l_count = 0;
+		
+		for (HashMap.Entry<Integer, Country> l_item : d_countries.entrySet()) {
+            l_country = l_item.getValue();
+            l_data[l_count] = fillCountryData(l_country, true);
+            l_count++;
+        }
+		
+		l_tt = new TextTable(l_column, l_data);
+        l_tt.setAddRowNumbering(false);
+        l_tt.setSort(0);
+        
+        
+        try (PrintStream l_ps = new PrintStream(l_baos, true, "UTF-8")) {
+            l_tt.printTable(l_ps, 0);
+            
+        } catch (UnsupportedEncodingException e) {
+        	
+            e.printStackTrace();
+        }
+        
+        l_final_data = new String(l_baos.toByteArray(), StandardCharsets.UTF_8);
+		return l_final_data;
+	}
+	
+	/**
+	 * Show Map from Map file in specific representation in Game play phase
+	 * print String of Countries, Continent, Owner, Armies present, Corresponding Neighbors
+	 * @return Table containing data in string format
+	 */
+	public String showMapPlay()
+	{
+		String[] l_column = {"Country", "Continent; Control Value", "Owner", "Armies","Neighbors"};
+		Object[][] l_data = new Object[d_countries.size()][l_column.length];
+		Country l_country;
+		TextTable l_tt;
+		final ByteArrayOutputStream l_baos = new ByteArrayOutputStream();
+		String l_final_data;
+		
+		int l_count = 0;
+		
+		for (HashMap.Entry<Integer, Country> l_item : d_countries.entrySet()) {
+            l_country = l_item.getValue();
+            l_data[l_count] = fillCountryData(l_country, false);
+            l_count++;
+        }
+		
+		l_tt = new TextTable(l_column, l_data);
+        l_tt.setAddRowNumbering(false);
+        l_tt.setSort(0);
+        
+        
+        try (PrintStream l_ps = new PrintStream(l_baos, true, "UTF-8")) {
+            l_tt.printTable(l_ps, 0);
+            
+        } catch (UnsupportedEncodingException e) {
+        	
+            e.printStackTrace();
+        }
+        
+        l_final_data = new String(l_baos.toByteArray(), StandardCharsets.UTF_8);
+        return l_final_data;
+	}
+	
+	/**
+	 * Fill country data for each country
+	 * @param p_country country for which data is to be present
+	 * @param p_isEdit true if showmap called in edit phase, false if called in gameplay phase
+	 * @return array of data of the specific country i.e. Country name, Continent Name and it's neighbors
+	 */
+	public String[] fillCountryData(Country p_country, boolean p_isEdit)
+	{
+		ArrayList<String> l_result = new ArrayList<String>();
+
+		Integer l_id;
+
+        String l_neighborsAsCsv = p_country.getNeighbourCountries()
+        	.stream()
+        	.map(Country::getId)
+        	.collect(Collectors.toSet())
+        	.toString();
+
+        l_id =  new Integer(p_country.getId());
+        l_result.add(l_id.toString());
+        l_result.add(p_country.getContinent().getId() + "; " + p_country.getContinent().getControlValue());
+        if (!p_isEdit) {
+        	l_result.add(p_country.d_owner != null ? p_country.d_owner.getName() : "");
+        	l_result.add(p_country.getNumberOfArmiesPresent() + "");
+        }
+        l_result.add(l_neighborsAsCsv);
+        
+        return l_result.toArray(new String[0]);
+				
 	}
 	
 	/**

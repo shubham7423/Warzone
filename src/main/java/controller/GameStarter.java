@@ -16,6 +16,8 @@ import entities.Continent;
 import entities.Country;
 import entities.GameMap;
 import entities.Player;
+import entities.orders.Orders;
+import entities.orders.ShowMap;
 
 /**
  * 
@@ -25,7 +27,7 @@ import entities.Player;
 public class GameStarter {
 	
 	GameMap d_gameMap = new GameMap();
-	boolean is_loadedMap = false, is_editMap = false;
+	boolean is_loadedMap = false, is_editMap = false, d_isGamePhase = false;
 	private HashMap<String, Player> d_players = new HashMap<>();
 	private ArrayList<String> d_playerName =  new ArrayList<>(); 
 	int d_currentPlayer = 0; 
@@ -268,6 +270,7 @@ public class GameStarter {
 	 */
 	public void deployPhase() {
 		int l_currentPlayer = 0;
+		Orders l_playerOrders = null;
 		HashSet<String> l_playersCompleted = new HashSet<>();
 		System.out.println("\nDeploy phase entered");
 		System.out.println(org.apache.commons.lang3.StringUtils.repeat("-", 20));
@@ -276,12 +279,16 @@ public class GameStarter {
 				System.out.println("Player " +d_playerName.get(l_currentPlayer)+ "'s turn");
 				System.out.println("Number of armies left: " + d_players.get(d_playerName.get(l_currentPlayer)).getNumberOfArmies());
 				d_players.get(d_playerName.get(l_currentPlayer)).issueOrder();
-				System.out.println(d_players.get(d_playerName.get(l_currentPlayer)).nextOrder().executeOrder(this));
+				l_playerOrders = d_players.get(d_playerName.get(l_currentPlayer)).nextOrder();
+				System.out.println(l_playerOrders.executeOrder(this));
 			}
 			else {
 				l_playersCompleted.add(d_playerName.get(l_currentPlayer));
 			}
-			++l_currentPlayer;
+			
+			if(!(l_playerOrders instanceof ShowMap)) {
+				++l_currentPlayer;
+			}
 			if(l_currentPlayer == d_playerName.size()) {
 				l_currentPlayer = 0;
 			}
@@ -327,6 +334,7 @@ public class GameStarter {
 		System.out.print("Countries Assigned\n");
 		checkContinentOwnership();
 		assignArmies();
+		d_isGamePhase = true;
 		deployPhase();
 		return "Deployment done";
 	}
@@ -356,55 +364,15 @@ public class GameStarter {
 			
 		}
 	}
-	/*
-	public static void main(String[] args) {
-		GameStarter gStarter = new GameStarter();
-		gStarter.loadMap("uk.map");
-		gStarter.addPlayer("Shubham");
-		gStarter.addPlayer("Patel");
-		gStarter.addPlayer("Virag");
-		gStarter.addPlayer("Vandit");
-		
-		String result = gStarter.assignCountries();
-		System.out.println(result);
-		
-		gStarter.getGameMap().addContinent(1, 6);
-		gStarter.getGameMap().addContinent(7, 5);
-		gStarter.getGameMap().addCountry(1, 1);
-		gStarter.getGameMap().addCountry(2, 1);
-		gStarter.getGameMap().addCountry(3, 1);
-		gStarter.getGameMap().addCountry(4, 1);
-		gStarter.getGameMap().addCountry(5, 2);
-		gStarter.getGameMap().addCountry(6, 2);
-		gStarter.getGameMap().addCountry(7, 2);
-		gStarter.getGameMap().addCountry(8, 2);
-		gStarter.getGameMap().addCountry(9, 2);
-		
-//		System.out.println(gStarter.getGameMap().getContinents().get(1).getId() +", "+ gStarter.getGameMap().getContinents().get(1).getControlValue());
-		
-		
-		gStarter.d_players.get("Shubham").addCountry(gStarter.getGameMap().getCountries().get(1));
-		gStarter.d_players.get("Shubham").addCountry(gStarter.getGameMap().getCountries().get(2));
-		gStarter.d_players.get("Shubham").addCountry(gStarter.getGameMap().getCountries().get(3));
-		gStarter.d_players.get("Shubham").addCountry(gStarter.getGameMap().getCountries().get(4));
-		gStarter.d_players.get("Shubham").addCountry(gStarter.getGameMap().getCountries().get(9));
-//		gStarter.d_players.get("Shubham").addContinent(gStarter.getGameMap().getContinents().get(1));
-		gStarter.d_players.get("Shubham").addContinent(gStarter.getGameMap().getContinents().get(7));
-		
-		gStarter.d_players.get("Patel").addCountry(gStarter.getGameMap().getCountries().get(5));
-		gStarter.d_players.get("Patel").addCountry(gStarter.getGameMap().getCountries().get(6));
-		gStarter.d_players.get("Patel").addCountry(gStarter.getGameMap().getCountries().get(7));
-		gStarter.d_players.get("Patel").addCountry(gStarter.getGameMap().getCountries().get(8)); 
-		
-		System.out.println(gStarter.d_players.get("Shubham").getCountries().keySet());
-		System.out.println(gStarter.d_players.get("Shubham").getContinents().keySet());
-		gStarter.d_players.get("Shubham").setNumberOfArmies();
-//		gStarter.d_players.get("Patel").setNumberOfArmies();
-		
-		System.out.println(gStarter.d_players.get("Shubham").getNumberOfArmies());
-//		System.out.println(gStarter.d_players.get("Patel").getNumberOfArmies());
-//		gStarter.deployPhase();
-		
+	
+	/**
+	 * Show map to player, map can be shown in edit phase and game phase
+	 * @return map in string format
+	 */
+	public String showmap() {
+		if(!d_isGamePhase) {
+			return d_gameMap.showMapEdit();
+		}
+		return d_gameMap.showMapPlay();
 	}
-	*/
 }

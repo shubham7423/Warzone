@@ -1,6 +1,7 @@
-package entities;
+package entities.orders;
 
 import controller.GameStarter;
+import entities.Player;
 
 /**
  * Deploy order class

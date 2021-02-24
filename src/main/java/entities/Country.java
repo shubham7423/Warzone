@@ -3,6 +3,8 @@ package entities;
 import java.util.HashSet;
 import java.util.Set;
 
+import java.util.stream.Collectors;
+
 /**
  * Country in a Map
  *
@@ -68,7 +70,7 @@ public class Country {
 
 
 	/**
-	 * Get neighbouring country
+	 * Get neighbouring country in form of set
 	 * @return set of neighbouring countries 
 	 */
 	public Set<Country> getNeighbourCountries() {
