@@ -55,6 +55,11 @@ public class MapValidationTest {
 		l_gameMap1.loadMap("WorldMapFail.map");
 		MapValidation l_mapValidation1 = new MapValidation(l_gameMap1);
 		assertEquals(" The graph is not connected. Countries are not traverseble.", l_mapValidation1.validate());
+		
+		GameMap l_gameMap2 = new GameMap();
+		l_gameMap2.loadMap("EmptyMap.map");
+		MapValidation l_mapValidation2 = new MapValidation(l_gameMap2);
+		assertEquals("The Map does not contain any countries.", l_mapValidation2.validate());
 	}
 	
 	/**
