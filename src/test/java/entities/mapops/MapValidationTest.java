@@ -66,6 +66,11 @@ public class MapValidationTest {
 		l_gameMap2.loadMap("EmptyMap.map");
 		MapValidation l_mapValidation2 = new MapValidation(l_gameMap2);
 		assertEquals("The Map does not contain any countries.", l_mapValidation2.validate());
+		
+		GameMap l_gameMap3 = new GameMap();
+		l_gameMap3.loadMap("EmptyContinentMap.map");
+		MapValidation l_mapValidation3 = new MapValidation(l_gameMap3);
+		assertEquals(" The graph is connected. Countries are traverseble. Empty Continent(s) found.", l_mapValidation3.validate());
 	}
 	
 	/**
