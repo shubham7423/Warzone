@@ -14,7 +14,7 @@ public class PlayerTest {
 	Player d_player = new Player("ABCD");
 
 	/**
-	 * Test if name is set correctly
+	 * Tests if name is set correctly
 	 */
 	@Test
 	public void testGetName() {
@@ -22,7 +22,7 @@ public class PlayerTest {
 	}
 
 	/**
-	 * Test if countries are assigned to player
+	 * Tests if countries are assigned to player
 	 */
 	@Test
 	public void testAddCountry() {
@@ -33,7 +33,7 @@ public class PlayerTest {
 	}
 
 	/**
-	 * Test if countries are removed from player
+	 * Tests if countries are removed from player
 	 */
 	@Test
 	public void testRemoveCountry() {
@@ -48,7 +48,7 @@ public class PlayerTest {
 	}
 
 	/**
-	 * Test if continents are assigned to player
+	 * Tests if continents are assigned to player
 	 */
 	@Test
 	public void testAddContinent() {
@@ -58,7 +58,7 @@ public class PlayerTest {
 	}
 
 	/**
-	 * Test if continents are removed from player
+	 * Tests if continents are removed from player
 	 */
 	@Test
 	public void testRemoveContinent() {
@@ -71,7 +71,7 @@ public class PlayerTest {
 	}
 	
 	/**
-	 * Test to check if all country in a continent are owned by player
+	 * Test to check if all countries in a continent are owned by player
 	 */
 	@Test
 	public void testContinentOwnership() {
@@ -84,7 +84,7 @@ public class PlayerTest {
 	}
 
 	/*
-	 * Test if correct number of armies assigned to player
+	 * Tests if correct number of armies are assigned to player
 	 */
 	@Test
 	public void testSetNumberOfArmies() {
