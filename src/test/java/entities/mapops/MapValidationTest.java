@@ -50,7 +50,7 @@ public class MapValidationTest {
 		l_gameMap4.loadMap("ContinentSubgraph.map");
 		MapValidation l_mapValidation4 = new MapValidation(l_gameMap4);
 		l_mapValidation4.validate();
-		assertTrue(l_mapValidation4.getMapValidationStatus());
+		assertFalse(l_mapValidation4.getMapValidationStatus());
 	}
 	
 	/**
