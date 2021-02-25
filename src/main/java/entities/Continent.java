@@ -71,7 +71,7 @@ public class Continent {
 	public Set<Integer> getCountriesIds() {
 		Set<Integer> l_countryNameSet = new HashSet<>();
 		for(Country l_country: d_countriesSet) {
-			;l_countryNameSet.add(l_country.getId());
+			l_countryNameSet.add(l_country.getId());
 		}
 		return l_countryNameSet;
 	}

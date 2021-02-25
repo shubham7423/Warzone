@@ -125,8 +125,8 @@ public class Player {
 		
 		UserCommand l_userCommand = new UserCommand();
 		String[] l_splittedOrder = null;
-		boolean isCorrect = false;
-		while(!isCorrect) {
+		boolean l_isCorrect = false;
+		while(!l_isCorrect) {
 			l_splittedOrder = l_userCommand.getCommand();
 			if(l_splittedOrder[0].equals("deploy") && l_splittedOrder.length < 3) {
 				System.out.println("Invalid command");
@@ -136,7 +136,7 @@ public class Player {
 				System.out.println("Invalid command");
 				continue;
 			}
-			isCorrect = true;
+			l_isCorrect = true;
 		}
 		if(l_splittedOrder[0].equals("deploy")) {
 			Deploy l_deploy = new Deploy(this, Integer.parseInt(l_splittedOrder[1]),Integer.parseInt(l_splittedOrder[2]));

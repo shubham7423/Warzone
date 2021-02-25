@@ -50,7 +50,7 @@ public class MapValidationTest {
 		l_gameMap4.loadMap("ContinentSubgraph.map");
 		MapValidation l_mapValidation4 = new MapValidation(l_gameMap4);
 		l_mapValidation4.validate();
-		assertFalse(l_mapValidation4.getMapValidationStatus());
+		assertTrue(l_mapValidation4.getMapValidationStatus());
 	}
 	
 	/**
@@ -89,7 +89,7 @@ public class MapValidationTest {
 	 * This test will validate "isConnected" function with different maps provided in resource
 	 */
 	@Test
-	public void testisConnected() {
+	public void testIsConnected() {
 		
 		MapValidation l_mapValidation;
 		MapValidation l_mapValidation1;

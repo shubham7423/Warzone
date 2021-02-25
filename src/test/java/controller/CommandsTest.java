@@ -30,17 +30,17 @@ public class CommandsTest {
 	 */
 	@Test
 	public void testLoadMap() {
-		String[] l_loadCommand_1 = new String[] { "loadmap", "risk.map" };
-		String l_loadResultString_1 = d_commands.executeCommand(l_loadCommand_1);
-		assertEquals("Map \"risk.map\" loaded successfully", l_loadResultString_1);
+		String[] l_loadCommand1 = new String[] { "loadmap", "risk.map" };
+		String l_loadResultString1 = d_commands.executeCommand(l_loadCommand1);
+		assertEquals("Map \"risk.map\" loaded successfully", l_loadResultString1);
 
-		String[] l_loadCommand_2 = new String[] { "loadmap", "xyzabc.map" };
-		String l_loadResultString_2 = d_commands.executeCommand(l_loadCommand_2);
-		assertEquals("Map \"xyzabc.map\" cannot be loaded", l_loadResultString_2);
+		String[] l_loadCommand2 = new String[] { "loadmap", "xyzabc.map" };
+		String l_loadResultString2 = d_commands.executeCommand(l_loadCommand2);
+		assertEquals("Map \"xyzabc.map\" cannot be loaded", l_loadResultString2);
 		
-		String[] l_loadCommand_3 = new String[] { "loadmap", "xyzabc" };
-		String l_loadResultString_3 = d_commands.executeCommand(l_loadCommand_3);
-		assertEquals("File extension should be .map", l_loadResultString_3);
+		String[] l_loadCommand3 = new String[] { "loadmap", "xyzabc" };
+		String l_loadResultString3 = d_commands.executeCommand(l_loadCommand3);
+		assertEquals("File extension should be .map", l_loadResultString3);
 	}
 
 	/**
@@ -50,8 +50,8 @@ public class CommandsTest {
 	 */
 	@Test
 	public void testEditContinent() {
-		String[] l_loadCommand_1 = new String[] { "editmap", "WorldMap.map" };
-		String l_loadResultString_1 = d_commands.executeCommand(l_loadCommand_1);
+		String[] l_loadCommand1 = new String[] { "editmap", "WorldMap.map" };
+		String l_loadResultString1 = d_commands.executeCommand(l_loadCommand1);
 
 		String[] l_addContinent1 = new String[] { "editcontinent", "-add", "1", "2" };
 		String l_addResult1 = d_commands.executeCommand(l_addContinent1);
@@ -77,8 +77,8 @@ public class CommandsTest {
 	 */
 	@Test
 	public void testEditCountry() {
-		String[] l_loadCommand_1 = new String[] { "editmap", "WorldMap.map" };
-		String l_loadResultString_1 = d_commands.executeCommand(l_loadCommand_1);
+		String[] l_loadCommand1 = new String[] { "editmap", "WorldMap.map" };
+		String l_loadResultString1 = d_commands.executeCommand(l_loadCommand1);
 
 		String[] l_addContinent = new String[] { "editcontinent", "-add", "1", "2" };
 		d_commands.executeCommand(l_addContinent);
@@ -106,8 +106,8 @@ public class CommandsTest {
 	 */
 	@Test
 	public void testEditNeighbour() {
-		String[] l_loadCommand_1 = new String[] { "editmap", "WorldMap.map" };
-		String l_loadResultString_1 = d_commands.executeCommand(l_loadCommand_1);
+		String[] l_loadCommand1 = new String[] { "editmap", "WorldMap.map" };
+		String l_loadResultString1 = d_commands.executeCommand(l_loadCommand1);
 
 		String[] l_addContinent = new String[] { "editcontinent", "-add", "1", "2" };
 		d_commands.executeCommand(l_addContinent);
@@ -138,17 +138,17 @@ public class CommandsTest {
 	 */
 	@Test
 	public void testEditMap() {
-		String[] l_loadCommand_1 = new String[] { "editmap", "WorldMap.map" };
-		String l_editResultString_1 = d_commands.executeCommand(l_loadCommand_1);
-		assertEquals("Map \"WorldMap.map\" ready for edit", l_editResultString_1);
+		String[] l_loadCommand1 = new String[] { "editmap", "WorldMap.map" };
+		String l_editResultString1 = d_commands.executeCommand(l_loadCommand1);
+		assertEquals("Map \"WorldMap.map\" ready for edit", l_editResultString1);
 		
-		String[] l_loadCommand_2 = new String[] { "editmap", "WorldMap" };
-		String l_editResultString_2 = d_commands.executeCommand(l_loadCommand_2);
-		assertEquals("File extension should be .map", l_editResultString_2);
+		String[] l_loadCommand2 = new String[] { "editmap", "WorldMap" };
+		String l_editResultString2 = d_commands.executeCommand(l_loadCommand2);
+		assertEquals("File extension should be .map", l_editResultString2);
 		
-		String[] l_loadCommand_3 = new String[] { "editmap", "WorldMap.map" };
-		String l_editResultString_3 = d_commands.executeCommand(l_loadCommand_3);
-		assertEquals("Edit map not available", l_editResultString_3);
+		String[] l_loadCommand3 = new String[] { "editmap", "WorldMap.map" };
+		String l_editResultString3 = d_commands.executeCommand(l_loadCommand3);
+		assertEquals("Edit map not available", l_editResultString3);
 
 	}
 
@@ -159,16 +159,16 @@ public class CommandsTest {
 	 */
 	@Test
 	public void testSaveMap() {
-		String[] l_loadCommand_1 = new String[] { "editmap", "risk.map" };
-		String l_loadResultString_1 = d_commands.executeCommand(l_loadCommand_1);
+		String[] l_loadCommand1 = new String[] { "editmap", "risk.map" };
+		String l_loadResultString1 = d_commands.executeCommand(l_loadCommand1);
 
-		String[] l_saveCommand_1 = new String[] { "savemap", "abc.map" };
-		String l_saveResultString_1 = d_commands.executeCommand(l_saveCommand_1);
-		assertEquals("Map file \"abc.map\" saved successfully", l_saveResultString_1);
+		String[] l_saveCommand1 = new String[] { "savemap", "abc.map" };
+		String l_saveResultString1 = d_commands.executeCommand(l_saveCommand1);
+		assertEquals("Map file \"abc.map\" saved successfully", l_saveResultString1);
 
-		String[] l_saveCommand_2 = new String[] { "savemap", "abc" };
-		String l_saveResultString_2 = d_commands.executeCommand(l_saveCommand_2);
-		assertEquals("File extension should be .map", l_saveResultString_2);
+		String[] l_saveCommand2 = new String[] { "savemap", "abc" };
+		String l_saveResultString2 = d_commands.executeCommand(l_saveCommand2);
+		assertEquals("File extension should be .map", l_saveResultString2);
 	}
 	
 	/**
@@ -183,7 +183,7 @@ public class CommandsTest {
 		
 		String[] l_addPlayer1 = new String[] { "gameplayer", "-add", "Jay" };
 		String l_addResult1 = d_commands.executeCommand(l_addPlayer1);
-		assertEquals("Player \"Jay\" added to map", l_addResult1);
+		assertEquals("Player \"Jay\" added to game", l_addResult1);
 		
 		String[] l_addPlayer2 = new String[] { "gameplayer", "-add", "Jay" };
 		String l_addResult2 = d_commands.executeCommand(l_addPlayer2);
@@ -191,7 +191,7 @@ public class CommandsTest {
 
 		String[] l_removePlayer1 = new String[] { "gameplayer", "-remove", "Jay" };
 		String l_removeResult1 = d_commands.executeCommand(l_removePlayer1);
-		assertEquals("Player \"Jay\" removed from map", l_removeResult1);
+		assertEquals("Player \"Jay\" removed from game", l_removeResult1);
 
 		String[] l_removePlayer2 = new String[] { "gameplayer", "-remove", "Jay" };
 		String l_removeResult2 = d_commands.executeCommand(l_removePlayer2);

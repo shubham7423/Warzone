@@ -40,8 +40,8 @@ public class GameStarter {
 				try {
 					Files.createDirectories(Paths.get(Paths.get("").toAbsolutePath().toString() + "/maps"));
 					Files.createFile(Paths.get(Paths.get("").toAbsolutePath().toString() + "/maps/" + p_fileName));
-				} catch (IOException e) {
-					e.printStackTrace();
+				} catch (IOException p_e) {
+					p_e.printStackTrace();
 				}
 			}
 			l_result = String.format("Map \"%s\" ready for edit", p_fileName);
@@ -208,7 +208,7 @@ public class GameStarter {
 		}
 		d_players.put(p_playerName, new Player(p_playerName));
 		d_playerName.add(p_playerName);
-		return String.format("Player \"%s\" added to map", p_playerName);
+		return String.format("Player \"%s\" added to game", p_playerName);
 	}
 	
 	/**
@@ -222,7 +222,7 @@ public class GameStarter {
 		}
 		d_players.remove(p_playerName);
 		d_playerName.remove(p_playerName);
-		return String.format("Player \"%s\" removed from map", p_playerName);
+		return String.format("Player \"%s\" removed from game", p_playerName);
 	}
 	
 	/**
@@ -247,26 +247,6 @@ public class GameStarter {
 		}
 		return l_result;
 	}
-//	public String assign() {
-//		for(String playerName:d_playerName) {
-//			if(playerName.equals("Shubham")) {
-//				d_players.get(playerName).addCountry(this.getGameMap().getCountries().get(1));
-//				d_players.get(playerName).addCountry(this.getGameMap().getCountries().get(2));
-//				d_players.get(playerName).addCountry(this.getGameMap().getCountries().get(3));
-//				d_players.get(playerName).addContinent(this.getGameMap().getContinents().get(1));
-//			}
-//			else {
-//				d_players.get(playerName).addCountry(this.getGameMap().getCountries().get(4));
-//				d_players.get(playerName).addCountry(this.getGameMap().getCountries().get(5));
-//				d_players.get(playerName).addContinent(this.getGameMap().getContinents().get(3));
-//			}
-//			d_players.get(playerName).setNumberOfArmies();
-//		}
-//		deployPhase();
-//		return String.format("Countries and armies assigned");
-//		
-//	}
-	
 	
 	/**
 	 * method to loop over players and in each subsequent loop player deploys reinforcements to one's owned countries
@@ -317,7 +297,6 @@ public class GameStarter {
 		HashMap<Integer, Country> l_countries = d_gameMap.getCountries();
 		List<Country> l_countryObjects = new ArrayList<Country>();
 		l_countryObjects.addAll(l_countries.values());
-		System.out.println(l_countries.keySet());
 		Random l_random = new Random();
 		while (true) {
 			for (Player p_player : d_players.values()) {
@@ -349,7 +328,6 @@ public class GameStarter {
 		for (Player l_player: d_players.values()) {
 			for (Continent l_continent: d_gameMap.getContinents().values()) {
 				if(l_player.checkContinent(l_continent)) {
-					System.out.println(l_player.getName() + " owns "+ l_continent.getId());
 					l_player.addContinent(l_continent);
 				}
 			}
@@ -362,9 +340,6 @@ public class GameStarter {
 	public void assignArmies() {
 		for (Player l_player: d_players.values()) {
 			l_player.setNumberOfArmies();
-			System.out.println("Size " + l_player.getCountries().size() + " no of armies " + l_player.getNumberOfArmies());
-			System.out.println(l_player.getName() + " : " + l_player.getCountries().keySet());
-			
 		}
 	}
 	

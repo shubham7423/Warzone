@@ -14,19 +14,19 @@ import entities.orders.Deploy;
  */
 public class DeployTest {
 
-	GameStarter l_game;
+	GameStarter d_game;
 	
 	/**
 	 * Setup context for test to happen, object of game is created and player and countries are setup
 	 */
 	@Before
-	public void initialize() {
-		l_game = new GameStarter();
-		l_game.addPlayer("Shubham");
-		l_game.getGameMap().addContinent(1, 5);
-		l_game.getGameMap().addCountry(1, 1);
-		l_game.getPlayers().get("Shubham").addCountry(l_game.getGameMap().getCountries().get(1));
-		l_game.getPlayers().get("Shubham").setNumberOfArmies();
+	public void setUp() {
+		d_game = new GameStarter();
+		d_game.addPlayer("Shubham");
+		d_game.getGameMap().addContinent(1, 5);
+		d_game.getGameMap().addCountry(1, 1);
+		d_game.getPlayers().get("Shubham").addCountry(d_game.getGameMap().getCountries().get(1));
+		d_game.getPlayers().get("Shubham").setNumberOfArmies();
 	}
 	
 	/**
@@ -36,8 +36,8 @@ public class DeployTest {
 	public void testExecuteOrder1() {
 		int l_country = 1;
 		int l_armies = 2;
-		Deploy l_Deploy = new Deploy(l_game.getPlayers().get("Shubham"), l_country, l_armies);
-		assertEquals("Player \"Shubham\" deployed \"2\" armies to country \"1\"", l_Deploy.executeOrder(l_game));
+		Deploy l_Deploy = new Deploy(d_game.getPlayers().get("Shubham"), l_country, l_armies);
+		assertEquals("Player \"Shubham\" deployed \"2\" armies to country \"1\"", l_Deploy.executeOrder(d_game));
 	}
 	
 	/**
@@ -47,8 +47,8 @@ public class DeployTest {
 	public void testExecuteOrder2() {
 		int l_country = 1;
 		int l_armies = 5;
-		Deploy l_Deploy = new Deploy(l_game.getPlayers().get("Shubham"), l_country, l_armies);
-		assertEquals("Player \"Shubham\" does not enough armies", l_Deploy.executeOrder(l_game));
+		Deploy l_Deploy = new Deploy(d_game.getPlayers().get("Shubham"), l_country, l_armies);
+		assertEquals("Player \"Shubham\" does not enough armies", l_Deploy.executeOrder(d_game));
 	}
 	
 	/**
@@ -58,8 +58,8 @@ public class DeployTest {
 	public void testExecuteOrder3() {
 		int l_country = 4;
 		int l_armies = 1;
-		Deploy l_Deploy = new Deploy(l_game.getPlayers().get("Shubham"), l_country, l_armies);
-		assertEquals("Player \"Shubham\" does not control country \"4\"", l_Deploy.executeOrder(l_game));
+		Deploy l_Deploy = new Deploy(d_game.getPlayers().get("Shubham"), l_country, l_armies);
+		assertEquals("Player \"Shubham\" does not control country \"4\"", l_Deploy.executeOrder(d_game));
 	}
 
 }

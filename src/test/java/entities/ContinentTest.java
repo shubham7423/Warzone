@@ -16,7 +16,7 @@ public class ContinentTest {
 	 * Checks if continent object is not null
 	 */
 	@Test
-	public void checkNull() {
+	public void testCheckNull() {
 		assertNotNull(d_continent);
 	}
 	
@@ -24,7 +24,7 @@ public class ContinentTest {
 	 * Checks id of continent
 	 */
 	@Test
-	public void nameTest() {
+	public void testName() {
 		assertEquals(1, d_continent.getId());
 	}
 	
@@ -32,7 +32,7 @@ public class ContinentTest {
 	 * Checks control value of continent
 	 */
 	@Test
-	public void controlValueTest() {
+	public void testControlValue() {
 		assertEquals(3, d_continent.getControlValue());
 	}
 
@@ -40,7 +40,7 @@ public class ContinentTest {
 	 * Checks if countries are added
 	 */
 	@Test
-	public void addContriesTest() {
+	public void testAddContries() {
 		Country l_Country =  new Country(1, d_continent);
 		d_continent.addCountry(l_Country);
 		assertEquals(1, d_continent.getCountriesSet().size());
@@ -51,7 +51,7 @@ public class ContinentTest {
 	 * Checks if countries are removed
 	 */
 	@Test
-	public void removeContriesTest() {
+	public void testRemoveContries() {
 		Country l_Country =  new Country(1, d_continent);
 		d_continent.addCountry(l_Country);
 		d_continent.removeCountry(l_Country);
