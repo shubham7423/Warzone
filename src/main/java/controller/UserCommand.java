@@ -8,9 +8,10 @@ import java.util.Scanner;
  */
 public class UserCommand {
 	Scanner l_scannerScanner = new Scanner(System.in);
-	
+
 	/**
 	 * Get commands from user
+	 * 
 	 * @return l_splittedCommandString array containing command that is split using " ".
 	 */
 	public String[] getCommand() {
@@ -23,6 +24,7 @@ public class UserCommand {
 
 	/**
 	 * Game can be started from here
+	 * 
 	 * @param args argument to main
 	 */
 	public static void main(String[] args) {
