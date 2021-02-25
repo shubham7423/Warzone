@@ -5,13 +5,11 @@ import static org.junit.Assert.*;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import entities.Country;
 import entities.GameMap;
 
 /**
@@ -71,7 +69,7 @@ public class ReadMapTest {
 	}
 	
 	/**
-	 * Check if missing map file results in false
+	 * Checks if missing map file results in false
 	 */
 	@Test
 	public void testReadFullMap2() {
