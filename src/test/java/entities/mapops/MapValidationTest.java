@@ -15,6 +15,7 @@ public class MapValidationTest {
 
 	GameMap d_gameMap = new GameMap();
 	GameMap d_gameMap1 = new GameMap();
+	GameMap d_gameMap2 = new GameMap();
 	
 	/**
 	 * This test will validate "getMapValidationStatus" function which will return boolean value
@@ -81,8 +82,10 @@ public class MapValidationTest {
 		
 		MapValidation l_mapValidation;
 		MapValidation l_mapValidation1;
+		MapValidation l_mapValidation2;
 		boolean l_testVar;
 		boolean l_testVar1;
+		boolean l_testVar2;
 		
 		d_gameMap.loadMap("risk.map");
 		l_mapValidation = new MapValidation(d_gameMap);
@@ -95,6 +98,12 @@ public class MapValidationTest {
 		l_testVar1 = l_mapValidation1.isConnected(d_gameMap1.getCountries().values().iterator().next() , d_gameMap1.getCountries().keySet());
 		assertFalse(l_testVar1);
 		assertEquals(false, l_testVar1);
+		
+		d_gameMap2.loadMap("EmptyContinentMap.map");
+		l_mapValidation2 = new MapValidation(d_gameMap2);
+		l_testVar2 = l_mapValidation2.isConnected(d_gameMap2.getCountries().values().iterator().next() , d_gameMap2.getCountries().keySet());
+		assertTrue(l_testVar2);
+		assertEquals(true, l_testVar2);
 	}
 	
 	/**
