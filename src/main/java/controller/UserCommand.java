@@ -11,7 +11,6 @@ public class UserCommand {
 	
 	/**
 	 * Get commands from user
-	 * 
 	 * @return l_splittedCommandString array containing command that is split using " ".
 	 */
 	public String[] getCommand() {
@@ -24,7 +23,6 @@ public class UserCommand {
 
 	/**
 	 * Game can be started from here
-	 * 
 	 * @param args argument to main
 	 */
 	public static void main(String[] args) {
