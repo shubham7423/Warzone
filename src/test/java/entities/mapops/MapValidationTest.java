@@ -45,6 +45,12 @@ public class MapValidationTest {
 		MapValidation l_mapValidation3 = new MapValidation(l_gameMap3);
 		l_mapValidation3.validate();
 		assertFalse(l_mapValidation3.getMapValidationStatus());
+		
+		GameMap l_gameMap4 = new GameMap();
+		l_gameMap4.loadMap("ContinentSubgraph.map");
+		MapValidation l_mapValidation4 = new MapValidation(l_gameMap4);
+		l_mapValidation4.validate();
+		assertFalse(l_mapValidation4.getMapValidationStatus());
 	}
 	
 	/**
@@ -72,6 +78,11 @@ public class MapValidationTest {
 		l_gameMap3.loadMap("EmptyContinentMap.map");
 		MapValidation l_mapValidation3 = new MapValidation(l_gameMap3);
 		assertEquals(" The graph is connected. Countries are traverseble. Empty Continent(s) found.", l_mapValidation3.validate());
+		
+		GameMap l_gameMap4 = new GameMap();
+		l_gameMap4.loadMap("ContinentSubgraph.map");
+		MapValidation l_mapValidation4 = new MapValidation(l_gameMap4);
+		assertEquals(" The graph is connected. Countries are traverseble. Subgraph not connected.", l_mapValidation4.validate());
 	}
 	
 	/**
