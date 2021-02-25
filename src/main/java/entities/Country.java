@@ -13,10 +13,11 @@ public class Country {
 	private int d_armiesPresent;
 	private Continent d_continent;
 	private Player d_owner;
-	
+
 	/**
 	 * Constructor
-	 * @param p_id id of the country
+	 * 
+	 * @param p_id        id of the country
 	 * @param p_continent Parent continent
 	 */
 	public Country(int p_id, Continent p_continent) {
@@ -25,33 +26,37 @@ public class Country {
 		d_neighborCountries = new HashSet<Country>();
 		d_armiesPresent = 0;
 	}
-	
+
 	/**
 	 * method to set owner of the country
+	 * 
 	 * @param p_player player object
 	 */
 	public void setPlayer(Player p_player) {
 		d_owner = p_player;
 	}
-	
+
 	/**
 	 * method to get the owner of country
+	 * 
 	 * @return d_owner owner player object
 	 */
 	public Player getPlayer() {
 		return d_owner;
 	}
-	
+
 	/**
 	 * method to place number of armies
+	 * 
 	 * @param p_armiesNumber number of armies to be added
 	 */
 	public void placeArmies(int p_armiesNumber) {
 		d_armiesPresent += p_armiesNumber;
 	}
-	
+
 	/**
-	 * method to remove armies from country 
+	 * method to remove armies from country
+	 * 
 	 * @param p_armiesNumber number of armies to be removed
 	 */
 	public void removeArmies(int p_armiesNumber) {
@@ -60,48 +65,52 @@ public class Country {
 
 	/**
 	 * method to get id of country
+	 * 
 	 * @return d_id Id of a country
 	 */
 	public int getId() {
 		return d_id;
 	}
 
-
 	/**
 	 * method to get neighboring countries in form of set
-	 * @return d_neighborCountries set of neighboring countries 
+	 * 
+	 * @return d_neighborCountries set of neighboring countries
 	 */
 	public Set<Country> getNeighborCountries() {
 		return d_neighborCountries;
 	}
 
-
 	/**
 	 * method to add neighboring country
+	 * 
 	 * @param p_country Country to be added
 	 */
 	public void addNeighbor(Country p_country) {
 		d_neighborCountries.add(p_country);
 	}
-	
+
 	/**
 	 * method to get number of armies present
+	 * 
 	 * @return d_armiesPresent number of armies
 	 */
 	public int getNumberOfArmiesPresent() {
 		return d_armiesPresent;
 	}
-	
+
 	/**
 	 * method to get continent to which country belongs
+	 * 
 	 * @return d_continent continent to which country belongs
 	 */
 	public Continent getContinent() {
 		return d_continent;
 	}
-	
+
 	/**
 	 * method to remove neighbor country
+	 * 
 	 * @param p_country country to be removed
 	 * @return true of neighboring country present and deleted else false
 	 */
@@ -112,14 +121,15 @@ public class Country {
 		d_neighborCountries.remove(p_country);
 		return true;
 	}
-	
+
 	/**
 	 * method to get neighbors names
+	 * 
 	 * @return l_neighborNameSet Set of neighbor names
 	 */
 	public Set<Integer> getNeighborIds() {
 		Set<Integer> l_neighborNameSet = new HashSet<>();
-		for(Country l_country: d_neighborCountries) {
+		for (Country l_country : d_neighborCountries) {
 			l_neighborNameSet.add(l_country.getId());
 		}
 		return l_neighborNameSet;
