@@ -14,7 +14,7 @@ public class GameMapTest {
 	final GameMap d_map = new GameMap();
 	
 	/**
-	 * Test continent add
+	 * Tests continent addition
 	 */
 	@Test
 	public void testAddContinent() {
@@ -24,7 +24,7 @@ public class GameMapTest {
 	}
 
 	/**
-	 * Test continent remove
+	 * Tests continent removal
 	 */
 	@Test
 	public void testRemoveContinent() {
@@ -37,7 +37,7 @@ public class GameMapTest {
 	}
 
 	/**
-	 * Test country add
+	 * Tests country addition
 	 */
 	@Test
 	public void testAddCountry() {
@@ -48,7 +48,7 @@ public class GameMapTest {
 	}
 
 	/**
-	 * Test country remove
+	 * Tests country removal
 	 */
 	@Test
 	public void testRemoveCountry() {
@@ -68,7 +68,7 @@ public class GameMapTest {
 	}
 
 	/**
-	 * Test neighbour addition
+	 * Tests neighbour addition
 	 */
 	@Test
 	public void testAddNeighbour() {
@@ -81,7 +81,7 @@ public class GameMapTest {
 	}
 
 	/**
-	 * Test neighbour deletion
+	 * Tests neighbour deletion
 	 */
 	@Test
 	public void testRemoveNeighbour() {
@@ -95,7 +95,7 @@ public class GameMapTest {
 	}
 	
 	/**
-	 * Test load map
+	 * Tests load map
 	 */
 	@Test
 	public void testLoadMap() {
