@@ -1,11 +1,9 @@
 package entities;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import java.util.Scanner;
 
 import controller.UserCommand;
 import entities.orders.Deploy;
