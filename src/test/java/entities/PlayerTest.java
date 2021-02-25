@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-
 /**
  * Player class test case
  *
@@ -69,7 +68,7 @@ public class PlayerTest {
 		d_player.removeContinent(2);
 		assertFalse(d_player.getContinents().containsKey(2));
 	}
-	
+
 	/**
 	 * Test to check if all countries in a continent are owned by player
 	 */
@@ -90,7 +89,7 @@ public class PlayerTest {
 	public void testSetNumberOfArmies() {
 		d_player.setNumberOfArmies();
 		assertEquals(3, d_player.getNumberOfArmies());
-		
+
 		Continent l_continent = new Continent(1, 5);
 		Country l_country1 = new Country(1, l_continent);
 		d_player.addCountry(l_country1);

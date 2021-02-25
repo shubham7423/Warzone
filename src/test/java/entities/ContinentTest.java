@@ -11,7 +11,7 @@ import org.junit.Test;
 public class ContinentTest {
 
 	Continent d_continent = new Continent(1, 3);
-	
+
 	/**
 	 * Checks if continent object is not null
 	 */
@@ -19,7 +19,7 @@ public class ContinentTest {
 	public void testCheckNull() {
 		assertNotNull(d_continent);
 	}
-	
+
 	/**
 	 * Checks id of continent
 	 */
@@ -27,7 +27,7 @@ public class ContinentTest {
 	public void testName() {
 		assertEquals(1, d_continent.getId());
 	}
-	
+
 	/**
 	 * Checks control value of continent
 	 */
@@ -41,18 +41,18 @@ public class ContinentTest {
 	 */
 	@Test
 	public void testAddContries() {
-		Country l_Country =  new Country(1, d_continent);
+		Country l_Country = new Country(1, d_continent);
 		d_continent.addCountry(l_Country);
 		assertEquals(1, d_continent.getCountriesSet().size());
 		assertTrue(d_continent.getCountriesSet().contains(l_Country));
 	}
-	
+
 	/**
 	 * Checks if countries are removed
 	 */
 	@Test
 	public void testRemoveContries() {
-		Country l_Country =  new Country(1, d_continent);
+		Country l_Country = new Country(1, d_continent);
 		d_continent.addCountry(l_Country);
 		d_continent.removeCountry(l_Country);
 		assertEquals(0, d_continent.getCountriesSet().size());
