@@ -55,29 +55,29 @@ public class CountryTest {
 	}
 	
 	/**
-	 * Checks if neighbours are added
+	 * Checks if neighbors are added
 	 */
 	@Test
-	public void testAddNeighbour() {
-		Country l_neighbourCountry_1 = new Country(1, new Continent(1, 2));
-		d_country.addNeighbour(l_neighbourCountry_1);
-		assertEquals(1, d_country.getNeighbourCountries().size());
-		assertTrue(d_country.getNeighbourCountries().contains(l_neighbourCountry_1));
+	public void testAddNeighbor() {
+		Country l_neighborCountry_1 = new Country(1, new Continent(1, 2));
+		d_country.addNeighbor(l_neighborCountry_1);
+		assertEquals(1, d_country.getNeighborCountries().size());
+		assertTrue(d_country.getNeighborCountries().contains(l_neighborCountry_1));
 		
-		Country l_neighbourCountry_2 = new Country(2, new Continent(1, 2));
-		d_country.addNeighbour(l_neighbourCountry_2);
-		assertEquals(2, d_country.getNeighbourCountries().size());
-		assertTrue(d_country.getNeighbourCountries().contains(l_neighbourCountry_2));
+		Country l_neighborCountry_2 = new Country(2, new Continent(1, 2));
+		d_country.addNeighbor(l_neighborCountry_2);
+		assertEquals(2, d_country.getNeighborCountries().size());
+		assertTrue(d_country.getNeighborCountries().contains(l_neighborCountry_2));
 	}
 	
 	/**
-	 * Checks if neighbours are removed
+	 * Checks if neighbors are removed
 	 */
 	@Test
-	public void testRemoveNeighbour() {
-		Country l_neighbourCountry = new Country(1, new Continent(1, 2));
-		d_country.addNeighbour(l_neighbourCountry);
-		d_country.removeNeighbour(l_neighbourCountry);
-		assertEquals(0, d_country.getNeighbourCountries().size());
+	public void testRemoveNeighbor() {
+		Country l_neighborCountry = new Country(1, new Continent(1, 2));
+		d_country.addNeighbor(l_neighborCountry);
+		d_country.removeNeighbor(l_neighborCountry);
+		assertEquals(0, d_country.getNeighborCountries().size());
 	}
 }

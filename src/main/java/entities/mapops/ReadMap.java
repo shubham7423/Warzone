@@ -94,10 +94,10 @@ public class ReadMap {
 						if(l_line.length() > 0) {
 							String[] l_borders = l_line.split(" ");
 							int l_countryId = Integer.parseInt(l_borders[0]);
-							int l_neighbourId;
+							int l_neighborId;
 							for(int i=1; i<l_borders.length; i++) {
-								l_neighbourId = Integer.parseInt(l_borders[i]);
-								d_gameMap.addNeighbour(l_countryId, l_neighbourId);
+								l_neighborId = Integer.parseInt(l_borders[i]);
+								d_gameMap.addNeighbor(l_countryId, l_neighborId);
 							}
 						}
 						else {

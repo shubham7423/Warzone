@@ -92,8 +92,8 @@ public class GameMap {
 			return String.format("Country \"%d\" not present in map", p_countryId);
 		}
 		for(Country l_country: d_countries.values()) {
-			if(l_country.getNeighbourIds().contains(p_countryId)) {
-				removeNeighbour(l_country.getId(), p_countryId);
+			if(l_country.getNeighborIds().contains(p_countryId)) {
+				removeNeighbor(l_country.getId(), p_countryId);
 			}
 		}
 		d_countries.remove(p_countryId);
@@ -103,10 +103,10 @@ public class GameMap {
 	/**
 	 * method to add neighbor to a respective country
 	 * @param p_sourceCountryId Country id
-	 * @param p_destCountryId Neighbour country id
+	 * @param p_destCountryId Neighbor country id
 	 * @return Positive response if neighbor added successfully
 	 */
-	public String addNeighbour(int p_sourceCountryId, int p_destCountryId) {
+	public String addNeighbor(int p_sourceCountryId, int p_destCountryId) {
 		if(!d_countries.containsKey(p_sourceCountryId) && !d_countries.containsKey(p_destCountryId)) {
 			return String.format("Ensure that both countries are present in map");
 		}
@@ -115,27 +115,27 @@ public class GameMap {
 		if(l_country1 == null || l_country2 == null) {
 			return String.format("Country not present");
 		}
-		if(l_country1.getNeighbourCountries().contains(l_country2)) {
-			return String.format("Country \"%d\" already a neighbour of \"%d\"", p_destCountryId, p_sourceCountryId);
+		if(l_country1.getNeighborCountries().contains(l_country2)) {
+			return String.format("Country \"%d\" already a neighbor of \"%d\"", p_destCountryId, p_sourceCountryId);
 		}
-		l_country1.addNeighbour(l_country2);
-		return String.format("Country \"%d\" is now a neighbour of country \"%d\"", p_destCountryId, p_sourceCountryId);
+		l_country1.addNeighbor(l_country2);
+		return String.format("Country \"%d\" is now a neighbor of country \"%d\"", p_destCountryId, p_sourceCountryId);
 	}
 	
 	/**
 	 * method to remove a neighbor of a respective country
 	 * @param p_countryId Country id
-	 * @param p_neighbourId Neighbour country id
+	 * @param p_neighborId Neighbor country id
 	 * @return Positive response if neighbor removed successfully
 	 */
-	public String removeNeighbour(int p_countryId, int p_neighbourId) {
+	public String removeNeighbor(int p_countryId, int p_neighborId) {
 		Country l_country = d_countries.get(p_countryId);
-		Country l_neighbour = d_countries.get(p_neighbourId);	
-		if(!l_country.getNeighbourCountries().contains(l_neighbour)) {
-			return String.format("Country \"%d\" is not a neighbour of \"%d\"", p_neighbourId, p_countryId);
+		Country l_neighbor = d_countries.get(p_neighborId);	
+		if(!l_country.getNeighborCountries().contains(l_neighbor)) {
+			return String.format("Country \"%d\" is not a neighbor of \"%d\"", p_neighborId, p_countryId);
 		}	
-		l_country.removeNeighbour(l_neighbour);
-		return String.format("Country \"%d\" removed from neighbours of \"%d\"", p_neighbourId, p_countryId);
+		l_country.removeNeighbor(l_neighbor);
+		return String.format("Country \"%d\" removed from neighbors of \"%d\"", p_neighborId, p_countryId);
 	}
 	
 	/**
@@ -242,7 +242,7 @@ public class GameMap {
 
 		int l_id;
 
-        String l_neighborsAsCsv = p_country.getNeighbourCountries()
+        String l_neighborsAsCsv = p_country.getNeighborCountries()
         	.stream()
         	.map(Country::getId)
         	.collect(Collectors.toSet())

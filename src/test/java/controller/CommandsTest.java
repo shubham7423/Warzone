@@ -100,12 +100,12 @@ public class CommandsTest {
 	}
 
 	/**
-	 * Test to check addition and deletion of neighbours
-	 * Checked by adding a country to neighbour list of another country, and also checked that correct results were obtained by adding already added country to neighbour
-	 * Checked that countries are correctly removed from source country neighbour list and correct results are obtained when a country is not a neighbour of source and is tried to remove
+	 * Test to check addition and deletion of neighbors
+	 * Checked by adding a country to neighbor list of another country, and also checked that correct results were obtained by adding already added country to neighbor
+	 * Checked that countries are correctly removed from source country neighbor list and correct results are obtained when a country is not a neighbor of source and is tried to remove
 	 */
 	@Test
-	public void testEditNeighbour() {
+	public void testEditNeighbor() {
 		String[] l_loadCommand1 = new String[] { "editmap", "WorldMap.map" };
 		String l_loadResultString1 = d_commands.executeCommand(l_loadCommand1);
 
@@ -114,21 +114,21 @@ public class CommandsTest {
 		String[] l_addCountry = new String[] { "editcountry", "-add", "1", "1", "-add", "2", "1" };
 		d_commands.executeCommand(l_addCountry);
 		
-		String[] l_addNeighbour1 = new String[] { "editneighbour", "-add", "1", "2" };
-		String l_addResult1 = d_commands.executeCommand(l_addNeighbour1);
-		assertEquals("Country \"2\" is now a neighbour of country \"1\"", l_addResult1);
+		String[] l_addNeighbor1 = new String[] { "editneighbor", "-add", "1", "2" };
+		String l_addResult1 = d_commands.executeCommand(l_addNeighbor1);
+		assertEquals("Country \"2\" is now a neighbor of country \"1\"", l_addResult1);
 		
-		String[] l_addNeighbour2 = new String[] { "editneighbour", "-add", "1", "2" };
-		String l_addResult2 = d_commands.executeCommand(l_addNeighbour2);
-		assertEquals("Country \"2\" already a neighbour of \"1\"", l_addResult2);
+		String[] l_addNeighbor2 = new String[] { "editneighbor", "-add", "1", "2" };
+		String l_addResult2 = d_commands.executeCommand(l_addNeighbor2);
+		assertEquals("Country \"2\" already a neighbor of \"1\"", l_addResult2);
 		
-		String[] l_removeNeighbour1 = new String[] { "editneighbour", "-remove", "1", "2" };
-		String l_removeResult1 = d_commands.executeCommand(l_removeNeighbour1);
-		assertEquals("Country \"2\" removed from neighbours of \"1\"", l_removeResult1);
+		String[] l_removeNeighbor1 = new String[] { "editneighbor", "-remove", "1", "2" };
+		String l_removeResult1 = d_commands.executeCommand(l_removeNeighbor1);
+		assertEquals("Country \"2\" removed from neighbors of \"1\"", l_removeResult1);
 		
-		String[] l_removeNeighbour2 = new String[] { "editneighbour", "-remove", "1", "2" };
-		String l_removeResult2 = d_commands.executeCommand(l_removeNeighbour2);
-		assertEquals("Country \"2\" is not a neighbour of \"1\"", l_removeResult2);
+		String[] l_removeNeighbor2 = new String[] { "editneighbor", "-remove", "1", "2" };
+		String l_removeResult2 = d_commands.executeCommand(l_removeNeighbor2);
+		assertEquals("Country \"2\" is not a neighbor of \"1\"", l_removeResult2);
 	}
 
 	/**

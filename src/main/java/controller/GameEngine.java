@@ -140,14 +140,14 @@ public class GameEngine {
 	 * @param p_commandSplitted splitted commands
 	 * @return l_result shows whether neighbors countries to a given country are added or removed
 	 */
-	public String editNeighbour(String[] p_commandSplitted) {
+	public String editNeighbor(String[] p_commandSplitted) {
 		String l_result;
 		if(d_isEditMap && !d_isLoadedMap) {
 			if (p_commandSplitted[0].equals("-add")) {
-				l_result = d_gameMap.addNeighbour(Integer.parseInt(p_commandSplitted[1]), Integer.parseInt(p_commandSplitted[2]));
+				l_result = d_gameMap.addNeighbor(Integer.parseInt(p_commandSplitted[1]), Integer.parseInt(p_commandSplitted[2]));
 			}
 			else {
-				l_result = d_gameMap.removeNeighbour(Integer.parseInt(p_commandSplitted[1]), Integer.parseInt(p_commandSplitted[2]));
+				l_result = d_gameMap.removeNeighbor(Integer.parseInt(p_commandSplitted[1]), Integer.parseInt(p_commandSplitted[2]));
 			}
 		}
 		else {

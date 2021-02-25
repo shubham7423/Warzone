@@ -137,7 +137,7 @@ public class MapValidation {
 			return p_visitedCountryIds;
 		} else {
 			p_visitedCountryIds.add(p_currentCountry.getId());
-			for(Country l_nextCountry: p_currentCountry.getNeighbourCountries()) {
+			for(Country l_nextCountry: p_currentCountry.getNeighborCountries()) {
 				if(d_iteratingContinent) {					
 					if(l_nextCountry.getContinent().getId() == d_currentContinentIteration) {					
 						p_visitedCountryIds = countryIterator(l_nextCountry, p_visitedCountryIds);

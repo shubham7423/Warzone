@@ -28,8 +28,8 @@ public class Commands {
 				l_result = editCountry(p_splittedCommand);
 				break;
 				
-			case "editneighbour":
-				l_result = editNeighbour(p_splittedCommand);
+			case "editneighbor":
+				l_result = editNeighbor(p_splittedCommand);
 				break;
 				
 			case "editmap":
@@ -176,7 +176,7 @@ public class Commands {
 	 * @param p_splittedCommand splitted commands to extract sub parts
 	 * @return l_result shows whether the neighbors are added or removed to the country
 	 */
-	public String editNeighbour(String[] p_splittedCommand) {
+	public String editNeighbor(String[] p_splittedCommand) {
 		String[] l_commandParts;
 		String l_result = "";
 		int l_i=1;
@@ -192,7 +192,7 @@ public class Commands {
 				if(!l_result.equals("")) {
 					l_result += "\n";
 				}
-				l_result += d_gameEngine.editNeighbour(l_commandParts);
+				l_result += d_gameEngine.editNeighbor(l_commandParts);
 				l_i = l_i + 3;
 			}
 			else if (p_splittedCommand[l_i].equals("-remove")) {
@@ -203,7 +203,7 @@ public class Commands {
 				if(!l_result.equals("")) {
 					l_result += "\n";
 				}
-				l_result += d_gameEngine.editNeighbour(l_commandParts);
+				l_result += d_gameEngine.editNeighbor(l_commandParts);
 				l_i = l_i + 3;
 			}
 			else {

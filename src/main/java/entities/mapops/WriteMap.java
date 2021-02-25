@@ -67,12 +67,12 @@ public class WriteMap{
 			d_writer.write("[borders]");
 			d_writer.newLine();
 			for (int p_countries: d_countriesMap.keySet()) {
-				Set<Integer> l_neighbourIds = l_countries.get(p_countries).getNeighbourIds();
+				Set<Integer> l_neighborIds = l_countries.get(p_countries).getNeighborIds();
 				StringBuilder l_sb = new StringBuilder("");
 				l_sb.append(d_countriesMap.get(p_countries).toString() + " ");
 
-				for (int p_neighbourIds: l_neighbourIds) {
-					l_sb.append(d_countriesMap.get(p_neighbourIds).toString() + " ");
+				for (int p_neighborIds: l_neighborIds) {
+					l_sb.append(d_countriesMap.get(p_neighborIds).toString() + " ");
 				}
 				d_writer.write(l_sb.toString());
 				d_writer.newLine();

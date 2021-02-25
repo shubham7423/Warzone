@@ -53,16 +53,16 @@ public class ReadMapTest {
 		l_continents.add(3);
 		assertTrue(l_continents.equals(l_continentsRead));
 		
-		HashMap<Integer, Set<Integer>> l_neighbours = new HashMap<>();
-		l_neighbours.put(1, new HashSet<>(Arrays.asList(2, 3)));
-		l_neighbours.put(2, new HashSet<>(Arrays.asList(1, 3, 4)));
-		l_neighbours.put(3, new HashSet<>(Arrays.asList(1, 2, 4, 5)));
-		l_neighbours.put(4, new HashSet<>(Arrays.asList(2, 3, 5)));
-		l_neighbours.put(5, new HashSet<>(Arrays.asList(3, 4)));
+		HashMap<Integer, Set<Integer>> l_neighbors = new HashMap<>();
+		l_neighbors.put(1, new HashSet<>(Arrays.asList(2, 3)));
+		l_neighbors.put(2, new HashSet<>(Arrays.asList(1, 3, 4)));
+		l_neighbors.put(3, new HashSet<>(Arrays.asList(1, 2, 4, 5)));
+		l_neighbors.put(4, new HashSet<>(Arrays.asList(2, 3, 5)));
+		l_neighbors.put(5, new HashSet<>(Arrays.asList(3, 4)));
 
 		GameMap l_gameMap = d_map.getGameMap();
 		for(Integer l_country: l_gameMap.getCountries().keySet()) {
-			assertTrue(l_neighbours.get(l_country).equals(l_gameMap.getCountries().get(l_country).getNeighbourIds()));
+			assertTrue(l_neighbors.get(l_country).equals(l_gameMap.getCountries().get(l_country).getNeighborIds()));
 		}
 	}
 	

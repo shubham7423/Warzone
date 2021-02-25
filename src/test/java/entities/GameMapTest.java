@@ -59,37 +59,37 @@ public class GameMapTest {
 		
 		d_map.addCountry(2, 1);
 		d_map.addCountry(3, 1);
-		d_map.addNeighbour(2, 3);
-		d_map.addNeighbour(3, 2);
+		d_map.addNeighbor(2, 3);
+		d_map.addNeighbor(3, 2);
 		d_map.removeCountry(2);
-		assertFalse(d_map.getCountries().get(3).getNeighbourIds().contains(2));
+		assertFalse(d_map.getCountries().get(3).getNeighborIds().contains(2));
 	}
 
 	/**
-	 * Tests neighbour addition
+	 * Tests neighbor addition
 	 */
 	@Test
-	public void testAddNeighbour() {
+	public void testAddNeighbor() {
 		d_map.addContinent(1, 2);
 		d_map.addCountry(1, 1);
 		d_map.addCountry(2, 1);
-		String l_resultString = d_map.addNeighbour(1, 2);
-		assertEquals(1, d_map.getCountries().get(1).getNeighbourCountries().size());
-		assertEquals("Country \"2\" is now a neighbour of country \"1\"", l_resultString);
+		String l_resultString = d_map.addNeighbor(1, 2);
+		assertEquals(1, d_map.getCountries().get(1).getNeighborCountries().size());
+		assertEquals("Country \"2\" is now a neighbor of country \"1\"", l_resultString);
 	}
 
 	/**
-	 * Tests neighbour deletion
+	 * Tests neighbor deletion
 	 */
 	@Test
-	public void testRemoveNeighbour() {
+	public void testRemoveNeighbor() {
 		d_map.addContinent(1, 2);
 		d_map.addCountry(1, 1);
 		d_map.addCountry(2, 1);
-		d_map.addNeighbour(1, 2);
-		String l_resultString = d_map.removeNeighbour(1, 2);
-		assertEquals(0, d_map.getCountries().get(1).getNeighbourCountries().size());
-		assertEquals("Country \"2\" removed from neighbours of \"1\"", l_resultString);
+		d_map.addNeighbor(1, 2);
+		String l_resultString = d_map.removeNeighbor(1, 2);
+		assertEquals(0, d_map.getCountries().get(1).getNeighborCountries().size());
+		assertEquals("Country \"2\" removed from neighbors of \"1\"", l_resultString);
 	}
 	
 	/**

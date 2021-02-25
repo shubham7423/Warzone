@@ -9,7 +9,7 @@ import java.util.Set;
  */
 public class Country {
 	private int d_id;
-	private Set<Country> d_neighbourCountries;
+	private Set<Country> d_neighborCountries;
 	private int d_armiesPresent;
 	private Continent d_continent;
 	private Player d_owner;
@@ -22,7 +22,7 @@ public class Country {
 	public Country(int p_id, Continent p_continent) {
 		d_id = p_id;
 		d_continent = p_continent;
-		d_neighbourCountries = new HashSet<Country>();
+		d_neighborCountries = new HashSet<Country>();
 		d_armiesPresent = 0;
 	}
 	
@@ -68,11 +68,11 @@ public class Country {
 
 
 	/**
-	 * method to get neighbouring countries in form of set
-	 * @return d_neighbourCountries set of neighbouring countries 
+	 * method to get neighboring countries in form of set
+	 * @return d_neighborCountries set of neighboring countries 
 	 */
-	public Set<Country> getNeighbourCountries() {
-		return d_neighbourCountries;
+	public Set<Country> getNeighborCountries() {
+		return d_neighborCountries;
 	}
 
 
@@ -80,8 +80,8 @@ public class Country {
 	 * method to add neighboring country
 	 * @param p_country Country to be added
 	 */
-	public void addNeighbour(Country p_country) {
-		d_neighbourCountries.add(p_country);
+	public void addNeighbor(Country p_country) {
+		d_neighborCountries.add(p_country);
 	}
 	
 	/**
@@ -105,23 +105,23 @@ public class Country {
 	 * @param p_country country to be removed
 	 * @return true of neighboring country present and deleted else false
 	 */
-	public boolean removeNeighbour(Country p_country) {
-		if (!d_neighbourCountries.contains(p_country)) {
+	public boolean removeNeighbor(Country p_country) {
+		if (!d_neighborCountries.contains(p_country)) {
 			return false;
 		}
-		d_neighbourCountries.remove(p_country);
+		d_neighborCountries.remove(p_country);
 		return true;
 	}
 	
 	/**
 	 * method to get neighbors names
-	 * @return l_neighbourNameSet Set of neighbor names
+	 * @return l_neighborNameSet Set of neighbor names
 	 */
-	public Set<Integer> getNeighbourIds() {
-		Set<Integer> l_neighbourNameSet = new HashSet<>();
-		for(Country l_country: d_neighbourCountries) {
-			l_neighbourNameSet.add(l_country.getId());
+	public Set<Integer> getNeighborIds() {
+		Set<Integer> l_neighborNameSet = new HashSet<>();
+		for(Country l_country: d_neighborCountries) {
+			l_neighborNameSet.add(l_country.getId());
 		}
-		return l_neighbourNameSet;
+		return l_neighborNameSet;
 	}
 }
