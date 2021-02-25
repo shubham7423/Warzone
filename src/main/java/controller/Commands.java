@@ -90,7 +90,7 @@ public class Commands {
 		String[] l_commandParts;
 		String l_result = "";
 		int i=1;
-		if(p_splittedCommand.length < 2) {
+		if(p_splittedCommand.length < 3) {
 			return "Please enter valid command";
 		}
 		while(i < p_splittedCommand.length) {			

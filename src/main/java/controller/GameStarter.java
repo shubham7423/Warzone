@@ -54,6 +54,11 @@ public class GameStarter {
 		return l_result;
 	}
 	
+	/**
+	 * used to load map in game phase 
+	 * @param p_fileName Name of the file
+	 * @return loaded map(responses positive or negative)
+	 */
 	public String loadMap(String p_fileName) {
 		return loadMap(p_fileName, false);
 	}
@@ -61,6 +66,7 @@ public class GameStarter {
 	/**
 	 * method to load a map
 	 * @param p_fileName Name of file 
+	 * @param p_isEdit true if loadmap is called in edit phase 
 	 * @return loaded map(responses positive or negative)
 	 */
 	public String loadMap(String p_fileName, boolean p_isEdit) {
@@ -246,27 +252,7 @@ public class GameStarter {
 			l_result = String.format("Cannot validate map");
 		}
 		return l_result;
-	}
-//	public String assign() {
-//		for(String playerName:d_playerName) {
-//			if(playerName.equals("Shubham")) {
-//				d_players.get(playerName).addCountry(this.getGameMap().getCountries().get(1));
-//				d_players.get(playerName).addCountry(this.getGameMap().getCountries().get(2));
-//				d_players.get(playerName).addCountry(this.getGameMap().getCountries().get(3));
-//				d_players.get(playerName).addContinent(this.getGameMap().getContinents().get(1));
-//			}
-//			else {
-//				d_players.get(playerName).addCountry(this.getGameMap().getCountries().get(4));
-//				d_players.get(playerName).addCountry(this.getGameMap().getCountries().get(5));
-//				d_players.get(playerName).addContinent(this.getGameMap().getContinents().get(3));
-//			}
-//			d_players.get(playerName).setNumberOfArmies();
-//		}
-//		deployPhase();
-//		return String.format("Countries and armies assigned");
-//		
-//	}
-	
+	}	
 	
 	/**
 	 * method to loop over players and in each subsequent loop player deploys reinforcements to one's owned countries
