@@ -17,7 +17,7 @@ import entities.orders.ShowMap;
  * Main file to start game
  *
  */
-public class GameStarter {
+public class GameEngine {
 	
 	GameMap d_gameMap = new GameMap();
 	private boolean d_isLoadedMap = false;

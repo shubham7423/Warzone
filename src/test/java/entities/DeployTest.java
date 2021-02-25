@@ -5,7 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import controller.GameStarter;
+import controller.GameEngine;
 import entities.orders.Deploy;
 
 /**
@@ -14,14 +14,14 @@ import entities.orders.Deploy;
  */
 public class DeployTest {
 
-	GameStarter d_game;
+	GameEngine d_game;
 	
 	/**
 	 * Setup context for test to happen, object of game is created and player and countries are setup
 	 */
 	@Before
 	public void setUp() {
-		d_game = new GameStarter();
+		d_game = new GameEngine();
 		d_game.addPlayer("Shubham");
 		d_game.getGameMap().addContinent(1, 5);
 		d_game.getGameMap().addCountry(1, 1);

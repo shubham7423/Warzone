@@ -6,7 +6,7 @@ package controller;
  */
 public class Commands {
 	
-	private GameStarter d_gameStarter = new GameStarter();
+	private GameEngine d_gameEngine = new GameEngine();
 	
 	/**
 	 * Main execution method to run all the required command types
@@ -78,7 +78,7 @@ public class Commands {
 		if(!p_splittedCommand[1].split("\\.")[1].equals("map")) {
 			return "File extension should be .map";
 		}
-		return d_gameStarter.loadMap(p_splittedCommand[1]);
+		return d_gameEngine.loadMap(p_splittedCommand[1]);
 	}
 	
 	/**
@@ -102,7 +102,7 @@ public class Commands {
 				if(!l_result.equals("")) {
 					l_result += "\n";
 				}
-				l_result += d_gameStarter.editContinent(l_commandParts);
+				l_result += d_gameEngine.editContinent(l_commandParts);
 				l_i = l_i + 3;
 			}
 			else if (p_splittedCommand[l_i].equals("-remove")) {
@@ -112,7 +112,7 @@ public class Commands {
 				if(!l_result.equals("")) {
 					l_result += "\n";
 				}
-				l_result += d_gameStarter.editContinent(l_commandParts);
+				l_result += d_gameEngine.editContinent(l_commandParts);
 				l_i = l_i + 2;
 			}
 			else {
@@ -147,7 +147,7 @@ public class Commands {
 				if(!l_result.equals("")) {
 					l_result += "\n";
 				}
-				l_result += d_gameStarter.editCountry(l_commandParts);
+				l_result += d_gameEngine.editCountry(l_commandParts);
 				l_i = l_i + 3;
 			}
 			else if (p_splittedCommand[l_i].equals("-remove")) {
@@ -157,7 +157,7 @@ public class Commands {
 				if(!l_result.equals("")) {
 					l_result += "\n";
 				}
-				l_result += d_gameStarter.editCountry(l_commandParts);
+				l_result += d_gameEngine.editCountry(l_commandParts);
 				l_i = l_i + 2;
 			}
 			else {
@@ -192,7 +192,7 @@ public class Commands {
 				if(!l_result.equals("")) {
 					l_result += "\n";
 				}
-				l_result += d_gameStarter.editNeighbour(l_commandParts);
+				l_result += d_gameEngine.editNeighbour(l_commandParts);
 				l_i = l_i + 3;
 			}
 			else if (p_splittedCommand[l_i].equals("-remove")) {
@@ -203,7 +203,7 @@ public class Commands {
 				if(!l_result.equals("")) {
 					l_result += "\n";
 				}
-				l_result += d_gameStarter.editNeighbour(l_commandParts);
+				l_result += d_gameEngine.editNeighbour(l_commandParts);
 				l_i = l_i + 3;
 			}
 			else {
@@ -232,7 +232,7 @@ public class Commands {
 		if(!p_splittedCommand[1].split("\\.")[1].equals("map")) {
 			return "File extension should be .map";
 		}
-		return d_gameStarter.editMap(p_splittedCommand[1]);
+		return d_gameEngine.editMap(p_splittedCommand[1]);
 	}
 	
 	/**
@@ -250,7 +250,7 @@ public class Commands {
 		if(!p_splittedCommand[1].split("\\.")[1].equals("map")) {
 			return "File extension should be .map";
 		}
-		return d_gameStarter.saveMap(p_splittedCommand[1]);
+		return d_gameEngine.saveMap(p_splittedCommand[1]);
 	}
 	
 	/**
@@ -273,7 +273,7 @@ public class Commands {
 				if(!l_result.equals("")) {
 					l_result += "\n";
 				}
-				l_result += d_gameStarter.gamePlayer(l_commandParts);
+				l_result += d_gameEngine.gamePlayer(l_commandParts);
 				l_i = l_i + 2;
 			}
 			else if (p_splittedCommand[l_i].equals("-remove")) {
@@ -283,7 +283,7 @@ public class Commands {
 				if(!l_result.equals("")) {
 					l_result += "\n";
 				}
-				l_result += d_gameStarter.gamePlayer(l_commandParts);
+				l_result += d_gameEngine.gamePlayer(l_commandParts);
 				l_i = l_i + 2;
 			}
 			else {
@@ -305,7 +305,7 @@ public class Commands {
 	public String validateMap(String[] p_splittedCommand) {
 		if(p_splittedCommand.length > 1) {
 			return "Please enter valid command";}
-		return d_gameStarter.validateMap();
+		return d_gameEngine.validateMap();
 	}
 	
 	/**
@@ -317,7 +317,7 @@ public class Commands {
 		if(p_splittedCommand.length > 1) {
 			return String.format("Invalid Command");
 		}
-		return d_gameStarter.assignCountries();
+		return d_gameEngine.assignCountries();
 	}
 	
 	/**
@@ -325,7 +325,7 @@ public class Commands {
 	 * @return map in string format
 	 */
 	public String showmap() {
-		return d_gameStarter.showMap();
+		return d_gameEngine.showMap();
 	}
 }
 
