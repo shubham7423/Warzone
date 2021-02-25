@@ -20,6 +20,8 @@ public class MapValidation {
 	private boolean d_emptyMap = false;
 	private boolean d_emptyContinent = false;
 	private boolean d_flag = false;
+	private boolean d_iteratingContinent = false;
+	private int d_currentContinentIteration = 0;
 	/**
 	 * Constructor of MapValidation
 	 * @param p_gameMap the map which you want to validate
@@ -98,11 +100,14 @@ public class MapValidation {
 
 		for (Continent l_continent : d_gameMap.getContinents().values()) {
 			l_countryIds = l_continent.getCountriesIds();
+			d_currentContinentIteration = l_continent.getId();
+			d_iteratingContinent = true;
 			if (l_countryIds.isEmpty()) {
 				d_emptyContinent = true;
 				continue;
 			}
 			this.d_connectedSubGraph &= isConnected(l_continent.getCountriesSet().iterator().next(), l_countryIds);
+			d_iteratingContinent = false;
 		}
 		return d_connectedGraph;
 	}
@@ -133,7 +138,13 @@ public class MapValidation {
 		} else {
 			p_visitedCountryIds.add(p_currentCountry.getId());
 			for(Country l_nextCountry: p_currentCountry.getNeighbourCountries()) {
-				p_visitedCountryIds = countryIterator(l_nextCountry, p_visitedCountryIds);
+				if(d_iteratingContinent) {					
+					if(l_nextCountry.getContinent().getId() == d_currentContinentIteration) {					
+						p_visitedCountryIds = countryIterator(l_nextCountry, p_visitedCountryIds);
+					}
+				} else {					
+					p_visitedCountryIds = countryIterator(l_nextCountry, p_visitedCountryIds);
+				}
 			}
 		}
 		return p_visitedCountryIds;

@@ -6,8 +6,6 @@ import org.junit.Test;
 
 /**
  * Test for GameMap
- * 
- *
  */
 public class GameMapTest {
 

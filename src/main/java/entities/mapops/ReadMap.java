@@ -109,7 +109,7 @@ public class ReadMap {
 			}
 			d_reader.close();
 			return true;
-		} catch (FileNotFoundException e) {
+		} catch (FileNotFoundException p_e) {
 			return false;
 		}
 	

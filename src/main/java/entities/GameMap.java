@@ -182,9 +182,9 @@ public class GameMap {
         try (PrintStream l_ps = new PrintStream(l_baos, true, "UTF-8")) {
             l_tt.printTable(l_ps, 0);
             
-        } catch (UnsupportedEncodingException e) {
+        } catch (UnsupportedEncodingException p_e) {
         	
-            e.printStackTrace();
+        	p_e.printStackTrace();
         }
         
         l_final_data = new String(l_baos.toByteArray(), StandardCharsets.UTF_8);
@@ -221,9 +221,9 @@ public class GameMap {
         try (PrintStream l_ps = new PrintStream(l_baos, true, "UTF-8")) {
             l_tt.printTable(l_ps, 0);
             
-        } catch (UnsupportedEncodingException e) {
+        } catch (UnsupportedEncodingException p_e) {
         	
-            e.printStackTrace();
+        	p_e.printStackTrace();
         }
         
         l_final_data = new String(l_baos.toByteArray(), StandardCharsets.UTF_8);
@@ -240,7 +240,7 @@ public class GameMap {
 	{
 		ArrayList<String> l_result = new ArrayList<String>();
 
-		Integer l_id;
+		int l_id;
 
         String l_neighborsAsCsv = p_country.getNeighbourCountries()
         	.stream()
@@ -248,8 +248,8 @@ public class GameMap {
         	.collect(Collectors.toSet())
         	.toString();
 
-        l_id =  new Integer(p_country.getId());
-        l_result.add(l_id.toString());
+        l_id =  p_country.getId();
+        l_result.add(l_id+"");
         l_result.add(p_country.getContinent().getId() + "; " + p_country.getContinent().getControlValue());
         if (!p_isEdit) {
         	l_result.add(p_country.getPlayer() != null ? p_country.getPlayer().getName() : "");
@@ -258,7 +258,6 @@ public class GameMap {
         l_result.add(l_neighborsAsCsv);
         
         return l_result.toArray(new String[0]);
-				
 	}
 	
 	/**

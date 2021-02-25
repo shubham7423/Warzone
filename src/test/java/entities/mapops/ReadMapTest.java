@@ -24,7 +24,7 @@ public class ReadMapTest {
 	 * Initialize map before each test
 	 */
 	@Before
-	public void initialize() {
+	public void setUp() {
 		d_map = new ReadMap(new GameMap());
 	}
 	
@@ -64,8 +64,6 @@ public class ReadMapTest {
 		for(Integer l_country: l_gameMap.getCountries().keySet()) {
 			assertTrue(l_neighbours.get(l_country).equals(l_gameMap.getCountries().get(l_country).getNeighbourIds()));
 		}
-		
-		
 	}
 	
 	/**

@@ -80,9 +80,9 @@ public class WriteMap{
 			d_writer.close();
 			l_fw.close();
 			return true;
-		} catch (Exception e) {
-			System.out.println("Exception " + e.getMessage());
-			e.printStackTrace();
+		} catch (Exception p_e) {
+			System.out.println("Exception " + p_e.getMessage());
+			p_e.printStackTrace();
 			return false;
 		}
 	}

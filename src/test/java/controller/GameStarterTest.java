@@ -63,7 +63,7 @@ public class GameStarterTest {
 	public void testAddPlayer() {
 		String l_playerNameString = "John";
 		String l_resultString1 = d_gameStarter.addPlayer(l_playerNameString);
-		assertEquals("Player \""+ l_playerNameString +"\" added to map", l_resultString1);
+		assertEquals("Player \""+ l_playerNameString +"\" added to game", l_resultString1);
 		
 		l_playerNameString = "John";
 		String l_resultString2 = d_gameStarter.addPlayer(l_playerNameString);
@@ -71,7 +71,7 @@ public class GameStarterTest {
 		
 		l_playerNameString = "Doe";
 		String l_resultString3 = d_gameStarter.addPlayer(l_playerNameString);
-		assertEquals("Player \""+ l_playerNameString +"\" added to map", l_resultString3);
+		assertEquals("Player \""+ l_playerNameString +"\" added to game", l_resultString3);
 	}
 	
 	/**
@@ -90,7 +90,7 @@ public class GameStarterTest {
 		
 		l_playerNameString = "John";
 		String l_resultString1 = d_gameStarter.removePlayer(l_playerNameString);
-		assertEquals("Player \""+ l_playerNameString +"\" removed from map", l_resultString1);
+		assertEquals("Player \""+ l_playerNameString +"\" removed from game", l_resultString1);
 		
 		l_playerNameString = "John";
 		String l_resultString2 = d_gameStarter.removePlayer(l_playerNameString);
@@ -98,11 +98,11 @@ public class GameStarterTest {
 		
 		l_playerNameString = "Paul";
 		String l_resultString3 = d_gameStarter.removePlayer(l_playerNameString);
-		assertEquals("Player \""+ l_playerNameString +"\" removed from map", l_resultString3);
+		assertEquals("Player \""+ l_playerNameString +"\" removed from game", l_resultString3);
 		
 		l_playerNameString = "Arnold";
 		String l_resultString4 = d_gameStarter.removePlayer(l_playerNameString);
-		assertEquals("Player \""+ l_playerNameString +"\" removed from map", l_resultString4);
+		assertEquals("Player \""+ l_playerNameString +"\" removed from game", l_resultString4);
 	}
 	
 	/**

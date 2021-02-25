@@ -15,6 +15,7 @@ public class MapValidationTest {
 
 	GameMap d_gameMap = new GameMap();
 	GameMap d_gameMap1 = new GameMap();
+	GameMap d_gameMap2 = new GameMap();
 	
 	/**
 	 * This test will validate "getMapValidationStatus" function which will return boolean value
@@ -32,6 +33,24 @@ public class MapValidationTest {
 		MapValidation l_mapValidation1 = new MapValidation(l_gameMap1);
 		l_mapValidation1.validate();
 		assertFalse(l_mapValidation1.getMapValidationStatus());
+	
+		GameMap l_gameMap2 = new GameMap();
+		l_gameMap2.loadMap("EmptyMap.map");
+		MapValidation l_mapValidation2 = new MapValidation(l_gameMap2);
+		l_mapValidation2.validate();
+		assertFalse(l_mapValidation2.getMapValidationStatus());
+		
+		GameMap l_gameMap3 = new GameMap();
+		l_gameMap3.loadMap("EmptyContinentMap.map");
+		MapValidation l_mapValidation3 = new MapValidation(l_gameMap3);
+		l_mapValidation3.validate();
+		assertFalse(l_mapValidation3.getMapValidationStatus());
+		
+		GameMap l_gameMap4 = new GameMap();
+		l_gameMap4.loadMap("ContinentSubgraph.map");
+		MapValidation l_mapValidation4 = new MapValidation(l_gameMap4);
+		l_mapValidation4.validate();
+		assertFalse(l_mapValidation4.getMapValidationStatus());
 	}
 	
 	/**
@@ -49,18 +68,35 @@ public class MapValidationTest {
 		l_gameMap1.loadMap("WorldMapFail.map");
 		MapValidation l_mapValidation1 = new MapValidation(l_gameMap1);
 		assertEquals(" The graph is not connected. Countries are not traverseble.", l_mapValidation1.validate());
+		
+		GameMap l_gameMap2 = new GameMap();
+		l_gameMap2.loadMap("EmptyMap.map");
+		MapValidation l_mapValidation2 = new MapValidation(l_gameMap2);
+		assertEquals("The Map does not contain any countries.", l_mapValidation2.validate());
+		
+		GameMap l_gameMap3 = new GameMap();
+		l_gameMap3.loadMap("EmptyContinentMap.map");
+		MapValidation l_mapValidation3 = new MapValidation(l_gameMap3);
+		assertEquals(" The graph is connected. Countries are traverseble. Empty Continent(s) found.", l_mapValidation3.validate());
+		
+		GameMap l_gameMap4 = new GameMap();
+		l_gameMap4.loadMap("ContinentSubgraph.map");
+		MapValidation l_mapValidation4 = new MapValidation(l_gameMap4);
+		assertEquals(" The graph is connected. Countries are traverseble. Subgraph not connected.", l_mapValidation4.validate());
 	}
 	
 	/**
 	 * This test will validate "isConnected" function with different maps provided in resource
 	 */
 	@Test
-	public void testisConnected() {
+	public void testIsConnected() {
 		
 		MapValidation l_mapValidation;
 		MapValidation l_mapValidation1;
+		MapValidation l_mapValidation2;
 		boolean l_testVar;
 		boolean l_testVar1;
+		boolean l_testVar2;
 		
 		d_gameMap.loadMap("risk.map");
 		l_mapValidation = new MapValidation(d_gameMap);
@@ -73,6 +109,12 @@ public class MapValidationTest {
 		l_testVar1 = l_mapValidation1.isConnected(d_gameMap1.getCountries().values().iterator().next() , d_gameMap1.getCountries().keySet());
 		assertFalse(l_testVar1);
 		assertEquals(false, l_testVar1);
+		
+		d_gameMap2.loadMap("EmptyContinentMap.map");
+		l_mapValidation2 = new MapValidation(d_gameMap2);
+		l_testVar2 = l_mapValidation2.isConnected(d_gameMap2.getCountries().values().iterator().next() , d_gameMap2.getCountries().keySet());
+		assertTrue(l_testVar2);
+		assertEquals(true, l_testVar2);
 	}
 	
 	/**
