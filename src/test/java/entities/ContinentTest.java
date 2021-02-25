@@ -5,8 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
- * Test for Continent
- * @author shubhampatel
+ * Tests for Continent
  *
  */
 public class ContinentTest {
@@ -14,7 +13,7 @@ public class ContinentTest {
 	Continent d_continent = new Continent(1, 3);
 	
 	/**
-	 * Check if continent object is not null
+	 * Checks if continent object is not null
 	 */
 	@Test
 	public void checkNull() {
@@ -22,7 +21,7 @@ public class ContinentTest {
 	}
 	
 	/**
-	 * Check id of continent
+	 * Checks id of continent
 	 */
 	@Test
 	public void nameTest() {
@@ -30,7 +29,7 @@ public class ContinentTest {
 	}
 	
 	/**
-	 * Check control value of continent
+	 * Checks control value of continent
 	 */
 	@Test
 	public void controlValueTest() {
@@ -38,7 +37,7 @@ public class ContinentTest {
 	}
 
 	/**
-	 * Check if countries are added
+	 * Checks if countries are added
 	 */
 	@Test
 	public void addContriesTest() {
@@ -49,7 +48,7 @@ public class ContinentTest {
 	}
 	
 	/**
-	 * Check if countries are removed
+	 * Checks if countries are removed
 	 */
 	@Test
 	public void removeContriesTest() {
