@@ -3,8 +3,6 @@ package entities;
 import java.util.HashSet;
 import java.util.Set;
 
-import java.util.stream.Collectors;
-
 /**
  * Country in a Map
  *
@@ -46,7 +44,7 @@ public class Country {
 	
 	/**
 	 * method to place number of armies
-	 * @param p_armiesNumber armies to be added
+	 * @param p_armiesNumber number of armies to be added
 	 */
 	public void placeArmies(int p_armiesNumber) {
 		d_armiesPresent += p_armiesNumber;
@@ -54,7 +52,7 @@ public class Country {
 	
 	/**
 	 * method to remove armies from country 
-	 * @param p_armiesNumber armies to be removed
+	 * @param p_armiesNumber number of armies to be removed
 	 */
 	public void removeArmies(int p_armiesNumber) {
 		d_armiesPresent -= p_armiesNumber;
@@ -62,7 +60,7 @@ public class Country {
 
 	/**
 	 * method to get id of country
-	 * @return d_id country id
+	 * @return d_id Id of a country
 	 */
 	public int getId() {
 		return d_id;
@@ -70,7 +68,7 @@ public class Country {
 
 
 	/**
-	 * method to get neighbouring country in form of set
+	 * method to get neighbouring countries in form of set
 	 * @return d_neighbourCountries set of neighbouring countries 
 	 */
 	public Set<Country> getNeighbourCountries() {
