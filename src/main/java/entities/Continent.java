@@ -41,8 +41,8 @@ public class Continent {
 	}
 	
 	/**
-	 * Get name of the continent
-	 * @return d_id name of continent
+	 * method to get id of the continent
+	 * @return d_id Id of continent
 	 */
 	public int getId() {
 		return d_id;
