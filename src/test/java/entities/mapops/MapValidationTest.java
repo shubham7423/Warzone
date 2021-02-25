@@ -32,6 +32,12 @@ public class MapValidationTest {
 		MapValidation l_mapValidation1 = new MapValidation(l_gameMap1);
 		l_mapValidation1.validate();
 		assertFalse(l_mapValidation1.getMapValidationStatus());
+	
+		GameMap l_gameMap2 = new GameMap();
+		l_gameMap1.loadMap("EmptyMap.map");
+		MapValidation l_mapValidation2 = new MapValidation(l_gameMap2);
+		l_mapValidation2.validate();
+		assertFalse(l_mapValidation2.getMapValidationStatus());
 	}
 	
 	/**
