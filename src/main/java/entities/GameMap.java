@@ -2,9 +2,6 @@ package entities;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Set;
-import java.util.Map;
-import java.util.HashSet;
 import java.util.stream.Collectors;
 
 import dnl.utils.text.table.TextTable;
@@ -26,7 +23,6 @@ import entities.mapops.MapValidation;
 public class GameMap {
 	private HashMap<Integer, Continent> d_continents;
 	private HashMap<Integer, Country> d_countries;
-	private HashMap<String, Player> d_players;
 	private boolean d_isValid;
 	
 	/**
@@ -35,7 +31,6 @@ public class GameMap {
 	public GameMap() {
 		d_continents = new HashMap<>();
 		d_countries = new HashMap<>();
-		d_players = new HashMap<>();
 		d_isValid = false;
 	}
 	
@@ -238,7 +233,7 @@ public class GameMap {
 	/**
 	 * method to fill country data for each country
 	 * @param p_country country for which data is to be present
-	 * @param p_isEdit true if showmap called in edit phase, false if called in gameplay phase
+	 * @param p_isEdit true if showMap called in edit phase, false if called in gameplay phase
 	 * @return array of data of the specific country i.e. Country name, Continent Name and it's neighbors
 	 */
 	public String[] fillCountryData(Country p_country, boolean p_isEdit)
@@ -268,15 +263,15 @@ public class GameMap {
 	
 	/**
 	 * method to write map to file
-	 * @param p_fileNam File name
+	 * @param p_fileName File name
 	 * @return Positive response if map written to file successfully
 	 */
-	public String saveMap(String p_fileNam) {
+	public String saveMap(String p_fileName) {
 		WriteMap l_writeMap = new WriteMap(this);
-		if(!l_writeMap.writeFullMap(p_fileNam)) {
-			return String.format("Map file \"%s\" cannot be saved", p_fileNam);
+		if(!l_writeMap.writeFullMap(p_fileName)) {
+			return String.format("Map file \"%s\" cannot be saved", p_fileName);
 		}
-		return String.format("Map file \"%s\" saved successfully", p_fileNam);
+		return String.format("Map file \"%s\" saved successfully", p_fileName);
 	}
 	
 	/**
@@ -291,8 +286,8 @@ public class GameMap {
 	}
 	
 	/**
-	 * This will get the status of map validation in the form of boolean.
-	 * @return boolean if the map is valid or not.
+	 * method to get the status of map validation in the boolean format
+	 * @return d_isValid boolean whether the map is valid or not.
 	 */
 	public boolean getValidateStatus() {
 		return d_isValid;
@@ -307,14 +302,10 @@ public class GameMap {
 	}
 	
 	/**
-	 * method to return all the countries
+	 * method that returns all the countries
 	 * @return d_countries Set of countries
 	 */
 	public HashMap<Integer, Country> getCountries() {
 		return d_countries;
 	}
-	
-	
-	
-	
 }

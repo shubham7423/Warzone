@@ -17,7 +17,7 @@ public class MapValidationTest {
 	GameMap d_gameMap1 = new GameMap();
 	
 	/**
-	 * This will validate "getMapValidationStatus" function which will return boolean value
+	 * This test will validate "getMapValidationStatus" function which will return boolean value
 	 */
 	@Test
 	public void testGetMapValidationStatus() {
@@ -35,7 +35,7 @@ public class MapValidationTest {
 	}
 	
 	/**
-	 * This will validate "validate" function with different maps provided 
+	 * This test will validate "validate" function with different maps provided 
 	 * which outputs the string value based on multiple conditions of map being loaded.
 	 */
 	@Test
@@ -52,7 +52,7 @@ public class MapValidationTest {
 	}
 	
 	/**
-	 * This will validate "isConnected" function with different maps provided in resource
+	 * This test will validate "isConnected" function with different maps provided in resource
 	 */
 	@Test
 	public void testisConnected() {
@@ -76,7 +76,7 @@ public class MapValidationTest {
 	}
 	
 	/**
-	 * This will validate "countryIterator" function with different maps provided in resource 
+	 * This test will validate "countryIterator" function with different maps provided in resource 
 	 */
 	@Test
 	public void testCountryIterator() {

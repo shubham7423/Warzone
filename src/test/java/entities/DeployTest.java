@@ -10,7 +10,6 @@ import entities.orders.Deploy;
 
 /**
  * Test to check that deploy command works perfectly
- * @author shubhampatel
  *
  */
 public class DeployTest {
@@ -53,7 +52,7 @@ public class DeployTest {
 	}
 	
 	/**
-	 * Player tries to deploy armies to country which player doesn't possess, rejected command with errror message
+	 * Test where player tries to deploy armies to country which player doesn't possess, rejected command with error message
 	 */
 	@Test
 	public void testExecuteOrder3() {

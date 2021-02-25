@@ -6,7 +6,7 @@ import org.junit.Test;
 
 /**
  * 
- * Test Country class
+ * Tests Country class
  *
  */
 public class CountryTest {
@@ -15,7 +15,7 @@ public class CountryTest {
 	Country d_country = new Country(1, d_Continent);
 
 	/**
-	 * Check if country object is null. 
+	 * Checks if country object is null. 
 	 */
 	@Test
 	public void nullTest() {
@@ -23,7 +23,7 @@ public class CountryTest {
 	}
 	
 	/**
-	 * Check id of country
+	 * Checks id of country
 	 */
 	@Test
 	public void nameTest() {
@@ -36,7 +36,7 @@ public class CountryTest {
 	}
 	
 	/**
-	 * Check if correct number of armies are placed
+	 * Checks if correct number of armies are placed
 	 */
 	@Test
 	public void placeArmiesTest() {
@@ -45,7 +45,7 @@ public class CountryTest {
 	}
 	
 	/**
-	 * Check if correct number of armies are removed
+	 * Checks if correct number of armies are removed
 	 */
 	@Test
 	public void removeArmiesTest() {
@@ -55,7 +55,7 @@ public class CountryTest {
 	}
 	
 	/**
-	 * Check if neighbours are added
+	 * Checks if neighbours are added
 	 */
 	@Test
 	public void addNeighbourTest() {
@@ -71,7 +71,7 @@ public class CountryTest {
 	}
 	
 	/**
-	 * Check if neighbours are removed
+	 * Checks if neighbours are removed
 	 */
 	@Test
 	public void removeNeighbourTest() {

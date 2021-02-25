@@ -14,7 +14,7 @@ public class CommandsTest {
 
 	/**
 	 * main executeCommand test
-	 * Checks whether any command is executed
+	 * Checks whether any command is executed or not
 	 */
 	@Test
 	public void testExecuteCommand() {
@@ -25,7 +25,7 @@ public class CommandsTest {
 
 	/**
 	 * Test to check loaded map
-	 * Checks that a map is properly loaded
+	 * Checks if a map is properly loaded
 	 * Checked with a file with correct name, incorrect name and file without .map as extension
 	 */
 	@Test
@@ -44,7 +44,7 @@ public class CommandsTest {
 	}
 
 	/**
-	 * Test to check addition deletion of continents
+	 * Test to check addition and deletion of continents
 	 * Checked by adding a correct continent id and, continent with id already present in map
 	 * Checked by removing a continent and also checked that correct results are obtained by removing continent id which is not present in map.
 	 */
@@ -71,7 +71,7 @@ public class CommandsTest {
 	}
 
 	/**
-	 * Test to check addition deletion of countries
+	 * Test to check addition and deletion of countries
 	 * Checked by adding a correct country id and, country with id already present in map
 	 * Checked by removing a country and also checked that correct results are obtained by removing country id which is not present in map.
 	 */
@@ -100,7 +100,7 @@ public class CommandsTest {
 	}
 
 	/**
-	 * Test to check addition deletion of neighbours
+	 * Test to check addition and deletion of neighbours
 	 * Checked by adding a country to neighbour list of another country, and also checked that correct results were obtained by adding already added country to neighbour
 	 * Checked that countries are correctly removed from source country neighbour list and correct results are obtained when a country is not a neighbour of source and is tried to remove
 	 */

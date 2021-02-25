@@ -11,7 +11,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import entities.Continent;
 import entities.GameMap;
 import entities.Player;
 

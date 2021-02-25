@@ -31,8 +31,8 @@ public class MapValidation {
 	/**
 	 * This method is used to get the instant status of map validation 
 	 * in the form of boolean. True signifies that the map validation is successful 
-	 * and vice versa. (Do not call this method before calling the validate method)
-	 * @return instant status of the validated map in the form of boolean.
+	 * whereas false signifies it wasn't. (Do not call this method before calling the validate method)
+	 * @return instant status of the validated map in the boolean format
 	 */
 	public boolean getMapValidationStatus() {
 		if(d_flag) {			
@@ -44,7 +44,7 @@ public class MapValidation {
 	}
 	
 	/**
-	 * This is the prime function to validate whole graph
+	 * This is the prime method to validate whole graph
 	 * it will show the status of validation of map
 	 * @return the validation result to print based on all the validation criteria like connected countries, connected continent, empty continents.
 	 */
@@ -84,7 +84,7 @@ public class MapValidation {
 
 	/**
 	 * method to gather information about all types of validation 
-	 * @return false if all the validation of the Map are successful or not. If everything in map is correct,
+	 * @return false if all the validation of the Map isn't successful. If everything in map is correct,
 	 * then it will return true
 	 */
 	public boolean checkAll() {
@@ -112,7 +112,7 @@ public class MapValidation {
 	 * starting from any one country
 	 * @param p_firstCountry it starts traversing through one country to check the connection of graph
 	 * @param p_countryIds it compares with this parameter if all the countries are traversed
-	 * @return returns the status if map is connected or not. Returns true if connected.
+	 * @return returns the status whether map is connected or not. Returns true if connected.
 	 */
 	public boolean isConnected(Country p_firstCountry, Set<Integer> p_countryIds) {
 		Set<Integer> l_countryIdsVisited = new HashSet<Integer>();

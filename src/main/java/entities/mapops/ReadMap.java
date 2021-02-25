@@ -31,7 +31,7 @@ public class ReadMap {
 	}
 
 	/**
-	 * This will return the gameMap object of the map file.
+	 * method to return the gameMap object of the map file.
 	 * @return gameMap object.
 	 */
 	public GameMap getGameMap() {
@@ -39,7 +39,7 @@ public class ReadMap {
 	}
 	
 	/**
-	 * Read file and feed data to GameMap object
+	 * method to read a file and feed data to GameMap object
 	 * @param p_filePath path to .map file
 	 * @return true if map loaded successfully else false
 	 */
@@ -116,16 +116,16 @@ public class ReadMap {
 	}
 	
 	/**
-	 * method to get continent ids
-	 * @return Set of continent ids read
+	 * method to get continents ids
+	 * @return Set of continents ids read
 	 */
 	public Set<Integer> getContinentIds() {
 		return d_gameMap.getContinents().keySet();
 	}
 	
 	/**
-	 * method to get countries name
-	 * @return Set of countries id read
+	 * method to get countries ids
+	 * @return Set of countries ids read
 	 */
 	public Set<Integer> getCountriesIds() {
 		return d_gameMap.getCountries().keySet();

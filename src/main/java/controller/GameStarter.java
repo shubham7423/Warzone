@@ -1,16 +1,9 @@
 package controller;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
-
-
-import org.apache.commons.digester.SetNestedPropertiesRule;
-
 
 import entities.Continent;
 import entities.Country;
@@ -27,8 +20,8 @@ import entities.orders.ShowMap;
 public class GameStarter {
 	
 	GameMap d_gameMap = new GameMap();
-	private boolean is_loadedMap = false;
-	private boolean is_editMap = false;
+	private boolean d_isLoadedMap = false;
+	private boolean d_isEditMap = false;
 	private boolean d_isGamePhase = false;
 	private HashMap<String, Player> d_players = new HashMap<>();
 	private ArrayList<String> d_playerName =  new ArrayList<>(); 
@@ -36,12 +29,12 @@ public class GameStarter {
 	
 	/**
 	 * method to edit map, it creates new file when specified file name does not exists else loads existing map file.
-	 * @param p_fileName file name
+	 * @param p_fileName Name of file
 	 * @return String which states completion of the operation
 	 */
 	public String editMap(String p_fileName) {
 		String l_result;
-		if (!is_editMap && !is_loadedMap) {
+		if (!d_isEditMap && !d_isLoadedMap) {
 			this.loadMap(p_fileName, true);
 			if(!Files.exists(Paths.get(Paths.get("").toAbsolutePath().toString() + "/maps/" + p_fileName))) {
 				try {
@@ -52,8 +45,8 @@ public class GameStarter {
 				}
 			}
 			l_result = String.format("Map \"%s\" ready for edit", p_fileName);
-			is_editMap = true;
-			is_loadedMap = false;
+			d_isEditMap = true;
+			d_isLoadedMap = false;
 		}
 		else {
 			l_result = String.format("Edit map not available");
@@ -67,12 +60,12 @@ public class GameStarter {
 	
 	/**
 	 * method to load a map
-	 * @param p_fileName Name of map file 
+	 * @param p_fileName Name of file 
 	 * @return loaded map(responses positive or negative)
 	 */
 	public String loadMap(String p_fileName, boolean p_isEdit) {
 		String l_result;
-		if(!is_editMap) {
+		if(!d_isEditMap) {
 			l_result = d_gameMap.loadMap(p_fileName);
 			if(l_result.equals(String.format("Map \"%s\" cannot be loaded", p_fileName))) {
 				return l_result;
@@ -86,7 +79,7 @@ public class GameStarter {
 					return l_result;
 				}
 			}
-			is_loadedMap = true;
+			d_isLoadedMap = true;
 		}
 		else {
 			l_result = String.format("Cannot be loaded map when map is edited");
@@ -101,7 +94,7 @@ public class GameStarter {
 	 */
 	public String editContinent(String[] p_commandSplitted) {
 		String l_result;
-		if(is_editMap && !is_loadedMap) {
+		if(d_isEditMap && !d_isLoadedMap) {
 			if (p_commandSplitted[0].equals("-add")) {
 				l_result = d_gameMap.addContinent(Integer.parseInt(p_commandSplitted[1]), Integer.parseInt(p_commandSplitted[2]));
 			}
@@ -122,7 +115,7 @@ public class GameStarter {
 	 */
 	public String editCountry(String[] p_commandSplitted) {
 		String l_result;
-		if(is_editMap && !is_loadedMap) {
+		if(d_isEditMap && !d_isLoadedMap) {
 			if (p_commandSplitted[0].equals("-add")) {
 				l_result = d_gameMap.addCountry(Integer.parseInt(p_commandSplitted[1]), Integer.parseInt(p_commandSplitted[2]));
 			}
@@ -137,13 +130,13 @@ public class GameStarter {
 	}
 	
 	/**
-	 * edit neighbors
+	 * method to edit neighbors of a specific country
 	 * @param p_commandSplitted splitted commands
 	 * @return l_result shows whether neighbors countries to a given country are added or removed
 	 */
 	public String editNeighbour(String[] p_commandSplitted) {
 		String l_result;
-		if(is_editMap && !is_loadedMap) {
+		if(d_isEditMap && !d_isLoadedMap) {
 			if (p_commandSplitted[0].equals("-add")) {
 				l_result = d_gameMap.addNeighbour(Integer.parseInt(p_commandSplitted[1]), Integer.parseInt(p_commandSplitted[2]));
 			}
@@ -164,7 +157,7 @@ public class GameStarter {
 	 */
 	public String saveMap(String p_fileName) {
 		String l_result;
-		if(is_editMap && !is_loadedMap) {
+		if(d_isEditMap && !d_isLoadedMap) {
 			String l_validMsg = d_gameMap.validateMap();
 			Boolean l_validateResult = d_gameMap.getValidateStatus();
 			if(!l_validateResult) {
@@ -173,8 +166,8 @@ public class GameStarter {
 			}
 			
 			l_result = d_gameMap.saveMap(p_fileName);
-			is_loadedMap = false;
-			is_editMap = false;
+			d_isLoadedMap = false;
+			d_isEditMap = false;
 		}
 		else {
 			l_result = String.format("Cannot save map");
@@ -186,11 +179,11 @@ public class GameStarter {
 	/**
 	 * method to add players to the game
 	 * @param p_commandSplitted splitted commands
-	 * @return shows whether players are added or removed
+	 * @return l_result shows whether players are added or removed
 	 */
 	public String gamePlayer(String[] p_commandSplitted) {
 		String l_result;
-		if(!is_editMap && is_loadedMap) {
+		if(!d_isEditMap && d_isLoadedMap) {
 			if (p_commandSplitted[0].equals("-add")) {
 				l_result = addPlayer(p_commandSplitted[1]);
 			}
@@ -205,7 +198,7 @@ public class GameStarter {
 	}
 	
 	/**
-	 * add a player to the game
+	 * method to add a player to the game
 	 * @param p_playerName name of the player
 	 * @return Positive response if player is added successfully
 	 */
@@ -219,7 +212,7 @@ public class GameStarter {
 	}
 	
 	/**
-	 * remove a player to the game
+	 * method to remove a player from the game
 	 * @param p_playerName name of the player
 	 * @return Positive response if player is removed successfully
 	 */
@@ -379,7 +372,7 @@ public class GameStarter {
 	 * method to show map to player, map can be shown in edit phase and game phase
 	 * @return map in string format
 	 */
-	public String showmap() {
+	public String showMap() {
 		if(!d_isGamePhase) {
 			return d_gameMap.showMapEdit();
 		}
