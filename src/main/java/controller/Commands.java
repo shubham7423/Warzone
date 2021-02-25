@@ -325,7 +325,7 @@ public class Commands {
 	 * @return map in string format
 	 */
 	public String showmap() {
-		return d_gameStarter.showmap();
+		return d_gameStarter.showMap();
 	}
 }
 
