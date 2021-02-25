@@ -10,6 +10,7 @@ public class ShowMap implements Orders {
 
 	/**
 	 * method to execute showMap order
+	 * 
 	 * @param p_game object calling this function
 	 * @return map in string format
 	 */
