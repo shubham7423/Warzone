@@ -1,7 +1,5 @@
 package controller;
 
-import java.util.Scanner;
-
 /**
  * Class to execute user commands
  *
@@ -66,7 +64,7 @@ public class Commands {
 	}
 	
 	/**
-	 * method to load a specific maps as entered by the user
+	 * method to load a specific map as entered by the user
 	 * @param p_splittedCommand splitted commands to extract sub parts
 	 * @return loaded map(responses positive or negative)
 	 */
@@ -300,7 +298,7 @@ public class Commands {
 	}
 	
 	/**
-	 * command to validate the map
+	 * method to validate the map
 	 * @param p_splittedCommand command for map validation
 	 * @return result of validating a map
 	 */
@@ -311,7 +309,7 @@ public class Commands {
 	}
 	
 	/**
-	 * command to randomly assign countries to players and start game phase
+	 * method to randomly assign countries to players and start game phase
 	 * @param p_splittedCommand command to assign countries
 	 * @return shows message that game phase is completed
 	 */
@@ -323,7 +321,7 @@ public class Commands {
 	}
 	
 	/**
-	 * command to show a map to user
+	 * method to show a map to user
 	 * @return map in string format
 	 */
 	public String showmap() {
