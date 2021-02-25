@@ -15,9 +15,10 @@ import entities.orders.Deploy;
 public class DeployTest {
 
 	GameEngine d_game;
-	
+
 	/**
-	 * Setup context for test to happen, object of game is created and player and countries are setup
+	 * Setup context for test to happen, object of game is created and player and
+	 * countries are setup
 	 */
 	@Before
 	public void setUp() {
@@ -28,9 +29,9 @@ public class DeployTest {
 		d_game.getPlayers().get("Shubham").addCountry(d_game.getGameMap().getCountries().get(1));
 		d_game.getPlayers().get("Shubham").setNumberOfArmies();
 	}
-	
+
 	/**
-	 * Test where player armies are placed on country occupied by player 
+	 * Test where player armies are placed on country occupied by player
 	 */
 	@Test
 	public void testExecuteOrder1() {
@@ -39,9 +40,10 @@ public class DeployTest {
 		Deploy l_Deploy = new Deploy(d_game.getPlayers().get("Shubham"), l_country, l_armies);
 		assertEquals("Player \"Shubham\" deployed \"2\" armies to country \"1\"", l_Deploy.executeOrder(d_game));
 	}
-	
+
 	/**
-	 * Test where armies greater than player have are tried to placed on a country, rejected command with errror message
+	 * Test where armies greater than player have are tried to placed on a country,
+	 * rejected command with errror message
 	 */
 	@Test
 	public void testExecuteOrder2() {
@@ -50,9 +52,10 @@ public class DeployTest {
 		Deploy l_Deploy = new Deploy(d_game.getPlayers().get("Shubham"), l_country, l_armies);
 		assertEquals("Player \"Shubham\" does not enough armies", l_Deploy.executeOrder(d_game));
 	}
-	
+
 	/**
-	 * Test where player tries to deploy armies to country which player doesn't possess, rejected command with error message
+	 * Test where player tries to deploy armies to country which player doesn't
+	 * possess, rejected command with error message
 	 */
 	@Test
 	public void testExecuteOrder3() {

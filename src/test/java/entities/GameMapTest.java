@@ -10,7 +10,7 @@ import org.junit.Test;
 public class GameMapTest {
 
 	final GameMap d_map = new GameMap();
-	
+
 	/**
 	 * Tests continent addition
 	 */
@@ -56,7 +56,7 @@ public class GameMapTest {
 		d_map.removeCountry(2);
 		assertEquals(1, d_map.getCountries().size());
 		assertFalse(d_map.getCountries().keySet().contains(2));
-		
+
 		d_map.addCountry(2, 1);
 		d_map.addCountry(3, 1);
 		d_map.addNeighbor(2, 3);
@@ -91,7 +91,7 @@ public class GameMapTest {
 		assertEquals(0, d_map.getCountries().get(1).getNeighborCountries().size());
 		assertEquals("Country \"2\" removed from neighbors of \"1\"", l_resultString);
 	}
-	
+
 	/**
 	 * Tests load map
 	 */
