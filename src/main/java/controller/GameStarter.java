@@ -54,6 +54,11 @@ public class GameStarter {
 		return l_result;
 	}
 	
+	/**
+	 * used to load map in game phase 
+	 * @param p_fileName Name of the file
+	 * @return loaded map(responses positive or negative)
+	 */
 	public String loadMap(String p_fileName) {
 		return loadMap(p_fileName, false);
 	}
@@ -61,6 +66,7 @@ public class GameStarter {
 	/**
 	 * method to load a map
 	 * @param p_fileName Name of file 
+	 * @param p_isEdit true if loadmap is called in edit phase 
 	 * @return loaded map(responses positive or negative)
 	 */
 	public String loadMap(String p_fileName, boolean p_isEdit) {
