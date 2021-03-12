@@ -35,10 +35,20 @@ public class PostEdit extends EditPhase {
 	}
 
 	@Override
-	public String saveMap() {
-		// TODO Auto-generated method stub
-		return new String();
+	public String saveMap(String p_fileName) {
+		String l_result;
 		
+			String l_validMsg = d_gameEngine.getGameMap().validateMap();
+			Boolean l_validateResult = d_gameEngine.getGameMap().getValidateStatus();
+			if (!l_validateResult) {
+				l_result = l_validMsg;
+				return l_result;
+			}
+
+			l_result = d_gameEngine.getGameMap().saveMap(p_fileName);
+			
+		
+		return l_result;
 	}
 
 }

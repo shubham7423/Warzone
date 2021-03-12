@@ -40,9 +40,9 @@ public class GameStarter {
 			l_result = editMap(p_splittedCommand);
 			break;
 
-//		case "savemap":
-//			l_result = saveMap(p_splittedCommand);
-//			break;
+		case "savemap":
+			l_result = saveMap(p_splittedCommand);
+			break;
 
 		case "gameplayer":
 			l_result = gamePlayer(p_splittedCommand);
@@ -234,6 +234,19 @@ public class GameStarter {
 			}
 		}
 		return l_result;
+	}
+	
+	public String saveMap(String[] p_splittedCommand) {
+		if (p_splittedCommand.length < 2) {
+			return "Please enter valid command";
+		}
+		if (p_splittedCommand[1].split("\\.").length <= 1) {
+			return "File extension should be .map";
+		}
+		if (!p_splittedCommand[1].split("\\.")[1].equals("map")) {
+			return "File extension should be .map";
+		}
+		return d_phase.saveMap(p_splittedCommand[1]);
 	}
 
 	

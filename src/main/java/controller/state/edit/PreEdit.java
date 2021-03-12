@@ -74,7 +74,7 @@ public class PreEdit extends EditPhase {
 		}
 
 	@Override
-	public String saveMap() {
+	public String saveMap(String p_fileName) {
 		return printInvalidCommandMessage();
 
 	}

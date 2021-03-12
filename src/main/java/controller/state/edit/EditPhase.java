@@ -19,7 +19,7 @@ public abstract class EditPhase extends Phase {
 	
 	abstract public String editNeighbor(String[] p_commandSplitted);
 	
-	abstract public String saveMap();
+	abstract public String saveMap(String p_fileName);
 	
 	public String validateMap() {
 		return new String();

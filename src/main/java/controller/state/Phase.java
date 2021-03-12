@@ -21,7 +21,7 @@ public abstract class Phase {
 	
 	abstract public String editNeighbor(String[] p_commandSplitted);
 	
-	abstract public String saveMap();
+	abstract public String saveMap(String p_fileName);
 	
 	abstract public String gamePlayer(String[] p_commandSplitted);
 	
