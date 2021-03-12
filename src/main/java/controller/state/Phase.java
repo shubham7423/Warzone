@@ -15,11 +15,11 @@ public abstract class Phase {
 
 	abstract public String loadMap();
 	
-	abstract public String editContinent();
+	abstract public String editContinent(String[] p_commandSplitted);
 	
-	abstract public String editCountry();
+	abstract public String editCountry(String[] p_commandSplitted);
 	
-	abstract public String editNeighbor();
+	abstract public String editNeighbor(String[] p_commandSplitted);
 	
 	abstract public String saveMap();
 	

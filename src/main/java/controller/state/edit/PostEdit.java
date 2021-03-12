@@ -17,19 +17,19 @@ public class PostEdit extends EditPhase {
 	}
 
 	@Override
-	public String editContinent() {
+	public String editContinent(String[] p_commandSplitted) {
 		return printInvalidCommandMessage();
 		
 	}
 
 	@Override
-	public String editCountry() {
+	public String editCountry(String[] p_commandSplitted) {
 		return printInvalidCommandMessage();
 		
 	}
 
 	@Override
-	public String editNeighbor() {
+	public String editNeighbor(String[] p_commandSplitted) {
 		return printInvalidCommandMessage();
 		
 	}

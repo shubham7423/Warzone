@@ -13,11 +13,11 @@ public abstract class EditPhase extends Phase {
 	
 	abstract public String editMap(String p_fileName);
 	
-	abstract public String editContinent();
+	abstract public String editContinent(String[] p_commandSplitted);
 	
-	abstract public String editCountry();
+	abstract public String editCountry(String[] p_commandSplitted);
 	
-	abstract public String editNeighbor();
+	abstract public String editNeighbor(String[] p_commandSplitted);
 	
 	abstract public String saveMap();
 	

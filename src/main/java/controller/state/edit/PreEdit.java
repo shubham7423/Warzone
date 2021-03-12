@@ -35,21 +35,26 @@ public class PreEdit extends EditPhase {
 	}
 
 	@Override
-	public String editContinent() {
+	public String editContinent(String[] p_commandSplitted) {
+		String l_result;
+			if (p_commandSplitted[0].equals("-add")) {
+				l_result = d_gameEngine.getGameMap().addContinent(Integer.parseInt(p_commandSplitted[1]),
+						Integer.parseInt(p_commandSplitted[2]));
+			} else {
+				l_result = d_gameEngine.getGameMap().removeContinent(Integer.parseInt(p_commandSplitted[1]));
+			}
+		return l_result;
+	}
+
+	@Override
+	public String editCountry(String[] p_commandSplitted) {
 		// TODO Auto-generated method stub
 		return new String();
 
 	}
 
 	@Override
-	public String editCountry() {
-		// TODO Auto-generated method stub
-		return new String();
-
-	}
-
-	@Override
-	public String editNeighbor() {
+	public String editNeighbor(String[] p_commandSplitted) {
 		// TODO Auto-generated method stub
 		return new String();
 
