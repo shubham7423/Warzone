@@ -1,10 +1,11 @@
 package controller.state.edit;
 
 import controller.GameEngine;
+import controller.GameStarter;
 
 public class PostEdit extends EditPhase {
 
-	PostEdit(GameEngine p_gameEngine) {
+	PostEdit(GameStarter p_gameEngine) {
 		super(p_gameEngine);
 		// TODO Auto-generated constructor stub
 	}

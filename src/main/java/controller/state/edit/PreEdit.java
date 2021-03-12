@@ -5,12 +5,13 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import controller.GameEngine;
+import controller.GameStarter;
 import entities.GameMap;
 
 public class PreEdit extends EditPhase {
 	GameMap d_gameMap = new GameMap();
 	
-	PreEdit(GameEngine p_gameEngine) {
+	public PreEdit(GameStarter p_gameEngine) {
 		super(p_gameEngine);
 		// TODO Auto-generated constructor stub
 	}

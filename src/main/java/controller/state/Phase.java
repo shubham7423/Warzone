@@ -2,11 +2,12 @@ package controller.state;
 import entities.GameMap;
 
 import controller.GameEngine;
+import controller.GameStarter;
 
 public abstract class Phase {
-	private GameEngine d_gameEngine;
+	private GameStarter d_gameEngine;
 	
-	public Phase(GameEngine p_gameEngine){
+	public Phase(GameStarter p_gameEngine){
 		d_gameEngine = p_gameEngine;
 	}
 	
@@ -22,7 +23,7 @@ public abstract class Phase {
 	
 	abstract public String saveMap();
 	
-	abstract public String gamePlayer();
+	abstract public String gamePlayer(String[] p_commandSplitted);
 	
 //	abstract public void addPlayer();
 	

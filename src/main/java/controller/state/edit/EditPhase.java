@@ -1,11 +1,12 @@
 package controller.state.edit;
 
 import controller.GameEngine;
+import controller.GameStarter;
 import controller.state.Phase;
 
 public abstract class EditPhase extends Phase {
 
-	EditPhase(GameEngine p_gameEngine) {
+	public EditPhase(GameStarter p_gameEngine) {
 		super(p_gameEngine);
 		
 	}
@@ -36,7 +37,7 @@ public abstract class EditPhase extends Phase {
 		return printInvalidCommandMessage();
 	}
 	
-	public String gamePlayer() {
+	public String gamePlayer(String[] p_commandSplitted) {
 		return printInvalidCommandMessage();
 	}
 	
