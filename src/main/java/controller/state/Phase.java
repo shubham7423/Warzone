@@ -6,41 +6,41 @@ import controller.GameEngine;
 public abstract class Phase {
 	private GameEngine d_gameEngine;
 	
-	Phase(GameEngine p_gameEngine){
+	public Phase(GameEngine p_gameEngine){
 		d_gameEngine = p_gameEngine;
 	}
 	
-	abstract public String editMap();
+	abstract public void editMap();
 
-	abstract public String loadMap();
+	abstract public void loadMap();
 	
-	abstract public String editContinent();
+	abstract public void editContinent();
 	
-	abstract public String editCountry();
+	abstract public void editCountry();
 	
-	abstract public String editNeighbor();
+	abstract public void editNeighbor();
 	
-	abstract public String saveMap();
+	abstract public void saveMap();
 	
-	abstract public String gamePlayer();
+	abstract public void gamePlayer();
 	
-	abstract public String addPlayer();
+//	abstract public void addPlayer();
 	
-	abstract public String removePlayer();
+//	abstract public void removePlayer();
 	
-	abstract public GameMap getGameMap();
+//	abstract public GameMap getGameMap();
 	
-	abstract public String validateMap();
+	abstract public void validateMap();
 	
 	abstract public void deployPhase();
 	
-	abstract public String assignCountries();
+	abstract public void assignCountries();
 	
-	abstract public void checkContinentOwnership();
+//	abstract public void checkContinentOwnership();
 	
-	abstract public void assignArmies();
+//	abstract public void assignArmies();
 	
-	abstract public String showMap();
+	abstract public void showMap();
 	
 	public void printInvalidCommandMessage() {
 		System.out.println("Invalid command in state " + this.getClass().getSimpleName() );
