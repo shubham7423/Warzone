@@ -25,9 +25,10 @@ public abstract class EditPhase extends Phase {
 		return new String();
 	}
 	
-	public String showMap() {
-		return new String();
+	public String showMap() {		
+		return d_gameEngine.getGameMap().showMapEdit();
 	}
+
 	
 	public String deployPhase() {
 		return printInvalidCommandMessage();

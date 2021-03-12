@@ -5,7 +5,7 @@ import controller.GameEngine;
 import controller.GameStarter;
 
 public abstract class Phase {
-	private GameStarter d_gameEngine;
+	public GameStarter d_gameEngine;
 	
 	public Phase(GameStarter p_gameEngine){
 		d_gameEngine = p_gameEngine;

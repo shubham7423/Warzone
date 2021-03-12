@@ -9,7 +9,6 @@ import controller.GameStarter;
 import entities.GameMap;
 
 public class PreEdit extends EditPhase {
-	GameMap d_gameMap = new GameMap();
 	
 	public PreEdit(GameStarter p_gameEngine) {
 		super(p_gameEngine);
@@ -19,7 +18,7 @@ public class PreEdit extends EditPhase {
 	@Override
 	public String editMap(String p_fileName) {
 		String l_result;
-		l_result = d_gameMap.loadMap(p_fileName);
+		l_result = d_gameEngine.getGameMap().loadMap(p_fileName);
 		if (l_result.equals(String.format("Map \"%s\" cannot be loaded", p_fileName))) {
 			return l_result;
 		}

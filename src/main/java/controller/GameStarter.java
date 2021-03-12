@@ -3,9 +3,15 @@ package controller;
 
 import controller.state.Phase;
 import controller.state.edit.PreEdit;
+import entities.GameMap;
 
 public class GameStarter {
 	Phase d_phase;
+	GameMap d_gameMap = new GameMap();
+	
+	public GameMap getGameMap() {
+		return d_gameMap;
+	}
 	
 	public void setPhase(Phase p_phase) {
 		d_phase = p_phase;
@@ -50,9 +56,9 @@ public class GameStarter {
 //			l_result = validateMap(p_splittedCommand);
 //			break;
 //
-//		case "showmap":
-//			l_result = showmap();
-//			break;
+		case "showmap":
+			l_result = showmap();
+			break;
 
 		default:
 			l_result = "Command not found";
@@ -71,7 +77,6 @@ public class GameStarter {
 		if (!p_splittedCommand[1].split("\\.")[1].equals("map")) {
 			return "File extension should be .map";
 		}
-		System.out.print(p_splittedCommand[1]);
 		return d_phase.editMap(p_splittedCommand[1]);
 	}
 	
@@ -110,6 +115,10 @@ public class GameStarter {
 			}
 		}
 		return l_result;
+	}
+	
+	public String showmap() {
+		return d_phase.showMap();
 	}
 	
 	public static void main(String[] args) {
