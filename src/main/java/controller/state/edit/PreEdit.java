@@ -1,42 +1,65 @@
 package controller.state.edit;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import controller.GameEngine;
+import entities.GameMap;
 
 public class PreEdit extends EditPhase {
-
+	GameMap d_gameMap = new GameMap();
+	
 	PreEdit(GameEngine p_gameEngine) {
 		super(p_gameEngine);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public void editMap() {
-		// TODO Auto-generated method stub
-		
+	public String editMap(String p_fileName) {
+		String l_result;
+		l_result = d_gameMap.loadMap(p_fileName);
+		if (l_result.equals(String.format("Map \"%s\" cannot be loaded", p_fileName))) {
+			return l_result;
+		}
+		if (!Files.exists(Paths.get(Paths.get("").toAbsolutePath().toString() + "/maps/" + p_fileName))) {
+			try {
+				Files.createDirectories(Paths.get(Paths.get("").toAbsolutePath().toString() + "/maps"));
+				Files.createFile(Paths.get(Paths.get("").toAbsolutePath().toString() + "/maps/" + p_fileName));
+			} catch (IOException p_e) {
+				p_e.printStackTrace();
+			}
+		}
+		l_result = String.format("Map \"%s\" ready for edit", p_fileName);
+		return l_result;
 	}
 
 	@Override
-	public void editContinent() {
+	public String editContinent() {
 		// TODO Auto-generated method stub
-		
+		return new String();
+
 	}
 
 	@Override
-	public void editCountry() {
+	public String editCountry() {
 		// TODO Auto-generated method stub
-		
+		return new String();
+
 	}
 
 	@Override
-	public void editNeighbor() {
+	public String editNeighbor() {
 		// TODO Auto-generated method stub
-		
+		return new String();
+
 	}
 
 	@Override
-	public void saveMap() {
-		printInvalidCommandMessage();
-		
+	public String saveMap() {
+		return printInvalidCommandMessage();
+
 	}
+
 
 }

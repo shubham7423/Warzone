@@ -10,19 +10,19 @@ public abstract class Phase {
 		d_gameEngine = p_gameEngine;
 	}
 	
-	abstract public void editMap();
+	abstract public String editMap(String p_fileName);
 
-	abstract public void loadMap();
+	abstract public String loadMap();
 	
-	abstract public void editContinent();
+	abstract public String editContinent();
 	
-	abstract public void editCountry();
+	abstract public String editCountry();
 	
-	abstract public void editNeighbor();
+	abstract public String editNeighbor();
 	
-	abstract public void saveMap();
+	abstract public String saveMap();
 	
-	abstract public void gamePlayer();
+	abstract public String gamePlayer();
 	
 //	abstract public void addPlayer();
 	
@@ -30,19 +30,19 @@ public abstract class Phase {
 	
 //	abstract public GameMap getGameMap();
 	
-	abstract public void validateMap();
+	abstract public String validateMap();
 	
-	abstract public void deployPhase();
+	abstract public String deployPhase();
 	
-	abstract public void assignCountries();
+	abstract public String assignCountries();
 	
 //	abstract public void checkContinentOwnership();
 	
 //	abstract public void assignArmies();
 	
-	abstract public void showMap();
+	abstract public String showMap();
 	
-	public void printInvalidCommandMessage() {
-		System.out.println("Invalid command in state " + this.getClass().getSimpleName() );
+	public String printInvalidCommandMessage() {
+		return "Invalid command in state " + this.getClass().getSimpleName();
 	}
 }

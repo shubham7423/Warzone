@@ -10,32 +10,33 @@ public class PostEdit extends EditPhase {
 	}
 
 	@Override
-	public void editMap() {
-		printInvalidCommandMessage();
+	public String editMap(String p_fileName) {
+		return printInvalidCommandMessage();
 		
 	}
 
 	@Override
-	public void editContinent() {
-		printInvalidCommandMessage();
+	public String editContinent() {
+		return printInvalidCommandMessage();
 		
 	}
 
 	@Override
-	public void editCountry() {
-		printInvalidCommandMessage();
+	public String editCountry() {
+		return printInvalidCommandMessage();
 		
 	}
 
 	@Override
-	public void editNeighbor() {
-		printInvalidCommandMessage();
+	public String editNeighbor() {
+		return printInvalidCommandMessage();
 		
 	}
 
 	@Override
-	public void saveMap() {
+	public String saveMap() {
 		// TODO Auto-generated method stub
+		return new String();
 		
 	}
 

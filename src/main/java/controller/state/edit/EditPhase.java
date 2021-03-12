@@ -10,38 +10,38 @@ public abstract class EditPhase extends Phase {
 		
 	}
 	
-	abstract public void editMap();
+	abstract public String editMap(String p_fileName);
 	
-	abstract public void editContinent();
+	abstract public String editContinent();
 	
-	abstract public void editCountry();
+	abstract public String editCountry();
 	
-	abstract public void editNeighbor();
+	abstract public String editNeighbor();
 	
-	abstract public void saveMap();
+	abstract public String saveMap();
 	
-	public void validateMap() {
-		
+	public String validateMap() {
+		return new String();
 	}
 	
-	public void showMap() {
-		
+	public String showMap() {
+		return new String();
 	}
 	
-	public void deployPhase() {
-		printInvalidCommandMessage();
+	public String deployPhase() {
+		return printInvalidCommandMessage();
 	}
 	
-	public void assignCountries() {
-		printInvalidCommandMessage();
+	public String assignCountries() {
+		return printInvalidCommandMessage();
 	}
 	
-	public void gamePlayer() {
-		printInvalidCommandMessage();
+	public String gamePlayer() {
+		return printInvalidCommandMessage();
 	}
 	
-	public void loadMap() {
-		printInvalidCommandMessage();
+	public String loadMap() {
+		return printInvalidCommandMessage();
 		
 	}
 	
