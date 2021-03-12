@@ -204,7 +204,7 @@ public class GameStarter {
 		if (p_splittedCommand.length < 2) {
 			return "Please enter valid command";
 		}
-		while (l_i < p_splittedCommand.length) {
+		while (l_i < p_splittedCommand.length){
 			if (p_splittedCommand[l_i].equals("-add")) {
 				l_commandParts = new String[3];
 				l_commandParts[0] = p_splittedCommand[l_i];
