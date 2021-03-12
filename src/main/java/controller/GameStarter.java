@@ -28,13 +28,13 @@ public class GameStarter {
 			l_result = editContinent(p_splittedCommand);
 			break;
 //
-//		case "editcountry":
-//			l_result = editCountry(p_splittedCommand);
-//			break;
+		case "editcountry":
+			l_result = editCountry(p_splittedCommand);
+			break;
 //
-//		case "editneighbor":
-//			l_result = editNeighbor(p_splittedCommand);
-//			break;
+		case "editneighbor":
+			l_result = editNeighbor(p_splittedCommand);
+			break;
 
 		case "editmap":
 			l_result = editMap(p_splittedCommand);
@@ -158,6 +158,84 @@ public class GameStarter {
 		}
 		return l_result;
 	}
+	
+	public String editCountry(String[] p_splittedCommand) {
+		String[] l_commandParts;
+		String l_result = "";
+		int l_i = 1;
+		if (p_splittedCommand.length < 2) {
+			return "Please enter valid command";
+		}
+		while (l_i < p_splittedCommand.length) {
+			if (p_splittedCommand[l_i].equals("-add")) {
+				l_commandParts = new String[3];
+				l_commandParts[0] = p_splittedCommand[l_i];
+				l_commandParts[1] = p_splittedCommand[l_i + 1];
+				l_commandParts[2] = p_splittedCommand[l_i + 2];
+				if (!l_result.equals("")) {
+					l_result += "\n";
+				}
+				l_result += d_phase.editCountry(l_commandParts);
+				l_i = l_i + 3;
+			} else if (p_splittedCommand[l_i].equals("-remove")) {
+				l_commandParts = new String[2];
+				l_commandParts[0] = p_splittedCommand[l_i];
+				l_commandParts[1] = p_splittedCommand[l_i + 1];
+				if (!l_result.equals("")) {
+					l_result += "\n";
+				}
+				l_result += d_phase.editCountry(l_commandParts);
+				l_i = l_i + 2;
+			} else {
+				if (!l_result.equals("")) {
+					l_result += "\n";
+				}
+				l_result += "Command needs to have -add or -remove.";
+				l_i++;
+			}
+		}
+		return l_result;
+	}
+	
+	public String editNeighbor(String[] p_splittedCommand) {
+		String[] l_commandParts;
+		String l_result = "";
+		int l_i = 1;
+		if (p_splittedCommand.length < 2) {
+			return "Please enter valid command";
+		}
+		while (l_i < p_splittedCommand.length) {
+			if (p_splittedCommand[l_i].equals("-add")) {
+				l_commandParts = new String[3];
+				l_commandParts[0] = p_splittedCommand[l_i];
+				l_commandParts[1] = p_splittedCommand[l_i + 1];
+				l_commandParts[2] = p_splittedCommand[l_i + 2];
+				if (!l_result.equals("")) {
+					l_result += "\n";
+				}
+				l_result += d_phase.editNeighbor(l_commandParts);
+				l_i = l_i + 3;
+			} else if (p_splittedCommand[l_i].equals("-remove")) {
+				l_commandParts = new String[3];
+				l_commandParts[0] = p_splittedCommand[l_i];
+				l_commandParts[1] = p_splittedCommand[l_i + 1];
+				l_commandParts[2] = p_splittedCommand[l_i + 2];
+				if (!l_result.equals("")) {
+					l_result += "\n";
+				}
+				l_result += d_phase.editNeighbor(l_commandParts);
+				l_i = l_i + 3;
+			} else {
+				if (!l_result.equals("")) {
+					l_result += "\n";
+				}
+				l_result += "Command needs to have -add or -remove.";
+				l_i++;
+			}
+		}
+		return l_result;
+	}
+
 	
 	public static void main(String[] args) {
 //		Commands l_commands = new Commands();
