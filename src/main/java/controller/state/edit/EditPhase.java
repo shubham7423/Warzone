@@ -20,12 +20,12 @@ public abstract class EditPhase extends Phase {
 	abstract public String editNeighbor(String[] p_commandSplitted);
 	
 	abstract public String saveMap(String p_fileName);
-
-	public String addPlayer() {
+	
+	public String addPlayer(String p_playerName) {
 		return printInvalidCommandMessage();
 	}
 	
-	public String removePlayer() {
+	public String removePlayer(String p_playerName) {
 		return printInvalidCommandMessage();
 	}
 	

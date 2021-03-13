@@ -1,15 +1,21 @@
 package controller;
 
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import controller.state.Phase;
 import controller.state.edit.EditPhase;
 import controller.state.edit.PreEdit;
 import controller.state.gamephase.gamesetup.PreLoad;
 import entities.GameMap;
+import entities.Player;
 
 public class GameStarter {
-	Phase d_phase;
-	GameMap d_gameMap = new GameMap();
+	private Phase d_phase;
+	private GameMap d_gameMap = new GameMap();
+	public HashMap<String, Player> d_players = new HashMap<>();
+	public ArrayList<String> d_playerName = new ArrayList<>();
 	
 	public GameMap getGameMap() {
 		return d_gameMap;
@@ -54,9 +60,9 @@ public class GameStarter {
 			l_result = gamePlayer(p_splittedCommand);
 			break;
 
-//		case "assigncountries":
-//			l_result = assignCountries(p_splittedCommand);
-//			break;
+		case "assigncountries":
+			l_result = assignCountries(p_splittedCommand);
+			break;
 //
 		case "validatemap":
 			l_result = validateMap(p_splittedCommand);
@@ -276,6 +282,13 @@ public class GameStarter {
 			return "File extension should be .map";
 		}
 		return d_phase.loadMap(p_splittedCommand[1]);
+	}
+	
+	public String assignCountries(String[] p_splittedCommand) {
+		if (p_splittedCommand.length > 1) {
+			return String.format("Invalid Command");
+		}
+		return d_phase.assignCountries();
 	}
 
 	

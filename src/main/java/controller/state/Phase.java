@@ -25,9 +25,9 @@ public abstract class Phase {
 	
 	abstract public String gamePlayer(String[] p_commandSplitted);
 	
-	abstract public String addPlayer();
+	abstract public String addPlayer(String p_playerName);
 	
-	abstract public String removePlayer();
+	abstract public String removePlayer(String p_playerName);
 	
 //	abstract public GameMap getGameMap();
 	
