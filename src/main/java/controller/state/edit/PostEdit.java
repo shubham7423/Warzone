@@ -67,9 +67,7 @@ public class PostEdit extends EditPhase {
 				return l_result;
 			}
 
-			l_result = d_gameEngine.getGameMap().saveMap(p_fileName);
-			
-		
+			l_result = d_gameEngine.getGameMap().saveMap(p_fileName);					
 		return l_result;
 	}
 

@@ -2,7 +2,9 @@ package controller;
 
 
 import controller.state.Phase;
+import controller.state.edit.EditPhase;
 import controller.state.edit.PreEdit;
+import controller.state.gamephase.PreLoad;
 import entities.GameMap;
 
 public class GameStarter {
@@ -13,6 +15,10 @@ public class GameStarter {
 		return d_gameMap;
 	}
 	
+	public void setGameMap(GameMap p_gameMap) {
+		d_gameMap = p_gameMap;
+	}
+	
 	public void setPhase(Phase p_phase) {
 		d_phase = p_phase;
 	}
@@ -20,10 +26,10 @@ public class GameStarter {
 	public String executeCommand(String[] p_splittedCommand) {
 		String l_result = "";
 		switch (p_splittedCommand[0]) {
-//		case "loadmap":
-//			l_result = d_phase.loadMap(p_splittedCommand);
-//			break;
-//
+		case "loadmap":
+			l_result = loadMap(p_splittedCommand);
+			break;
+
 		case "editcontinent":
 			l_result = editContinent(p_splittedCommand);
 			break;
@@ -254,6 +260,22 @@ public class GameStarter {
 			return "Please enter valid command";
 		}
 		return d_phase.validateMap();
+	}
+	
+	public String loadMap(String[] p_splittedCommand) {
+		if(d_phase instanceof EditPhase) {
+			setPhase(new PreLoad(this));
+		}
+		if (p_splittedCommand.length < 2) {
+			return "Please enter valid command";
+		}
+		if (p_splittedCommand[1].split("\\.").length <= 1) {
+			return "File extension should be .map";
+		}
+		if (!p_splittedCommand[1].split("\\.")[1].equals("map")) {
+			return "File extension should be .map";
+		}
+		return d_phase.loadMap(p_splittedCommand[1]);
 	}
 
 	

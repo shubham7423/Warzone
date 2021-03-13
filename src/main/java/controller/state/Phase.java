@@ -12,8 +12,6 @@ public abstract class Phase {
 	}
 	
 	abstract public String editMap(String p_fileName);
-
-	abstract public String loadMap();
 	
 	abstract public String editContinent(String[] p_commandSplitted);
 	
@@ -23,11 +21,13 @@ public abstract class Phase {
 	
 	abstract public String saveMap(String p_fileName);
 	
+	abstract public String loadMap(String p_fileName);
+	
 	abstract public String gamePlayer(String[] p_commandSplitted);
 	
-//	abstract public void addPlayer();
+	abstract public String addPlayer();
 	
-//	abstract public void removePlayer();
+	abstract public String removePlayer();
 	
 //	abstract public GameMap getGameMap();
 	

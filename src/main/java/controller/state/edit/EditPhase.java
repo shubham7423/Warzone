@@ -25,6 +25,13 @@ public abstract class EditPhase extends Phase {
 		return d_gameEngine.getGameMap().showMapEdit();
 	}
 
+	public String addPlayer() {
+		return printInvalidCommandMessage();
+	}
+	
+	public String removePlayer() {
+		return printInvalidCommandMessage();
+	}
 	
 	public String deployPhase() {
 		return printInvalidCommandMessage();
@@ -38,7 +45,7 @@ public abstract class EditPhase extends Phase {
 		return printInvalidCommandMessage();
 	}
 	
-	public String loadMap() {
+	public String loadMap(String p_fileName) {
 		return printInvalidCommandMessage();
 		
 	}
