@@ -39,11 +39,11 @@ public class GameStarter {
 		case "editcontinent":
 			l_result = editContinent(p_splittedCommand);
 			break;
-//
+
 		case "editcountry":
 			l_result = editCountry(p_splittedCommand);
 			break;
-//
+
 		case "editneighbor":
 			l_result = editNeighbor(p_splittedCommand);
 			break;
@@ -63,7 +63,7 @@ public class GameStarter {
 		case "assigncountries":
 			l_result = assignCountries(p_splittedCommand);
 			break;
-//
+
 		case "validatemap":
 			l_result = validateMap(p_splittedCommand);
 			break;
