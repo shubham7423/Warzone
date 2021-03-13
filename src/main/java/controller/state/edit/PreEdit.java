@@ -12,7 +12,6 @@ public class PreEdit extends EditPhase {
 	
 	public PreEdit(GameStarter p_gameEngine) {
 		super(p_gameEngine);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -33,6 +32,10 @@ public class PreEdit extends EditPhase {
 		l_result = String.format("Map \"%s\" ready for edit", p_fileName);
 		d_gameEngine.setPhase(new PostEdit(d_gameEngine));
 		return l_result;
+	}
+	
+	public String validateMap() {
+		return String.format("Map not loaded yet.");
 	}
 
 	@Override

@@ -31,8 +31,6 @@ public abstract class Phase {
 	
 //	abstract public GameMap getGameMap();
 	
-	abstract public String validateMap();
-	
 	abstract public String deployPhase();
 	
 	abstract public String assignCountries();
@@ -42,6 +40,16 @@ public abstract class Phase {
 //	abstract public void assignArmies();
 	
 	abstract public String showMap();
+	
+	public String validateMap() {
+		String l_result;
+		if (d_gameEngine.getGameMap() != null) {
+			l_result = d_gameEngine.getGameMap().validateMap();
+		} else {
+			l_result = String.format("Cannot validate map");
+		}
+		return l_result;
+	}
 	
 	public String printInvalidCommandMessage() {
 		return "Invalid command in state " + this.getClass().getSimpleName();

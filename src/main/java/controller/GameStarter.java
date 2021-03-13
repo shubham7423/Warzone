@@ -52,10 +52,10 @@ public class GameStarter {
 //			l_result = assignCountries(p_splittedCommand);
 //			break;
 //
-//		case "validatemap":
-//			l_result = validateMap(p_splittedCommand);
-//			break;
-//
+		case "validatemap":
+			l_result = validateMap(p_splittedCommand);
+			break;
+
 		case "showmap":
 			l_result = showmap();
 			break;
@@ -247,6 +247,13 @@ public class GameStarter {
 			return "File extension should be .map";
 		}
 		return d_phase.saveMap(p_splittedCommand[1]);
+	}
+	
+	public String validateMap(String[] p_splittedCommand) {
+		if (p_splittedCommand.length > 1) {
+			return "Please enter valid command";
+		}
+		return d_phase.validateMap();
 	}
 
 	
