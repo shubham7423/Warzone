@@ -1,9 +1,9 @@
-package controller.state.gamephase;
+package controller.state.gamephase.gamesetup;
 
 import controller.GameStarter;
 import entities.GameMap;
 
-public class PreLoad extends GamePhase {
+public class PreLoad extends GameSetup {
 	
 	public PreLoad(GameStarter p_gameEngine) {
 		super(p_gameEngine);
@@ -41,23 +41,6 @@ public class PreLoad extends GamePhase {
 	@Override
 	public String removePlayer() {
 		// TODO Auto-generated method stub
-		return String.format("Map Not Loaded yet");
-	}
-
-	@Override
-	public String deployPhase() {
-		// TODO Auto-generated method stub
-		return String.format("Map Not Loaded yet");
-	}
-
-	@Override
-	public String assignCountries() {
-		// TODO Auto-generated method stub
-		return String.format("Map Not Loaded yet");
-	}
-
-	@Override
-	public String showMap() {
 		return String.format("Map Not Loaded yet");
 	}
 }

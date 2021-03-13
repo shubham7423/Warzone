@@ -20,10 +20,6 @@ public abstract class EditPhase extends Phase {
 	abstract public String editNeighbor(String[] p_commandSplitted);
 	
 	abstract public String saveMap(String p_fileName);
-	
-	public String showMap() {		
-		return d_gameEngine.getGameMap().showMapEdit();
-	}
 
 	public String addPlayer() {
 		return printInvalidCommandMessage();

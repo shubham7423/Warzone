@@ -39,7 +39,9 @@ public abstract class Phase {
 	
 //	abstract public void assignArmies();
 	
-	abstract public String showMap();
+	public String showMap() {	
+		return d_gameEngine.getGameMap().showMapEdit();
+	}
 	
 	public String validateMap() {
 		String l_result;

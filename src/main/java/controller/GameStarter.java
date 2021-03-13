@@ -4,7 +4,7 @@ package controller;
 import controller.state.Phase;
 import controller.state.edit.EditPhase;
 import controller.state.edit.PreEdit;
-import controller.state.gamephase.PreLoad;
+import controller.state.gamephase.gamesetup.PreLoad;
 import entities.GameMap;
 
 public class GameStarter {
