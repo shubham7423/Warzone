@@ -31,48 +31,28 @@ public class PreEdit extends EditPhase {
 			}
 		}
 		l_result = String.format("Map \"%s\" ready for edit", p_fileName);
+		d_gameEngine.setPhase(new PostEdit(d_gameEngine));
 		return l_result;
 	}
 
 	@Override
 	public String editContinent(String[] p_commandSplitted) {
-		String l_result;
-			if (p_commandSplitted[0].equals("-add")) {
-				l_result = d_gameEngine.getGameMap().addContinent(Integer.parseInt(p_commandSplitted[1]),
-						Integer.parseInt(p_commandSplitted[2]));
-			} else {
-				l_result = d_gameEngine.getGameMap().removeContinent(Integer.parseInt(p_commandSplitted[1]));
-			}
-		return l_result;
+		return printInvalidCommandMessage();
+		
 	}
 
 	@Override
 	public String editCountry(String[] p_commandSplitted) {
-		String l_result;
+		return printInvalidCommandMessage();
 		
-			if (p_commandSplitted[0].equals("-add")) {
-				l_result = d_gameEngine.getGameMap().addCountry(Integer.parseInt(p_commandSplitted[1]),
-						Integer.parseInt(p_commandSplitted[2]));
-			} else {
-				l_result = d_gameEngine.getGameMap().removeCountry(Integer.parseInt(p_commandSplitted[1]));
-			}
-		
-		return l_result;
-		}
+	}
 
 	@Override
 	public String editNeighbor(String[] p_commandSplitted) {
-		String l_result;
-			if (p_commandSplitted[0].equals("-add")) {
-				l_result = d_gameEngine.getGameMap().addNeighbor(Integer.parseInt(p_commandSplitted[1]),
-						Integer.parseInt(p_commandSplitted[2]));
-			} else {
-				l_result = d_gameEngine.getGameMap().removeNeighbor(Integer.parseInt(p_commandSplitted[1]),
-						Integer.parseInt(p_commandSplitted[2]));
-			}
-		return l_result;
-		}
-
+		return printInvalidCommandMessage();
+		
+	}
+	
 	@Override
 	public String saveMap(String p_fileName) {
 		return printInvalidCommandMessage();
