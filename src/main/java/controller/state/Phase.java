@@ -31,13 +31,13 @@ public abstract class Phase {
 	
 //	abstract public GameMap getGameMap();
 	
-	abstract public String deployPhase();
-	
 	abstract public String assignCountries();
 	
-//	abstract public void checkContinentOwnership();
+	abstract public String assignArmies();
 	
-//	abstract public void assignArmies();
+	abstract public String deployPhase();
+	
+//	abstract public void checkContinentOwnership();
 	
 	public String showMap() {	
 		return d_gameEngine.getGameMap().showMapEdit();

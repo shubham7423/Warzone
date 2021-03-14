@@ -21,6 +21,10 @@ public abstract class EditPhase extends Phase {
 	
 	abstract public String saveMap(String p_fileName);
 	
+	public String assignArmies() {
+		return printInvalidCommandMessage();
+	}
+	
 	public String addPlayer(String p_playerName) {
 		return printInvalidCommandMessage();
 	}

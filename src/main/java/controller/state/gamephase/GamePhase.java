@@ -10,15 +10,13 @@ public abstract class GamePhase extends Phase {
 		// TODO Auto-generated constructor stub
 	}
 	
-	abstract public String loadMap(String p_fileName);
+	public String showMap() {
+		return d_gameEngine.getGameMap().showMapPlay();
+	}
 	
-	abstract public String gamePlayer(String[] p_commandSplitted);
-	
-	abstract public String addPlayer(String p_playerName);
-	
-	abstract public String removePlayer(String p_playerName);
-	
-	abstract public String assignCountries();
+	public String assignArmies() {
+		return printInvalidCommandMessage();
+	}
 	
 	public String editMap(String p_fileName) {
 		return printInvalidCommandMessage();
