@@ -1,6 +1,7 @@
 package entities.orders;
 
 import controller.GameEngine;
+import controller.GameStarter;
 
 /**
  * Interface implemented by all the order classes
@@ -13,5 +14,5 @@ public interface Orders {
 	 * @param p_game GameEngine
 	 * @return Positive response if command was successful, otherwise negative reply
 	 */
-	String executeOrder(GameEngine p_game);
+	String executeOrder(GameStarter p_game);
 }

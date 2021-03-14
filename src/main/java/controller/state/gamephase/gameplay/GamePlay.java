@@ -32,5 +32,9 @@ public abstract class GamePlay extends GamePhase {
 		// TODO Auto-generated method stub
 		return printInvalidCommandMessage();
 	}
+	
+	public String assignCountries() {
+		return printInvalidCommandMessage();
+	}
 
 }

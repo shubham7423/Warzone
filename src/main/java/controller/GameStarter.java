@@ -17,6 +17,10 @@ public class GameStarter {
 	public HashMap<String, Player> d_players = new HashMap<>();
 	public ArrayList<String> d_playerName = new ArrayList<>();
 	
+	public Phase getPhase() {
+		return d_phase;
+	}
+	
 	public GameMap getGameMap() {
 		return d_gameMap;
 	}
@@ -285,10 +289,22 @@ public class GameStarter {
 	}
 	
 	public String assignCountries(String[] p_splittedCommand) {
-		if (p_splittedCommand.length > 1) {
-			return String.format("Invalid Command");
+		try {
+			if (p_splittedCommand.length > 1) {
+				return String.format("Invalid Command");
+			}
+			return d_phase.assignCountries();
 		}
-		return d_phase.assignCountries();
+		finally {
+			d_phase.assignArmies();
+		}
+		
+//		if (p_splittedCommand.length > 1) {
+//			return String.format("Invalid Command");
+//		}
+//		String l_result =  d_phase.assignCountries();
+//		d_phase.assignArmies();
+//		return l_result;
 	}
 
 	

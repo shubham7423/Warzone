@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 import controller.GameStarter;
+import controller.state.gamephase.gameplay.AssignArmies;
 import entities.Country;
 import entities.Player;
 
@@ -57,8 +58,7 @@ public class PostLoad extends GameSetup {
 				break;
 			}
 		}
-
-//		System.out.print("Countries Assigned\n");
+		d_gameEngine.setPhase(new AssignArmies(d_gameEngine));
 		return "Countries Assigned";
 	}
 

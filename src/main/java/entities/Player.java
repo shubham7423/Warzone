@@ -145,7 +145,11 @@ public class Player {
 			} else if (l_splittedOrder[0].equals("showmap") && l_splittedOrder.length > 1) {
 				System.out.println("Invalid command");
 				continue;
+			} else if (!l_splittedOrder[0].equals("deploy") && !l_splittedOrder[0].equals("showmap")) {
+				System.out.println("Invalid command");
+				continue;
 			}
+			
 			l_isCorrect = true;
 		}
 		if (l_splittedOrder[0].equals("deploy")) {

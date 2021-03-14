@@ -10,6 +10,11 @@ public abstract class GameSetup extends GamePhase {
 	}
 	
 	@Override
+	public String assignArmies() {
+		return printInvalidCommandMessage();
+	}
+	
+	@Override
 	public String deployPhase() {
 		return String.format("Game not yet Setup");
 	}

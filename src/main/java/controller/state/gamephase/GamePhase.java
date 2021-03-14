@@ -14,10 +14,6 @@ public abstract class GamePhase extends Phase {
 		return d_gameEngine.getGameMap().showMapPlay();
 	}
 	
-	public String assignArmies() {
-		return printInvalidCommandMessage();
-	}
-	
 	public String editMap(String p_fileName) {
 		return printInvalidCommandMessage();
 	}
