@@ -21,7 +21,7 @@ public class Player {
 	private HashMap<Integer, Continent> d_continents;
 	private Queue<Orders> d_orders;
 	private int d_numberOfArmies;
-	UserCommand d_userCommand;
+	private boolean d_isCommit;
 
 	/**
 	 * Constructor of player which sets initial values for player data
@@ -34,6 +34,7 @@ public class Player {
 		d_continents = new HashMap<>();
 		d_orders = new LinkedList<>();
 		d_numberOfArmies = 0;
+		d_isCommit = false;
 	}
 
 	/**
@@ -131,9 +132,9 @@ public class Player {
 			d_numberOfArmies = 3;
 		}
 	}
-
-	public void setUserCommand(UserCommand p_userCommand) {
-		d_userCommand = p_userCommand;
+	
+	public boolean getIsCommit() {
+		return d_isCommit;
 	}
 
 	/**
@@ -150,17 +151,13 @@ public class Player {
 				String l_result = l_userCommand.getCommand();
 				l_splittedOrder = l_result.split(" ");
 				if (l_splittedOrder[0].equals("deploy") && l_splittedOrder.length < 3) {
-					System.out.println("Invalid commanddd");
+					System.out.println("Invalid command");
 					continue;
 				} 
-//					else if (l_splittedOrder[0].equals("showmap") && l_splittedOrder.length > 1) {
-//					System.out.println("Invalid commanddd");
-//					continue;
-//				} 
-//				else if (!l_splittedOrder[0].equals("deploy") && !l_splittedOrder[0].equals("showmap")) {
-//					System.out.println(l_result);
-//					continue;
-//				}
+				else if(l_result.equals("exit()")) {
+					d_isCommit = true;
+					return;
+				}
 				else if (!l_splittedOrder[0].equals("deploy")) {
 					System.out.println(l_result);
 					continue;
