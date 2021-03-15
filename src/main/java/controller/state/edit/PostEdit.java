@@ -5,7 +5,7 @@ import controller.GameEngine;
 
 public class PostEdit extends EditPhase {
 
-	PostEdit(GameEngine p_gameEngine) {
+	public PostEdit(GameEngine p_gameEngine) {
 		super(p_gameEngine);
 		// TODO Auto-generated constructor stub
 	}
