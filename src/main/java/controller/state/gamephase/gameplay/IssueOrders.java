@@ -61,11 +61,17 @@ public class IssueOrders extends GamePlay {
 //				l_currentPlayer = 0;
 //			}
 //		}
+		for(Player l_player: d_gameEngine.d_players.values()) {
+			l_player.setIsCommit(false);
+		}
 		while (l_playersCompleted.size() < d_gameEngine.d_playerName.size()) {
 			if(!d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).getIsCommit()) {
 				System.out.println(d_gameEngine.getGameMap().showMapPlay());
 				System.out.println("Player " + d_gameEngine.d_playerName.get(l_currentPlayer) + "'s turn");
 				d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).issueOrder();
+				if(!d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).getIsCommit()) {
+					d_gameEngine.addPlayerOrder(d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)));
+				}
 			} else {
 				l_playersCompleted.add(d_gameEngine.d_playerName.get(l_currentPlayer));
 			}
@@ -74,9 +80,13 @@ public class IssueOrders extends GamePlay {
 				l_currentPlayer = 0;
 			}
 		}
-		d_gameEngine.setPhase(new AssignArmies(d_gameEngine));
-//		d_gameEngine.getPhase().assignArmies();
+		next();
+		d_gameEngine.getPhase().executeOrders();
 		return "Deploy completed";
+	}
+	
+	public String executeOrders() {
+		return printInvalidCommandMessage();
 	}
 	
 	public String showMap() {
@@ -85,6 +95,6 @@ public class IssueOrders extends GamePlay {
 
 	@Override
 	public void next() {
-		
+		d_gameEngine.setPhase(new ExecuteOrders(d_gameEngine));
 	}
 }

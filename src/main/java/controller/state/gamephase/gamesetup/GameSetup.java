@@ -27,5 +27,9 @@ public abstract class GameSetup extends GamePhase {
 	public String deploy(String[] p_commandSplitted) {
 		return printInvalidCommandMessage();
 	}
+	
+	public String executeOrders() {
+		return printInvalidCommandMessage();
+	}
 
 }

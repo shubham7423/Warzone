@@ -136,6 +136,10 @@ public class Player {
 	public boolean getIsCommit() {
 		return d_isCommit;
 	}
+	
+	public void setIsCommit(boolean p_isCommit) {
+		d_isCommit = p_isCommit;
+	}
 
 	/**
 	 * method to issue order called by Game engine

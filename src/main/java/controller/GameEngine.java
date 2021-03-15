@@ -3,6 +3,8 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Queue;
 
 import controller.state.Phase;
 import controller.state.edit.EditPhase;
@@ -15,10 +17,23 @@ import entities.orders.Deploy;
 public class GameEngine {
 	private Phase d_phase;
 	private GameMap d_gameMap = new GameMap();
+	private Queue<Player> d_playersOrder = new LinkedList<>();
 	public HashMap<String, Player> d_players = new HashMap<>();
 	public ArrayList<String> d_playerName = new ArrayList<>();
 	public UserCommand d_userCommand;
 	public int a = 1;
+	
+	public int getPlayeraOrderSize() {
+		return d_playersOrder.size();
+	}
+	
+	public void addPlayerOrder(Player p_player) {
+		d_playersOrder.add(p_player);
+	}
+	
+	public Player getPlayerOrder() {
+		return d_playersOrder.remove();
+	}
 	
 	public Phase getPhase() {
 		return d_phase;

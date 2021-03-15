@@ -43,6 +43,10 @@ public class AssignArmies extends GamePlay {
 	public String issueOrders() {
 		return printInvalidCommandMessage();
 	}
+	
+	public String executeOrders() {
+		return printInvalidCommandMessage();
+	}
 
 	@Override
 	public void next() {

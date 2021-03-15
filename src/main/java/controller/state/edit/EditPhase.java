@@ -54,6 +54,10 @@ public abstract class EditPhase extends Phase {
 		return printInvalidCommandMessage();
 	}
 	
+	public String executeOrders() {
+		return printInvalidCommandMessage();
+	}
+	
 //	abstract public void checkContinentOwnership();
 	
 //	abstract public void assignArmies();

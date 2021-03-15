@@ -41,6 +41,8 @@ public abstract class Phase {
 	
 	abstract public void next();
 	
+	abstract public String executeOrders();
+	
 	public String showMap() {	
 		return d_gameEngine.getGameMap().showMapEdit();
 	}
