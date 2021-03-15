@@ -5,12 +5,12 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import controller.GameEngine;
-import controller.GameStarter;
+import controller.GameEngine;
 import entities.GameMap;
 
 public class PreEdit extends EditPhase {
 	
-	public PreEdit(GameStarter p_gameEngine) {
+	public PreEdit(GameEngine p_gameEngine) {
 		super(p_gameEngine);
 	}
 

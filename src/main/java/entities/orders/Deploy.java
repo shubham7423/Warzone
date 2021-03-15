@@ -1,7 +1,7 @@
 package entities.orders;
 
 import controller.GameEngine;
-import controller.GameStarter;
+import controller.GameEngine;
 import entities.Player;
 
 /**
@@ -34,7 +34,7 @@ public class Deploy implements Orders {
 	 * @return Positive response if command was successful, otherwise negative reply
 	 */
 	@Override
-	public String executeOrder(GameStarter p_game) {
+	public String executeOrder(GameEngine p_game) {
 		if (!d_player.getCountries().containsKey(d_country)) {
 			return String.format("Player \"%s\" does not control country \"%d\"", d_player.getName(), d_country);
 		}

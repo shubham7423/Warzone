@@ -1,374 +1,383 @@
 package controller;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.*;
 
-import entities.Continent;
-import entities.Country;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import controller.state.Phase;
+import controller.state.edit.EditPhase;
+import controller.state.edit.PreEdit;
+import controller.state.gamephase.gamesetup.PreLoad;
 import entities.GameMap;
 import entities.Player;
-import entities.orders.Orders;
-import entities.orders.ShowMap;
+import entities.orders.Deploy;
 
-/**
- * 
- * Main file to start game
- *
- */
 public class GameEngine {
-
-	GameMap d_gameMap = new GameMap();
-	private boolean d_isLoadedMap = false;
-	private boolean d_isEditMap = false;
-	private boolean d_isGamePhase = false;
-	private HashMap<String, Player> d_players = new HashMap<>();
-	private ArrayList<String> d_playerName = new ArrayList<>();
-	int d_currentPlayer = 0;
-
-	/**
-	 * method to edit map, it creates new file when specified file name does not
-	 * exists else loads existing map file.
-	 * 
-	 * @param p_fileName Name of file
-	 * @return String which states completion of the operation
-	 */
-	public String editMap(String p_fileName) {
-		String l_result;
-		if (!d_isEditMap && !d_isLoadedMap) {
-			this.loadMap(p_fileName, true);
-			if (!Files.exists(Paths.get(Paths.get("").toAbsolutePath().toString() + "/maps/" + p_fileName))) {
-				try {
-					Files.createDirectories(Paths.get(Paths.get("").toAbsolutePath().toString() + "/maps"));
-					Files.createFile(Paths.get(Paths.get("").toAbsolutePath().toString() + "/maps/" + p_fileName));
-				} catch (IOException p_e) {
-					p_e.printStackTrace();
-				}
-			}
-			l_result = String.format("Map \"%s\" ready for edit", p_fileName);
-			d_isEditMap = true;
-			d_isLoadedMap = false;
-		} else {
-			l_result = String.format("Edit map not available");
-		}
-		return l_result;
+	private Phase d_phase;
+	private GameMap d_gameMap = new GameMap();
+	public HashMap<String, Player> d_players = new HashMap<>();
+	public ArrayList<String> d_playerName = new ArrayList<>();
+	public UserCommand d_userCommand;
+	public int a = 1;
+	
+	public Phase getPhase() {
+		return d_phase;
 	}
-
-	/**
-	 * used to load map in game phase
-	 * 
-	 * @param p_fileName Name of the file
-	 * @return loaded map(responses positive or negative)
-	 */
-	public String loadMap(String p_fileName) {
-		return loadMap(p_fileName, false);
-	}
-
-	/**
-	 * method to load a map
-	 * 
-	 * @param p_fileName Name of file
-	 * @param p_isEdit   true if loadmap is called in edit phase
-	 * @return loaded map(responses positive or negative)
-	 */
-	public String loadMap(String p_fileName, boolean p_isEdit) {
-		String l_result;
-		if (!d_isEditMap) {
-			l_result = d_gameMap.loadMap(p_fileName);
-			if (l_result.equals(String.format("Map \"%s\" cannot be loaded", p_fileName))) {
-				return l_result;
-			}
-			if (!p_isEdit) {
-				String l_validMsg = d_gameMap.validateMap();
-				Boolean l_validateResult = d_gameMap.getValidateStatus();
-				if (!l_validateResult) {
-					l_result = l_validMsg;
-					d_gameMap = new GameMap();
-					return l_result;
-				}
-			}
-			d_isLoadedMap = true;
-		} else {
-			l_result = String.format("Cannot be loaded map when map is edited");
-		}
-		return l_result;
-	}
-
-	/**
-	 * method to edit continents
-	 * 
-	 * @param p_commandSplitted splitted commands
-	 * @return l_result shows whether continents are added or removed
-	 */
-	public String editContinent(String[] p_commandSplitted) {
-		String l_result;
-		if (d_isEditMap && !d_isLoadedMap) {
-			if (p_commandSplitted[0].equals("-add")) {
-				l_result = d_gameMap.addContinent(Integer.parseInt(p_commandSplitted[1]),
-						Integer.parseInt(p_commandSplitted[2]));
-			} else {
-				l_result = d_gameMap.removeContinent(Integer.parseInt(p_commandSplitted[1]));
-			}
-		} else {
-			l_result = String.format("Map can only be edited when file is open in edit phase");
-		}
-		return l_result;
-	}
-
-	/**
-	 * method to edit countries
-	 * 
-	 * @param p_commandSplitted splitted commands
-	 * @return l_result shows whether countries are added or removed with respect to
-	 *         the continents they are a part of
-	 */
-	public String editCountry(String[] p_commandSplitted) {
-		String l_result;
-		if (d_isEditMap && !d_isLoadedMap) {
-			if (p_commandSplitted[0].equals("-add")) {
-				l_result = d_gameMap.addCountry(Integer.parseInt(p_commandSplitted[1]),
-						Integer.parseInt(p_commandSplitted[2]));
-			} else {
-				l_result = d_gameMap.removeCountry(Integer.parseInt(p_commandSplitted[1]));
-			}
-		} else {
-			l_result = String.format("Map can only be edited when file is open in edit phase");
-		}
-		return l_result;
-	}
-
-	/**
-	 * method to edit neighbors of a specific country
-	 * 
-	 * @param p_commandSplitted splitted commands
-	 * @return l_result shows whether neighbors countries to a given country are
-	 *         added or removed
-	 */
-	public String editNeighbor(String[] p_commandSplitted) {
-		String l_result;
-		if (d_isEditMap && !d_isLoadedMap) {
-			if (p_commandSplitted[0].equals("-add")) {
-				l_result = d_gameMap.addNeighbor(Integer.parseInt(p_commandSplitted[1]),
-						Integer.parseInt(p_commandSplitted[2]));
-			} else {
-				l_result = d_gameMap.removeNeighbor(Integer.parseInt(p_commandSplitted[1]),
-						Integer.parseInt(p_commandSplitted[2]));
-			}
-		} else {
-			l_result = String.format("Map can only be edited when file is open in edit phase");
-		}
-		return l_result;
-	}
-
-	/**
-	 * method to save a map, it creates new file with specified file name.
-	 * 
-	 * @param p_fileName filename of map to be saved
-	 * @return l_result shows whether map is saved or not
-	 */
-	public String saveMap(String p_fileName) {
-		String l_result;
-		if (d_isEditMap && !d_isLoadedMap) {
-			String l_validMsg = d_gameMap.validateMap();
-			Boolean l_validateResult = d_gameMap.getValidateStatus();
-			if (!l_validateResult) {
-				l_result = l_validMsg;
-				return l_result;
-			}
-
-			l_result = d_gameMap.saveMap(p_fileName);
-			d_isLoadedMap = false;
-			d_isEditMap = false;
-		} else {
-			l_result = String.format("Cannot save map");
-		}
-		return l_result;
-	}
-
-	/**
-	 * method to add players to the game
-	 * 
-	 * @param p_commandSplitted splitted commands
-	 * @return l_result shows whether players are added or removed
-	 */
-	public String gamePlayer(String[] p_commandSplitted) {
-		String l_result;
-		if (!d_isEditMap && d_isLoadedMap) {
-			if (p_commandSplitted[0].equals("-add")) {
-				l_result = addPlayer(p_commandSplitted[1]);
-			} else {
-				l_result = removePlayer(p_commandSplitted[1]);
-			}
-		} else {
-			l_result = String.format("Players cannot be added/removed in this phase");
-		}
-		return l_result;
-	}
-
-	/**
-	 * method to add a player to the game
-	 * 
-	 * @param p_playerName name of the player
-	 * @return Positive response if player is added successfully
-	 */
-	public String addPlayer(String p_playerName) {
-		if (d_players.containsKey(p_playerName)) {
-			return String.format("Player \"%s\" already present in game", p_playerName);
-		}
-		d_players.put(p_playerName, new Player(p_playerName));
-		d_playerName.add(p_playerName);
-		return String.format("Player \"%s\" added to game", p_playerName);
-	}
-
-	/**
-	 * method to remove a player from the game
-	 * 
-	 * @param p_playerName name of the player
-	 * @return Positive response if player is removed successfully
-	 */
-	public String removePlayer(String p_playerName) {
-		if (!d_players.containsKey(p_playerName)) {
-			return String.format("Player \"%s\" not present in game", p_playerName);
-		}
-		d_players.remove(p_playerName);
-		d_playerName.remove(p_playerName);
-		return String.format("Player \"%s\" removed from game", p_playerName);
-	}
-
-	/**
-	 * method to get a map
-	 * 
-	 * @return d_gameMap Object of GameMap class
-	 */
+	
 	public GameMap getGameMap() {
 		return d_gameMap;
 	}
+	
+	public void setGameMap(GameMap p_gameMap) {
+		d_gameMap = p_gameMap;
+	}
+	
+	public void setPhase(Phase p_phase) { 
+		d_phase = p_phase;
+		a = 10000;
+	}
+	
+	public String executeCommand(String[] p_splittedCommand) {
+		String l_result = "";
+		switch (p_splittedCommand[0]) {
+		case "loadmap":
+			l_result = loadMap(p_splittedCommand);
+			break;
 
-	/**
-	 * method to validate a map
-	 * 
-	 * @return l_result Result of map validation
-	 */
-	public String validateMap() {
-		String l_result;
-		if (this.d_gameMap != null) {
-			l_result = d_gameMap.validateMap();
-		} else {
-			l_result = String.format("Cannot validate map");
+		case "editcontinent":
+			l_result = editContinent(p_splittedCommand);
+			break;
+
+		case "editcountry":
+			l_result = editCountry(p_splittedCommand);
+			break;
+
+		case "editneighbor":
+			l_result = editNeighbor(p_splittedCommand);
+			break;
+
+		case "editmap":
+			l_result = editMap(p_splittedCommand);
+			break;
+
+		case "savemap":
+			l_result = saveMap(p_splittedCommand);
+			break;
+
+		case "gameplayer":
+			l_result = gamePlayer(p_splittedCommand);
+			break;
+
+		case "assigncountries":
+			l_result = assignCountries(p_splittedCommand);
+			break;
+
+		case "validatemap":
+			l_result = validateMap(p_splittedCommand);
+			break;
+
+		case "showmap":
+			l_result = showmap();
+			break;
+			
+		case "deploy":
+			l_result = deploy(p_splittedCommand);
+			break;
+
+		default:
+			l_result = "Command not found";
+		}
+
+		return l_result;
+	}
+	
+	public String deploy(String[] p_splittedCommand) {
+		return d_phase.deploy(p_splittedCommand);
+	}
+	
+	public String editMap(String[] p_splittedCommand) {
+		if (p_splittedCommand.length < 2) {
+			return "Please enter valid command";
+		}
+		if (p_splittedCommand[1].split("\\.").length <= 1) {
+			return "File extension should be .map";
+		}
+		if (!p_splittedCommand[1].split("\\.")[1].equals("map")) {
+			return "File extension should be .map";
+		}
+		return d_phase.editMap(p_splittedCommand[1]);
+	}
+	
+	public String gamePlayer(String[] p_splittedCommand) {
+		String[] l_commandParts;
+		String l_result = "";
+		int l_i = 1;
+		if (p_splittedCommand.length < 2) {
+			return "Please enter valid command";
+		}
+		while (l_i < p_splittedCommand.length) {
+			if (p_splittedCommand[l_i].equals("-add")) {
+				l_commandParts = new String[3];
+				l_commandParts[0] = p_splittedCommand[l_i];
+				l_commandParts[1] = p_splittedCommand[l_i + 1];
+				if (!l_result.equals("")) {
+					l_result += "\n";
+				}
+				l_result += d_phase.gamePlayer(l_commandParts);
+				l_i = l_i + 2;
+			} else if (p_splittedCommand[l_i].equals("-remove")) {
+				l_commandParts = new String[2];
+				l_commandParts[0] = p_splittedCommand[l_i];
+				l_commandParts[1] = p_splittedCommand[l_i + 1];
+				if (!l_result.equals("")) {
+					l_result += "\n";
+				}
+				l_result += d_phase.gamePlayer(l_commandParts);
+				l_i = l_i + 2;
+			} else {
+				if (!l_result.equals("")) {
+					l_result += "\n";
+				}
+				l_result += "Command needs to have -add or -remove.";
+				l_i++;
+			}
 		}
 		return l_result;
 	}
-
-	/**
-	 * method to loop over players and in each subsequent loop player deploys
-	 * reinforcements to one's owned countries
-	 */
-	public void deployPhase() {
-		int l_currentPlayer = 0;
-		Orders l_playerOrders = null;
-		HashSet<String> l_playersCompleted = new HashSet<>();
-		System.out.println("\nDeploy phase entered");
-		System.out.println(org.apache.commons.lang3.StringUtils.repeat("-", 20));
-		while (l_playersCompleted.size() < d_playerName.size()) {
-			if (d_players.get(d_playerName.get(l_currentPlayer)).getNumberOfArmies() > 0) {
-				System.out.println("Player " + d_playerName.get(l_currentPlayer) + "'s turn");
-				System.out.println("Number of armies left: "
-						+ d_players.get(d_playerName.get(l_currentPlayer)).getNumberOfArmies());
-				d_players.get(d_playerName.get(l_currentPlayer)).issueOrder();
-				l_playerOrders = d_players.get(d_playerName.get(l_currentPlayer)).nextOrder();
-				System.out.println(l_playerOrders.executeOrder(this));
-			} else {
-				l_playersCompleted.add(d_playerName.get(l_currentPlayer));
-			}
-
-			if (!(l_playerOrders instanceof ShowMap)) {
-				++l_currentPlayer;
-			}
-			if (l_currentPlayer == d_playerName.size()) {
-				l_currentPlayer = 0;
-			}
-		}
+	
+	public String showmap() {
+		return d_phase.showMap();
 	}
-
-	/**
-	 * method to get the hash map of player names corresponding to their objects
-	 * 
-	 * @return d_players HashMap of players
-	 */
-	public HashMap<String, Player> getPlayers() {
-		return d_players;
-	}
-
-	/**
-	 * method to assign the countries randomly to all the players at the start of
-	 * the game
-	 * 
-	 * @return returns the message to the caller
-	 */
-	public String assignCountries() {
-		if (d_players.size() < 2) {
-			return "There must be at least two player";
+	
+	public String editContinent(String[] p_splittedCommand) {
+		String[] l_commandParts;
+		String l_result = "";
+		int l_i = 1;
+		if (p_splittedCommand.length < 2) {
+			return "Please enter valid command";
 		}
-		HashMap<Integer, Country> l_countries = d_gameMap.getCountries();
-		List<Country> l_countryObjects = new ArrayList<Country>();
-		l_countryObjects.addAll(l_countries.values());
-		Random l_random = new Random();
-		while (true) {
-			for (Player p_player : d_players.values()) {
-				if (l_countryObjects.size() == 0) {
-					break;
+		while (l_i < p_splittedCommand.length) {
+			if (p_splittedCommand[l_i].equals("-add")) {
+				l_commandParts = new String[3];
+				l_commandParts[0] = p_splittedCommand[l_i];
+				l_commandParts[1] = p_splittedCommand[l_i + 1];
+				l_commandParts[2] = p_splittedCommand[l_i + 2];
+				if (!l_result.equals("")) {
+					l_result += "\n";
 				}
-				int l_idOfCountry = l_random.nextInt(l_countryObjects.size());
-				p_player.addCountry(l_countryObjects.get(l_idOfCountry));
-				l_countryObjects.get(l_idOfCountry).setPlayer(p_player);
-				l_countryObjects.remove(l_countryObjects.get(l_idOfCountry));
+				l_result += d_phase.editContinent(l_commandParts);
+				l_i = l_i + 3;
+			} else if (p_splittedCommand[l_i].equals("-remove")) {
+				l_commandParts = new String[2];
+				l_commandParts[0] = p_splittedCommand[l_i];
+				l_commandParts[1] = p_splittedCommand[l_i + 1];
+				if (!l_result.equals("")) {
+					l_result += "\n";
+				}
+				l_result += d_phase.editContinent(l_commandParts);
+				l_i = l_i + 2;
+			} else {
+				if (!l_result.equals("")) {
+					l_result += "\n";
+				}
+				l_result += "Command needs to have -add or -remove.";
+				l_i++;
 			}
-			if (l_countryObjects.size() == 0) {
+		}
+		return l_result;
+	}
+	
+	public String editCountry(String[] p_splittedCommand) {
+		String[] l_commandParts;
+		String l_result = "";
+		int l_i = 1;
+		if (p_splittedCommand.length < 2) {
+			return "Please enter valid command";
+		}
+		while (l_i < p_splittedCommand.length) {
+			if (p_splittedCommand[l_i].equals("-add")) {
+				l_commandParts = new String[3];
+				l_commandParts[0] = p_splittedCommand[l_i];
+				l_commandParts[1] = p_splittedCommand[l_i + 1];
+				l_commandParts[2] = p_splittedCommand[l_i + 2];
+				if (!l_result.equals("")) {
+					l_result += "\n";
+				}
+				l_result += d_phase.editCountry(l_commandParts);
+				l_i = l_i + 3;
+			} else if (p_splittedCommand[l_i].equals("-remove")) {
+				l_commandParts = new String[2];
+				l_commandParts[0] = p_splittedCommand[l_i];
+				l_commandParts[1] = p_splittedCommand[l_i + 1];
+				if (!l_result.equals("")) {
+					l_result += "\n";
+				}
+				l_result += d_phase.editCountry(l_commandParts);
+				l_i = l_i + 2;
+			} else {
+				if (!l_result.equals("")) {
+					l_result += "\n";
+				}
+				l_result += "Command needs to have -add or -remove.";
+				l_i++;
+			}
+		}
+		return l_result;
+	}
+	
+	public String editNeighbor(String[] p_splittedCommand) {
+		String[] l_commandParts;
+		String l_result = "";
+		int l_i = 1;
+		if (p_splittedCommand.length < 2) {
+			return "Please enter valid command";
+		}
+		while (l_i < p_splittedCommand.length){
+			if (p_splittedCommand[l_i].equals("-add")) {
+				l_commandParts = new String[3];
+				l_commandParts[0] = p_splittedCommand[l_i];
+				l_commandParts[1] = p_splittedCommand[l_i + 1];
+				l_commandParts[2] = p_splittedCommand[l_i + 2];
+				if (!l_result.equals("")) {
+					l_result += "\n";
+				}
+				l_result += d_phase.editNeighbor(l_commandParts);
+				l_i = l_i + 3;
+			} else if (p_splittedCommand[l_i].equals("-remove")) {
+				l_commandParts = new String[3];
+				l_commandParts[0] = p_splittedCommand[l_i];
+				l_commandParts[1] = p_splittedCommand[l_i + 1];
+				l_commandParts[2] = p_splittedCommand[l_i + 2];
+				if (!l_result.equals("")) {
+					l_result += "\n";
+				}
+				l_result += d_phase.editNeighbor(l_commandParts);
+				l_i = l_i + 3;
+			} else {
+				if (!l_result.equals("")) {
+					l_result += "\n";
+				}
+				l_result += "Command needs to have -add or -remove.";
+				l_i++;
+			}
+		}
+		return l_result;
+	}
+	
+	public String saveMap(String[] p_splittedCommand) {
+		if (p_splittedCommand.length < 2) {
+			return "Please enter valid command";
+		}
+		if (p_splittedCommand[1].split("\\.").length <= 1) {
+			return "File extension should be .map";
+		}
+		if (!p_splittedCommand[1].split("\\.")[1].equals("map")) {
+			return "File extension should be .map";
+		}
+		return d_phase.saveMap(p_splittedCommand[1]);
+	}
+	
+	public String validateMap(String[] p_splittedCommand) {
+		if (p_splittedCommand.length > 1) {
+			return "Please enter valid command";
+		}
+		return d_phase.validateMap();
+	}
+	
+	public String loadMap(String[] p_splittedCommand) {
+		if(d_phase instanceof EditPhase) {
+			setPhase(new PreLoad(this));
+		}
+		if (p_splittedCommand.length < 2) {
+			return "Please enter valid command";
+		}
+		if (p_splittedCommand[1].split("\\.").length <= 1) {
+			return "File extension should be .map";
+		}
+		if (!p_splittedCommand[1].split("\\.")[1].equals("map")) {
+			return "File extension should be .map";
+		}
+		return d_phase.loadMap(p_splittedCommand[1]);
+	}
+	
+	public String assignCountries(String[] p_splittedCommand) {
+		try {
+			if (p_splittedCommand.length > 1) {
+				return String.format("Invalid Command");
+			}
+			return d_phase.assignCountries();
+		}
+		finally {
+			d_phase.assignArmies();
+		}
+		
+//		if (p_splittedCommand.length > 1) {
+//			return String.format("Invalid Command");
+//		}
+//		String l_result =  d_phase.assignCountries();
+//		d_phase.assignArmies();
+//		return l_result;
+	}
+	
+//	public void getCommand() {
+//		UserCommand l_userCommand = new UserCommand();
+//		GameStarter l_gameStarter = new GameStarter();
+//		l_gameStarter.setPhase(new PreEdit(l_gameStarter));
+//		System.out.println("Welcome to Warzone");
+//		while (true) {
+//			String[] l_splittedCommandString = l_userCommand.getCommand();
+//			if (l_splittedCommandString[0].equals("exit()")) {
+//				break;
+//			}
+//			System.out.println(l_gameStarter.executeCommand(l_splittedCommandString));
+//		}
+//	}
+	
+	public void setUserCommand(UserCommand p_userCommand) {
+		d_userCommand = p_userCommand;
+//		System.out.println(d_userCommand);
+	}
+	
+	public void start() {
+//		setUserCommand(new UserCommand());
+		System.out.println("Welcome to Warzone");
+		UserCommand l_UserCommand = new UserCommand();
+		while (true) {
+//			String[] l_splittedCommandString = l_userCommand.getCommand(l_gameStarter);
+//			if (l_splittedCommandString[0].equals("exit()")) {
+//				break;
+//			}
+//			System.out.println(a);
+			String l_commandOpt = l_UserCommand.getCommand();
+			if(l_commandOpt.equals("exit()")) {
 				break;
 			}
+			System.out.println(l_commandOpt);
 		}
-
-		System.out.print("Countries Assigned\n");
-		checkContinentOwnership();
-		assignArmies();
-		d_isGamePhase = true;
-		deployPhase();
-		return "Deployment done";
+		System.out.print("\nThank you for playing Warzone :)");
+		d_userCommand.l_scannerScanner.close();
 	}
-
-	/**
-	 * method to check if any player acquired any continent, if any then add the
-	 * continent to the continents list acquired by player
-	 */
-	public void checkContinentOwnership() {
-		for (Player l_player : d_players.values()) {
-			for (Continent l_continent : d_gameMap.getContinents().values()) {
-				if (l_player.checkContinent(l_continent)) {
-					l_player.addContinent(l_continent);
-				}
-			}
-		}
-	}
-
-	/**
-	 * method to assign armies to players
-	 */
-	public void assignArmies() {
-		for (Player l_player : d_players.values()) {
-			l_player.setNumberOfArmies();
-		}
-	}
-
-	/**
-	 * method to show map to player, map can be shown in edit phase and game phase
-	 * 
-	 * @return map in string format
-	 */
-	public String showMap() {
-		if (!d_isGamePhase) {
-			return d_gameMap.showMapEdit();
-		}
-		return d_gameMap.showMapPlay();
+	
+	public static void main(String[] args) {
+//		Commands l_commands = new Commands();
+//		UserCommand l_userCommand = new UserCommand();
+//		GameStarter l_gameStarter = new GameStarter();
+//		d_userCommand = new UserCommand();
+////		l_gameStarter.setPhase(new PreEdit(l_gameStarter));
+//		System.out.println("Welcome to Warzone");
+//		while (true) {
+////			String[] l_splittedCommandString = l_userCommand.getCommand(l_gameStarter);
+////			if (l_splittedCommandString[0].equals("exit()")) {
+////				break;
+////			}
+//			String l_commandOpt = l_gameStarter.d_userCommand.getCommand();
+//			if(l_commandOpt.equals("exit()")) {
+//				break;
+//			}
+//			System.out.println(l_commandOpt);
+//		}
+//		System.out.print("\nThank you for playing Warzone :)");
+//		l_gameStarter.d_userCommand.l_scannerScanner.close();
+		new GameEngine().start();
 	}
 }

@@ -2,14 +2,14 @@ package controller.state.gamephase.gameplay;
 
 import java.util.HashSet;
 
-import controller.GameStarter;
+import controller.GameEngine;
 import entities.Player;
 import entities.orders.Orders;
 import entities.orders.ShowMap;
 
 public class IssueOrders extends GamePlay {
 
-	public IssueOrders(GameStarter p_gameEngine) {
+	public IssueOrders(GameEngine p_gameEngine) {
 		super(p_gameEngine);
 		// TODO Auto-generated constructor stub
 	}

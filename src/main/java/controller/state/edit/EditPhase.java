@@ -1,12 +1,12 @@
 package controller.state.edit;
 
 import controller.GameEngine;
-import controller.GameStarter;
+import controller.GameEngine;
 import controller.state.Phase;
 
 public abstract class EditPhase extends Phase {
 
-	public EditPhase(GameStarter p_gameEngine) {
+	public EditPhase(GameEngine p_gameEngine) {
 		super(p_gameEngine);
 		
 	}

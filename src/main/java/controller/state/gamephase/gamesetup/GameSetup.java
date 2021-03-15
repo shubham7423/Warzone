@@ -1,11 +1,11 @@
 package controller.state.gamephase.gamesetup;
 
-import controller.GameStarter;
+import controller.GameEngine;
 import controller.state.gamephase.GamePhase;
 
 public abstract class GameSetup extends GamePhase {
 
-	public GameSetup(GameStarter p_gameEngine) {
+	public GameSetup(GameEngine p_gameEngine) {
 		super(p_gameEngine);
 	}
 	

@@ -1,11 +1,11 @@
 package controller.state.gamephase;
 
-import controller.GameStarter;
+import controller.GameEngine;
 import controller.state.Phase;
 
 public abstract class GamePhase extends Phase {
 
-	public GamePhase(GameStarter p_gameEngine) {
+	public GamePhase(GameEngine p_gameEngine) {
 		super(p_gameEngine);
 		// TODO Auto-generated constructor stub
 	}

@@ -24,29 +24,29 @@ public class UserCommand {
 //		String[] l_splittedCommandString = l_userCommand.split(" ");
 //		return l_splittedCommandString;
 //	}
-	GameStarter d_gameStarter = new GameStarter();
+	GameEngine d_gameEngine = new GameEngine();
 	
 	public UserCommand() {
-		d_gameStarter.setPhase(new PreEdit(d_gameStarter));
+		d_gameEngine.setPhase(new PreEdit(d_gameEngine));
 //		d_gameStarter.setUserCommand(this);
 	}
 	
 	public void setPhase(Phase p) {
-		d_gameStarter.setPhase(p);
+		d_gameEngine.setPhase(p);
 	}
 	
 	public String getCommand() {
 		String l_userCommand;
 //		System.out.println("GS is null: "+ d_gameStarter==null);
 //		System.out.println(d_gameStarter.getPhase().getClass().getName());
-		d_gameStarter.setUserCommand(this);
+		d_gameEngine.setUserCommand(this);
 		System.out.print("$ ");
 		l_userCommand = l_scannerScanner.nextLine();
 		String[] l_splittedCommandString = l_userCommand.split(" ");
 		if (l_splittedCommandString[0].equals("exit()")) {
 			return "exit()";
 		}
-		return d_gameStarter.executeCommand(l_splittedCommandString);
+		return d_gameEngine.executeCommand(l_splittedCommandString);
 	}
 
 	/**

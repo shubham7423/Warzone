@@ -2,12 +2,12 @@ package controller.state;
 import entities.GameMap;
 
 import controller.GameEngine;
-import controller.GameStarter;
+import controller.GameEngine;
 
 public abstract class Phase {
-	public GameStarter d_gameEngine;
+	public GameEngine d_gameEngine;
 	
-	public Phase(GameStarter p_gameEngine){
+	public Phase(GameEngine p_gameEngine){
 		d_gameEngine = p_gameEngine;
 	}
 	

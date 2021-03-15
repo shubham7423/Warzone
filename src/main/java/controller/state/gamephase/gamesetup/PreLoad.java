@@ -1,11 +1,11 @@
 package controller.state.gamephase.gamesetup;
 
-import controller.GameStarter;
+import controller.GameEngine;
 import entities.GameMap;
 
 public class PreLoad extends GameSetup {
 	
-	public PreLoad(GameStarter p_gameEngine) {
+	public PreLoad(GameEngine p_gameEngine) {
 		super(p_gameEngine);
 
 	}

@@ -5,14 +5,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
-import controller.GameStarter;
+import controller.GameEngine;
 import controller.state.gamephase.gameplay.AssignArmies;
 import entities.Country;
 import entities.Player;
 
 public class PostLoad extends GameSetup {
 
-	public PostLoad(GameStarter p_gameEngine) {
+	public PostLoad(GameEngine p_gameEngine) {
 		super(p_gameEngine);
 		// TODO Auto-generated constructor stub
 	}

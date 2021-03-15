@@ -1,13 +1,13 @@
 package controller.state.gamephase.gameplay;
 
-import controller.GameStarter;
+import controller.GameEngine;
 import controller.state.gamephase.GamePhase;
 import controller.state.gamephase.gamesetup.PostLoad;
 import entities.GameMap;
 
 public abstract class GamePlay extends GamePhase {
 
-	public GamePlay(GameStarter p_gameEngine) {
+	public GamePlay(GameEngine p_gameEngine) {
 		super(p_gameEngine);
 		// TODO Auto-generated constructor stub
 	}
