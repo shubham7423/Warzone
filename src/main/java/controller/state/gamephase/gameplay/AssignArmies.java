@@ -26,7 +26,7 @@ public class AssignArmies extends GamePlay {
 			return "Assigned armies to players";
 		}
 		finally {
-			d_gameEngine.setPhase(new IssueOrders(d_gameEngine));
+			next();
 			d_gameEngine.getPhase().issueOrders();
 		}
 	}
@@ -42,5 +42,10 @@ public class AssignArmies extends GamePlay {
 	@Override
 	public String issueOrders() {
 		return printInvalidCommandMessage();
+	}
+
+	@Override
+	public void next() {
+		d_gameEngine.setPhase(new IssueOrders(d_gameEngine));		
 	}
 }

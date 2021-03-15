@@ -68,4 +68,13 @@ public class IssueOrders extends GamePlay {
 		d_gameEngine.getPhase().assignArmies();
 		return "Deploy completed";
 	}
+	
+	public String showMap() {
+		return printInvalidCommandMessage();
+	}
+
+	@Override
+	public void next() {
+		
+	}
 }

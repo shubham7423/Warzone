@@ -58,7 +58,7 @@ public class PostLoad extends GameSetup {
 				break;
 			}
 		}
-		d_gameEngine.setPhase(new AssignArmies(d_gameEngine));
+		next();
 		return "Countries Assigned";
 	}
 
@@ -80,6 +80,11 @@ public class PostLoad extends GameSetup {
 		d_gameEngine.d_players.remove(p_playerName);
 		d_gameEngine.d_playerName.remove(p_playerName);
 		return String.format("Player \"%s\" removed from game", p_playerName);
+	}
+
+	@Override
+	public void next() {
+		d_gameEngine.setPhase(new AssignArmies(d_gameEngine));
 	}
 
 }

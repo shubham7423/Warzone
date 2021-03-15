@@ -1,6 +1,7 @@
 package controller.state.edit;
 
 import controller.GameEngine;
+import controller.state.gamephase.gamesetup.PreLoad;
 import controller.GameEngine;
 
 public class PostEdit extends EditPhase {
@@ -69,5 +70,10 @@ public class PostEdit extends EditPhase {
 
 			l_result = d_gameEngine.getGameMap().saveMap(p_fileName);					
 		return l_result;
+	}
+
+	@Override
+	public void next() {
+		d_gameEngine.setPhase(new PreLoad(d_gameEngine));
 	}
 }

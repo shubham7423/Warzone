@@ -30,7 +30,7 @@ public class PreEdit extends EditPhase {
 			}
 		}
 		l_result = String.format("Map \"%s\" ready for edit", p_fileName);
-		d_gameEngine.setPhase(new PostEdit(d_gameEngine));
+		next();
 		return l_result;
 	}
 	
@@ -61,6 +61,13 @@ public class PreEdit extends EditPhase {
 		return printInvalidCommandMessage();
 
 	}
+
+	@Override
+	public void next() {
+		d_gameEngine.setPhase(new PostEdit(d_gameEngine));
+	}
+	
+	
 
 
 }

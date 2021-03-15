@@ -39,7 +39,7 @@ public abstract class Phase {
 	
 	abstract public String deploy(String[] p_commandSplitted);
 	
-//	abstract public void checkContinentOwnership();
+	abstract public void next();
 	
 	public String showMap() {	
 		return d_gameEngine.getGameMap().showMapEdit();

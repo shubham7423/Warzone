@@ -25,7 +25,7 @@ public class PreLoad extends GameSetup {
 			d_gameEngine.setGameMap(new GameMap());
 			return l_result;
 		}
-		d_gameEngine.setPhase(new PostLoad(d_gameEngine));
+		next();
 		return l_result;
 	}
 
@@ -44,5 +44,10 @@ public class PreLoad extends GameSetup {
 	public String removePlayer(String p_playerName) {
 		// TODO Auto-generated method stub
 		return String.format("Map Not Loaded yet");
+	}
+
+	@Override
+	public void next() {
+		d_gameEngine.setPhase(new PostLoad(d_gameEngine));
 	}
 }
