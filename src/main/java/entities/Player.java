@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 import controller.UserCommand;
+import controller.state.gamephase.gameplay.AssignArmies;
+import controller.state.gamephase.gameplay.IssueOrders;
 import entities.orders.Deploy;
 import entities.orders.Orders;
 import entities.orders.ShowMap;
@@ -19,6 +21,7 @@ public class Player {
 	private HashMap<Integer, Continent> d_continents;
 	private Queue<Orders> d_orders;
 	private int d_numberOfArmies;
+	UserCommand d_userCommand;
 
 	/**
 	 * Constructor of player which sets initial values for player data
@@ -129,28 +132,47 @@ public class Player {
 		}
 	}
 
+	public void setUserCommand(UserCommand p_userCommand) {
+		d_userCommand = p_userCommand;
+	}
+
 	/**
 	 * method to issue order called by Game engine
 	 */
 	public void issueOrder() {
 
 		UserCommand l_userCommand = new UserCommand();
+		l_userCommand.setPhase(new IssueOrders(null));
 		String[] l_splittedOrder = null;
 		boolean l_isCorrect = false;
 		while (!l_isCorrect) {
-			l_splittedOrder = l_userCommand.getCommand();
-			if (l_splittedOrder[0].equals("deploy") && l_splittedOrder.length < 3) {
-				System.out.println("Invalid command");
-				continue;
-			} else if (l_splittedOrder[0].equals("showmap") && l_splittedOrder.length > 1) {
-				System.out.println("Invalid command");
-				continue;
-			} else if (!l_splittedOrder[0].equals("deploy") && !l_splittedOrder[0].equals("showmap")) {
-				System.out.println("Invalid command");
-				continue;
+			try {
+				String l_result = l_userCommand.getCommand();
+				l_splittedOrder = l_result.split(" ");
+				if (l_splittedOrder[0].equals("deploy") && l_splittedOrder.length < 3) {
+					System.out.println("Invalid commanddd");
+					continue;
+				} 
+//					else if (l_splittedOrder[0].equals("showmap") && l_splittedOrder.length > 1) {
+//					System.out.println("Invalid commanddd");
+//					continue;
+//				} 
+//				else if (!l_splittedOrder[0].equals("deploy") && !l_splittedOrder[0].equals("showmap")) {
+//					System.out.println(l_result);
+//					continue;
+//				}
+				else if (!l_splittedOrder[0].equals("deploy")) {
+					System.out.println(l_result);
+					continue;
+				}
+
+				l_isCorrect = true;
+			} catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+				break;
 			}
 			
-			l_isCorrect = true;
 		}
 		if (l_splittedOrder[0].equals("deploy")) {
 			Deploy l_deploy = new Deploy(this, Integer.parseInt(l_splittedOrder[1]),

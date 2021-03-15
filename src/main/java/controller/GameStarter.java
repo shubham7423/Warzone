@@ -10,12 +10,15 @@ import controller.state.edit.PreEdit;
 import controller.state.gamephase.gamesetup.PreLoad;
 import entities.GameMap;
 import entities.Player;
+import entities.orders.Deploy;
 
 public class GameStarter {
 	private Phase d_phase;
 	private GameMap d_gameMap = new GameMap();
 	public HashMap<String, Player> d_players = new HashMap<>();
 	public ArrayList<String> d_playerName = new ArrayList<>();
+	public UserCommand d_userCommand;
+	public int a = 1;
 	
 	public Phase getPhase() {
 		return d_phase;
@@ -29,8 +32,9 @@ public class GameStarter {
 		d_gameMap = p_gameMap;
 	}
 	
-	public void setPhase(Phase p_phase) {
+	public void setPhase(Phase p_phase) { 
 		d_phase = p_phase;
+		a = 10000;
 	}
 	
 	public String executeCommand(String[] p_splittedCommand) {
@@ -75,12 +79,20 @@ public class GameStarter {
 		case "showmap":
 			l_result = showmap();
 			break;
+			
+		case "deploy":
+			l_result = deploy(p_splittedCommand);
+			break;
 
 		default:
 			l_result = "Command not found";
 		}
 
 		return l_result;
+	}
+	
+	public String deploy(String[] p_splittedCommand) {
+		return d_phase.deploy(p_splittedCommand);
 	}
 	
 	public String editMap(String[] p_splittedCommand) {
@@ -306,22 +318,66 @@ public class GameStarter {
 //		d_phase.assignArmies();
 //		return l_result;
 	}
-
+	
+//	public void getCommand() {
+//		UserCommand l_userCommand = new UserCommand();
+//		GameStarter l_gameStarter = new GameStarter();
+//		l_gameStarter.setPhase(new PreEdit(l_gameStarter));
+//		System.out.println("Welcome to Warzone");
+//		while (true) {
+//			String[] l_splittedCommandString = l_userCommand.getCommand();
+//			if (l_splittedCommandString[0].equals("exit()")) {
+//				break;
+//			}
+//			System.out.println(l_gameStarter.executeCommand(l_splittedCommandString));
+//		}
+//	}
+	
+	public void setUserCommand(UserCommand p_userCommand) {
+		d_userCommand = p_userCommand;
+//		System.out.println(d_userCommand);
+	}
+	
+	public void start() {
+//		setUserCommand(new UserCommand());
+		System.out.println("Welcome to Warzone");
+		UserCommand l_UserCommand = new UserCommand();
+		while (true) {
+//			String[] l_splittedCommandString = l_userCommand.getCommand(l_gameStarter);
+//			if (l_splittedCommandString[0].equals("exit()")) {
+//				break;
+//			}
+//			System.out.println(a);
+			String l_commandOpt = l_UserCommand.getCommand();
+			if(l_commandOpt.equals("exit()")) {
+				break;
+			}
+			System.out.println(l_commandOpt);
+		}
+		System.out.print("\nThank you for playing Warzone :)");
+		d_userCommand.l_scannerScanner.close();
+	}
 	
 	public static void main(String[] args) {
 //		Commands l_commands = new Commands();
-		UserCommand l_userCommand = new UserCommand();
-		GameStarter l_gameStarter = new GameStarter();
-		l_gameStarter.setPhase(new PreEdit(l_gameStarter));
-		System.out.println("Welcome to Warzone");
-		while (true) {
-			String[] l_splittedCommandString = l_userCommand.getCommand();
-			if (l_splittedCommandString[0].equals("exit()")) {
-				break;
-			}
-			System.out.println(l_gameStarter.executeCommand(l_splittedCommandString));
-		}
-		System.out.print("\nThank you for playing Warzone :)");
-		l_userCommand.l_scannerScanner.close();
+//		UserCommand l_userCommand = new UserCommand();
+//		GameStarter l_gameStarter = new GameStarter();
+//		d_userCommand = new UserCommand();
+////		l_gameStarter.setPhase(new PreEdit(l_gameStarter));
+//		System.out.println("Welcome to Warzone");
+//		while (true) {
+////			String[] l_splittedCommandString = l_userCommand.getCommand(l_gameStarter);
+////			if (l_splittedCommandString[0].equals("exit()")) {
+////				break;
+////			}
+//			String l_commandOpt = l_gameStarter.d_userCommand.getCommand();
+//			if(l_commandOpt.equals("exit()")) {
+//				break;
+//			}
+//			System.out.println(l_commandOpt);
+//		}
+//		System.out.print("\nThank you for playing Warzone :)");
+//		l_gameStarter.d_userCommand.l_scannerScanner.close();
+		new GameStarter().start();
 	}
 }

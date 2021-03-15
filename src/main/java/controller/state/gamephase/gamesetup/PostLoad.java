@@ -26,7 +26,7 @@ public class PostLoad extends GameSetup {
 	@Override
 	public String gamePlayer(String[] p_commandSplitted) {
 		String l_result;
-
+		d_gameEngine.a = 10;
 		if (p_commandSplitted[0].equals("-add")) {
 			l_result = addPlayer(p_commandSplitted[1]);
 		} else {

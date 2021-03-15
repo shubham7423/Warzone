@@ -33,7 +33,7 @@ public abstract class EditPhase extends Phase {
 		return printInvalidCommandMessage();
 	}
 	
-	public String deployPhase() {
+	public String issueOrders() {
 		return printInvalidCommandMessage();
 	}
 	
@@ -48,6 +48,10 @@ public abstract class EditPhase extends Phase {
 	public String loadMap(String p_fileName) {
 		return printInvalidCommandMessage();
 		
+	}
+	
+	public String deploy(String[] p_commandSplitted) {
+		return printInvalidCommandMessage();
 	}
 	
 //	abstract public void checkContinentOwnership();

@@ -15,13 +15,17 @@ public abstract class GameSetup extends GamePhase {
 	}
 	
 	@Override
-	public String deployPhase() {
+	public String issueOrders() {
 		return String.format("Game not yet Setup");
 	}
 
 	@Override
 	public String assignCountries() {
 		return String.format("Game not yet Setu");
+	}
+	
+	public String deploy(String[] p_commandSplitted) {
+		return printInvalidCommandMessage();
 	}
 
 }

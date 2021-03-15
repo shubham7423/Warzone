@@ -35,7 +35,9 @@ public abstract class Phase {
 	
 	abstract public String assignArmies();
 	
-	abstract public String deployPhase();
+	abstract public String issueOrders();
+	
+	abstract public String deploy(String[] p_commandSplitted);
 	
 //	abstract public void checkContinentOwnership();
 	
