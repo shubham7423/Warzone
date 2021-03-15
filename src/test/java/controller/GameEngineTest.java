@@ -14,7 +14,11 @@ import org.junit.Test;
 import entities.GameMap;
 import entities.Player;
 
-public class GameStarterTest {
+/**
+ * Test Game Engine class
+ *
+ */
+public class GameEngineTest {
 
 	GameEngine d_gameEngine;
 	String d_mapName1 = "risk.map";
