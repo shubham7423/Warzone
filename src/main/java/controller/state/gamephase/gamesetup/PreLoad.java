@@ -13,6 +13,7 @@ public class PreLoad extends GameSetup {
 	@Override
 	public String loadMap(String p_fileName) {
 		String l_result;
+		d_gameEngine.setGameMap(new GameMap());
 		l_result = d_gameEngine.getGameMap().loadMap(p_fileName);
 		if (l_result.equals(String.format("Map \"%s\" cannot be loaded", p_fileName))) {
 			return l_result;

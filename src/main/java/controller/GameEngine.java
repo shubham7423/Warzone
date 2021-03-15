@@ -355,7 +355,7 @@ public class GameEngine {
 			System.out.println(l_commandOpt);
 		}
 		System.out.print("\nThank you for playing Warzone :)");
-		d_userCommand.l_scannerScanner.close();
+		l_UserCommand.l_scannerScanner.close();
 	}
 	
 	public static void main(String[] args) {

@@ -21,7 +21,7 @@ public abstract class GameSetup extends GamePhase {
 
 	@Override
 	public String assignCountries() {
-		return String.format("Game not yet Setu");
+		return String.format("Game not yet Setup");
 	}
 	
 	public String deploy(String[] p_commandSplitted) {
