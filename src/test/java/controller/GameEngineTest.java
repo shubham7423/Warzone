@@ -11,10 +11,10 @@ import controller.state.gamephase.gamesetup.PreLoad;
 
 /**
  * 
- * Test Commands
+ * GameEngine Test
  *
  */
-public class CommandsTest {
+public class GameEngineTest {
 	private GameEngine d_gameEngine = new GameEngine();
 
 	/**
