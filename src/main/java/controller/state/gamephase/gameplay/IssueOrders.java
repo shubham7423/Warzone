@@ -68,6 +68,7 @@ public class IssueOrders extends GamePlay {
 			if(!d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).getIsCommit()) {
 				System.out.println(d_gameEngine.getGameMap().showMapPlay());
 				System.out.println("Player " + d_gameEngine.d_playerName.get(l_currentPlayer) + "'s turn");
+				System.out.println("Armies: " + d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).getNumberOfArmies());
 				d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).issueOrder();
 				if(!d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).getIsCommit()) {
 					d_gameEngine.addPlayerOrder(d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)));
