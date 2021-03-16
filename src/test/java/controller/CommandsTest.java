@@ -225,5 +225,34 @@ public class CommandsTest {
 		String l_removeResult2 = d_gameEngine.executeCommand(l_removePlayer2);
 		assertEquals("Player \"Jay\" not present in game", l_removeResult2);
 	}
+	
+	/**
+	 * This function tests the validateMap function with different conditions like
+	 * if the map is null, without countries, not traverseble and other different
+	 * conditions.
+	 */
+	@Test
+	public void testValidateMap() {
+		GameEngine l_gameEngine1 = new GameEngine();
+		l_gameEngine1.setPhase(new PreLoad(l_gameEngine1));
+		String[] l_newString1 = new String[] { "loadmap", "uk.map" };
+		String l_result1 = l_gameEngine1.executeCommand(l_newString1);
+		String[] l_valString = new String[] { "validatemap" };
+		String l_resValString = l_gameEngine1.executeCommand(l_valString);
+		assertEquals(" The graph is connected. Countries are traverseble.", l_resValString);
+
+		GameEngine l_gameEngine2 = new GameEngine();
+		l_gameEngine2.setPhase(new PreLoad(l_gameEngine2));
+		String[] l_valString2 = new String[] { "validatemap" };
+		String l_resValString2 = l_gameEngine2.executeCommand(l_valString2);
+		assertEquals("The Map does not contain any countries.", l_resValString2);
+
+		GameEngine l_gameEngine3 = new GameEngine();
+		l_gameEngine3.setPhase(new PreLoad(l_gameEngine3));
+		l_gameEngine3.setGameMap(null);
+		String[] l_valString3 = new String[] { "validatemap" };
+		String l_resValString3 = l_gameEngine3.executeCommand(l_valString3);
+		assertEquals("Cannot validate map", l_resValString3);
+	}
 
 }
