@@ -92,6 +92,10 @@ public class IssueOrders extends GamePlay {
 	public String showMap() {
 		return printInvalidCommandMessage();
 	}
+	
+	public String checkContinentOwnership() {
+		return printInvalidCommandMessage();
+	}
 
 	@Override
 	public void next() {

@@ -31,5 +31,9 @@ public abstract class GameSetup extends GamePhase {
 	public String executeOrders() {
 		return printInvalidCommandMessage();
 	}
+	
+	public String checkContinentOwnership() {
+		return printInvalidCommandMessage();
+	}
 
 }

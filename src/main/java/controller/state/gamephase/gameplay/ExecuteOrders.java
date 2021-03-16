@@ -27,6 +27,10 @@ public class ExecuteOrders extends GamePlay {
 		return printInvalidCommandMessage();
 	}
 	
+	public String checkContinentOwnership() {
+		return printInvalidCommandMessage();
+	}
+	
 	public String executeOrders() {
 		int l_numOrders = d_gameEngine.getPlayeraOrderSize();
 		int l_i = 0;
