@@ -25,6 +25,8 @@ public class PreLoad extends GameSetup {
 			d_gameEngine.setGameMap(new GameMap());
 			return l_result;
 		}
+		d_gameEngine.d_logEntryBuffer.setString("Game Setup Phase Entered");
+		d_gameEngine.d_logEntryBuffer.setString(l_result);
 		next();
 		return l_result;
 	}

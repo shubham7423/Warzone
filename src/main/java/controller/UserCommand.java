@@ -24,9 +24,10 @@ public class UserCommand {
 //		String[] l_splittedCommandString = l_userCommand.split(" ");
 //		return l_splittedCommandString;
 //	}
-	GameEngine d_gameEngine = new GameEngine();
+	public GameEngine d_gameEngine;
 	
 	public UserCommand() {
+		d_gameEngine = new GameEngine();
 		d_gameEngine.setPhase(new PreEdit(d_gameEngine));
 //		d_gameStarter.setUserCommand(this);
 	}

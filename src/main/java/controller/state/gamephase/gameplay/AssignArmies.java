@@ -29,6 +29,7 @@ public class AssignArmies extends GamePlay {
 		}
 		finally {
 			next();
+			d_gameEngine.d_logEntryBuffer.setString("Assigned Reinforcements to players");
 			d_gameEngine.getPhase().issueOrders();
 		}
 	}

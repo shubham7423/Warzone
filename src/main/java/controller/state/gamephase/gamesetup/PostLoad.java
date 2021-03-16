@@ -31,7 +31,7 @@ public class PostLoad extends GameSetup {
 		} else {
 			l_result = removePlayer(p_commandSplitted[1]);
 		}
-
+		d_gameEngine.d_logEntryBuffer.setString(l_result);
 		return l_result;
 	}
 	
@@ -57,6 +57,7 @@ public class PostLoad extends GameSetup {
 				break;
 			}
 		}
+		d_gameEngine.d_logEntryBuffer.setString("Countries Assigned");
 		next();
 		return "Countries Assigned";
 	}
@@ -68,6 +69,7 @@ public class PostLoad extends GameSetup {
 		}
 		d_gameEngine.d_players.put(p_playerName, new Player(p_playerName));
 		d_gameEngine.d_playerName.add(p_playerName);
+		d_gameEngine.d_logEntryBuffer.setString(String.format("Player \"%s\" added to game", p_playerName));
 		return String.format("Player \"%s\" added to game", p_playerName);
 	}
 
@@ -78,6 +80,7 @@ public class PostLoad extends GameSetup {
 		}
 		d_gameEngine.d_players.remove(p_playerName);
 		d_gameEngine.d_playerName.remove(p_playerName);
+		d_gameEngine.d_logEntryBuffer.setString(String.format("Player \"%s\" removed from game", p_playerName));
 		return String.format("Player \"%s\" removed from game", p_playerName);
 	}
 

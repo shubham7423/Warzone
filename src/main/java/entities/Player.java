@@ -153,6 +153,7 @@ public class Player {
 		while (!l_isCorrect) {
 			try {
 				String l_result = l_userCommand.getCommand();
+				l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_result);
 				l_splittedOrder = l_result.split(" ");
 				if (l_splittedOrder[0].equals("deploy") && l_splittedOrder.length < 3) {
 					System.out.println("Invalid command");

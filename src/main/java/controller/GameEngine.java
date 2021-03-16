@@ -361,6 +361,7 @@ public class GameEngine {
 	public void start() {
 //		setUserCommand(new UserCommand());
 		System.out.println("Welcome to Warzone");
+		this.d_logEntryBuffer.setString("Game Started");
 		UserCommand l_UserCommand = new UserCommand();
 		while (true) {
 //			String[] l_splittedCommandString = l_userCommand.getCommand(l_gameStarter);

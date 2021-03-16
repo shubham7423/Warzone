@@ -38,7 +38,8 @@ public class IssueOrders extends GamePlay {
 		int l_currentPlayer = 0;
 		Orders l_playerOrders = null;
 		HashSet<String> l_playersCompleted = new HashSet<>();
-		System.out.println("\nDeploy phase entered");
+		System.out.println("\nIssue orders phase entered");
+		d_gameEngine.d_logEntryBuffer.setString("Issue orders phase entered");
 		System.out.println(org.apache.commons.lang3.StringUtils.repeat("-", 20));
 		
 //		while (l_playersCompleted.size() < d_gameEngine.d_playerName.size()) {
@@ -68,6 +69,7 @@ public class IssueOrders extends GamePlay {
 			if(!d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).getIsCommit()) {
 				System.out.println(d_gameEngine.getGameMap().showMapPlay());
 				System.out.println("Player " + d_gameEngine.d_playerName.get(l_currentPlayer) + "'s turn");
+				d_gameEngine.d_logEntryBuffer.setString("Player " + d_gameEngine.d_playerName.get(l_currentPlayer) + "'s turn");
 				System.out.println("Armies: " + d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).getNumberOfArmies());
 				d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).issueOrder();
 				if(!d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).getIsCommit()) {
@@ -82,8 +84,9 @@ public class IssueOrders extends GamePlay {
 			}
 		}
 		next();
+		d_gameEngine.d_logEntryBuffer.setString("Deploy completed");
 		d_gameEngine.getPhase().executeOrders();
-		return "Deploy completed";
+		return "";
 	}
 	
 	public String executeOrders() {

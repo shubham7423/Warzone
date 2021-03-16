@@ -34,14 +34,18 @@ public class ExecuteOrders extends GamePlay {
 	public String executeOrders() {
 		int l_numOrders = d_gameEngine.getPlayeraOrderSize();
 		int l_i = 0;
+		String l_result;
 		while(l_i < l_numOrders) {
-			System.out.println(d_gameEngine.getPlayerOrder().nextOrder().executeOrder(d_gameEngine));
+			l_result = d_gameEngine.getPlayerOrder().nextOrder().executeOrder(d_gameEngine);
+			System.out.println(l_result);
+			d_gameEngine.d_logEntryBuffer.setString(l_result);
 			++l_i;
 		}
 		System.out.print("\nExecution Complete");
+		d_gameEngine.d_logEntryBuffer.setString("Execution Complete");
 		next();
 		d_gameEngine.getPhase().assignArmies();
-		return "\nExecution completed";
+		return "";
 	}
 
 	@Override
