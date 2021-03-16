@@ -21,7 +21,13 @@ public class GameEngine {
 	public HashMap<String, Player> d_players = new HashMap<>();
 	public ArrayList<String> d_playerName = new ArrayList<>();
 	public UserCommand d_userCommand;
-	public int a = 1;
+	public LogEntryBuffer d_logEntryBuffer;;
+	private LogWriter d_logWriter;
+	
+	public GameEngine() {
+		d_logEntryBuffer = new LogEntryBuffer();
+		d_logWriter = new LogWriter(d_logEntryBuffer);
+	}
 	
 	public int getPlayeraOrderSize() {
 		return d_playersOrder.size();
@@ -49,7 +55,6 @@ public class GameEngine {
 	
 	public void setPhase(Phase p_phase) { 
 		d_phase = p_phase;
-		a = 10000;
 	}
 	
 	public String executeCommand(String[] p_splittedCommand) {
