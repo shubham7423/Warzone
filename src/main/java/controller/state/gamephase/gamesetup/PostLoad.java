@@ -31,7 +31,6 @@ public class PostLoad extends GameSetup {
 		} else {
 			l_result = removePlayer(p_commandSplitted[1]);
 		}
-		d_gameEngine.d_logEntryBuffer.setString(l_result);
 		return l_result;
 	}
 	
@@ -65,6 +64,7 @@ public class PostLoad extends GameSetup {
 	@Override
 	public String addPlayer(String p_playerName) {
 		if (d_gameEngine.d_players.containsKey(p_playerName)) {
+			d_gameEngine.d_logEntryBuffer.setString(String.format("Player \"%s\" already present in game", p_playerName));
 			return String.format("Player \"%s\" already present in game", p_playerName);
 		}
 		d_gameEngine.d_players.put(p_playerName, new Player(p_playerName));
@@ -76,6 +76,7 @@ public class PostLoad extends GameSetup {
 	@Override
 	public String removePlayer(String p_playerName) {
 		if (!d_gameEngine.d_players.containsKey(p_playerName)) {
+			d_gameEngine.d_logEntryBuffer.setString(String.format("Player \"%s\" not present in game", p_playerName));
 			return String.format("Player \"%s\" not present in game", p_playerName);
 		}
 		d_gameEngine.d_players.remove(p_playerName);
