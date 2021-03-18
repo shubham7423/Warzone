@@ -45,6 +45,7 @@ public class AssignArmies extends GamePlay {
 	
 	/**
 	 * function to check whether continent is owned by the players before assigning countries  
+	 * @return string to output result of continent ownership
 	 */
 	public String checkContinentOwnership() {
 		for (Player l_player : d_gameEngine.d_players.values()) {
