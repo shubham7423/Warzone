@@ -11,7 +11,7 @@ import controller.GameEngine;
 public class PostEdit extends EditPhase {
 
 	/**
-	 * constructor method that take game engine object from the parent class 
+	 * constructor method that takes game engine object from the parent class 
 	 * @param p_gameEngine object of game engine
 	 */
 	public PostEdit(GameEngine p_gameEngine) {

@@ -9,7 +9,7 @@ import controller.state.Phase;
 public abstract class GamePhase extends Phase {
 
 	/**
-	 * constructor method that take game engine object from the parent class 
+	 * constructor method that takes game engine object from the parent class 
 	 * @param p_gameEngine object of game engine
 	 */
 	public GamePhase(GameEngine p_gameEngine) {
@@ -18,6 +18,7 @@ public abstract class GamePhase extends Phase {
 	}
 	
 	/**
+	 * function to save map
 	 * @return shows the current state of the map
 	 */
 	public String showMap() {

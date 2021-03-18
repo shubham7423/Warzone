@@ -10,7 +10,7 @@ import controller.state.Phase;
 public abstract class EditPhase extends Phase {
 	
 	/**
-	 * constructor method that take game engine object from the parent class 
+	 * constructor method that takes game engine object from the parent class 
 	 * @param p_gameEngine object of game engine
 	 */
 	public EditPhase(GameEngine p_gameEngine) {
