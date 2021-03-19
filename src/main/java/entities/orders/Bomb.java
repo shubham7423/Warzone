@@ -29,13 +29,13 @@ public class Bomb implements Orders {
 	 */
 	@Override
 	public String executeOrder(GameEngine p_game) {
-		
-		int d_armies_presence = d_country.getNumberOfArmiesPresent();
 
-		if(d_armies_presence > 0)
-		{
-			d_armies_presence = d_armies_presence/2;
-			d_country.setNumberOfArmiesPresent(d_armies_presence);
+		int d_armiesPresence = d_country.getNumberOfArmiesPresent();
+		
+		if(!d_player.getCountries().containsKey(d_country.getId())  && d_armiesPresence > 0)
+		{			
+			d_armiesPresence = d_armiesPresence/2;
+			d_country.setNumberOfArmiesPresent(d_armiesPresence);
 		}
 
 
