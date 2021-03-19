@@ -34,7 +34,7 @@ public class Bomb implements Orders {
 
 		if(d_armies_presence > 0)
 		{
-			d_armies_presence = d_armies_presence - (int) Math.ceil((float)d_armies_presence/2);
+			d_armies_presence = d_armies_presence/2;
 			d_country.setNumberOfArmiesPresent(d_armies_presence);
 		}
 
