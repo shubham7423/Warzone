@@ -1,6 +1,8 @@
 package entities.orders;
 
 import controller.GameEngine;
+import Country;
+import Player;
 
 /**
  * This class represents the bomb card.
@@ -8,6 +10,7 @@ import controller.GameEngine;
 public class Bomb implements Orders {
 
 	private Player d_player;
+	private Country d_country;
 
 	/**
 	 * @param p_player gets the object of Player class
@@ -16,6 +19,7 @@ public class Bomb implements Orders {
 	public Bomb (Player p_player)
 	{
 		d_player = p_player;
+		d_country = d_country;
 	}
 
 	/**
