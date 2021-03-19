@@ -1,8 +1,8 @@
 package entities.orders;
 
 import controller.GameEngine;
-import Country;
-import Player;
+import entities.Country;
+import entities.Player;
 
 /**
  * This class represents the bomb card.
