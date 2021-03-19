@@ -9,6 +9,10 @@ public class Bomb implements Orders {
 
 	private Player d_player;
 
+	/**
+	 * @param p_player gets the object of Player class
+	 */
+	
 	public Bomb (Player p_player)
 	{
 		d_player = p_player;
@@ -20,7 +24,10 @@ public class Bomb implements Orders {
 	 */
 	@Override
 	public String executeOrder(GameEngine p_game) {
-		// TODO Auto-generated method stub
+		
+
+
+
 		return null;
 	}
 
