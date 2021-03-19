@@ -7,6 +7,13 @@ import controller.GameEngine;
  */
 public class Bomb implements Orders {
 
+	private Player d_player;
+
+	public Bomb (Player p_player)
+	{
+		d_player = p_player;
+	}
+
 	/**
 	 * @param p_game gets the object of GameEngine class
 	 * @return string
