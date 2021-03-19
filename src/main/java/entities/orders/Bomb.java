@@ -17,7 +17,7 @@ public class Bomb implements Orders {
 	 * @param p_player gets the object of Player class
 	 */
 	
-	public Bomb (Player p_player, Country country)
+	public Bomb (Player p_player, Country p_country)
 	{
 		d_player = p_player;
 		d_country = p_country;
@@ -30,7 +30,7 @@ public class Bomb implements Orders {
 	@Override
 	public String executeOrder(GameEngine p_game) {
 		
-		int d_armies_presence = p_country.getNumberOfArmiesPresent();
+		int d_armies_presence = d_country.getNumberOfArmiesPresent();
 
 		if(d_armies_presence > 0)
 		{
