@@ -3,6 +3,7 @@ package entities.orders;
 import controller.GameEngine;
 import entities.Country;
 import entities.Player;
+import java.lang.Math;
 
 /**
  * This class represents the bomb card.
@@ -19,7 +20,7 @@ public class Bomb implements Orders {
 	public Bomb (Player p_player)
 	{
 		d_player = p_player;
-		d_country = d_country;
+		d_country = p_country;
 	}
 
 	/**
@@ -29,6 +30,13 @@ public class Bomb implements Orders {
 	@Override
 	public String executeOrder(GameEngine p_game) {
 		
+		int d_armies_presence = p_country.getNumberOfArmiesPresent();
+
+		if(d_armies_presence > 0)
+		{
+			d_armies_presence = d_armies_presence - Math.floor(d_armies_presence/2);
+			d_country.setNumberOfArmiesPresent(d_armies_presence);
+		}
 
 
 
