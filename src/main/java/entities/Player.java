@@ -196,7 +196,7 @@ public class Player {
 			Integer.parseInt(p_str);  
 			return true;
 		} catch(NumberFormatException p_e){  
-			return false;  
+			return false;
 		} catch(Exception p_e) {
 			return false;
 		}
