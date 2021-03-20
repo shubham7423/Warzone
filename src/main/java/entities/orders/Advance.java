@@ -75,6 +75,7 @@ public class Advance implements Orders {
 			int l_capabilityDestinationCountryArmies = (int)Math.ceil(l_destinationCountryArmies*0.7);
 			
 			if (l_capabilitySourceCountryArmies > l_destinationCountryArmies) {
+				
 				p_game.getGameMap().getCountries().get(d_countryNameTo).setPlayer(d_player);
 				d_player.getCountries().get(d_countryNameFrom).setNumberOfArmiesPresent(l_sourceCountryArmies - d_armies);
 				d_player.getCountries().get(d_countryNameTo).setNumberOfArmiesPresent(d_armies - l_capabilityDestinationCountryArmies);
@@ -82,7 +83,11 @@ public class Advance implements Orders {
 			}
 			
 			if (l_capabilitySourceCountryArmies < l_destinationCountryArmies) {
-				
+//				int l_remainingArmies = l_sourceCountryArmies - d_armies;
+//				d_player.getCountries().get(d_countryNameFrom).setNumberOfArmiesPresent(l_sourceCountryArmies - d_armies + (d_armies - l_capabilityDestinationCountryArmies));
+//				d_player.getCountries().get(d_countryNameTo).setNumberOfArmiesPresent(l_destinationCountryArmies - l_capabilitySourceCountryArmies);
+				d_player.getCountries().get(d_countryNameFrom).setNumberOfArmiesPresent(l_sourceCountryArmies - l_capabilityDestinationCountryArmies);
+				d_player.getCountries().get(d_countryNameTo).removeArmies(l_capabilitySourceCountryArmies);
 			}
 //			int l_remainingSourceCountryArmies = l_sourceCountryArmies - l_capabilityDestinationCountryArmies;
 //			int l_remainingDestinationCountryArmies = l_destinationCountryArmies - l_capabilitySourceCountryArmies;
