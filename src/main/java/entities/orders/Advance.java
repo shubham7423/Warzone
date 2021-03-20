@@ -39,8 +39,11 @@ public class Advance implements Orders {
 	@Override
 	public String executeOrder(GameEngine p_game) {
 		// TODO Auto-generated method stub
-		if ((p_game.getGameMap().getCountries().get(d_countryNameFrom) == null) || (p_game.getGameMap().getCountries().get(d_countryNameTo) == null)) {
-			return String.format("Country \"%d\" does not exist or country \"%d\" does not exist", d_countryNameFrom, d_countryNameTo);
+		if (p_game.getGameMap().getCountries().get(d_countryNameFrom) == null) {
+			return String.format("Country \"%d\" does not exist", d_countryNameFrom);
+		}
+		else if (p_game.getGameMap().getCountries().get(d_countryNameTo) == null) {
+			return String.format("Country \"%d\" does not exist", d_countryNameTo);
 		}
 		else {
 			if (!d_player.getCountries().containsKey(d_countryNameFrom)) {
@@ -68,8 +71,23 @@ public class Advance implements Orders {
 			int l_sourceCountryArmies = p_game.getGameMap().getCountries().get(d_countryNameFrom).getNumberOfArmiesPresent();
 			int l_destinationCountryArmies = p_game.getGameMap().getCountries().get(d_countryNameTo).getNumberOfArmiesPresent();
 			
-			int l_remainingSourceCountryArmies = l_sourceCountryArmies - ;
-			int l_remainingDestinationCountryArmies;
+			int l_capabilitySourceCountryArmies = (int)Math.ceil(d_armies*0.6);
+			int l_capabilityDestinationCountryArmies = (int)Math.ceil(l_destinationCountryArmies*0.7);
+			
+			if (l_capabilitySourceCountryArmies > l_destinationCountryArmies) {
+				p_game.getGameMap().getCountries().get(d_countryNameTo).setPlayer(d_player);
+				d_player.getCountries().get(d_countryNameFrom).setNumberOfArmiesPresent(l_sourceCountryArmies - d_armies);
+				d_player.getCountries().get(d_countryNameTo).setNumberOfArmiesPresent(d_armies - l_capabilityDestinationCountryArmies);
+				return String.format("Armies successfully moved from country \"%d\" to country \"%d\" and the ownership changed to \"%s\" player", d_countryNameFrom, d_countryNameTo, d_player.getName());
+			}
+			
+			if (l_capabilitySourceCountryArmies < l_destinationCountryArmies) {
+				
+			}
+//			int l_remainingSourceCountryArmies = l_sourceCountryArmies - l_capabilityDestinationCountryArmies;
+//			int l_remainingDestinationCountryArmies = l_destinationCountryArmies - l_capabilitySourceCountryArmies;
+			
+				
 		}
 		
 		return null;
