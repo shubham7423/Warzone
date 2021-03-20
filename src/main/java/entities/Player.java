@@ -185,6 +185,22 @@ public class Player {
 			d_orders.add(l_ShowMap);
 		}
 	}
+	
+	/**
+	 * This function is used to check if a string can be converted to integer or not.
+	 * @param p_str represents the string to be casted to Integer value.
+	 * @return true if the string can be parsed to an Integer.
+	 */
+	public static boolean isNumeric(String p_str) { 
+		try {  
+			Integer.parseInt(p_str);  
+			return true;
+		} catch(NumberFormatException p_e){  
+			return false;
+		} catch(Exception p_e) {
+			return false;
+		}
+	}
 
 	/**
 	 * method to check if player owns all countries of a continent
