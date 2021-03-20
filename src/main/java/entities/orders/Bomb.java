@@ -43,7 +43,7 @@ public class Bomb implements Orders {
 				return "Army presence is Zero";
 		}
 		else
-			return "Country referred is your own country."
+			return "Country referred is your own country.";
 		
 	}
 
