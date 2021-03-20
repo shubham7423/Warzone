@@ -11,13 +11,12 @@ import java.lang.Math;
 public class Bomb implements Orders {
 
 	private Player d_player;
-	private Country d_country;
+	private int d_country;
 
 	/**
 	 * @param p_player gets the object of Player class
 	 */
-	
-	public Bomb (Player p_player, Country p_country)
+	public Bomb (Player p_player, int p_country)
 	{
 		d_player = p_player;
 		d_country = p_country;
@@ -32,15 +31,20 @@ public class Bomb implements Orders {
 
 		int l_armiesPresence = d_country.getNumberOfArmiesPresent();
 		
-		if(!d_player.getCountries().containsKey(d_country.getId())  && l_armiesPresence > 0)
+		if(!d_player.getCountries().containsKey(d_country.getId()))
 		{			
-			l_armiesPresence = l_armiesPresence/2;
-			d_country.setNumberOfArmiesPresent(l_armiesPresence);
+			if(l_armiesPresence > 0)
+			{
+				l_armiesPresence = l_armiesPresence/2;
+				p_game.getGameMap().getCountries().get(d_country).setNumberOfArmiesPresent(l_armiesPresence);
+				return "Bomb Card utilized successfully";
+			}
+			else
+				return "Army presence is Zero";
 		}
-
-
-
-		return null;
+		else
+			return "Country referred is your own country."
+		
 	}
 
 }
