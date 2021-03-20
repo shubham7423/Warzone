@@ -46,8 +46,8 @@ public class Advance implements Orders {
 			if (!d_player.getCountries().containsKey(d_countryNameFrom)) {
 				return String.format("Player \"%s\" does not control country \"%d\" ,hence armies cannot be moved.", d_player.getName(), d_countryNameFrom);
 			}
-			if (d_player.getNumberOfArmies() < d_armies) {
-				return String.format("Player \"%s\" does not enough armies", d_player.getName());
+			if (d_player.getCountries().get(d_countryNameFrom).getNumberOfArmiesPresent() < d_armies) {
+				return String.format("Country \"%d\" does not have enough armies", d_countryNameFrom);
 			}
 			
 			/**p_game.getGameMap().getCountries().get(d_country).placeArmies(d_armies);
@@ -64,6 +64,12 @@ public class Advance implements Orders {
 				d_player.getCountries().get(d_countryNameTo).placeArmies(d_armies);
 				return String.format("Armies successfully moved from country \"%d\" to country \"%d\"", d_countryNameFrom, d_countryNameTo);
 			}
+			
+			int l_sourceCountryArmies = p_game.getGameMap().getCountries().get(d_countryNameFrom).getNumberOfArmiesPresent();
+			int l_destinationCountryArmies = p_game.getGameMap().getCountries().get(d_countryNameTo).getNumberOfArmiesPresent();
+			
+			int l_remainingSourceCountryArmies = l_sourceCountryArmies - ;
+			int l_remainingDestinationCountryArmies;
 		}
 		
 		return null;
