@@ -53,7 +53,19 @@ public class Advance implements Orders {
 			/**p_game.getGameMap().getCountries().get(d_country).placeArmies(d_armies);
 			d_player.removeArmies(d_armies);
 			return String.format("Player \"%s\" deployed \"%d\" armies to country \"%d\"", d_player.getName(), d_armies,d_country); */
+			
+			if ((d_player.getCountries().get(d_countryNameFrom).getNumberOfArmiesPresent() - d_armies) < 1) {
+				return String.format("Country \"%d\" should remain with atleast 1 armies after advancing command", d_countryNameFrom);
+			}
+			
+			if (d_player.getCountries().containsKey(d_countryNameFrom) && d_player.getCountries().containsKey(d_countryNameTo)) {
+//				int l_armiesPresent = d_player.getCountries().get(d_countryNameFrom).getNumberOfArmiesPresent();
+				d_player.getCountries().get(d_countryNameFrom).removeArmies(d_armies);
+				d_player.getCountries().get(d_countryNameTo).placeArmies(d_armies);
+				return String.format("Armies successfully moved from country \"%d\" to country \"%d\"", d_countryNameFrom, d_countryNameTo);
+			}
 		}
+		
 		return null;
 	}
 
