@@ -15,6 +15,7 @@ public class Bomb implements Orders {
 
 	/**
 	 * @param p_player gets the object of Player class
+	 * @param p_country gets the id of country
 	 */
 	public Bomb (Player p_player, int p_country)
 	{
