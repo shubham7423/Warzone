@@ -35,11 +35,17 @@ public class Blockade implements Orders {
 				int l_armiesPresence = d_player.getCountries().get(d_country).getNumberOfArmiesPresent();
 				if(l_armiesPresence > 0){
 					d_player.getCountries().get(d_country).setNumberOfArmiesPresent(l_armiesPresence*3);
+					//
 					d_player.getCountries().get(d_country).setPlayer(p_game.d_neutralPlayer);
+					p_game.d_neutralPlayer.addCountry(p_game.getGameMap().getCountries().get(d_country));
+					d_player.removeCountry(d_country);
+					//
 					int l_blockadeCardCount = d_player.d_cardsOwned.get("blockade");
 					d_player.d_cardsOwned.replace("blockade", l_blockadeCardCount - 1);
 					return "Blockade Card utilized successfully";
 				} else {
+					p_game.d_neutralPlayer.addCountry(p_game.getGameMap().getCountries().get(d_country));
+					d_player.removeCountry(d_country);
 					d_player.getCountries().get(d_country).setPlayer(p_game.d_neutralPlayer);
 					int l_blockadeCardCount = d_player.d_cardsOwned.get("blockade");
 					d_player.d_cardsOwned.replace("blockade", l_blockadeCardCount - 1);
