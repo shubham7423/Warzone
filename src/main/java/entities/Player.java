@@ -300,7 +300,7 @@ public class Player {
 							} else {
 								Airlift l_airlift = new Airlift(this, Integer.parseInt(l_splittedOrder[1]), Integer.parseInt(l_splittedOrder[2]), Integer.parseInt(l_splittedOrder[3]));
 								d_orders.add(l_airlift);
-								String temp = "airlift " + Integer.parseInt(l_splittedOrder[1]) + " "+ Integer.parseInt(l_splittedOrder[2]) + " " + Integer.parseInt(l_splittedOrder[3]) + " ";
+								String temp = "airlift " + Integer.parseInt(l_splittedOrder[1]) + " "+ Integer.parseInt(l_splittedOrder[2]) + " " + Integer.parseInt(l_splittedOrder[3]);
 								l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
 								l_isCorrect = true;
 							}
@@ -330,7 +330,7 @@ public class Player {
 					}
 							
 				}
-			} catch ( Exception e) {
+			} catch ( Exception p_e) {
 				System.out.println("Something went wront. Exception occured.");
 			}
 		}
