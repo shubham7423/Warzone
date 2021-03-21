@@ -275,6 +275,20 @@ public class Player {
 							}
 							break;
 						case "airlift":
+							if(l_splittedOrder.length != 4) {
+								String temp = "Invalid command. Correct command is - airlift sourceCountryId targetCountryId numarmies";
+								System.out.println(temp);
+								continue;
+							} else if (!isNumeric(l_splittedOrder[1]) || !isNumeric(l_splittedOrder[2]) || isNumeric(l_splittedOrder[3])) {
+								String temp = "After airlift keyword, you can only use integer to represent the sourceCountryId, targetCountryId and numarmies";
+								System.out.println(temp);
+								continue;
+							} else {
+								Airlift l_airlift = new Airlift(this, Integer.parseInt(l_splittedOrder[1]), Integer.parseInt(l_splittedOrder[2]), Integer.parseInt(l_splittedOrder[3]));
+								d_orders.add(l_airlift);
+								String temp = "airlift " + Integer.parseInt(l_splittedOrder[1]) + " "+ Integer.parseInt(l_splittedOrder[2]) + " " + Integer.parseInt(l_splittedOrder[3]) + " ";
+								l_isCorrect = true;
+							}
 							break;
 						case "negotiate":
 							break;
