@@ -259,6 +259,20 @@ public class Player {
 							}
 							break;
 						case "blockade":
+							if(l_splittedOrder.length != 2) {
+								String temp = "Invalid command. Correct command is - blockade countryId";
+								System.out.println(temp);
+								continue;
+							} else if (!isNumeric(l_splittedOrder[1])) {
+								String temp = "After blockade keyword, you can only use integer to represent the countryId";
+								System.out.println(temp);
+								continue;
+							} else {
+								Blockade l_blockade = new Blockade(this, Integer.parseInt(l_splittedOrder[1]));
+								d_orders.add(l_blockade);
+								String temp = "blockade "+ Integer.parseInt(l_splittedOrder[1]);
+								l_isCorrect = true;
+							}
 							break;
 						case "airlift":
 							break;
