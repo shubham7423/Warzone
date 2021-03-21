@@ -214,15 +214,18 @@ public class Player {
 							if(l_splittedOrder.length != 3) {
 								String temp = "Invalid command. Correct command is - deploy countryId numarmies";
 								System.out.println(temp);
+								l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
 								continue;
 							} else if (!isNumeric(l_splittedOrder[1]) || !isNumeric(l_splittedOrder[2])) {
 								String temp = "After deploy keyword, you can only use integer to represent the countryId and numarmies";
 								System.out.println(temp);
+								l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
 								continue;
 							} else {
 								Deploy l_deploy = new Deploy(this, Integer.parseInt(l_splittedOrder[1]), Integer.parseInt(l_splittedOrder[2]));
 								d_orders.add(l_deploy);
 								String temp = "deploy "+ Integer.parseInt(l_splittedOrder[1]) + " " + Integer.parseInt(l_splittedOrder[2]);
+								l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
 								l_isCorrect = true;
 							}
 							break;
