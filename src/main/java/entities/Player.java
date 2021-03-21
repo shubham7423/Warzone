@@ -309,15 +309,18 @@ public class Player {
 							if(l_splittedOrder.length != 2) {
 								String temp = "Invalid command. Correct command is - negotiate playerId";
 								System.out.println(temp);
+								l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
 								continue;
 							} else if (!isNumeric(l_splittedOrder[1])) {
 								String temp = "After negotiate keyword, you can only use integer to represent the playerId";
 								System.out.println(temp);
+								l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
 								continue;
 							} else {
 								Diplomacy l_diplomacy = new Diplomacy(this, Integer.parseInt(l_splittedOrder[1]));
 								d_orders.add(l_diplomacy);
 								String temp = "negotiate "+ Integer.parseInt(l_splittedOrder[1]);
+								l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
 								l_isCorrect = true;
 							}
 							break;
