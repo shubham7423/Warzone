@@ -12,6 +12,7 @@ import entities.orders.Advance;
 import entities.orders.Deploy;
 import entities.orders.Orders;
 import entities.orders.ShowMap;
+import entities.orders.*;
 
 /**
  * Player in a game
@@ -242,6 +243,20 @@ public class Player {
 							}
 							break;
 						case "bomb":
+							if(l_splittedOrder.length != 2) {
+								String temp = "Invalid command. Correct command is - bomb countryId";
+								System.out.println(temp);
+								continue;
+							} else if (!isNumeric(l_splittedOrder[1])) {
+								String temp = "After bomb keyword, you can only use integer to represent the countryId";
+								System.out.println(temp);
+								continue;
+							} else {
+								Bomb l_bomb = new Bomb(this, Integer.parseInt(l_splittedOrder[1]));
+								d_orders.add(l_bomb);
+								String temp = "bomb "+ Integer.parseInt(l_splittedOrder[1]);
+								l_isCorrect = true;
+							}
 							break;
 						case "blockade":
 							break;
