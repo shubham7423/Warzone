@@ -8,6 +8,7 @@ import java.util.Queue;
 import controller.UserCommand;
 import controller.state.gamephase.gameplay.AssignArmies;
 import controller.state.gamephase.gameplay.IssueOrders;
+import entities.orders.Advance;
 import entities.orders.Deploy;
 import entities.orders.Orders;
 import entities.orders.ShowMap;
@@ -225,6 +226,20 @@ public class Player {
 							}
 							break;
 						case "advance":
+							if(l_splittedOrder.length != 4) {
+								String temp = "Invalid command. Correct command is - advance countryFrom countryTo numarmies";
+								System.out.println(temp);
+								continue;
+							} else if (!isNumeric(l_splittedOrder[1]) || !isNumeric(l_splittedOrder[2]) || isNumeric(l_splittedOrder[3])) {
+								String temp = "After advance keyword, you can only use integer to represent the countryFrom, countryTo and numarmies";
+								System.out.println(temp);
+								continue;
+							} else {
+								Advance l_advance = new Advance(this, Integer.parseInt(l_splittedOrder[1]), Integer.parseInt(l_splittedOrder[2]), Integer.parseInt(l_splittedOrder[3]));
+								d_orders.add(l_advance);
+								String temp = "advance "+ Integer.parseInt(l_splittedOrder[1]) + " " + Integer.parseInt(l_splittedOrder[2]) +  " " + Integer.parseInt(l_splittedOrder[3]);
+								l_isCorrect = true;
+							}
 							break;
 						case "bomb":
 							break;
