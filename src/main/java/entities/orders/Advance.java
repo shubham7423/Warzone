@@ -87,6 +87,10 @@ public class Advance implements Orders {
 
 			if (l_capabilitySourceCountryArmies > l_destinationCountryArmies) {
 				p_game.getGameMap().getCountries().get(d_countryNameTo).setPlayer(d_player);
+				//adding the country to the players list of countries
+				d_player.addCountry(p_game.getGameMap().getCountries().get(d_countryNameTo));
+				Player l_playerBeingAttacked = p_game.getGameMap().getCountries().get(d_countryNameTo).getPlayer();
+				l_playerBeingAttacked.getCountries().remove(d_countryNameTo);
 				d_player.getCountries().get(d_countryNameFrom)
 						.setNumberOfArmiesPresent(l_sourceCountryArmies - d_armies);
 				d_player.getCountries().get(d_countryNameTo)
