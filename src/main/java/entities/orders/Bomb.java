@@ -28,7 +28,7 @@ public class Bomb implements Orders {
 	public String executeOrder(GameEngine p_game) {
 		int l_armiesPresence = p_game.getGameMap().getCountries().get(d_country).getNumberOfArmiesPresent();
 		
-		if(!d_player.getCountries().containsKey(d_country){			
+		if(!d_player.getCountries().containsKey(d_country)){			
 			if(l_armiesPresence > 0){
 				l_armiesPresence = l_armiesPresence/2;
 				p_game.getGameMap().getCountries().get(d_country).setNumberOfArmiesPresent(l_armiesPresence);
