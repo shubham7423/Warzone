@@ -16,11 +16,13 @@ public class Airlift implements Orders {
 	private int d_countryNameTo;
 	private int d_armies;
 	/**
+	 * Constructor for assigning the initial values that
+	 * will be required during the execution of the commands
 	 * 
-	 * @param p_player player who is firing advance command
+	 * @param p_player player who is firing airlift command
 	 * @param p_countryNameFrom country from which the reinforcements are to be taken
-	 * @param p_countryNameTo country to which reinforcements are to be placed
-	 * @param p_armies number of reinforcements to be placed
+	 * @param p_countryNameTo country to which the reinforcements are to be placed
+	 * @param p_armies number of reinforcements to be moved
 	 */
 	public Airlift (Player p_player, int p_countryNameFrom, int p_countryNameTo, int p_armies) {
 		d_player = p_player;
@@ -29,10 +31,10 @@ public class Airlift implements Orders {
 		d_armies = p_armies;
 	}
 	/**
-	 * Method to execute Airlift card
+	 * Method to execute the Airlift command
 	 * 
-	 * @param p_game gets the object of GameEngine class
-	 * @return string
+	 * @param p_game Gets the object of GameEngine class
+	 * @return string Result as per the operations performed
 	 */
 	@Override
 	public String executeOrder(GameEngine p_game) {
