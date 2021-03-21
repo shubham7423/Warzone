@@ -13,11 +13,11 @@ public class Diplomacy implements Orders {
 
 	private Player d_player;
 	private Player d_otherPlayer;
-	private int d_otherPlayerInt;
+	private String d_otherPlayerName;
 	
-	public Diplomacy(Player p_player, int p_otherPlayer) {
+	public Diplomacy(Player p_player, String p_otherPlayer) {
 		d_player = p_player;
-		d_otherPlayerInt = p_otherPlayer;
+		d_otherPlayerName = p_otherPlayer;
 	}
 	
 	/**
