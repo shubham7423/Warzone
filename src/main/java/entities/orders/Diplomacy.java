@@ -27,8 +27,19 @@ public class Diplomacy implements Orders {
 	@Override
 	public String executeOrder(GameEngine p_game) {
 		// TODO Auto-generated method stub
-		
-		return null;
+		if(!p_game.d_playerName.contains(d_otherPlayerName)) {
+			return "Mentioned Player \"" + d_otherPlayerName + "\" does not exist";
+		} else {
+			int l_diplomacyCardCount = d_player.d_cardsOwned.get("diplomacy");
+			if(l_diplomacyCardCount < 1) {
+				return "Player does not have Diplomacy Card.";
+			} else {
+				d_otherPlayer = p_game.d_players.get(d_otherPlayerName);
+				d_otherPlayer.d_negotiatedPlayerNames.add(d_player.getName());
+				d_player.d_negotiatedPlayerNames.add(d_otherPlayer.getName());
+				d_player.d_cardsOwned.replace("diplomacy", (l_diplomacyCardCount-1));
+				return "Negotiation between Players \"" + d_player.getName()+"\" and \"" + d_otherPlayer.getName() + "\" done successfully for 1 time.";
+			}
+		}
 	}
-
 }
