@@ -233,15 +233,18 @@ public class Player {
 							if(l_splittedOrder.length != 4) {
 								String temp = "Invalid command. Correct command is - advance countryFrom countryTo numarmies";
 								System.out.println(temp);
+								l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
 								continue;
 							} else if (!isNumeric(l_splittedOrder[1]) || !isNumeric(l_splittedOrder[2]) || isNumeric(l_splittedOrder[3])) {
 								String temp = "After advance keyword, you can only use integer to represent the countryFrom, countryTo and numarmies";
 								System.out.println(temp);
+								l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
 								continue;
 							} else {
 								Advance l_advance = new Advance(this, Integer.parseInt(l_splittedOrder[1]), Integer.parseInt(l_splittedOrder[2]), Integer.parseInt(l_splittedOrder[3]));
 								d_orders.add(l_advance);
 								String temp = "advance "+ Integer.parseInt(l_splittedOrder[1]) + " " + Integer.parseInt(l_splittedOrder[2]) +  " " + Integer.parseInt(l_splittedOrder[3]);
+								l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
 								l_isCorrect = true;
 							}
 							break;
