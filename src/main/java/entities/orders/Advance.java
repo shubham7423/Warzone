@@ -4,7 +4,6 @@ import java.util.Random;
 import java.util.Set;
 
 import controller.GameEngine;
-import entities.GameMap;
 import entities.Player;
 import entities.Country;
 
