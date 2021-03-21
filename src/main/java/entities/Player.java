@@ -271,15 +271,18 @@ public class Player {
 							if(l_splittedOrder.length != 2) {
 								String temp = "Invalid command. Correct command is - blockade countryId";
 								System.out.println(temp);
+								l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
 								continue;
 							} else if (!isNumeric(l_splittedOrder[1])) {
 								String temp = "After blockade keyword, you can only use integer to represent the countryId";
 								System.out.println(temp);
+								l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
 								continue;
 							} else {
 								Blockade l_blockade = new Blockade(this, Integer.parseInt(l_splittedOrder[1]));
 								d_orders.add(l_blockade);
 								String temp = "blockade "+ Integer.parseInt(l_splittedOrder[1]);
+								l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
 								l_isCorrect = true;
 							}
 							break;
