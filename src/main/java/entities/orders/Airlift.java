@@ -29,12 +29,23 @@ public class Airlift implements Orders {
 		d_armies = p_armies;
 	}
 	/**
+	 * Method to execute Airlift card
+	 * 
 	 * @param p_game gets the object of GameEngine class
 	 * @return string
 	 */
 	@Override
 	public String executeOrder(GameEngine p_game) {
 		// TODO Auto-generated method stub
+		if (!d_player.getCountries().containsKey(d_countryNameFrom)) {
+			return String.format("Player \"%s\" does not own country \"%d\"", d_player.getName(), d_countryNameFrom);
+		}
+		
+		if (!d_player.getCountries().containsKey(d_countryNameTo)) {
+			return String.format("Player \"%s\" does not own country \"%d\"", d_player.getName(), d_countryNameTo);
+		}
+		
+		
 		return null;
 	}
 
