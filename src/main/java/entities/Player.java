@@ -26,7 +26,7 @@ public class Player {
 	private int d_numberOfArmies;
 	private boolean d_isCommit;
 	public HashMap<String, Integer> d_cardsOwned;
-
+	public ArrayList<String> d_negotiatedPlayerNames;
 	/**
 	 * Constructor of player which sets initial values for player data
 	 * 
@@ -44,6 +44,7 @@ public class Player {
 		d_cardsOwned.put("blockade", 0);
 		d_cardsOwned.put("airlift", 0);
 		d_cardsOwned.put("diplomacy", 0);
+		d_negotiatedPlayerNames = new ArrayList<String>();
 	}
 
 	/**
@@ -328,7 +329,6 @@ public class Player {
 							System.out.println("Command not found.");
 							break;
 					}
-							
 				}
 			} catch ( Exception p_e) {
 				System.out.println("Something went wront. Exception occured.");
