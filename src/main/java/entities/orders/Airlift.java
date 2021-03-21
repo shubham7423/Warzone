@@ -15,7 +15,13 @@ public class Airlift implements Orders {
 	private int d_countryNameFrom;
 	private int d_countryNameTo;
 	private int d_armies;
-	
+	/**
+	 * 
+	 * @param p_player player who is firing advance command
+	 * @param p_countryNameFrom country from which the reinforcements are to be taken
+	 * @param p_countryNameTo country to which reinforcements are to be placed
+	 * @param p_armies number of reinforcements to be placed
+	 */
 	public Airlift (Player p_player, int p_countryNameFrom, int p_countryNameTo, int p_armies) {
 		d_player = p_player;
 		d_countryNameFrom = p_countryNameFrom;
