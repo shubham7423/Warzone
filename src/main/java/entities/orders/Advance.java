@@ -8,7 +8,10 @@ import entities.Player;
 import entities.Country;
 
 /**
- * This class represents the advance command.
+ * This class represents the advance command. The attack system is very simple.
+ * Each army that attacks has a 60% chance at killing one defending army. If all
+ * of the defending armies are killed, the territory is captured and all the
+ * attacking armies move to occupy the destination territory.
  */
 public class Advance implements Orders {
 
