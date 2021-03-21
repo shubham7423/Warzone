@@ -8,7 +8,6 @@ import entities.Player;
  * This class represents the bomb card.
  */
 public class Bomb implements Orders {
-
 	private Player d_player;
 	private int d_country;
 
@@ -16,8 +15,7 @@ public class Bomb implements Orders {
 	 * @param p_player gets the object of Player class
 	 * @param p_country gets the id of country
 	 */
-	public Bomb (Player p_player, int p_country)
-	{
+	public Bomb (Player p_player, int p_country){
 		d_player = p_player;
 		d_country = p_country;
 	}
@@ -28,22 +26,21 @@ public class Bomb implements Orders {
 	 */
 	@Override
 	public String executeOrder(GameEngine p_game) {
-
 		int l_armiesPresence = p_game.getGameMap().getCountries().get(d_country).getNumberOfArmiesPresent();
 		
-		if(!d_player.getCountries().containsKey(p_game.getGameMap().getCountries().get(d_country).getId()))
-		{			
-			if(l_armiesPresence > 0)
-			{
+		if(!d_player.getCountries().containsKey(d_country){			
+			if(l_armiesPresence > 0){
 				l_armiesPresence = l_armiesPresence/2;
 				p_game.getGameMap().getCountries().get(d_country).setNumberOfArmiesPresent(l_armiesPresence);
 				return "Bomb Card utilized successfully";
 			}
-			else
+			else{
 				return "Army presence is Zero";
+			}
 		}
-		else
+		else{
 			return "Country referred is your own country.";
+		}
 		
 	}
 
