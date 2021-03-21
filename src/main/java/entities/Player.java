@@ -291,6 +291,20 @@ public class Player {
 							}
 							break;
 						case "negotiate":
+							if(l_splittedOrder.length != 2) {
+								String temp = "Invalid command. Correct command is - negotiate playerId";
+								System.out.println(temp);
+								continue;
+							} else if (!isNumeric(l_splittedOrder[1])) {
+								String temp = "After negotiate keyword, you can only use integer to represent the playerId";
+								System.out.println(temp);
+								continue;
+							} else {
+								Diplomacy l_diplomacy = new Diplomacy(this, Integer.parseInt(l_splittedOrder[1]));
+								d_orders.add(l_diplomacy);
+								String temp = "negotiate "+ Integer.parseInt(l_splittedOrder[1]);
+								l_isCorrect = true;
+							}
 							break;
 						default:
 							System.out.println("Command not found.");
