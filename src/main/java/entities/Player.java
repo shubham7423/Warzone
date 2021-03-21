@@ -23,7 +23,7 @@ public class Player {
 	private Queue<Orders> d_orders;
 	private int d_numberOfArmies;
 	private boolean d_isCommit;
-	private HashMap<String, Integer> d_cardsOwned;
+	public HashMap<String, Integer> d_cardsOwned;
 
 	/**
 	 * Constructor of player which sets initial values for player data
