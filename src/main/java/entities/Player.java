@@ -206,6 +206,25 @@ public class Player {
 				} else {
 					l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_result);
 					l_splittedOrder = l_result.split(" ");
+					
+					switch (l_splittedOrder[0]) {
+						case "deploy":
+							break;
+						case "advance":
+							break;
+						case "bomb":
+							break;
+						case "blockade":
+							break;
+						case "airlift":
+							break;
+						case "negotiate":
+							break;
+						default:
+							System.out.println("Command not found.");
+							break;
+					}
+							
 				}
 			} catch ( Exception e) {
 				System.out.println("Something went wront. Exception occured.");
