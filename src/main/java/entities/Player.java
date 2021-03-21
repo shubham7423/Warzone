@@ -312,15 +312,15 @@ public class Player {
 								System.out.println(temp);
 								l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
 								continue;
-							} else if (!isNumeric(l_splittedOrder[1])) {
-								String temp = "After negotiate keyword, you can only use integer to represent the playerId";
+							} else if (isNumeric(l_splittedOrder[1])) {
+								String temp = "After negotiate keyword, you can not use integer to represent the playerName";
 								System.out.println(temp);
 								l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
 								continue;
 							} else {
-								Diplomacy l_diplomacy = new Diplomacy(this, Integer.parseInt(l_splittedOrder[1]));
+								Diplomacy l_diplomacy = new Diplomacy(this, l_splittedOrder[1]);
 								d_orders.add(l_diplomacy);
-								String temp = "negotiate "+ Integer.parseInt(l_splittedOrder[1]);
+								String temp = "negotiate "+ l_splittedOrder[1];
 								l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
 								l_isCorrect = true;
 							}
