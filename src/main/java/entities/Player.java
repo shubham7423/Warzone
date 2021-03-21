@@ -152,7 +152,7 @@ public class Player {
 	 * method to issue order called by Game engine
 	 */
 	public void issueOrder() {
-
+/*
 		UserCommand l_userCommand = new UserCommand();
 		l_userCommand.setPhase(new IssueOrders(null));
 		String[] l_splittedOrder = null;
@@ -190,6 +190,26 @@ public class Player {
 		} else if (l_splittedOrder[0].equals("showmap")) {
 			ShowMap l_ShowMap = new ShowMap();
 			d_orders.add(l_ShowMap);
+		}
+		*/
+		UserCommand l_userCommand = new UserCommand();
+		l_userCommand.setPhase(new IssueOrders(null));
+		String[] l_splittedOrder = null;
+		boolean l_isCorrect = false;
+		while(!l_isCorrect) {
+			try {
+				String l_result = l_userCommand.getCommand();
+				if (l_result.equals("exit()")) {
+					l_isCorrect = true;
+					d_isCommit = true;
+					return;
+				} else {
+					l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_result);
+					l_splittedOrder = l_result.split(" ");
+				}
+			} catch ( Exception e) {
+				System.out.println("Something went wront. Exception occured.");
+			}
 		}
 	}
 	
