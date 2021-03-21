@@ -23,10 +23,12 @@ public class GameEngine {
 	public UserCommand d_userCommand;
 	public LogEntryBuffer d_logEntryBuffer;;
 	private LogWriter d_logWriter;
+	public Player d_neutralPlayer;
 	
 	public GameEngine() {
 		d_logEntryBuffer = new LogEntryBuffer();
 		d_logWriter = new LogWriter(d_logEntryBuffer);
+		d_neutralPlayer = new Player("neutralPlayer#1");
 	}
 	
 	public int getPlayeraOrderSize() {
@@ -321,15 +323,15 @@ public class GameEngine {
 	}
 	
 	public String assignCountries(String[] p_splittedCommand) {
-		try {
+//		try {
 			if (p_splittedCommand.length > 1) {
 				return String.format("Invalid Command");
 			}
 			return d_phase.assignCountries();
-		}
-		finally {
-			d_phase.assignArmies();
-		}
+//		}
+//		finally {
+//			d_phase.assignArmies();
+//		}
 		
 //		if (p_splittedCommand.length > 1) {
 //			return String.format("Invalid Command");

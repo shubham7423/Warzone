@@ -1,5 +1,6 @@
 package entities;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -22,6 +23,7 @@ public class Player {
 	private Queue<Orders> d_orders;
 	private int d_numberOfArmies;
 	private boolean d_isCommit;
+	private HashMap<String, Integer> d_cardsOwned;
 
 	/**
 	 * Constructor of player which sets initial values for player data
@@ -35,6 +37,11 @@ public class Player {
 		d_orders = new LinkedList<>();
 		d_numberOfArmies = 0;
 		d_isCommit = false;
+		d_cardsOwned = new HashMap<>();
+		d_cardsOwned.put("bomb", 0);
+		d_cardsOwned.put("blockade", 0);
+		d_cardsOwned.put("airlift", 0);
+		d_cardsOwned.put("diplomacy", 0);
 	}
 
 	/**
