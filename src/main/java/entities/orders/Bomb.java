@@ -26,22 +26,25 @@ public class Bomb implements Orders {
 	 */
 	@Override
 	public String executeOrder(GameEngine p_game) {
-		int l_armiesPresence = p_game.getGameMap().getCountries().get(d_country).getNumberOfArmiesPresent();
-		
-		if(!d_player.getCountries().containsKey(d_country)){			
-			if(l_armiesPresence > 0){
-				l_armiesPresence = l_armiesPresence/2;
-				p_game.getGameMap().getCountries().get(d_country).setNumberOfArmiesPresent(l_armiesPresence);
-				return "Bomb Card utilized successfully";
+		if(d_player.d_cardsOwned.get("bomb")>=1){
+			if(!d_player.getCountries().containsKey(d_country)){	
+				int l_armiesPresence = d_player.getCountries().get(d_country).getNumberOfArmiesPresent();
+				if(l_armiesPresence > 0){
+					d_player.getCountries().get(d_country).setNumberOfArmiesPresent(l_armiesPresence/2);
+					int l_bombCardCount = d_player.d_cardsOwned.get("bomb");
+					d_player.d_cardsOwned.replace("bomb", l_bombCardCount - 1);
+					return "Bomb Card utilized successfully";
+				} else {
+					int l_bombCardCount = d_player.d_cardsOwned.get("bomb");
+					d_player.d_cardsOwned.replace("bomb", l_bombCardCount - 1);
+					return "Army presence is Zero";
+				}
+			} else {
+				return "Country referred is your own country.";
 			}
-			else{
-				return "Army presence is Zero";
-			}
+		} else {
+			return "You don't have bomb card.";
 		}
-		else{
-			return "Country referred is your own country.";
-		}
-		
 	}
 
 }
