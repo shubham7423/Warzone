@@ -12,11 +12,12 @@ import entities.Player;
 public class Diplomacy implements Orders {
 
 	private Player d_player;
-	private int d_otherPlayer;
+	private Player d_otherPlayer;
+	private int d_otherPlayerInt;
 	
 	public Diplomacy(Player p_player, int p_otherPlayer) {
 		d_player = p_player;
-		d_otherPlayer = p_otherPlayer;
+		d_otherPlayerInt = p_otherPlayer;
 	}
 	
 	/**
@@ -26,6 +27,7 @@ public class Diplomacy implements Orders {
 	@Override
 	public String executeOrder(GameEngine p_game) {
 		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
