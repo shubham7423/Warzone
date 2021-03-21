@@ -1,8 +1,11 @@
 package entities.orders;
 
+import java.util.Set;
+
 import controller.GameEngine;
 import entities.GameMap;
 import entities.Player;
+import entities.Country;
 
 /**
  * This class represents the advance command.
@@ -61,6 +64,10 @@ public class Advance implements Orders {
 				return String.format("Country \"%d\" should remain with atleast 1 armies after advancing command", d_countryNameFrom);
 			}
 			
+			Set<Country> l_neighboringCountries = d_player.getCountries().get(d_countryNameFrom).getNeighborCountries();
+			if(!(l_neighboringCountries.contains(d_countryNameTo))) {
+				return String.format("Armies cannot be moved from country \"%d\" to country \"%d\" because they are not neighbors", d_countryNameFrom, d_countryNameTo);				
+			}
 			if (d_player.getCountries().containsKey(d_countryNameFrom) && d_player.getCountries().containsKey(d_countryNameTo)) {
 //				int l_armiesPresent = d_player.getCountries().get(d_countryNameFrom).getNumberOfArmiesPresent();
 				d_player.getCountries().get(d_countryNameFrom).removeArmies(d_armies);
