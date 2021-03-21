@@ -38,7 +38,11 @@ public class Airlift implements Orders {
 	 */
 	@Override
 	public String executeOrder(GameEngine p_game) {
+		int l_airliftCardCount = d_player.d_cardsOwned.get("airlift");
 		// TODO Auto-generated method stub
+		if (l_airliftCardCount == 0) {
+			return String.format("Player \"%s\" does not have a airlift card", d_player.getName());
+		}
 		if (!d_player.getCountries().containsKey(d_countryNameFrom)) {
 			return String.format("Player \"%s\" does not own country \"%d\"", d_player.getName(), d_countryNameFrom);
 		}
@@ -53,6 +57,8 @@ public class Airlift implements Orders {
 		}
 		d_player.getCountries().get(d_countryNameFrom).removeArmies(d_armies);
 		d_player.getCountries().get(d_countryNameTo).placeArmies(d_armies);
+		
+		d_player.d_cardsOwned.replace("airlift", l_airliftCardCount-1);
 		return String.format("Armies successfully moved from country \"%d\" to country \"%d\"", d_countryNameFrom, d_countryNameTo);
 //		return null;
 	}
