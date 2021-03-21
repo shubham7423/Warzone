@@ -38,7 +38,7 @@ public class Blockade implements Orders {
 					d_player.getCountries().get(d_country).setPlayer(p_game.d_neutralPlayer);
 					int l_blockadeCardCount = d_player.d_cardsOwned.get("blockade");
 					d_player.d_cardsOwned.replace("blockade", l_blockadeCardCount - 1);
-					return "Blockade Card utilhiized successfully";
+					return "Blockade Card utilized successfully";
 				} else {
 					d_player.getCountries().get(d_country).setPlayer(p_game.d_neutralPlayer);
 					int l_blockadeCardCount = d_player.d_cardsOwned.get("blockade");
