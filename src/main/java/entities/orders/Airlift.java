@@ -40,13 +40,19 @@ public class Airlift implements Orders {
 		if (!d_player.getCountries().containsKey(d_countryNameFrom)) {
 			return String.format("Player \"%s\" does not own country \"%d\"", d_player.getName(), d_countryNameFrom);
 		}
-		
 		if (!d_player.getCountries().containsKey(d_countryNameTo)) {
 			return String.format("Player \"%s\" does not own country \"%d\"", d_player.getName(), d_countryNameTo);
 		}
-		
-		
-		return null;
+		if (d_player.getCountries().get(d_countryNameFrom).getNumberOfArmiesPresent() < d_armies) {
+			return String.format("Country \"%d\" does not have enough armies", d_countryNameFrom);
+		}
+		if ((d_player.getCountries().get(d_countryNameFrom).getNumberOfArmiesPresent() - d_armies) < 1) {
+			return String.format("Country \"%d\" should remain with atleast 1 armies after moving the armies during Airlift", d_countryNameFrom);
+		}
+		d_player.getCountries().get(d_countryNameFrom).removeArmies(d_armies);
+		d_player.getCountries().get(d_countryNameTo).placeArmies(d_armies);
+		return String.format("Armies successfully moved from country \"%d\" to country \"%d\"", d_countryNameFrom, d_countryNameTo);
+//		return null;
 	}
 
 }
