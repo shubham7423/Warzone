@@ -8,6 +8,7 @@ import entities.Player;
 
 /**
  * This class represents the airlift card.
+ * The Airlift Card allows you to transfer your armies long distances. Each time you play one, you can do a single transfer from any of your territories to any other territory of yours. Similar to a normal transfer, those armies can't do any other action that turn.
  */
 public class Airlift implements Orders {
 
@@ -39,7 +40,6 @@ public class Airlift implements Orders {
 	@Override
 	public String executeOrder(GameEngine p_game) {
 		int l_airliftCardCount = d_player.d_cardsOwned.get("airlift");
-		// TODO Auto-generated method stub
 		if (l_airliftCardCount == 0) {
 			return String.format("Player \"%s\" does not have a airlift card", d_player.getName());
 		}
@@ -60,7 +60,5 @@ public class Airlift implements Orders {
 		
 		d_player.d_cardsOwned.replace("airlift", l_airliftCardCount-1);
 		return String.format("Armies successfully moved from country \"%d\" to country \"%d\"", d_countryNameFrom, d_countryNameTo);
-//		return null;
 	}
-
 }
