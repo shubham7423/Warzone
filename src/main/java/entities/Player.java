@@ -290,15 +290,18 @@ public class Player {
 							if(l_splittedOrder.length != 4) {
 								String temp = "Invalid command. Correct command is - airlift sourceCountryId targetCountryId numarmies";
 								System.out.println(temp);
+								l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
 								continue;
 							} else if (!isNumeric(l_splittedOrder[1]) || !isNumeric(l_splittedOrder[2]) || isNumeric(l_splittedOrder[3])) {
 								String temp = "After airlift keyword, you can only use integer to represent the sourceCountryId, targetCountryId and numarmies";
 								System.out.println(temp);
+								l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
 								continue;
 							} else {
 								Airlift l_airlift = new Airlift(this, Integer.parseInt(l_splittedOrder[1]), Integer.parseInt(l_splittedOrder[2]), Integer.parseInt(l_splittedOrder[3]));
 								d_orders.add(l_airlift);
 								String temp = "airlift " + Integer.parseInt(l_splittedOrder[1]) + " "+ Integer.parseInt(l_splittedOrder[2]) + " " + Integer.parseInt(l_splittedOrder[3]) + " ";
+								l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
 								l_isCorrect = true;
 							}
 							break;
