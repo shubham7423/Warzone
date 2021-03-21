@@ -1,5 +1,6 @@
 package entities.orders;
 
+import java.util.Random;
 import java.util.Set;
 
 import controller.GameEngine;
@@ -86,6 +87,10 @@ public class Advance implements Orders {
 				p_game.getGameMap().getCountries().get(d_countryNameTo).setPlayer(d_player);
 				d_player.getCountries().get(d_countryNameFrom).setNumberOfArmiesPresent(l_sourceCountryArmies - d_armies);
 				d_player.getCountries().get(d_countryNameTo).setNumberOfArmiesPresent(d_armies - l_capabilityDestinationCountryArmies);
+				String []l_cardNames = {"airlift", "bomb", "blockade", "diplomacy"};
+				Random r=new Random();        
+		      	int l_cardNumber=r.nextInt(l_cardNames.length);
+		      	d_player.d_cardsOwned.replace(l_cardNames[l_cardNumber], d_player.d_cardsOwned.get(l_cardNames[l_cardNumber])+1);
 				return String.format("Armies successfully moved from country \"%d\" to country \"%d\" and the ownership changed to \"%s\" player", d_countryNameFrom, d_countryNameTo, d_player.getName());
 			}
 			
