@@ -31,6 +31,56 @@ public class IssueOrders extends GamePlay {
 		}
 		return l_sb.toString();
 	}
+	
+	public String advance(String[] p_commandSplitted) {
+		StringBuilder l_sb = new StringBuilder();
+//		System.out.println("DEPLOYYYY");
+		for(String l_str: p_commandSplitted) {
+			l_sb.append(l_str);
+			l_sb.append(" ");
+		}
+		return l_sb.toString();
+	}
+	
+	public String airlift(String[] p_commandSplitted) {
+		StringBuilder l_sb = new StringBuilder();
+//		System.out.println("DEPLOYYYY");
+		for(String l_str: p_commandSplitted) {
+			l_sb.append(l_str);
+			l_sb.append(" ");
+		}
+		return l_sb.toString();
+	}
+	
+	public String bomb(String[] p_commandSplitted) {
+		StringBuilder l_sb = new StringBuilder();
+//		System.out.println("DEPLOYYYY");
+		for(String l_str: p_commandSplitted) {
+			l_sb.append(l_str);
+			l_sb.append(" ");
+		}
+		return l_sb.toString();
+	}
+	
+	public String blockade(String[] p_commandSplitted) {
+		StringBuilder l_sb = new StringBuilder();
+//		System.out.println("DEPLOYYYY");
+		for(String l_str: p_commandSplitted) {
+			l_sb.append(l_str);
+			l_sb.append(" ");
+		}
+		return l_sb.toString();
+	}
+	
+	public String diplomacy(String[] p_commandSplitted) {
+		StringBuilder l_sb = new StringBuilder();
+//		System.out.println("DEPLOYYYY");
+		for(String l_str: p_commandSplitted) {
+			l_sb.append(l_str);
+			l_sb.append(" ");
+		}
+		return l_sb.toString();
+	}
 
 	@Override
 	public String issueOrders() {
@@ -71,6 +121,7 @@ public class IssueOrders extends GamePlay {
 				System.out.println("Player " + d_gameEngine.d_playerName.get(l_currentPlayer) + "'s turn");
 				d_gameEngine.d_logEntryBuffer.setString("Player " + d_gameEngine.d_playerName.get(l_currentPlayer) + "'s turn");
 				System.out.println("Armies: " + d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).getNumberOfArmies());
+				System.out.println("Cards: " + d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).d_cardsOwned);
 				d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).issueOrder();
 				if(!d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).getIsCommit()) {
 					d_gameEngine.addPlayerOrder(d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)));

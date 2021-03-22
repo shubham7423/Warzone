@@ -53,6 +53,26 @@ public class AssignArmies extends GamePlay {
 		return printInvalidCommandMessage();
 	}
 	
+	public String advance(String[] p_commandSplitted) {
+		return printInvalidCommandMessage();
+	}
+	
+	public String airlift(String[] p_commandSplitted) {
+		return printInvalidCommandMessage();
+	}
+	
+	public String bomb(String[] p_commandSplitted) {
+		return printInvalidCommandMessage();
+	}
+	
+	public String blockade(String[] p_commandSplitted) {
+		return printInvalidCommandMessage();
+	}
+	
+	public String diplomacy(String[] p_commandSplitted) {
+		return printInvalidCommandMessage();
+	}
+	
 	@Override
 	public String issueOrders() {
 		return printInvalidCommandMessage();

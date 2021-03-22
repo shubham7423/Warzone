@@ -23,10 +23,12 @@ public class GameEngine {
 	public UserCommand d_userCommand;
 	public LogEntryBuffer d_logEntryBuffer;;
 	private LogWriter d_logWriter;
+	public Player d_neutralPlayer;
 	
 	public GameEngine() {
 		d_logEntryBuffer = new LogEntryBuffer();
 		d_logWriter = new LogWriter(d_logEntryBuffer);
+		d_neutralPlayer = new Player("neutralPlayer#1");
 	}
 	
 	public int getPlayeraOrderSize() {
@@ -103,6 +105,26 @@ public class GameEngine {
 		case "deploy":
 			l_result = deploy(p_splittedCommand);
 			break;
+			
+		case "negotiate":
+			l_result = diplomacy(p_splittedCommand);
+			break;
+			
+		case "advance":
+			l_result = advance(p_splittedCommand);
+			break;
+			
+		case "airlift":
+			l_result = airlift(p_splittedCommand);
+			break;
+			
+		case "bomb":
+			l_result = bomb(p_splittedCommand);
+			break;
+			
+		case "blockade":
+			l_result = blockade(p_splittedCommand);
+			break;
 
 		default:
 			l_result = "Command not found";
@@ -112,6 +134,26 @@ public class GameEngine {
 	}
 	
 	public String deploy(String[] p_splittedCommand) {
+		return d_phase.deploy(p_splittedCommand);
+	}
+	
+	public String advance(String[] p_splittedCommand) {
+		return d_phase.deploy(p_splittedCommand);
+	}
+	
+	public String airlift(String[] p_splittedCommand) {
+		return d_phase.deploy(p_splittedCommand);
+	}
+	
+	public String bomb(String[] p_splittedCommand) {
+		return d_phase.deploy(p_splittedCommand);
+	}
+	
+	public String blockade(String[] p_splittedCommand) {
+		return d_phase.deploy(p_splittedCommand);
+	}
+	
+	public String diplomacy(String[] p_splittedCommand) {
 		return d_phase.deploy(p_splittedCommand);
 	}
 	
@@ -321,15 +363,15 @@ public class GameEngine {
 	}
 	
 	public String assignCountries(String[] p_splittedCommand) {
-		try {
+//		try {
 			if (p_splittedCommand.length > 1) {
 				return String.format("Invalid Command");
 			}
 			return d_phase.assignCountries();
-		}
-		finally {
-			d_phase.assignArmies();
-		}
+//		}
+//		finally {
+//			d_phase.assignArmies();
+//		}
 		
 //		if (p_splittedCommand.length > 1) {
 //			return String.format("Invalid Command");

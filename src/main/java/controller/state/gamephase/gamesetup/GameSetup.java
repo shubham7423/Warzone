@@ -28,6 +28,26 @@ public abstract class GameSetup extends GamePhase {
 		return printInvalidCommandMessage();
 	}
 	
+	public String advance(String[] p_commandSplitted) {
+		return printInvalidCommandMessage();
+	}
+	
+	public String airlift(String[] p_commandSplitted) {
+		return printInvalidCommandMessage();
+	}
+	
+	public String bomb(String[] p_commandSplitted) {
+		return printInvalidCommandMessage();
+	}
+	
+	public String blockade(String[] p_commandSplitted) {
+		return printInvalidCommandMessage();
+	}
+	
+	public String diplomacy(String[] p_commandSplitted) {
+		return printInvalidCommandMessage();
+	}
+	
 	public String executeOrders() {
 		return printInvalidCommandMessage();
 	}

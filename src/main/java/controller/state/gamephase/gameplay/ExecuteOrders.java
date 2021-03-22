@@ -20,6 +20,26 @@ public class ExecuteOrders extends GamePlay {
 		// TODO Auto-generated method stub
 		return printInvalidCommandMessage();
 	}
+	
+	public String advance(String[] p_commandSplitted) {
+		return printInvalidCommandMessage();
+	}
+	
+	public String airlift(String[] p_commandSplitted) {
+		return printInvalidCommandMessage();
+	}
+	
+	public String bomb(String[] p_commandSplitted) {
+		return printInvalidCommandMessage();
+	}
+	
+	public String blockade(String[] p_commandSplitted) {
+		return printInvalidCommandMessage();
+	}
+	
+	public String diplomacy(String[] p_commandSplitted) {
+		return printInvalidCommandMessage();
+	}
 
 	@Override
 	public String deploy(String[] p_commandSplitted) {
