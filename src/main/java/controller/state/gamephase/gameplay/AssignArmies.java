@@ -54,6 +54,9 @@ public class AssignArmies extends GamePlay {
 				if (l_player.checkContinent(l_continent)) {
 					l_player.addContinent(l_continent);
 				}
+				else if (!l_player.checkContinent(l_continent) && l_player.getContinents().containsValue(l_continent)) {
+					l_player.removeContinent(l_continent.getId());
+				}
 			}
 		}
 		return "Checked continent ownership";
