@@ -18,7 +18,7 @@ public class BombTest {
 		d_game = new GameEngine();
 		d_game.setPhase(new PostLoad(d_game));
 		String[] l_newStrings = new String[] { "gameplayer", "-add", "Shubham", "-add", "Meet" };
-		String l_result = d_game.executeCommand(l_newStrings);
+		d_game.executeCommand(l_newStrings);
 		d_game.getGameMap().addContinent(1, 5);
 		d_game.getGameMap().addCountry(1, 1);
 		d_game.getGameMap().addCountry(2, 1);
@@ -66,5 +66,13 @@ public class BombTest {
 		d_game.d_players.get("Meet").d_cardsOwned.put("bomb", 1);
 		Bomb l_bombCmd = new Bomb(d_game.d_players.get("Meet"), 1);
 		assertEquals("The referred country is not a neighbour country of the countries owned by player.", l_bombCmd.executeOrder(d_game));
+	}
+	
+	@Test
+	public void testExecuteOrder5() {
+		d_game.d_players.get("Shubham").d_cardsOwned.put("bomb", 1);
+		Bomb l_bombCmd = new Bomb(d_game.d_players.get("Shubham"), 2);
+		d_game.d_players.get("Shubham").d_negotiatedPlayerNames.add("Meet");
+		assertEquals("Diplomacy is established with the player.", l_bombCmd.executeOrder(d_game));
 	}
 }
