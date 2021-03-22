@@ -1,5 +1,6 @@
 package controller.state.gamephase.gameplay;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 import controller.GameEngine;
@@ -59,7 +60,6 @@ public class IssueOrders extends GamePlay {
 	
 	public String airlift(String[] p_commandSplitted) {
 		StringBuilder l_sb = new StringBuilder();
-//		System.out.println("DEPLOYYYY");
 		for(String l_str: p_commandSplitted) {
 			l_sb.append(l_str);
 			l_sb.append(" ");
@@ -133,6 +133,7 @@ public class IssueOrders extends GamePlay {
 //		}
 		for(Player l_player: d_gameEngine.d_players.values()) {
 			l_player.setIsCommit(false);
+			l_player.d_negotiatedPlayerNames = new ArrayList<String>();
 		}
 		while (l_playersCompleted.size() < d_gameEngine.d_playerName.size()) {
 			if(!d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).getIsCommit()) {

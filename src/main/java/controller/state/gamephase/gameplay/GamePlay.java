@@ -67,5 +67,9 @@ public abstract class GamePlay extends GamePhase {
 	public String assignCountries() {
 		return printInvalidCommandMessage();
 	}
+	
+	public String printWinner(String p_playerName) {
+		return printInvalidCommandMessage();
+	}
 
 }

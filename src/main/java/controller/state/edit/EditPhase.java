@@ -137,6 +137,10 @@ public abstract class EditPhase extends Phase {
 		return printInvalidCommandMessage();
 	}
 	
+	public String printWinner(String p_playerName) {
+		return printInvalidCommandMessage();
+	}
+	
 	/**
 	 * function to print invalid command as the following command cannot be used in this phase
 	 * @return string to print the invalid command message

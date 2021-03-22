@@ -63,6 +63,8 @@ public abstract class Phase {
 	
 	abstract public String checkContinentOwnership();
 	
+	abstract public String printWinner(String p_playerName);
+	
 	public String showMap() {	
 		return d_gameEngine.getGameMap().showMapEdit();
 	}

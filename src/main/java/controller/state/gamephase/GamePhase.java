@@ -69,5 +69,9 @@ public abstract class GamePhase extends Phase {
 	public String saveMap(String p_fileName) {
 		return printInvalidCommandMessage();
 	}
+	
+	public String printWinner(String p_playerName) {
+		return printInvalidCommandMessage();
+	}
 
 }

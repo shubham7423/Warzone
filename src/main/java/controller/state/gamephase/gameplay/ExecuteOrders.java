@@ -1,6 +1,10 @@
 package controller.state.gamephase.gameplay;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import controller.GameEngine;
+import controller.state.gamephase.endphase.EndPhase;
 import entities.Player;
 
 /**
@@ -91,10 +95,24 @@ public class ExecuteOrders extends GamePlay {
 			d_gameEngine.d_logEntryBuffer.setString(l_currentPlayer.getName() + ": " + l_result);
 			++l_i;
 		}
-		System.out.print("\nExecution Complete");
-		d_gameEngine.d_logEntryBuffer.setString("Execution Complete");
-		next();
-		d_gameEngine.getPhase().assignArmies();
+		Set<Player> l_tempSet = new HashSet<>(d_gameEngine.d_players.values());
+		for(Player l_player: l_tempSet) {
+			if(l_player.getCountries().size() == 0) {
+				d_gameEngine.d_playerName.remove(l_player.getName());
+				d_gameEngine.d_players.remove(l_player.getName());
+			}
+		}
+		if(d_gameEngine.d_playerName.size() == 1 && d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(0)).getCountries().keySet().containsAll(d_gameEngine.getGameMap().getCountries().keySet())) {
+			d_gameEngine.setPhase(new EndPhase(d_gameEngine));
+			System.out.println(d_gameEngine.getPhase().printWinner(d_gameEngine.d_playerName.get(0)));
+			System.exit(0);
+		}
+		else {
+			System.out.print("\nExecution Complete");
+			d_gameEngine.d_logEntryBuffer.setString("Execution Complete");
+			next();
+			d_gameEngine.getPhase().assignArmies();
+		}
 		return "";
 	}
 

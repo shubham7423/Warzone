@@ -87,5 +87,9 @@ public abstract class GameSetup extends GamePhase {
 	public String checkContinentOwnership() {
 		return printInvalidCommandMessage();
 	}
+	
+	public String printWinner(String p_playerName) {
+		return printInvalidCommandMessage();
+	}
 
 }
