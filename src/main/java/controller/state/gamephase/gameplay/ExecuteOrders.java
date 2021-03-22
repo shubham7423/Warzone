@@ -88,6 +88,8 @@ public class ExecuteOrders extends GamePlay {
 		int l_numOrders = d_gameEngine.getPlayeraOrderSize();
 		int l_i = 0;
 		String l_result;
+		System.out.print("\nExecution Phase Started");
+		d_gameEngine.d_logEntryBuffer.setString("Execution Phase Started");
 		while(l_i < l_numOrders) {
 			Player l_currentPlayer = d_gameEngine.getPlayerOrder();
 			l_result = l_currentPlayer.nextOrder().executeOrder(d_gameEngine);
