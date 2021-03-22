@@ -5,11 +5,18 @@ import entities.GameMap;
 
 public class PreLoad extends GameSetup {
 	
+	/**
+	 * constructor method that takes game engine object from the parent class 
+	 * @param p_gameEngine object of the game engine
+	 */
 	public PreLoad(GameEngine p_gameEngine) {
 		super(p_gameEngine);
-
 	}
 	
+	/**
+	 * function to load the map file that will be used to play the game
+	 * @param p_fileName name of the file to be loaded
+	 */
 	@Override
 	public String loadMap(String p_fileName) {
 		String l_result;
@@ -29,23 +36,41 @@ public class PreLoad extends GameSetup {
 		return l_result;
 	}
 
+	/**
+	 * function to add and remove players in the game
+	 * @param p_commandSplitted splitted command parts used for execution of command
+	 * @return string indicating that map has to be loaded to use this command 
+	 */
 	@Override
 	public String gamePlayer(String[] p_commandSplitted) {
 		return String.format("Map Not Loaded yet");
 	}
-
+	
+	/**
+	 * function to add players in the game
+	 * @param p_playerName name of the player to be added
+	 * @return string indicating that map has to be loaded to use this command 
+	 */
 	@Override
 	public String addPlayer(String p_playerName) {
 		// TODO Auto-generated method stub
 		return String.format("Map Not Loaded yet");
 	}
 
+	/**
+	 * function to remove players from the game
+	 * @param p_playerName splitted name of the player to be removed
+	 * @return string indicating that map has to be loaded to use this command 
+	 */
 	@Override
 	public String removePlayer(String p_playerName) {
 		// TODO Auto-generated method stub
 		return String.format("Map Not Loaded yet");
 	}
 
+	/**
+	 * function to allow proceeding to the next phase of the game
+	 */
 	@Override
 	public void next() {
 		d_gameEngine.setPhase(new PostLoad(d_gameEngine));
