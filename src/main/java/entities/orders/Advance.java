@@ -87,11 +87,11 @@ public class Advance implements Orders {
 			}
 
 			int l_sourceCountryArmies = p_game.getGameMap().getCountries().get(d_countryNameFrom)
-					.getNumberOfArmiesPresent();
+					.getNumberOfArmiesPresent(); 
 			int l_destinationCountryArmies = p_game.getGameMap().getCountries().get(d_countryNameTo)
-					.getNumberOfArmiesPresent();
+					.getNumberOfArmiesPresent(); 
 
-			int l_capabilitySourceCountryArmies = (int) Math.ceil(d_armies * 0.6);
+			int l_capabilitySourceCountryArmies = (int) Math.ceil(d_armies * 0.6); 
 			int l_capabilityDestinationCountryArmies = (int) Math.ceil(l_destinationCountryArmies * 0.7);
 
 			if (l_capabilitySourceCountryArmies > l_destinationCountryArmies) {
@@ -119,14 +119,15 @@ public class Advance implements Orders {
 			} else if (l_capabilitySourceCountryArmies == l_destinationCountryArmies) {
 				d_player.getCountries().get(d_countryNameFrom)
 						.setNumberOfArmiesPresent(l_sourceCountryArmies - l_capabilityDestinationCountryArmies);
-				d_player.getCountries().get(d_countryNameTo).setNumberOfArmiesPresent(0);
+				p_game.getGameMap().getCountries().get(d_countryNameTo).setNumberOfArmiesPresent(0);
 				return String.format(
 						"Armies from country \"%d\" were not able to advance to country \"%d\" as the attacking armies were only able to defeat the exact number of armies present in the defending country",
 						d_countryNameFrom, d_countryNameTo, d_player.getName());
 			} else {
 //			elif (l_capabilitySourceCountryArmies < l_destinationCountryArmies) {
 				d_player.getCountries().get(d_countryNameFrom)
-						.setNumberOfArmiesPresent(l_sourceCountryArmies - l_capabilityDestinationCountryArmies);
+//						.setNumberOfArmiesPresent(l_sourceCountryArmies - l_capabilityDestinationCountryArmies);
+						.setNumberOfArmiesPresent(l_sourceCountryArmies - d_armies);
 //				d_player.getCountries().get(d_countryNameTo).removeArmies(l_capabilitySourceCountryArmies);
 				p_game.getGameMap().getCountries().get(d_countryNameTo).removeArmies(l_capabilitySourceCountryArmies);
 				return String.format(
