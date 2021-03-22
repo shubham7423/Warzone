@@ -47,6 +47,16 @@ public abstract class Phase {
 	
 	abstract public String deploy(String[] p_commandSplitted);
 	
+	abstract public String advance(String[] p_commandSplitted);
+	
+	abstract public String bomb(String[] p_commandSplitted);
+	
+	abstract public String blockade(String[] p_commandSplitted);
+	
+	abstract public String airlift(String[] p_commandSplitted);
+	
+	abstract public String diplomacy(String[] p_commandSplitted);
+	
 	abstract public void next();
 	
 	abstract public String executeOrders();

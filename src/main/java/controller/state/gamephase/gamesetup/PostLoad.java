@@ -39,13 +39,11 @@ public class PostLoad extends GameSetup {
 	@Override
 	public String gamePlayer(String[] p_commandSplitted) {
 		String l_result;
-		d_gameEngine.a = 10;
 		if (p_commandSplitted[0].equals("-add")) {
 			l_result = addPlayer(p_commandSplitted[1]);
 		} else {
 			l_result = removePlayer(p_commandSplitted[1]);
 		}
-
 		return l_result;
 	}
 	
@@ -75,7 +73,10 @@ public class PostLoad extends GameSetup {
 				break;
 			}
 		}
+		d_gameEngine.d_logEntryBuffer.setString("Countries Assigned");
+		System.out.println("Countries Assigned");
 		next();
+		d_gameEngine.getPhase().assignArmies();
 		return "Countries Assigned";
 	}
 	
@@ -86,10 +87,12 @@ public class PostLoad extends GameSetup {
 	@Override
 	public String addPlayer(String p_playerName) {
 		if (d_gameEngine.d_players.containsKey(p_playerName)) {
+			d_gameEngine.d_logEntryBuffer.setString(String.format("Player \"%s\" already present in game", p_playerName));
 			return String.format("Player \"%s\" already present in game", p_playerName);
 		}
 		d_gameEngine.d_players.put(p_playerName, new Player(p_playerName));
 		d_gameEngine.d_playerName.add(p_playerName);
+		d_gameEngine.d_logEntryBuffer.setString(String.format("Player \"%s\" added to game", p_playerName));
 		return String.format("Player \"%s\" added to game", p_playerName);
 	}
 
@@ -100,10 +103,12 @@ public class PostLoad extends GameSetup {
 	@Override
 	public String removePlayer(String p_playerName) {
 		if (!d_gameEngine.d_players.containsKey(p_playerName)) {
+			d_gameEngine.d_logEntryBuffer.setString(String.format("Player \"%s\" not present in game", p_playerName));
 			return String.format("Player \"%s\" not present in game", p_playerName);
 		}
 		d_gameEngine.d_players.remove(p_playerName);
 		d_gameEngine.d_playerName.remove(p_playerName);
+		d_gameEngine.d_logEntryBuffer.setString(String.format("Player \"%s\" removed from game", p_playerName));
 		return String.format("Player \"%s\" removed from game", p_playerName);
 	}
 

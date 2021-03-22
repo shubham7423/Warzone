@@ -43,6 +43,8 @@ public class PreEdit extends EditPhase {
 			}
 		}
 		l_result = String.format("Map \"%s\" ready for edit", p_fileName);
+		d_gameEngine.d_logEntryBuffer.setString("Map Edit Phase Entered");
+		d_gameEngine.d_logEntryBuffer.setString(l_result);
 		next();
 		return l_result;
 	}

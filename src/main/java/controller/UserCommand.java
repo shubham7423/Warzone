@@ -12,24 +12,13 @@ import controller.state.edit.PreEdit;
 public class UserCommand {
 	Scanner l_scannerScanner = new Scanner(System.in);
 
-	/**
-	 * Get commands from user
-	 * 
-	 * @return l_splittedCommandString array containing command that is split using " ".
-	 */
-//	public String[] getCommand() {
-//		String l_userCommand;
-//		System.out.print("$ ");
-//		l_userCommand = l_scannerScanner.nextLine();
-//		String[] l_splittedCommandString = l_userCommand.split(" ");
-//		return l_splittedCommandString;
-//	}
-	GameEngine d_gameEngine = new GameEngine();
+	public GameEngine d_gameEngine;
 	
 	/**
 	 * constructor method to the class that sets the phase to the PreEdit phase to start the initial process of the game
 	 */
 	public UserCommand() {
+		d_gameEngine = new GameEngine();
 		d_gameEngine.setPhase(new PreEdit(d_gameEngine));
 //		d_gameStarter.setUserCommand(this);
 	}

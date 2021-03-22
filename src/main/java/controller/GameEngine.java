@@ -25,7 +25,15 @@ public class GameEngine {
 	public HashMap<String, Player> d_players = new HashMap<>();
 	public ArrayList<String> d_playerName = new ArrayList<>();
 	public UserCommand d_userCommand;
-	public int a = 1;
+	public LogEntryBuffer d_logEntryBuffer;;
+	private LogWriter d_logWriter;
+	public Player d_neutralPlayer;
+	
+	public GameEngine() {
+		d_logEntryBuffer = new LogEntryBuffer();
+		d_logWriter = new LogWriter(d_logEntryBuffer);
+		d_neutralPlayer = new Player("neutralPlayer#1");
+	}
 	
 	/**
 	 * function to get the order size of the player
@@ -81,7 +89,6 @@ public class GameEngine {
 	 */
 	public void setPhase(Phase p_phase) { 
 		d_phase = p_phase;
-		a = 10000;
 	}
 	
 	/**
@@ -135,6 +142,26 @@ public class GameEngine {
 		case "deploy":
 			l_result = deploy(p_splittedCommand);
 			break;
+			
+		case "negotiate":
+			l_result = diplomacy(p_splittedCommand);
+			break;
+			
+		case "advance":
+			l_result = advance(p_splittedCommand);
+			break;
+			
+		case "airlift":
+			l_result = airlift(p_splittedCommand);
+			break;
+			
+		case "bomb":
+			l_result = bomb(p_splittedCommand);
+			break;
+			
+		case "blockade":
+			l_result = blockade(p_splittedCommand);
+			break;
 
 		default:
 			l_result = "Command not found";
@@ -149,6 +176,26 @@ public class GameEngine {
 	 * @return the result of the deploy command
 	 */
 	public String deploy(String[] p_splittedCommand) {
+		return d_phase.deploy(p_splittedCommand);
+	}
+	
+	public String advance(String[] p_splittedCommand) {
+		return d_phase.deploy(p_splittedCommand);
+	}
+	
+	public String airlift(String[] p_splittedCommand) {
+		return d_phase.deploy(p_splittedCommand);
+	}
+	
+	public String bomb(String[] p_splittedCommand) {
+		return d_phase.deploy(p_splittedCommand);
+	}
+	
+	public String blockade(String[] p_splittedCommand) {
+		return d_phase.deploy(p_splittedCommand);
+	}
+	
+	public String diplomacy(String[] p_splittedCommand) {
 		return d_phase.deploy(p_splittedCommand);
 	}
 	
@@ -407,15 +454,15 @@ public class GameEngine {
 	 * @return the result of assigning countries to the players
 	 */
 	public String assignCountries(String[] p_splittedCommand) {
-		try {
+//		try {
 			if (p_splittedCommand.length > 1) {
 				return String.format("Invalid Command");
 			}
 			return d_phase.assignCountries();
-		}
-		finally {
-			d_phase.assignArmies();
-		}
+//		}
+//		finally {
+//			d_phase.assignArmies();
+//		}
 		
 //		if (p_splittedCommand.length > 1) {
 //			return String.format("Invalid Command");
@@ -454,6 +501,7 @@ public class GameEngine {
 	public void start() {
 //		setUserCommand(new UserCommand());
 		System.out.println("Welcome to Warzone");
+		this.d_logEntryBuffer.setString("Game Started");
 		UserCommand l_UserCommand = new UserCommand();
 		while (true) {
 //			String[] l_splittedCommandString = l_userCommand.getCommand(l_gameStarter);

@@ -1,0 +1,293 @@
+2021/03/16 20:43:23> Map Edit Phase Entered
+2021/03/16 20:43:23> Map "uk.map" ready for edit
+2021/03/16 21:17:50> Game Started
+2021/03/16 21:43:23> Game Started
+2021/03/16 21:43:23> Game Setup Phase Entered
+2021/03/16 21:43:23> Map "uk.map" loaded successfully
+2021/03/16 21:43:23> Player "shubham" added to game
+2021/03/16 21:43:23> Player "shubham" added to game
+2021/03/16 21:43:23> Player "patel" added to game
+2021/03/16 21:43:23> Player "patel" added to game
+2021/03/16 21:43:23> Countries Assigned
+2021/03/16 21:43:23> Assigned Reinforcements to players
+2021/03/16 21:43:23> Issue orders phase entered
+2021/03/16 21:43:23> Player shubham's turn
+2021/03/16 21:57:17> Game Started
+2021/03/16 21:57:37> G
+2021/03/16 21:57:37> Game Setup Phase Entered
+2021/03/16 21:57:37> Map "uk.map" loaded successfully
+2021/03/16 21:57:37> Player "shubham" added to game
+2021/03/16 21:57:37> Player "shubham" added to game
+2021/03/16 21:57:37> Player "patel" added to game
+2021/03/16 21:57:37> Player "patel" added to game
+2021/03/16 21:57:37> Countries Assigned
+2021/03/16 21:57:37> Assigned Reinforcements to players
+2021/03/16 21:57:37> Issue orders phase entered
+2021/03/16 21:57:37> Player shubham's turn
+2021/03/16 22:01:54> G
+2021/03/16 22:01:54> Game Setup Phase Entered
+2021/03/16 22:01:54> Map "uk.map" loaded successfully
+2021/03/16 22:01:54> Player "shubham" added to game
+2021/03/16 22:01:54> Player "shubham" added to game
+2021/03/16 22:01:54> Player "patel" added to game
+2021/03/16 22:01:54> Player "patel" added to game
+2021/03/16 22:01:54> Countries Assigned
+2021/03/16 22:01:54> Assigned Reinforcements to players
+2021/03/16 22:01:54> Issue orders phase entered
+2021/03/16 22:01:54> Player shubham's turn
+2021/03/16 22:02:20> deploy 3 1 
+2021/03/16 22:01:54> Player patel's turn
+2021/03/16 22:02:25> deploy 1 4 
+2021/03/16 22:01:54> Player shubham's turn
+2021/03/16 22:02:47> deploy 
+2021/03/16 22:02:47> deploy 1 3 
+2021/03/16 22:01:54> Player patel's turn
+2021/03/16 22:03:05> exit()
+2021/03/16 22:01:54> Player shubham's turn
+2021/03/16 22:05:20> exit()
+2021/03/16 22:01:54> Deploy completed
+2021/03/16 22:01:54> Player "shubham" deployed "1" armies to country "3"
+2021/03/16 22:01:54> Player "patel" does not enough armies
+2021/03/16 22:01:54> Player "shubham" does not control country "1"
+2021/03/16 22:01:54> Execution Complete
+2021/03/16 22:01:54> Assigned Reinforcements to players
+2021/03/16 22:01:54> Issue orders phase entered
+2021/03/16 22:01:54> Player shubham's turn
+2021/03/22 12:02:37> Game Started
+2021/03/22 12:02:37> Game Setup Phase Entered
+2021/03/22 12:02:37> Map "uk.map" loaded successfully
+2021/03/22 12:02:37> Player "virag" added to game
+2021/03/22 12:02:37> Player "shubham" added to game
+2021/03/22 12:02:37> Countries Assigned
+2021/03/22 12:02:37> Assigned Reinforcements to players
+2021/03/22 12:02:37> Issue orders phase entered
+2021/03/22 12:02:37> Player virag's turn
+2021/03/22 12:03:01> Command not found
+2021/03/22 12:03:01> Command not found
+2021/03/22 12:03:01> deploy a b 
+2021/03/22 12:03:01> After deploy keyword, you can only use integer to represent the countryId and numarmies
+2021/03/22 12:03:01> deploy 1 
+2021/03/22 12:03:01> Invalid command. Correct command is - deploy countryId numarmies
+2021/03/22 12:03:01> deploy 4 2 
+2021/03/22 12:03:01> deploy 4 2
+2021/03/22 12:02:37> Player shubham's turn
+2021/03/22 12:05:19> deploy 1 3 
+2021/03/22 12:05:19> deploy 1 3
+2021/03/22 12:02:37> Player virag's turn
+2021/03/22 12:07:56> Command not found
+2021/03/22 12:07:56> Command not found
+2021/03/22 12:07:56> Command not found
+2021/03/22 12:07:56> Command not found
+2021/03/22 12:07:56> Command not found
+2021/03/22 12:17:10> Game Started
+2021/03/22 12:17:10> Game Setup Phase Entered
+2021/03/22 12:17:10> Map "uk.map" loaded successfully
+2021/03/22 12:17:10> Player "shubham" added to game
+2021/03/22 12:17:10> Player "virag" added to game
+2021/03/22 12:17:10> Countries Assigned
+2021/03/22 12:17:10> Assigned Reinforcements to players
+2021/03/22 12:17:10> Issue orders phase entered
+2021/03/22 12:17:10> Player shubham's turn
+2021/03/22 12:17:43> deploy 1 3 
+2021/03/22 12:17:43> deploy 1 3
+2021/03/22 12:17:10> Player virag's turn
+2021/03/22 12:18:21> deploy 3 4 
+2021/03/22 12:18:21> deploy 3 4
+2021/03/22 12:17:10> Player shubham's turn
+2021/03/22 12:18:30> bomb 2 
+2021/03/22 12:18:30> bomb 2
+2021/03/22 12:17:10> Player virag's turn
+2021/03/22 12:18:38> advance as 
+2021/03/22 12:18:38> Invalid command. Correct command is - advance countryFrom countryTo numarmies
+2021/03/22 12:18:38> advance 3 2 3 
+2021/03/22 12:18:38> After advance keyword, you can only use integer to represent the countryFrom, countryTo and numarmies
+2021/03/22 12:20:57> Game Started
+2021/03/22 12:20:57> Game Setup Phase Entered
+2021/03/22 12:20:57> Map "uk.map" loaded successfully
+2021/03/22 12:20:57> Player "shubham" added to game
+2021/03/22 12:20:57> Player "virag" added to game
+2021/03/22 12:20:57> Countries Assigned
+2021/03/22 12:20:57> Assigned Reinforcements to players
+2021/03/22 12:20:57> Issue orders phase entered
+2021/03/22 12:20:57> Player shubham's turn
+2021/03/22 12:21:22> deploy 1 1 
+2021/03/22 12:21:22> deploy 1 1
+2021/03/22 12:20:57> Player virag's turn
+2021/03/22 12:21:40> deploy 4 4 
+2021/03/22 12:21:40> deploy 4 4
+2021/03/22 12:20:57> Player shubham's turn
+2021/03/22 12:22:04> deploy 2 1 
+2021/03/22 12:22:04> deploy 2 1
+2021/03/22 12:20:57> Player virag's turn
+2021/03/22 12:22:13> advance a 
+2021/03/22 12:22:13> Invalid command. Correct command is - advance countryFrom countryTo numarmies
+2021/03/22 12:22:13> advance 4 2 3 
+2021/03/22 12:22:13> advance 4 2 3
+2021/03/22 12:20:57> Player shubham's turn
+2021/03/22 12:20:57> Player virag's turn
+2021/03/22 12:20:57> Deploy completed
+2021/03/22 12:20:57> Player "shubham" deployed "1" armies to country "1"
+2021/03/22 12:20:57> Player "virag" deployed "4" armies to country "4"
+2021/03/22 12:20:57> Player "shubham" deployed "1" armies to country "2"
+2021/03/22 12:20:57> Armies cannot be moved from country "4" to country "2" because they are not neighbors
+2021/03/22 12:20:57> Execution Complete
+2021/03/22 12:20:57> Assigned Reinforcements to players
+2021/03/22 12:20:57> Issue orders phase entered
+2021/03/22 12:20:57> Player shubham's turn
+2021/03/22 12:25:47> Game Started
+2021/03/22 12:25:47> Game Setup Phase Entered
+2021/03/22 12:25:47> Map "uk.map" loaded successfully
+2021/03/22 12:25:47> Player "shubham" added to game
+2021/03/22 12:25:47> Player "virag" added to game
+2021/03/22 12:25:47> Countries Assigned
+2021/03/22 12:25:47> Assigned Reinforcements to players
+2021/03/22 12:25:47> Issue orders phase entered
+2021/03/22 12:25:47> Player shubham's turn
+2021/03/22 12:26:07> deploy 1 1 
+2021/03/22 12:26:07> deploy 1 1
+2021/03/22 12:25:47> Player virag's turn
+2021/03/22 12:26:40> deploy 2 4 
+2021/03/22 12:26:40> deploy 2 4
+2021/03/22 12:25:47> Player shubham's turn
+2021/03/22 12:26:46> deploy 3 2 
+2021/03/22 12:26:46> deploy 3 2
+2021/03/22 12:25:47> Player virag's turn
+2021/03/22 12:26:57> advance 2 1 3 
+2021/03/22 12:26:57> advance 2 1 3
+2021/03/22 12:25:47> Player shubham's turn
+2021/03/22 12:25:47> Player virag's turn
+2021/03/22 12:25:47> Deploy completed
+2021/03/22 12:25:47> Player "shubham" deployed "1" armies to country "1"
+2021/03/22 12:25:47> Player "virag" deployed "4" armies to country "2"
+2021/03/22 12:25:47> Player "shubham" deployed "2" armies to country "3"
+2021/03/22 12:34:02> Game Started
+2021/03/22 12:34:02> Game Setup Phase Entered
+2021/03/22 12:34:02> Map "uk.map" loaded successfully
+2021/03/22 12:34:02> Player "shubham" added to game
+2021/03/22 12:34:02> Player "patel" added to game
+2021/03/22 12:34:02> Countries Assigned
+2021/03/22 12:34:02> Assigned Reinforcements to players
+2021/03/22 12:34:02> Issue orders phase entered
+2021/03/22 12:34:02> Player shubham's turn
+2021/03/22 12:34:22> Command not found
+2021/03/22 12:34:22> deploy 3 1 
+2021/03/22 12:34:22> deploy 3 1
+2021/03/22 12:34:02> Player patel's turn
+2021/03/22 12:35:18> deploy 1 3 
+2021/03/22 12:35:18> deploy 1 3
+2021/03/22 12:34:02> Player shubham's turn
+2021/03/22 12:35:31> advance a 
+2021/03/22 12:35:31> Invalid command. Correct command is - advance countryFrom countryTo numarmies
+2021/03/22 12:35:31> deploy 5 3 
+2021/03/22 12:35:31> deploy 5 3
+2021/03/22 12:34:02> Player patel's turn
+2021/03/22 12:35:48> advance 1 3 2 
+2021/03/22 12:35:48> advance 1 3 2
+2021/03/22 12:34:02> Player shubham's turn
+2021/03/22 12:34:02> Player patel's turn
+2021/03/22 12:34:02> Deploy completed
+2021/03/22 12:34:02> Player "shubham" deployed "1" armies to country "3"
+2021/03/22 12:34:02> Player "patel" deployed "3" armies to country "1"
+2021/03/22 12:34:02> Player "shubham" deployed "3" armies to country "5"
+2021/03/22 12:34:02> Armies successfully moved from country "1" to country "3" and the ownership changed to "patel" player
+2021/03/22 12:34:02> Execution Complete
+2021/03/22 12:34:02> Assigned Reinforcements to players
+2021/03/22 12:34:02> Issue orders phase entered
+2021/03/22 12:34:02> Player shubham's turn
+2021/03/22 12:36:32> deploy 5 8 
+2021/03/22 12:36:32> deploy 5 8
+2021/03/22 12:34:02> Player patel's turn
+2021/03/22 12:37:20> deploy 3 3 
+2021/03/22 12:37:20> deploy 3 3
+2021/03/22 12:34:02> Player shubham's turn
+2021/03/22 12:37:38> deploy 5 1 
+2021/03/22 12:37:38> deploy 5 1
+2021/03/22 12:34:02> Player patel's turn
+2021/03/22 12:37:45> advance 3 4 3 
+2021/03/22 12:37:45> advance 3 4 3
+2021/03/22 12:34:02> Player shubham's turn
+2021/03/22 12:34:02> Player patel's turn
+2021/03/22 12:34:02> Deploy completed
+2021/03/22 12:34:02> Player "shubham" deployed "8" armies to country "5"
+2021/03/22 12:34:02> Player "patel" deployed "3" armies to country "3"
+2021/03/22 12:34:02> Player "shubham" does not enough armies
+2021/03/22 12:34:02> Armies successfully moved from country "3" to country "4" and the ownership changed to "patel" player
+2021/03/22 12:34:02> Execution Complete
+2021/03/22 12:34:02> Assigned Reinforcements to players
+2021/03/22 12:34:02> Issue orders phase entered
+2021/03/22 12:34:02> Player shubham's turn
+2021/03/22 12:34:02> Player patel's turn
+2021/03/22 12:42:39> Game Started
+2021/03/22 12:42:39> Game Setup Phase Entered
+2021/03/22 12:42:39> Map "uk.map" loaded successfully
+2021/03/22 12:42:39> Player "shubham" added to game
+2021/03/22 12:42:39> Player "patel" added to game
+2021/03/22 12:42:39> Countries Assigned
+2021/03/22 12:42:39> Assigned Reinforcements to players
+2021/03/22 12:42:39> Issue orders phase entered
+2021/03/22 12:42:39> Player shubham's turn
+2021/03/22 12:42:58> deploy 1 4 
+2021/03/22 12:42:58> deploy 1 4
+2021/03/22 12:42:39> Player patel's turn
+2021/03/22 12:43:17> deploy 2 3 
+2021/03/22 12:43:17> deploy 2 3
+2021/03/22 12:42:39> Player shubham's turn
+2021/03/22 12:43:41> advance 1 2 4 
+2021/03/22 12:43:41> advance 1 2 4
+2021/03/22 12:42:39> Player patel's turn
+2021/03/22 12:42:39> Player shubham's turn
+2021/03/22 12:42:39> Deploy completed
+2021/03/22 12:42:39> Player "shubham" deployed "4" armies to country "1"
+2021/03/22 12:42:39> Player "patel" deployed "3" armies to country "2"
+2021/03/22 12:42:39> Country "1" should remain with atleast 1 armies after advancing command
+2021/03/22 12:42:39> Execution Complete
+2021/03/22 12:42:39> Assigned Reinforcements to players
+2021/03/22 12:42:39> Issue orders phase entered
+2021/03/22 12:42:39> Player shubham's turn
+2021/03/22 12:44:10> advance 1 2 3 
+2021/03/22 12:44:10> advance 1 2 3
+2021/03/22 12:42:39> Player patel's turn
+2021/03/22 12:42:39> Player shubham's turn
+2021/03/22 12:42:39> Deploy completed
+2021/03/22 12:49:00> Game Started
+2021/03/22 12:49:00> Game Setup Phase Entered
+2021/03/22 12:49:00> Map "uk.map" loaded successfully
+2021/03/22 12:49:00> Player "shubham" added to game
+2021/03/22 12:49:00> Player "patel" added to game
+2021/03/22 12:49:00> Countries Assigned
+2021/03/22 12:49:00> Assigned Reinforcements to players
+2021/03/22 12:49:00> Issue orders phase entered
+2021/03/22 12:49:00> Player shubham's turn
+2021/03/22 12:49:20> deploy 1 3 
+2021/03/22 12:49:20> deploy 1 3
+2021/03/22 12:49:00> Player patel's turn
+2021/03/22 12:49:29> deploy 4 4 
+2021/03/22 12:49:29> deploy 4 4
+2021/03/22 12:49:00> Player shubham's turn
+2021/03/22 12:50:08> advance 1 2 2 
+2021/03/22 12:50:08> advance 1 2 2
+2021/03/22 12:49:00> Player patel's turn
+2021/03/22 12:49:00> Player shubham's turn
+2021/03/22 12:49:00> Deploy completed
+2021/03/22 12:49:00> Player "shubham" deployed "3" armies to country "1"
+2021/03/22 12:49:00> Player "patel" deployed "4" armies to country "4"
+2021/03/22 12:49:00> Armies successfully moved from country "1" to country "2"
+2021/03/22 12:49:00> Execution Complete
+2021/03/22 12:49:00> Assigned Reinforcements to players
+2021/03/22 12:49:00> Issue orders phase entered
+2021/03/22 12:49:00> Player shubham's turn
+2021/03/22 12:50:41> advance 2 4 1 
+2021/03/22 12:50:41> advance 2 4 1
+2021/03/22 12:49:00> Player patel's turn
+2021/03/22 12:49:00> Player shubham's turn
+2021/03/22 12:49:00> Deploy completed
+2021/03/22 12:49:00> Armies from country "2" were not able to advance to country "4" as the attacking armies could not defeat all the armies present in the defending country
+2021/03/22 12:49:00> Execution Complete
+2021/03/22 12:49:00> Assigned Reinforcements to players
+2021/03/22 12:49:00> Issue orders phase entered
+2021/03/22 12:49:00> Player shubham's turn
+2021/03/22 12:49:00> Player patel's turn
+2021/03/22 12:52:51> advance 4 2 2 
+2021/03/22 12:52:51> advance 4 2 2
+2021/03/22 12:49:00> Player patel's turn
+2021/03/22 12:49:00> Deploy completed

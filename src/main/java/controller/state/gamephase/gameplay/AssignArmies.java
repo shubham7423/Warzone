@@ -39,6 +39,7 @@ public class AssignArmies extends GamePlay {
 		}
 		finally {
 			next();
+			d_gameEngine.d_logEntryBuffer.setString("Assigned Reinforcements to players");
 			d_gameEngine.getPhase().issueOrders();
 		}
 	}
@@ -75,6 +76,26 @@ public class AssignArmies extends GamePlay {
 		return printInvalidCommandMessage();
 	}
 	
+	public String advance(String[] p_commandSplitted) {
+		return printInvalidCommandMessage();
+	}
+	
+	public String airlift(String[] p_commandSplitted) {
+		return printInvalidCommandMessage();
+	}
+	
+	public String bomb(String[] p_commandSplitted) {
+		return printInvalidCommandMessage();
+	}
+	
+	public String blockade(String[] p_commandSplitted) {
+		return printInvalidCommandMessage();
+	}
+	
+	public String diplomacy(String[] p_commandSplitted) {
+		return printInvalidCommandMessage();
+	}
+
 	/**
 	 * function to print invalid command as the following command cannot be used in this phase
 	 * @return string to print the invalid command message

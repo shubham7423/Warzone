@@ -52,6 +52,26 @@ public abstract class GameSetup extends GamePhase {
 		return printInvalidCommandMessage();
 	}
 	
+	public String advance(String[] p_commandSplitted) {
+		return printInvalidCommandMessage();
+	}
+	
+	public String airlift(String[] p_commandSplitted) {
+		return printInvalidCommandMessage();
+	}
+	
+	public String bomb(String[] p_commandSplitted) {
+		return printInvalidCommandMessage();
+	}
+	
+	public String blockade(String[] p_commandSplitted) {
+		return printInvalidCommandMessage();
+	}
+	
+	public String diplomacy(String[] p_commandSplitted) {
+		return printInvalidCommandMessage();
+	}
+	
 	/**
 	 * function to print invalid command as the following command cannot be used in this phase
 	 * @return string to print the invalid command message
