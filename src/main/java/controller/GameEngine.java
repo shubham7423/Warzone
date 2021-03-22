@@ -106,7 +106,7 @@ public class GameEngine {
 			l_result = deploy(p_splittedCommand);
 			break;
 			
-		case "diplomacy":
+		case "negotiate":
 			l_result = diplomacy(p_splittedCommand);
 			break;
 			
