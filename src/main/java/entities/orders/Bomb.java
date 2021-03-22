@@ -40,6 +40,12 @@ public class Bomb implements Orders {
 					d_player.d_cardsOwned.replace("bomb", l_bombCardCount - 1);
 					return "The referred country is not a neighbour country of the countries owned by player.";
 				}
+				if(d_player.d_negotiatedPlayerNames.contains(p_game.getGameMap().getCountries().get(d_country).getPlayer().getName())) {
+					d_player.d_negotiatedPlayerNames.remove(p_game.getGameMap().getCountries().get(d_country).getPlayer().getName());
+					int l_bombCardCount = d_player.d_cardsOwned.get("bomb");
+					d_player.d_cardsOwned.replace("bomb", l_bombCardCount - 1);
+					return "Diplomacy is established with the player.";
+				}
 
 				int l_armiesPresence = d_player.getCountries().get(d_country).getNumberOfArmiesPresent();
 				if(l_armiesPresence > 0){

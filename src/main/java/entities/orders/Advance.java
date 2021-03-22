@@ -62,7 +62,7 @@ public class Advance implements Orders {
 						d_countryNameFrom);
 			}
 
-			Set<Country> l_neighboringCountries = d_player.getCountries().get(d_countryNameFrom).getNeighborCountries();
+			Set<Integer> l_neighboringCountries = d_player.getCountries().get(d_countryNameFrom).getNeighborIds();
 			if (!(l_neighboringCountries.contains(d_countryNameTo))) {
 				return String.format(
 						"Armies cannot be moved from country \"%d\" to country \"%d\" because they are not neighbors",
@@ -86,10 +86,12 @@ public class Advance implements Orders {
 			int l_capabilityDestinationCountryArmies = (int) Math.ceil(l_destinationCountryArmies * 0.7);
 
 			if (l_capabilitySourceCountryArmies > l_destinationCountryArmies) {
+				Player l_playerBeingAttacked = p_game.getGameMap().getCountries().get(d_countryNameTo).getPlayer();
+				
 				p_game.getGameMap().getCountries().get(d_countryNameTo).setPlayer(d_player);
 				//adding the country to the players list of countries
 				d_player.addCountry(p_game.getGameMap().getCountries().get(d_countryNameTo));
-				Player l_playerBeingAttacked = p_game.getGameMap().getCountries().get(d_countryNameTo).getPlayer();
+				
 				l_playerBeingAttacked.getCountries().remove(d_countryNameTo);
 				d_player.getCountries().get(d_countryNameFrom)
 						.setNumberOfArmiesPresent(l_sourceCountryArmies - d_armies);
@@ -100,9 +102,10 @@ public class Advance implements Orders {
 				int l_cardNumber = r.nextInt(l_cardNames.length);
 				d_player.d_cardsOwned.replace(l_cardNames[l_cardNumber],
 						d_player.d_cardsOwned.get(l_cardNames[l_cardNumber]) + 1);
+				
 				return String.format(
-						"Armies successfully moved from country \"%d\" to country \"%d\" and the ownership changed to \"%s\" player",
-						d_countryNameFrom, d_countryNameTo, d_player.getName());
+						"Armies successfully moved from country \"%d\" to country \"%d\" and the ownership changed to \"%s\" player, Card \"%s\" rewarded to player \"%s\".",
+						d_countryNameFrom, d_countryNameTo, d_player.getName(), l_cardNames[l_cardNumber], d_player.getName());
 			} else if (l_capabilitySourceCountryArmies == l_destinationCountryArmies) {
 				d_player.getCountries().get(d_countryNameFrom)
 						.setNumberOfArmiesPresent(l_sourceCountryArmies - l_capabilityDestinationCountryArmies);
@@ -114,7 +117,8 @@ public class Advance implements Orders {
 //			elif (l_capabilitySourceCountryArmies < l_destinationCountryArmies) {
 				d_player.getCountries().get(d_countryNameFrom)
 						.setNumberOfArmiesPresent(l_sourceCountryArmies - l_capabilityDestinationCountryArmies);
-				d_player.getCountries().get(d_countryNameTo).removeArmies(l_capabilitySourceCountryArmies);
+//				d_player.getCountries().get(d_countryNameTo).removeArmies(l_capabilitySourceCountryArmies);
+				p_game.getGameMap().getCountries().get(d_countryNameTo).removeArmies(l_capabilitySourceCountryArmies);
 				return String.format(
 						"Armies from country \"%d\" were not able to advance to country \"%d\" as the attacking armies could not defeat all the armies present in the defending country",
 						d_countryNameFrom, d_countryNameTo, d_player.getName());

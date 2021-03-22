@@ -236,7 +236,7 @@ public class Player {
 								System.out.println(temp);
 								l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
 								continue;
-							} else if (!isNumeric(l_splittedOrder[1]) || !isNumeric(l_splittedOrder[2]) || isNumeric(l_splittedOrder[3])) {
+							} else if (!isNumeric(l_splittedOrder[1]) || !isNumeric(l_splittedOrder[2]) || !isNumeric(l_splittedOrder[3])) {
 								String temp = "After advance keyword, you can only use integer to represent the countryFrom, countryTo and numarmies";
 								System.out.println(temp);
 								l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
@@ -293,7 +293,7 @@ public class Player {
 								System.out.println(temp);
 								l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
 								continue;
-							} else if (!isNumeric(l_splittedOrder[1]) || !isNumeric(l_splittedOrder[2]) || isNumeric(l_splittedOrder[3])) {
+							} else if (!isNumeric(l_splittedOrder[1]) || !isNumeric(l_splittedOrder[2]) || !isNumeric(l_splittedOrder[3])) {
 								String temp = "After airlift keyword, you can only use integer to represent the sourceCountryId, targetCountryId and numarmies";
 								System.out.println(temp);
 								l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);

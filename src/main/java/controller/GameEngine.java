@@ -105,6 +105,26 @@ public class GameEngine {
 		case "deploy":
 			l_result = deploy(p_splittedCommand);
 			break;
+			
+		case "diplomacy":
+			l_result = diplomacy(p_splittedCommand);
+			break;
+			
+		case "advance":
+			l_result = advance(p_splittedCommand);
+			break;
+			
+		case "airlift":
+			l_result = airlift(p_splittedCommand);
+			break;
+			
+		case "bomb":
+			l_result = bomb(p_splittedCommand);
+			break;
+			
+		case "blockade":
+			l_result = blockade(p_splittedCommand);
+			break;
 
 		default:
 			l_result = "Command not found";
@@ -114,6 +134,26 @@ public class GameEngine {
 	}
 	
 	public String deploy(String[] p_splittedCommand) {
+		return d_phase.deploy(p_splittedCommand);
+	}
+	
+	public String advance(String[] p_splittedCommand) {
+		return d_phase.deploy(p_splittedCommand);
+	}
+	
+	public String airlift(String[] p_splittedCommand) {
+		return d_phase.deploy(p_splittedCommand);
+	}
+	
+	public String bomb(String[] p_splittedCommand) {
+		return d_phase.deploy(p_splittedCommand);
+	}
+	
+	public String blockade(String[] p_splittedCommand) {
+		return d_phase.deploy(p_splittedCommand);
+	}
+	
+	public String diplomacy(String[] p_splittedCommand) {
 		return d_phase.deploy(p_splittedCommand);
 	}
 	
