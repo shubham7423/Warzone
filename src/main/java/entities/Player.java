@@ -327,6 +327,7 @@ public class Player {
 							break;
 						default:
 							System.out.println("Command not found.");
+							l_userCommand.d_gameEngine.d_logEntryBuffer.setString("Command not found.");
 							break;
 					}
 				}
