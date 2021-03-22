@@ -14,20 +14,26 @@ public class UserCommand {
 
 	public GameEngine d_gameEngine;
 	
+	/**
+	 * constructor method to the class that sets the phase to the PreEdit phase to start the initial process of the game
+	 */
 	public UserCommand() {
 		d_gameEngine = new GameEngine();
 		d_gameEngine.setPhase(new PreEdit(d_gameEngine));
 //		d_gameStarter.setUserCommand(this);
 	}
 	
+	/**
+	 * function to manually set the phase of the game depending upon the user
+	 * @param p the phase that has to be set for next steps in the game
+	 */
 	public void setPhase(Phase p) {
 		d_gameEngine.setPhase(p);
 	}
 	
 	/**
-	 * Get commands from user
-	 * 
-	 * @return executed command.
+	 * Function the takes in the command provided by user at the console for further processing
+	 * @return the result of the execution of the command provided after being splitted
 	 */
 	public String getCommand() {
 		String l_userCommand;

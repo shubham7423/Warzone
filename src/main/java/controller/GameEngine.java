@@ -14,6 +14,10 @@ import entities.GameMap;
 import entities.Player;
 import entities.orders.Deploy;
 
+/**
+ * Game Engine class is the starting point of the game where commands are processed and extracted to support the 
+ * functionalities provided by the commands.
+ */
 public class GameEngine {
 	private Phase d_phase;
 	private GameMap d_gameMap = new GameMap();
@@ -31,34 +35,67 @@ public class GameEngine {
 		d_neutralPlayer = new Player("neutralPlayer#1");
 	}
 	
+	/**
+	 * function to get the order size of the player
+	 * @return an integer representing the size of the orders, the players has
+	 */
 	public int getPlayeraOrderSize() {
 		return d_playersOrder.size();
 	}
 	
+	/**
+	 * function to add order to the order queue of the player
+	 * @param p_player represents the player whose order is to be added to the queue
+	 */
 	public void addPlayerOrder(Player p_player) {
 		d_playersOrder.add(p_player);
 	}
 	
+	/***
+	 * function to remove and order from the order queue of the player
+	 * @return removal of order from the queue of the player
+	 */
 	public Player getPlayerOrder() {
 		return d_playersOrder.remove();
 	}
 	
+	/**
+	 * function to obtain the phase in which we are present in the game
+	 * @return the phase we currently are in the game
+	 */
 	public Phase getPhase() {
 		return d_phase;
 	}
 	
+	/**
+	 * function to return the current state/situation of the game map 
+	 * @return the current game map 
+	 */
 	public GameMap getGameMap() {
 		return d_gameMap;
 	}
 	
+	/**
+	 * function to set the game map according to the parameter provided
+	 * @param p_gameMap the game map state we want to set
+	 */
 	public void setGameMap(GameMap p_gameMap) {
 		d_gameMap = p_gameMap;
 	}
 	
+	/**
+	 * function to set the phases of the game like editing phase, loading phase, gamesetup and gameplay phase
+	 * @param p_phase the name of the phase to be set
+	 */
 	public void setPhase(Phase p_phase) { 
 		d_phase = p_phase;
 	}
 	
+	/**
+	 * a function containing switch case to identify which command has been entered by the user for further processing
+	 * @param p_splittedCommand the command that has been splitted into multiple parts for processing
+	 * @return the result of the command to be executed
+	 */
 	public String executeCommand(String[] p_splittedCommand) {
 		String l_result = "";
 		switch (p_splittedCommand[0]) {
@@ -133,6 +170,11 @@ public class GameEngine {
 		return l_result;
 	}
 	
+	/**
+	 * Function to support deployment of armies to countries
+	 * @param p_splittedCommand the command that has been splitted into multiple parts for further processing
+	 * @return the result of the deploy command
+	 */
 	public String deploy(String[] p_splittedCommand) {
 		return d_phase.deploy(p_splittedCommand);
 	}
@@ -157,6 +199,11 @@ public class GameEngine {
 		return d_phase.deploy(p_splittedCommand);
 	}
 	
+	/**
+	 * function to support editing of map and enter edit phase
+	 * @param p_splittedCommand the command that has been splitted into multiple parts for further processing
+	 * @return the result of the editmap command depending upon the syntax of command provided
+	 */
 	public String editMap(String[] p_splittedCommand) {
 		if (p_splittedCommand.length < 2) {
 			return "Please enter valid command";
@@ -170,6 +217,11 @@ public class GameEngine {
 		return d_phase.editMap(p_splittedCommand[1]);
 	}
 	
+	/**
+	 * function to support adding and removing of players to the game map
+	 * @param p_splittedCommand the command that has been splitted into multiple parts for further processing
+	 * @return the result of the gameplayer command depending upon the syntax of command provided
+	 */
 	public String gamePlayer(String[] p_splittedCommand) {
 		String[] l_commandParts;
 		String l_result = "";
@@ -207,10 +259,19 @@ public class GameEngine {
 		return l_result;
 	}
 	
+	/**
+	 * function allowing user to display the current state of the map 
+	 * @return the map with all the information of the current state
+	 */
 	public String showmap() {
 		return d_phase.showMap();
 	}
 	
+	/**
+	 * function to support adding and removing of continents to the map
+	 * @param p_splittedCommand the command that has been splitted into multiple parts for further processing
+	 * @return the result of the editContinent command depending upon the syntax of command provided
+	 */
 	public String editContinent(String[] p_splittedCommand) {
 		String[] l_commandParts;
 		String l_result = "";
@@ -249,6 +310,11 @@ public class GameEngine {
 		return l_result;
 	}
 	
+	/**
+	 * function to support adding and removing of countries to the map
+	 * @param p_splittedCommand the command that has been splitted into multiple parts for further processing
+	 * @return the result of the editCountry command depending upon the syntax of command provided
+	 */
 	public String editCountry(String[] p_splittedCommand) {
 		String[] l_commandParts;
 		String l_result = "";
@@ -287,6 +353,11 @@ public class GameEngine {
 		return l_result;
 	}
 	
+	/**
+	 * function to support adding and removing of neighboring countries to the map
+	 * @param p_splittedCommand the command that has been splitted into multiple parts for further processing
+	 * @return the result of the editNeighbor command depending upon the syntax of command provided
+	 */
 	public String editNeighbor(String[] p_splittedCommand) {
 		String[] l_commandParts;
 		String l_result = "";
@@ -326,6 +397,11 @@ public class GameEngine {
 		return l_result;
 	}
 	
+	/**
+	 * function to allow saving of map to the directory
+	 * @param p_splittedCommand the command that has been splitted into multiple parts for further processing
+	 * @return the result of executing the saveMap command
+	 */
 	public String saveMap(String[] p_splittedCommand) {
 		if (p_splittedCommand.length < 2) {
 			return "Please enter valid command";
@@ -339,6 +415,11 @@ public class GameEngine {
 		return d_phase.saveMap(p_splittedCommand[1]);
 	}
 	
+	/**
+	 * function to allow validation of map to to check connectivity of the graph of the map
+	 * @param p_splittedCommand the command that has been splitted into multiple parts for further processing
+	 * @return the result of map validation
+	 */
 	public String validateMap(String[] p_splittedCommand) {
 		if (p_splittedCommand.length > 1) {
 			return "Please enter valid command";
@@ -346,6 +427,11 @@ public class GameEngine {
 		return d_phase.validateMap();
 	}
 	
+	/**
+	 * function to support loading of map from the directory to enter the gameplay phase
+	 * @param p_splittedCommand the command that has been splitted into multiple parts for further processing
+	 * @return the result of loading of map
+	 */
 	public String loadMap(String[] p_splittedCommand) {
 		if(d_phase instanceof EditPhase) {
 			setPhase(new PreLoad(this));
@@ -362,6 +448,11 @@ public class GameEngine {
 		return d_phase.loadMap(p_splittedCommand[1]);
 	}
 	
+	/**
+	 * function to assign countries to the players present in the game
+	 * @param p_splittedCommand the command that has been splitted into multiple parts for further processing
+	 * @return the result of assigning countries to the players
+	 */
 	public String assignCountries(String[] p_splittedCommand) {
 //		try {
 			if (p_splittedCommand.length > 1) {
@@ -395,11 +486,18 @@ public class GameEngine {
 //		}
 //	}
 	
+	/**
+	 * function to process the entire command provided by the user that will be splitted for further processing
+	 * @param p_userCommand the entire line that acts as the command
+	 */
 	public void setUserCommand(UserCommand p_userCommand) {
 		d_userCommand = p_userCommand;
 //		System.out.println(d_userCommand);
 	}
 	
+	/**
+	 * function that launches the game
+	 */
 	public void start() {
 //		setUserCommand(new UserCommand());
 		System.out.println("Welcome to Warzone");

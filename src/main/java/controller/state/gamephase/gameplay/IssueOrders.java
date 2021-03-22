@@ -7,19 +7,34 @@ import entities.Player;
 import entities.orders.Orders;
 import entities.orders.ShowMap;
 
+/**
+ * IssueOrder class that inherits GamePlay interface to support functions during this command
+ */
 public class IssueOrders extends GamePlay {
 
+	/**
+	 * constructor method that takes game engine object from the parent class 
+	 * @param p_gameEngine object of the game engine
+	 */
 	public IssueOrders(GameEngine p_gameEngine) {
 		super(p_gameEngine);
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * function to print invalid command as the following command cannot be used in this phase
+	 * @return string to print the invalid command message
+	 */
 	@Override
 	public String assignArmies() {
 		// TODO Auto-generated method stub
 		return printInvalidCommandMessage();
 	}
 	
+	/**
+	 * function to deploy armies to other countries
+	 * @return string to output result of deployment
+	 */
 	@Override
 	public String deploy(String[] p_commandSplitted) {
 		// TODO Auto-generated method stub
@@ -82,6 +97,10 @@ public class IssueOrders extends GamePlay {
 		return l_sb.toString();
 	}
 
+	/**
+	 * function that takes player's and that adds to them to the orders queue
+	 * @return string to output result of issue orders
+	 */
 	@Override
 	public String issueOrders() {
 		// TODO Auto-generated method stub
@@ -140,18 +159,33 @@ public class IssueOrders extends GamePlay {
 		return "";
 	}
 	
+	/**
+	 * function to print invalid command as the following command cannot be used in this phase
+	 * @return string to print the invalid command message
+	 */
 	public String executeOrders() {
 		return printInvalidCommandMessage();
 	}
 	
+	/**
+	 * function to print invalid command as the following command cannot be used in this phase
+	 * @return string to print the invalid command message
+	 */
 	public String showMap() {
 		return printInvalidCommandMessage();
 	}
 	
+	/**
+	 * function to print invalid command as the following command cannot be used in this phase
+	 * @return string to print the invalid command message
+	 */
 	public String checkContinentOwnership() {
 		return printInvalidCommandMessage();
 	}
 
+	/**
+	 * function to proceed to the next phase of the game
+	 */
 	@Override
 	public void next() {
 		d_gameEngine.setPhase(new ExecuteOrders(d_gameEngine));

@@ -8,12 +8,25 @@ import controller.GameEngine;
 import controller.GameEngine;
 import entities.GameMap;
 
+/**
+ * PreEdit is inherited from the EditPhase class to support commands valid in pre editing phase
+ *
+ */
 public class PreEdit extends EditPhase {
 	
+	/**
+	 * constructor method that takes game engine object from the parent class 
+	 * @param p_gameEngine object of game engine
+	 */
 	public PreEdit(GameEngine p_gameEngine) {
 		super(p_gameEngine);
 	}
 
+	/**
+	 * as this command is applicable in this phase we process the editMap command
+	 * @param p_fileName name of the map file for editing
+	 * @return string indicating the result of the map editing whether it is available to edit or not
+	 */
 	@Override
 	public String editMap(String p_fileName) {
 		String l_result;
@@ -36,34 +49,57 @@ public class PreEdit extends EditPhase {
 		return l_result;
 	}
 	
+	/**
+	 * validate map cannot be used in this phase
+	 * @return string to output the result
+	 */
 	public String validateMap() {
 		return String.format("Map not loaded yet.");
 	}
 
+	/**
+	 * as this command is not applicable in this phase we print invalid command string
+	 * @param p_commandSplitted splitted command parts to execute
+	 * @return string containing invalid command string
+	 */
 	@Override
 	public String editContinent(String[] p_commandSplitted) {
-		return printInvalidCommandMessage();
-		
+		return printInvalidCommandMessage();	
 	}
 
+	/**
+	 * as this command is not applicable in this phase we print invalid command string
+	 * @param p_commandSplitted splitted command parts to execute
+	 * @return string containing invalid command string
+	 */
 	@Override
 	public String editCountry(String[] p_commandSplitted) {
 		return printInvalidCommandMessage();
-		
 	}
 
+	/**
+	 * as this command is not applicable in this phase we print invalid command string
+	 * @param p_commandSplitted splitted command parts to execute
+	 * @return string containing invalid command string
+	 */
 	@Override
 	public String editNeighbor(String[] p_commandSplitted) {
-		return printInvalidCommandMessage();
-		
+		return printInvalidCommandMessage();	
 	}
 	
+	/**
+	 * as this command is not applicable in this phase we print invalid command string
+	 * @param p_fileName name of the map file for saving
+	 * @return string containing invalid command string
+	 */
 	@Override
 	public String saveMap(String p_fileName) {
 		return printInvalidCommandMessage();
-
 	}
 
+	/**
+	 * function to proceed to the next phase of the editing phase of the game
+	 */
 	@Override
 	public void next() {
 		d_gameEngine.setPhase(new PostEdit(d_gameEngine));
