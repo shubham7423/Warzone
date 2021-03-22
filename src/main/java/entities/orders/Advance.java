@@ -77,6 +77,15 @@ public class Advance implements Orders {
 						d_countryNameFrom, d_countryNameTo);
 			}
 
+			if (d_player.d_negotiatedPlayerNames
+					.contains(p_game.getGameMap().getCountries().get(d_countryNameTo).getPlayer().getName())) {
+				d_player.d_negotiatedPlayerNames
+						.remove(p_game.getGameMap().getCountries().get(d_countryNameTo).getPlayer().getName());
+				return String.format(
+						"Armies cannot be moved to country \"%d\" as there is diplomacy established between the calling and the called player",
+						d_countryNameTo);
+			}
+
 			int l_sourceCountryArmies = p_game.getGameMap().getCountries().get(d_countryNameFrom)
 					.getNumberOfArmiesPresent();
 			int l_destinationCountryArmies = p_game.getGameMap().getCountries().get(d_countryNameTo)
@@ -87,11 +96,11 @@ public class Advance implements Orders {
 
 			if (l_capabilitySourceCountryArmies > l_destinationCountryArmies) {
 				Player l_playerBeingAttacked = p_game.getGameMap().getCountries().get(d_countryNameTo).getPlayer();
-				
+
 				p_game.getGameMap().getCountries().get(d_countryNameTo).setPlayer(d_player);
-				//adding the country to the players list of countries
+				// adding the country to the players list of countries
 				d_player.addCountry(p_game.getGameMap().getCountries().get(d_countryNameTo));
-				
+
 				l_playerBeingAttacked.getCountries().remove(d_countryNameTo);
 				d_player.getCountries().get(d_countryNameFrom)
 						.setNumberOfArmiesPresent(l_sourceCountryArmies - d_armies);
@@ -102,10 +111,11 @@ public class Advance implements Orders {
 				int l_cardNumber = r.nextInt(l_cardNames.length);
 				d_player.d_cardsOwned.replace(l_cardNames[l_cardNumber],
 						d_player.d_cardsOwned.get(l_cardNames[l_cardNumber]) + 1);
-				
+
 				return String.format(
 						"Armies successfully moved from country \"%d\" to country \"%d\" and the ownership changed to \"%s\" player, Card \"%s\" rewarded to player \"%s\".",
-						d_countryNameFrom, d_countryNameTo, d_player.getName(), l_cardNames[l_cardNumber], d_player.getName());
+						d_countryNameFrom, d_countryNameTo, d_player.getName(), l_cardNames[l_cardNumber],
+						d_player.getName());
 			} else if (l_capabilitySourceCountryArmies == l_destinationCountryArmies) {
 				d_player.getCountries().get(d_countryNameFrom)
 						.setNumberOfArmiesPresent(l_sourceCountryArmies - l_capabilityDestinationCountryArmies);
