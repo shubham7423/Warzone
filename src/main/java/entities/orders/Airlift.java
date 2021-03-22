@@ -47,18 +47,23 @@ public class Airlift implements Orders {
 	public String executeOrder(GameEngine p_game) {
 		int l_airliftCardCount = d_player.d_cardsOwned.get("airlift");
 		if (l_airliftCardCount == 0) {
+			d_player.d_cardsOwned.replace("airlift", l_airliftCardCount - 1);
 			return String.format("Player \"%s\" does not have a airlift card", d_player.getName());
 		}
 		if (!d_player.getCountries().containsKey(d_countryNameFrom)) {
+			d_player.d_cardsOwned.replace("airlift", l_airliftCardCount - 1);
 			return String.format("Player \"%s\" does not own country \"%d\"", d_player.getName(), d_countryNameFrom);
 		}
 		if (!d_player.getCountries().containsKey(d_countryNameTo)) {
+			d_player.d_cardsOwned.replace("airlift", l_airliftCardCount - 1);
 			return String.format("Player \"%s\" does not own country \"%d\"", d_player.getName(), d_countryNameTo);
 		}
 		if (d_player.getCountries().get(d_countryNameFrom).getNumberOfArmiesPresent() < d_armies) {
+			d_player.d_cardsOwned.replace("airlift", l_airliftCardCount - 1);
 			return String.format("Country \"%d\" does not have enough armies", d_countryNameFrom);
 		}
 		if ((d_player.getCountries().get(d_countryNameFrom).getNumberOfArmiesPresent() - d_armies) < 1) {
+			d_player.d_cardsOwned.replace("airlift", l_airliftCardCount - 1);
 			return String.format(
 					"Country \"%d\" should remain with atleast 1 armies after moving the armies during Airlift",
 					d_countryNameFrom);
