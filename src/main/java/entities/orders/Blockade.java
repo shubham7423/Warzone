@@ -46,7 +46,7 @@ public class Blockade implements Orders {
 				} else {
 					p_game.d_neutralPlayer.addCountry(p_game.getGameMap().getCountries().get(d_country));
 					d_player.removeCountry(d_country);
-					d_player.getCountries().get(d_country).setPlayer(p_game.d_neutralPlayer);
+					p_game.getGameMap().getCountries().get(d_country).setPlayer(p_game.d_neutralPlayer);
 					int l_blockadeCardCount = d_player.d_cardsOwned.get("blockade");
 					d_player.d_cardsOwned.replace("blockade", l_blockadeCardCount - 1);
 					return "Army presence is Zero";
