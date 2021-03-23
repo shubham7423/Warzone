@@ -40,5 +40,9 @@ GameEngine d_game;
 		d_game = null;
 	}
 	
-	
+	@Test
+	public void testExecuteOrder1() {
+		Blockade l_blockadeCmd = new Blockade(d_game.d_players.get("Shubham"), 1);
+		assertEquals("You don't have blockade card.", l_blockadeCmd.executeOrder(d_game));
+	}
 }
