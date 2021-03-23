@@ -36,7 +36,7 @@ public class Diplomacy implements Orders {
 	public String executeOrder(GameEngine p_game) {
 		// TODO Auto-generated method stub
 		if (!p_game.d_playerName.contains(d_otherPlayerName)) {
-			return "Mentioned Player \"" + d_otherPlayerName + "\" does not exist";
+			return "Player \"" + d_otherPlayerName + "\" does not exist";
 		} else {
 			int l_diplomacyCardCount = d_player.d_cardsOwned.get("diplomacy");
 			if (l_diplomacyCardCount < 1) {
