@@ -34,4 +34,11 @@ GameEngine d_game;
 		l_deploy1.executeOrder(d_game);
 		l_deploy2.executeOrder(d_game);
 	}
+	
+	@After
+	public void tearDown() {
+		d_game = null;
+	}
+	
+	
 }
