@@ -50,11 +50,9 @@ public class Airlift implements Orders {
 			return String.format("Player \"%s\" does not have a airlift card", d_player.getName());
 		}
 		if (!d_player.getCountries().containsKey(d_countryNameFrom)) {
-			//d_player.d_cardsOwned.replace("airlift", l_airliftCardCount - 1);
 			return String.format("Player \"%s\" does not own country \"%d\"", d_player.getName(), d_countryNameFrom);
 		}
 		if (!d_player.getCountries().containsKey(d_countryNameTo)) {
-			//d_player.d_cardsOwned.replace("airlift", l_airliftCardCount - 1);
 			return String.format("Player \"%s\" does not own country \"%d\"", d_player.getName(), d_countryNameTo);
 		}
 		if (d_player.getCountries().get(d_countryNameFrom).getNumberOfArmiesPresent() < d_armies) {
