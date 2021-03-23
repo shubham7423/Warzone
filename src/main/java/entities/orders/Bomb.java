@@ -47,8 +47,6 @@ public class Bomb implements Orders {
 					intCountry.addAll(tempCountry.getNeighborIds());
 				}
 				if (!intCountry.contains(d_country)) {
-					int l_bombCardCount = d_player.d_cardsOwned.get("bomb");
-					d_player.d_cardsOwned.replace("bomb", l_bombCardCount - 1);
 					return String.format(
 							"The country \"%d\" is not a neighbour country of the countries owned by player \"%s\".",
 							d_country, d_player.getName());
