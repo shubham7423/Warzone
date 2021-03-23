@@ -44,5 +44,9 @@ GameEngine d_game;
 		d_game = null;
 	}
 	
-	
+	@Test
+	public void testExecuteOrder1() {
+		Airlift l_airliftCmd = new Airlift(d_game.d_players.get("Shubham"), 1, 2, 1);
+		assertEquals("Player \"Shubham\" does not have a airlift card", l_airliftCmd.executeOrder(d_game));
+	}
 }
