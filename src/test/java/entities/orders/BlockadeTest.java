@@ -43,7 +43,7 @@ GameEngine d_game;
 	@Test
 	public void testExecuteOrder1() {
 		Blockade l_blockadeCmd = new Blockade(d_game.d_players.get("Shubham"), 1);
-		assertEquals("Player \"Shubham\" doesn.t hace blockade card.", l_blockadeCmd.executeOrder(d_game));
+		assertEquals("Player \"Shubham\" doesn't have blockade card.", l_blockadeCmd.executeOrder(d_game));
 	}
 	
 	@Test
