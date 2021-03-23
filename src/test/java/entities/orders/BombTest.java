@@ -45,27 +45,27 @@ public class BombTest {
 	public void testExecuteOrder1() {
 		d_game.d_players.get("Shubham").d_cardsOwned.put("bomb", 1);
 		Bomb l_bombCmd = new Bomb(d_game.d_players.get("Shubham"), 1);
-		assertEquals("Country referred is your own country.", l_bombCmd.executeOrder(d_game));
+		assertEquals("Cannot bomb country \"1\" as it is controlled by player \"Shubham\".", l_bombCmd.executeOrder(d_game));
 	}
 	
 	@Test
 	public void testExecuteOrder2() {
 		d_game.d_players.get("Shubham").d_cardsOwned.put("bomb", 1);
 		Bomb l_bombCmd = new Bomb(d_game.d_players.get("Shubham"), 2);
-		assertEquals("Bomb Card utilized successfully", l_bombCmd.executeOrder(d_game));
+		assertEquals("Player \"Shubham\" bombed country \"2\" successfully.", l_bombCmd.executeOrder(d_game));
 	}
 	
 	@Test
 	public void testExecuteOrder3() {
 		Bomb l_bombCmd = new Bomb(d_game.d_players.get("Shubham"), 1);
-		assertEquals("You don't have bomb card.", l_bombCmd.executeOrder(d_game));
+		assertEquals("Player \"Shubham\" doesn't have bomb card.", l_bombCmd.executeOrder(d_game));
 	}
 	
 	@Test
 	public void testExecuteOrder4() {
 		d_game.d_players.get("Meet").d_cardsOwned.put("bomb", 1);
 		Bomb l_bombCmd = new Bomb(d_game.d_players.get("Meet"), 1);
-		assertEquals("The referred country is not a neighbour country of the countries owned by player.", l_bombCmd.executeOrder(d_game));
+		assertEquals("The country \"1\" is not a neighbour country of the countries owned by player \"Meet\".", l_bombCmd.executeOrder(d_game));
 	}
 	
 	@Test
@@ -73,6 +73,6 @@ public class BombTest {
 		d_game.d_players.get("Shubham").d_cardsOwned.put("bomb", 1);
 		Bomb l_bombCmd = new Bomb(d_game.d_players.get("Shubham"), 2);
 		d_game.d_players.get("Shubham").d_negotiatedPlayerNames.add("Meet");
-		assertEquals("Diplomacy is established with the player.", l_bombCmd.executeOrder(d_game));
+		assertEquals("Cannot bomb, as diplomacy is established between \"Shubham\" and \"Meet\".", l_bombCmd.executeOrder(d_game));
 	}
 }
