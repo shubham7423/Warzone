@@ -56,7 +56,6 @@ public class Airlift implements Orders {
 			return String.format("Player \"%s\" does not own country \"%d\"", d_player.getName(), d_countryNameTo);
 		}
 		if (d_player.getCountries().get(d_countryNameFrom).getNumberOfArmiesPresent() < d_armies) {
-			//d_player.d_cardsOwned.replace("airlift", l_airliftCardCount - 1);
 			return String.format("Country \"%d\" does not have enough armies", d_countryNameFrom);
 		}
 		if ((d_player.getCountries().get(d_countryNameFrom).getNumberOfArmiesPresent() - d_armies) < 1) {
