@@ -70,4 +70,11 @@ GameEngine d_game;
 		Airlift l_airliftCmd = new Airlift(d_game.d_players.get("Shubham"), 1, 3, 5);
 		assertEquals("Country \"1\" does not have enough armies", l_airliftCmd.executeOrder(d_game));
 	}
+	
+	@Test
+	public void testExecuteOrder5() {
+		d_game.d_players.get("Shubham").d_cardsOwned.put("airlift", 1);
+		Airlift l_airliftCmd = new Airlift(d_game.d_players.get("Shubham"), 1, 3, 2);
+		assertEquals("Country \"1\" should remain with atleast 1 armies after moving the armies during Airlift", l_airliftCmd.executeOrder(d_game));
+	}
 }
