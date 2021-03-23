@@ -42,20 +42,20 @@ public class Blockade implements Orders {
 					//
 					int l_blockadeCardCount = d_player.d_cardsOwned.get("blockade");
 					d_player.d_cardsOwned.replace("blockade", l_blockadeCardCount - 1);
-					return "Blockade Card utilized successfully";
+					return String.format("Blockade Card utilized successfully by player  \"%s\" on country  \"%d\".", d_player.getName(), d_country);
 				} else {
 					p_game.d_neutralPlayer.addCountry(p_game.getGameMap().getCountries().get(d_country));
 					d_player.removeCountry(d_country);
 					p_game.getGameMap().getCountries().get(d_country).setPlayer(p_game.d_neutralPlayer);
 					int l_blockadeCardCount = d_player.d_cardsOwned.get("blockade");
 					d_player.d_cardsOwned.replace("blockade", l_blockadeCardCount - 1);
-					return "Army presence is Zero";
+					return String.format("Blockade card cannot be used on country \"%d\", as number of armies are zero at country.", d_country);
 				}
 			} else {
-				return "Country referred is not your own country.";
+				return String.format("Player \"%s\" doesn't control country \"%d\".", d_player.getName(), d_country);
 			}
 		} else {
-			return "You don't have blockade card.";
+			return String.format("Player \"%s\" doesn.t hace blockade card.", d_player.getName());
 		}
 	}
 }

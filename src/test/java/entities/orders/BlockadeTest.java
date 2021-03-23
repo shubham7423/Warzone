@@ -43,21 +43,21 @@ GameEngine d_game;
 	@Test
 	public void testExecuteOrder1() {
 		Blockade l_blockadeCmd = new Blockade(d_game.d_players.get("Shubham"), 1);
-		assertEquals("You don't have blockade card.", l_blockadeCmd.executeOrder(d_game));
+		assertEquals("Player \"Shubham\" doesn.t hace blockade card.", l_blockadeCmd.executeOrder(d_game));
 	}
 	
 	@Test
 	public void testExecuteOrder2() {
 		d_game.d_players.get("Shubham").d_cardsOwned.put("blockade", 1);
 		Blockade l_blockadeCmd = new Blockade(d_game.d_players.get("Shubham"), 2);
-		assertEquals("Country referred is not your own country.", l_blockadeCmd.executeOrder(d_game));
+		assertEquals("Player \"Shubham\" doesn't control country \"2\".", l_blockadeCmd.executeOrder(d_game));
 	}
 	
 	@Test
 	public void testExecuteOrder3() {
 		d_game.d_players.get("Shubham").d_cardsOwned.put("blockade", 1);
 		Blockade l_blockadeCmd = new Blockade(d_game.d_players.get("Shubham"), 1);
-		assertEquals("Blockade Card utilized successfully", l_blockadeCmd.executeOrder(d_game));
+		assertEquals("Blockade Card utilized successfully by player  \"Shubham\" on country  \"1\".", l_blockadeCmd.executeOrder(d_game));
 	}
 	
 	@Test
@@ -76,6 +76,6 @@ GameEngine d_game;
 		d_game.d_players.get("Shubham").addCountry(d_game.getGameMap().getCountries().get(3));
 		d_game.d_players.get("Shubham").d_cardsOwned.put("blockade", 3);
 		Blockade l_blockadeCmd = new Blockade(d_game.d_players.get("Shubham"), 3);
-		assertEquals("Army presence is Zero", l_blockadeCmd.executeOrder(d_game));
+		assertEquals("Blockade card cannot be used on country \"3\", as number of armies are zero at country.", l_blockadeCmd.executeOrder(d_game));
 	}
 }
