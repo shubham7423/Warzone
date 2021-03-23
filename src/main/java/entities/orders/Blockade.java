@@ -33,7 +33,7 @@ public class Blockade implements Orders {
 		if(d_player.d_cardsOwned.get("blockade")>=1){
 			if(d_player.getCountries().containsKey(d_country)){	
 				int l_armiesPresence = d_player.getCountries().get(d_country).getNumberOfArmiesPresent();
-				if(l_armiesPresence > 0){
+				if(l_armiesPresence >= 0){
 					d_player.getCountries().get(d_country).setNumberOfArmiesPresent(l_armiesPresence*3);
 					//
 					d_player.getCountries().get(d_country).setPlayer(p_game.d_neutralPlayer);
@@ -44,12 +44,13 @@ public class Blockade implements Orders {
 					d_player.d_cardsOwned.replace("blockade", l_blockadeCardCount - 1);
 					return String.format("Blockade Card utilized successfully by player  \"%s\" on country  \"%d\".", d_player.getName(), d_country);
 				} else {
-					p_game.d_neutralPlayer.addCountry(p_game.getGameMap().getCountries().get(d_country));
+					return "";
+					/*p_game.d_neutralPlayer.addCountry(p_game.getGameMap().getCountries().get(d_country));
 					d_player.removeCountry(d_country);
 					p_game.getGameMap().getCountries().get(d_country).setPlayer(p_game.d_neutralPlayer);
 					int l_blockadeCardCount = d_player.d_cardsOwned.get("blockade");
 					d_player.d_cardsOwned.replace("blockade", l_blockadeCardCount - 1);
-					return String.format("Blockade card cannot be used on country \"%d\", as number of armies are zero at country.", d_country);
+					return String.format("Blockade card cannot be used on country \"%d\", as number of armies are zero at country.", d_country);*/
 				}
 			} else {
 				return String.format("Player \"%s\" doesn't control country \"%d\".", d_player.getName(), d_country);
