@@ -59,4 +59,12 @@ GameEngine d_game;
 		Blockade l_blockadeCmd = new Blockade(d_game.d_players.get("Shubham"), 1);
 		assertEquals("Blockade Card utilized successfully", l_blockadeCmd.executeOrder(d_game));
 	}
+	
+	@Test
+	public void testExecuteOrder4() {
+		d_game.d_players.get("Shubham").d_cardsOwned.put("blockade", 1);
+		Blockade l_blockadeCmd = new Blockade(d_game.d_players.get("Shubham"), 1);
+//		System.out.println(d_game.getGameMap().getCountries().get(1).getPlayer().getName());
+		assertEquals("Blockade Card utilized successfully", l_blockadeCmd.executeOrder(d_game));
+	}
 }
