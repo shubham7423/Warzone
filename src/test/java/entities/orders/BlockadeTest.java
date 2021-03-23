@@ -64,7 +64,18 @@ GameEngine d_game;
 	public void testExecuteOrder4() {
 		d_game.d_players.get("Shubham").d_cardsOwned.put("blockade", 1);
 		Blockade l_blockadeCmd = new Blockade(d_game.d_players.get("Shubham"), 1);
-//		System.out.println(d_game.getGameMap().getCountries().get(1).getPlayer().getName());
-		assertEquals("Blockade Card utilized successfully", l_blockadeCmd.executeOrder(d_game));
+		d_game.d_players.get("Shubham").d_cardsOwned.put("blockade", 1);
+		l_blockadeCmd.executeOrder(d_game);
+		assertEquals("neutralPlayer#1", d_game.getGameMap().getCountries().get(1).getPlayer().getName());
+	}
+	
+	@Test
+	public void testExecuteOrder5() {
+		d_game.getGameMap().addCountry(3, 1);
+		d_game.getGameMap().getCountries().get(1).setPlayer(d_game.d_players.get("Shubham"));
+		d_game.d_players.get("Shubham").addCountry(d_game.getGameMap().getCountries().get(3));
+		d_game.d_players.get("Shubham").d_cardsOwned.put("blockade", 3);
+		Blockade l_blockadeCmd = new Blockade(d_game.d_players.get("Shubham"), 3);
+		assertEquals("Army presence is Zero", l_blockadeCmd.executeOrder(d_game));
 	}
 }
