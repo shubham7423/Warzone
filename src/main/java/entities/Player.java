@@ -207,7 +207,7 @@ public class Player {
 					d_isCommit = true;
 					return;
 				} else {
-					l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_result);
+//					l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_result);
 					l_splittedOrder = l_result.split(" ");
 					
 					switch (l_splittedOrder[0]) {
@@ -326,8 +326,10 @@ public class Player {
 							}
 							break;
 						default:
-							System.out.println("Command not found.");
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString("Command not found.");
+//							System.out.println("Command not found.");
+							System.out.println(l_result);
+							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_result);
+//							l_userCommand.d_gameEngine.d_logEntryBuffer.setString("Command not found.");
 							break;
 					}
 				}
