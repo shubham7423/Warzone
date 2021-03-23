@@ -52,4 +52,11 @@ GameEngine d_game;
 		Blockade l_blockadeCmd = new Blockade(d_game.d_players.get("Shubham"), 2);
 		assertEquals("Country referred is not your own country.", l_blockadeCmd.executeOrder(d_game));
 	}
+	
+	@Test
+	public void testExecuteOrder3() {
+		d_game.d_players.get("Shubham").d_cardsOwned.put("blockade", 1);
+		Blockade l_blockadeCmd = new Blockade(d_game.d_players.get("Shubham"), 1);
+		assertEquals("Blockade Card utilized successfully", l_blockadeCmd.executeOrder(d_game));
+	}
 }
