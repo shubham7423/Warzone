@@ -59,19 +59,19 @@ public class Bomb implements Orders {
 				}
 
 				int l_armiesPresence = p_game.getGameMap().getCountries().get(d_country).getNumberOfArmiesPresent();
-				if (l_armiesPresence > 0) {
+				if (l_armiesPresence >= 0) {
 					p_game.getGameMap().getCountries().get(d_country).setNumberOfArmiesPresent(l_armiesPresence / 2);
 					int l_bombCardCount = d_player.d_cardsOwned.get("bomb");
 					d_player.d_cardsOwned.replace("bomb", l_bombCardCount - 1);
 					return String.format("Player \"%s\" bombed country \"%d\" successfully.", d_player.getName(),
 							d_country);
-				} else {
+				}/* else {
 					int l_bombCardCount = d_player.d_cardsOwned.get("bomb");
 					d_player.d_cardsOwned.replace("bomb", l_bombCardCount - 1);
 					return String.format(
 							"Blockade card cannot be used on country \"%d\", as number of armies are zero at country.",
 							d_country);
-				}
+				}*/
 			} else {
 				return String.format("Cannot bomb country \"%d\" as it is controlled by player \"%s\".", d_country,
 						d_player.getName());
