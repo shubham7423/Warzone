@@ -76,6 +76,6 @@ GameEngine d_game;
 		d_game.d_players.get("Shubham").addCountry(d_game.getGameMap().getCountries().get(3));
 		d_game.d_players.get("Shubham").d_cardsOwned.put("blockade", 3);
 		Blockade l_blockadeCmd = new Blockade(d_game.d_players.get("Shubham"), 3);
-		assertEquals("Blockade card cannot be used on country \"3\", as number of armies are zero at country.", l_blockadeCmd.executeOrder(d_game));
+		assertEquals("Blockade Card utilized successfully by player  \"Shubham\" on country  \"3\".", l_blockadeCmd.executeOrder(d_game));
 	}
 }
