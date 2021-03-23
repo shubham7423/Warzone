@@ -32,5 +32,17 @@ GameEngine d_game;
 		d_game.d_players.get("Shubham").setNumberOfArmies();
 		d_game.d_players.get("Meet").addCountry(d_game.getGameMap().getCountries().get(2));
 		d_game.d_players.get("Meet").setNumberOfArmies();
+		
+		Deploy l_deploy1 = new Deploy(d_game.d_players.get("Shubham"), 1, 2);
+		Deploy l_deploy2 = new Deploy(d_game.d_players.get("Meet"), 2, 3);
+		l_deploy1.executeOrder(d_game);
+		l_deploy2.executeOrder(d_game);
 	}
+	
+	@After
+	public void tearDown() {
+		d_game = null;
+	}
+	
+	
 }
