@@ -47,7 +47,6 @@ public class Airlift implements Orders {
 	public String executeOrder(GameEngine p_game) {
 		int l_airliftCardCount = d_player.d_cardsOwned.get("airlift");
 		if (l_airliftCardCount == 0) {
-			d_player.d_cardsOwned.replace("airlift", l_airliftCardCount - 1);
 			return String.format("Player \"%s\" does not have a airlift card", d_player.getName());
 		}
 		if (!d_player.getCountries().containsKey(d_countryNameFrom)) {
