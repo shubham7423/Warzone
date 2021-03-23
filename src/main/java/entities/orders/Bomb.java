@@ -53,8 +53,6 @@ public class Bomb implements Orders {
 				}
 				if (d_player.d_negotiatedPlayerNames
 						.contains(p_game.getGameMap().getCountries().get(d_country).getPlayer().getName())) {
-					int l_bombCardCount = d_player.d_cardsOwned.get("bomb");
-					d_player.d_cardsOwned.replace("bomb", l_bombCardCount - 1);
 					return String.format("Cannot bomb, as diplomacy is established between \"%s\" and \"%s\".",
 							d_player.getName(),
 							p_game.getGameMap().getCountries().get(d_country).getPlayer().getName());
