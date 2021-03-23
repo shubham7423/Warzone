@@ -55,7 +55,7 @@ public class Blockade implements Orders {
 				return String.format("Player \"%s\" doesn't control country \"%d\".", d_player.getName(), d_country);
 			}
 		} else {
-			return String.format("Player \"%s\" doesn.t hace blockade card.", d_player.getName());
+			return String.format("Player \"%s\" doesn't have blockade card.", d_player.getName());
 		}
 	}
 }

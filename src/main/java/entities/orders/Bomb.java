@@ -38,32 +38,30 @@ public class Bomb implements Orders {
 				if(!intCountry.contains(d_country)) {
 					int l_bombCardCount = d_player.d_cardsOwned.get("bomb");
 					d_player.d_cardsOwned.replace("bomb", l_bombCardCount - 1);
-					return "The referred country is not a neighbour country of the countries owned by player.";
+					return String.format("The country \"%d\" is not a neighbour country of the countries owned by player \"%s\".", d_country, d_player.getName());
 				}
 				if(d_player.d_negotiatedPlayerNames.contains(p_game.getGameMap().getCountries().get(d_country).getPlayer().getName())) {
 					int l_bombCardCount = d_player.d_cardsOwned.get("bomb");
 					d_player.d_cardsOwned.replace("bomb", l_bombCardCount - 1);
-					return "Diplomacy is established with the player.";
+					return String.format("Cannot bomb, as diplomacy is established between \"%s\" and \"%s\".", d_player.getName(), p_game.getGameMap().getCountries().get(d_country).getPlayer().getName());
 				}
 
-//				int l_armiesPresence = d_player.getCountries().get(d_country).getNumberOfArmiesPresent();
 				int l_armiesPresence = p_game.getGameMap().getCountries().get(d_country).getNumberOfArmiesPresent();
 				if(l_armiesPresence > 0){
-//					d_player.getCountries().get(d_country).setNumberOfArmiesPresent(l_armiesPresence/2);
 					p_game.getGameMap().getCountries().get(d_country).setNumberOfArmiesPresent(l_armiesPresence/2);
 					int l_bombCardCount = d_player.d_cardsOwned.get("bomb");
 					d_player.d_cardsOwned.replace("bomb", l_bombCardCount - 1);
-					return "Bomb Card utilized successfully";
+					return String.format("Player \"%s\" bombed country \"%d\" successfully.", d_player.getName(), d_country);
 				} else {
 					int l_bombCardCount = d_player.d_cardsOwned.get("bomb");
 					d_player.d_cardsOwned.replace("bomb", l_bombCardCount - 1);
-					return "Army presence is Zero";
+					return String.format("Blockade card cannot be used on country \"%d\", as number of armies are zero at country.", d_country);
 				}
 			} else {
-				return "Country referred is your own country.";
+				return String.format("Cannot bomb country \"%d\" as it is controlled by player \"%s\".", d_country, d_player.getName());
 			}
 		} else {
-			return "You don't have bomb card.";
+			return String.format("Player \"%s\" doesn't have bomb card.", d_player.getName());
 		}
 	}
 
