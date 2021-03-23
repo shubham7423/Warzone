@@ -63,4 +63,11 @@ GameEngine d_game;
 		Airlift l_airliftCmd = new Airlift(d_game.d_players.get("Shubham"), 1, 2, 1);
 		assertEquals("Player \"Shubham\" does not own country \"2\"", l_airliftCmd.executeOrder(d_game));
 	}
+
+	@Test
+	public void testExecuteOrder4() {
+		d_game.d_players.get("Shubham").d_cardsOwned.put("airlift", 1);
+		Airlift l_airliftCmd = new Airlift(d_game.d_players.get("Shubham"), 1, 3, 5);
+		assertEquals("Country \"1\" does not have enough armies", l_airliftCmd.executeOrder(d_game));
+	}
 }
