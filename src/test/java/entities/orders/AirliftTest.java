@@ -77,4 +77,11 @@ GameEngine d_game;
 		Airlift l_airliftCmd = new Airlift(d_game.d_players.get("Shubham"), 1, 3, 2);
 		assertEquals("Country \"1\" should remain with atleast 1 armies after moving the armies during Airlift", l_airliftCmd.executeOrder(d_game));
 	}
+	
+	@Test
+	public void testExecuteOrder6() {
+		d_game.d_players.get("Shubham").d_cardsOwned.put("airlift", 1);
+		Airlift l_airliftCmd = new Airlift(d_game.d_players.get("Shubham"), 1, 3, 1);
+		assertEquals("Armies successfully moved from country \"1\" to country \"3\"", l_airliftCmd.executeOrder(d_game));
+	}
 }
