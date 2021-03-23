@@ -79,8 +79,7 @@ public class Advance implements Orders {
 
 			if (d_player.d_negotiatedPlayerNames
 					.contains(p_game.getGameMap().getCountries().get(d_countryNameTo).getPlayer().getName())) {
-				d_player.d_negotiatedPlayerNames
-						.remove(p_game.getGameMap().getCountries().get(d_countryNameTo).getPlayer().getName());
+				
 				return String.format(
 						"Armies cannot be moved to country \"%d\" as there is diplomacy established between the calling and the called player",
 						d_countryNameTo);
