@@ -56,4 +56,11 @@ GameEngine d_game;
 		Airlift l_airliftCmd = new Airlift(d_game.d_players.get("Shubham"), 2, 1, 1);
 		assertEquals("Player \"Shubham\" does not own country \"2\"", l_airliftCmd.executeOrder(d_game));
 	}
+	
+	@Test
+	public void testExecuteOrder3() {
+		d_game.d_players.get("Shubham").d_cardsOwned.put("airlift", 1);
+		Airlift l_airliftCmd = new Airlift(d_game.d_players.get("Shubham"), 1, 2, 1);
+		assertEquals("Player \"Shubham\" does not own country \"2\"", l_airliftCmd.executeOrder(d_game));
+	}
 }
