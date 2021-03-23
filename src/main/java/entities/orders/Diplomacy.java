@@ -40,14 +40,14 @@ public class Diplomacy implements Orders {
 		} else {
 			int l_diplomacyCardCount = d_player.d_cardsOwned.get("diplomacy");
 			if (l_diplomacyCardCount < 1) {
-				return "Player does not have Diplomacy Card.";
+				return String.format("Player \"%s\" does not have Diplomacy Card.", d_player.getName());
 			} else {
 				d_otherPlayer = p_game.d_players.get(d_otherPlayerName);
 				d_otherPlayer.d_negotiatedPlayerNames.add(d_player.getName());
 				d_player.d_negotiatedPlayerNames.add(d_otherPlayer.getName());
 				d_player.d_cardsOwned.replace("diplomacy", (l_diplomacyCardCount - 1));
-				return "Negotiation between Players \"" + d_player.getName() + "\" and \"" + d_otherPlayer.getName()
-						+ "\" done successfully for 1 time.";
+				return "Diplomacy between Players \"" + d_player.getName() + "\" and \"" + d_otherPlayer.getName()
+						+ "\" established successfully.";
 			}
 		}
 	}
