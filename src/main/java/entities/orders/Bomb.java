@@ -7,15 +7,15 @@ import entities.Country;
 import entities.Player;
 
 /**
- * This class represents the bomb card. The Bomb Card allows you to target an enemy or neutral territory and kill half of the armies on that territory. You can target any territory that’s adjacent to one of your own territories. Since it kills half of the armies on a territory, it’s most effective when your opponent builds a single large stack of armies. Therefore, when your opponent has a Bomb Card, you should try to keep your armies into separate smaller stacks when possible to reduce its effectiveness. This can have a big impact on a game’s strategy!
+ * This class represents the bomb card.
  */
 public class Bomb implements Orders {
 	private Player d_player;
 	private int d_country;
 
 	/**
-	 * @param p_player gets the object of Player class who uses the bomb card to attack on specified country.
-	 * @param p_country gets the id of country on which bomb card will be used. Then after, it will have effect the no. of armies but not ownership.
+	 * @param p_player gets the object of Player class
+	 * @param p_country gets the id of country
 	 */
 	public Bomb (Player p_player, int p_country){
 		d_player = p_player;
@@ -23,7 +23,7 @@ public class Bomb implements Orders {
 	}
 
 	/**
-	 * @param p_game gets the object of GameEngine class for accessing details regarding country and their neighbors and player.
+	 * @param p_game gets the object of GameEngine class
 	 * @return string
 	 */
 	@Override

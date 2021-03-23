@@ -8,7 +8,7 @@ import entities.Country;
 import entities.Player;
 
 /**
- * This class represents the blockade card. The blockade card change one of your territories to a neutral and multiply the number of armies on that territory by a predefined factor, usually increasing it. They're useful for creating a defensive blockade, among other uses. Since the armies on the territory you select are changing into neutral armies, you are essentially permanently losing control of the armies on that territory. Blockade cards are played after deployments but before any attacks happen. This means you can deploy armies to a territory in the same turn in which you blockade it to help the card have maximum effect.
+ * This class represents the blockade card.
  */
 public class Blockade implements Orders {
 
@@ -16,8 +16,8 @@ public class Blockade implements Orders {
 	private int d_country;
 
 	/**
-	 * @param p_player gets the object of Player class who uses the blockade card to avoid enemy attack on specified country.
-	 * @param p_country gets the id of country on which blockade card will be used. Then after, it will have owner as 'Neutral Player'.
+	 * @param p_player gets the object of Player class
+	 * @param p_country gets the id of country
 	 */
 	public Blockade (Player p_player, int p_country){
 		d_player = p_player;
@@ -25,7 +25,7 @@ public class Blockade implements Orders {
 	}
 
 	/**
-	 * @param p_game gets the object of GameEngine class for accessing Neutral player reference and to get details regarding country and player.
+	 * @param p_game gets the object of GameEngine class
 	 * @return string
 	 */
 	@Override
