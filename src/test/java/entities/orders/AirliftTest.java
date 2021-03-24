@@ -9,9 +9,17 @@ import org.junit.Test;
 import controller.GameEngine;
 import controller.state.gamephase.gamesetup.PostLoad;
 
+/**
+ * Test to check that airlift command works perfectly
+ *
+ */
 public class AirliftTest {
 GameEngine d_game;
 	
+	/**
+	 * Setup context for test to happen, object of game is created and players, 
+	 * countries and neighbors are setup and armies are assigned
+	 */
 	@Before
 	public void setUp() {
 		d_game = new GameEngine();
@@ -39,17 +47,26 @@ GameEngine d_game;
 		l_deploy2.executeOrder(d_game);
 	}
 	
+	/**
+	 * This function resets the variables to null.
+	 */
 	@After
 	public void tearDown() {
 		d_game = null;
 	}
 	
+	/**
+	 * test where airlift card is used even when a player does not own one 
+	 */
 	@Test
 	public void testExecuteOrder1() {
 		Airlift l_airliftCmd = new Airlift(d_game.d_players.get("Shubham"), 1, 2, 1);
 		assertEquals("Player \"Shubham\" does not have a airlift card", l_airliftCmd.executeOrder(d_game));
 	}
 	
+	/**
+	 * test where airlift is used on a country not controlled by the player
+	 */
 	@Test
 	public void testExecuteOrder2() {
 		d_game.d_players.get("Shubham").d_cardsOwned.put("airlift", 1);
@@ -57,6 +74,9 @@ GameEngine d_game;
 		assertEquals("Player \"Shubham\" does not own country \"2\"", l_airliftCmd.executeOrder(d_game));
 	}
 	
+	/**
+	 * test where airlift is used on a country not controlled by the player
+	 */
 	@Test
 	public void testExecuteOrder3() {
 		d_game.d_players.get("Shubham").d_cardsOwned.put("airlift", 1);
@@ -64,6 +84,9 @@ GameEngine d_game;
 		assertEquals("Player \"Shubham\" does not own country \"2\"", l_airliftCmd.executeOrder(d_game));
 	}
 
+	/**
+	 * test where airlift is used on a country that does not have enough armies
+	 */
 	@Test
 	public void testExecuteOrder4() {
 		d_game.d_players.get("Shubham").d_cardsOwned.put("airlift", 1);
@@ -71,6 +94,9 @@ GameEngine d_game;
 		assertEquals("Country \"1\" does not have enough armies", l_airliftCmd.executeOrder(d_game));
 	}
 	
+	/**
+	 * test where airlift is used and no more armies remain on the source country
+	 */
 	@Test
 	public void testExecuteOrder5() {
 		d_game.d_players.get("Shubham").d_cardsOwned.put("airlift", 1);
@@ -78,6 +104,9 @@ GameEngine d_game;
 		assertEquals("Country \"1\" should remain with atleast 1 armies after moving the armies during Airlift", l_airliftCmd.executeOrder(d_game));
 	}
 	
+	/**
+	 * test where airlift is used successfully
+	 */
 	@Test
 	public void testExecuteOrder6() {
 		d_game.d_players.get("Shubham").d_cardsOwned.put("airlift", 1);

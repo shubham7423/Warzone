@@ -82,7 +82,7 @@ public class PlayerTest {
 		assertTrue(d_player.checkContinent(l_continent));
 	}
 
-	/*
+	/**
 	 * Tests if correct number of armies are assigned to player
 	 */
 	@Test

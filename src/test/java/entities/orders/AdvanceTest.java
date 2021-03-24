@@ -15,14 +15,16 @@ import controller.GameEngine;
 import controller.state.gamephase.gamesetup.PostLoad;
 
 /**
- * This class will test the functions of the Advance Command.
+ * Test to check that advance command works perfectly
+ *
  */
 public class AdvanceTest {
 
 	GameEngine d_game;
 	
 	/**
-	 * This function initiates the variable used for testing advance command.
+	 * Setup context for test to happen, object of game is created and players, 
+	 * countries and neighbors are setup and armies are assigned
 	 */
 	@Before
 	public void setUp() {
@@ -54,6 +56,9 @@ public class AdvanceTest {
 		d_game = null;
 	}
 
+	/**
+	 * test where attacking armies do not defeat all the defending armies
+	 */
 	@Test
 	public void testExecuteOrder1() {
 		Deploy l_deploy1 = new Deploy(d_game.d_players.get("Shubham"), 1, 2);
@@ -65,6 +70,9 @@ public class AdvanceTest {
 		assertEquals("Armies from country \"1\" were not able to advance to country \"2\" as the attacking armies could not defeat all the armies present in the defending country", l_advanceCmd.executeOrder(d_game));
 	}
 	
+	/**
+	 * test where no. are cards are checked in the player's list of cards after the attack
+	 */
 	@Test
 	public void testExecuteOrder2() {
 		Deploy l_deploy1 = new Deploy(d_game.d_players.get("Shubham"), 1, 3);
@@ -81,6 +89,9 @@ public class AdvanceTest {
 		assertFalse(l_ordersBefore.equals(l_ordersAfter));
 	}
 	
+	/**
+	 * test where exact no. of defending armies were defeated by the attackers 
+	 */
 	@Test
 	public void testExecuteOrder3() {
 		Deploy l_deploy1 = new Deploy(d_game.d_players.get("Shubham"), 1, 3);
@@ -94,6 +105,9 @@ public class AdvanceTest {
 		assertEquals("Armies from country \"1\" were not able to advance to country \"2\" as the attacking armies were only able to defeat the exact number of armies present in the defending country", l_advanceCmd.executeOrder(d_game));
 	}
 	
+	/**
+	 * test where advanced is used on a country that does not exist
+	 */
 	@Test
 	public void testExecuteOrder4() {
 		Deploy l_deploy1 = new Deploy(d_game.d_players.get("Shubham"), 1, 3);
@@ -105,6 +119,9 @@ public class AdvanceTest {
 		assertEquals("Country \"5\" does not exist", l_advanceCmd.executeOrder(d_game));
 	}
 	
+	/**
+	 * test where advance is executed successfully
+	 */
 	@Test
 	public void testExecuteOrder5() {
 		Deploy l_deploy1 = new Deploy(d_game.d_players.get("Shubham"), 1, 3);

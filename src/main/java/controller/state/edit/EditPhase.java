@@ -117,26 +117,56 @@ public abstract class EditPhase extends Phase {
 		return printInvalidCommandMessage();
 	}
 	
+	/**
+	 * function to print invalid command as the following command cannot be used in this phase
+	 * @param p_commandSplitted splitted command parts used for execution of command
+	 * @return string to print the invalid command message
+	 */
 	public String advance(String[] p_commandSplitted) {
 		return printInvalidCommandMessage();
 	}
 	
+	/**
+	 * function to print invalid command as the following command cannot be used in this phase
+	 * @param p_commandSplitted splitted command parts used for execution of command
+	 * @return string to print the invalid command message
+	 */
 	public String airlift(String[] p_commandSplitted) {
 		return printInvalidCommandMessage();
 	}
 	
+	/**
+	 * function to print invalid command as the following command cannot be used in this phase
+	 * @param p_commandSplitted splitted command parts used for execution of command
+	 * @return string to print the invalid command message
+	 */
 	public String bomb(String[] p_commandSplitted) {
 		return printInvalidCommandMessage();
 	}
 	
+	/**
+	 * function to print invalid command as the following command cannot be used in this phase
+	 * @param p_commandSplitted splitted command parts used for execution of command
+	 * @return string to print the invalid command message
+	 */
 	public String blockade(String[] p_commandSplitted) {
 		return printInvalidCommandMessage();
 	}
 	
+	/**
+	 * function to print invalid command as the following command cannot be used in this phase
+	 * @param p_commandSplitted splitted command parts used for execution of command
+	 * @return string to print the invalid command message
+	 */
 	public String diplomacy(String[] p_commandSplitted) {
 		return printInvalidCommandMessage();
 	}
 	
+	/**
+	 * function to print invalid command as the following command cannot be used in this phase
+	 * @param p_playerName name of the winner to be displayed
+	 * @return string to print the invalid command message
+	 */
 	public String printWinner(String p_playerName) {
 		return printInvalidCommandMessage();
 	}

@@ -27,6 +27,7 @@ public class Player {
 	private boolean d_isCommit;
 	public HashMap<String, Integer> d_cardsOwned;
 	public ArrayList<String> d_negotiatedPlayerNames;
+	public boolean d_isConquered;
 	/**
 	 * Constructor of player which sets initial values for player data
 	 * 
@@ -45,6 +46,7 @@ public class Player {
 		d_cardsOwned.put("airlift", 0);
 		d_cardsOwned.put("diplomacy", 0);
 		d_negotiatedPlayerNames = new ArrayList<String>();
+		d_isConquered = false;
 	}
 
 	/**
