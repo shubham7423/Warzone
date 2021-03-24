@@ -549,6 +549,22 @@ public class GameEngine {
 		System.out.print("\nThank you for playing Warzone :)");
 		l_UserCommand.l_scannerScanner.close();
 	}
+
+	/**
+	 * This function is used to check if a string can be converted to integer or not.
+	 * @param p_str represents the string to be casted to Integer value.
+	 * @return true if the string can be parsed to an Integer.
+	 */
+	public static boolean isNumeric(String p_str) { 
+		try {  
+			Integer.parseInt(p_str);  
+			return true;
+		} catch(NumberFormatException p_e){  
+			return false;
+		} catch(Exception p_e) {
+			return false;
+		}
+	}
 	
 	public static void main(String[] args) {
 //		Commands l_commands = new Commands();
