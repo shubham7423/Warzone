@@ -130,7 +130,7 @@ public class ExecuteOrders extends GamePlay {
 				d_gameEngine.d_players.remove(l_player.getName());
 			}
 		}
-		if(d_gameEngine.d_playerName.size() == 1 && d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(0)).getCountries().keySet().containsAll(d_gameEngine.getGameMap().getCountries().keySet())) {
+		if(d_gameEngine.d_playerName.size() == 1) {
 			d_gameEngine.setPhase(new EndPhase(d_gameEngine));
 			System.out.println(d_gameEngine.getPhase().printWinner(d_gameEngine.d_playerName.get(0)));
 			System.exit(0);
