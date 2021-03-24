@@ -656,30 +656,6 @@ public class GameEngine {
 		d_userCommand = p_userCommand;
 //		System.out.println(d_userCommand);
 	}
-	
-	/**
-	 * function that launches the game
-	 */
-	public void start() {
-//		setUserCommand(new UserCommand());
-		System.out.println("Welcome to Warzone");
-		this.d_logEntryBuffer.setString("Game Started");
-		UserCommand l_UserCommand = new UserCommand();
-		while (true) {
-//			String[] l_splittedCommandString = l_userCommand.getCommand(l_gameStarter);
-//			if (l_splittedCommandString[0].equals("exit()")) {
-//				break;
-//			}
-//			System.out.println(a);
-			String l_commandOpt = l_UserCommand.getCommand();
-			if(l_commandOpt.equals("exit()")) {
-				break;
-			}
-			System.out.println(l_commandOpt);
-		}
-		System.out.print("\nThank you for playing Warzone :)");
-		l_UserCommand.l_scannerScanner.close();
-	}
 
 	/**
 	 * This function is used to check if a string can be converted to integer or not.
@@ -695,28 +671,5 @@ public class GameEngine {
 		} catch(Exception p_e) {
 			return false;
 		}
-	}
-	
-	public static void main(String[] args) {
-//		Commands l_commands = new Commands();
-//		UserCommand l_userCommand = new UserCommand();
-//		GameStarter l_gameStarter = new GameStarter();
-//		d_userCommand = new UserCommand();
-////		l_gameStarter.setPhase(new PreEdit(l_gameStarter));
-//		System.out.println("Welcome to Warzone");
-//		while (true) {
-////			String[] l_splittedCommandString = l_userCommand.getCommand(l_gameStarter);
-////			if (l_splittedCommandString[0].equals("exit()")) {
-////				break;
-////			}
-//			String l_commandOpt = l_gameStarter.d_userCommand.getCommand();
-//			if(l_commandOpt.equals("exit()")) {
-//				break;
-//			}
-//			System.out.println(l_commandOpt);
-//		}
-//		System.out.print("\nThank you for playing Warzone :)");
-//		l_gameStarter.d_userCommand.l_scannerScanner.close();
-		new GameEngine().start();
 	}
 }
