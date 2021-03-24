@@ -33,8 +33,9 @@ public class IssueOrders extends GamePlay {
 	}
 	
 	/**
-	 * function to deploy armies to other countries
-	 * @return string to output result of deployment
+	 * function to support deploy command for further processing 
+	 * @param p_commandSplitted splitted command parts used for execution of command
+	 * @return merged string of the deploy order provided
 	 */
 	@Override
 	public String deploy(String[] p_commandSplitted) {
@@ -48,6 +49,11 @@ public class IssueOrders extends GamePlay {
 		return l_sb.toString();
 	}
 	
+	/**
+	 * function to support advance command for further processing 
+	 * @param p_commandSplitted splitted command parts used for execution of command
+	 * @return merged string of the advance order provided
+	 */
 	public String advance(String[] p_commandSplitted) {
 		StringBuilder l_sb = new StringBuilder();
 //		System.out.println("DEPLOYYYY");
@@ -58,6 +64,11 @@ public class IssueOrders extends GamePlay {
 		return l_sb.toString();
 	}
 	
+	/**
+	 * function to support airlift command for further processing 
+	 * @param p_commandSplitted splitted command parts used for execution of command
+	 * @return merged string of the airlift order provided
+	 */
 	public String airlift(String[] p_commandSplitted) {
 		StringBuilder l_sb = new StringBuilder();
 		for(String l_str: p_commandSplitted) {
@@ -67,6 +78,11 @@ public class IssueOrders extends GamePlay {
 		return l_sb.toString();
 	}
 	
+	/**
+	 * function to support bomb command for further processing 
+	 * @param p_commandSplitted splitted command parts used for execution of command
+	 * @return merged string of the bomb order provided
+	 */
 	public String bomb(String[] p_commandSplitted) {
 		StringBuilder l_sb = new StringBuilder();
 //		System.out.println("DEPLOYYYY");
@@ -77,6 +93,11 @@ public class IssueOrders extends GamePlay {
 		return l_sb.toString();
 	}
 	
+	/**
+	 * function to support blockade command for further processing 
+	 * @param p_commandSplitted splitted command parts used for execution of command
+	 * @return merged string of the blockade order provided
+	 */
 	public String blockade(String[] p_commandSplitted) {
 		StringBuilder l_sb = new StringBuilder();
 //		System.out.println("DEPLOYYYY");
@@ -87,6 +108,11 @@ public class IssueOrders extends GamePlay {
 		return l_sb.toString();
 	}
 	
+	/**
+	 * function to support diplomacy command for further processing 
+	 * @param p_commandSplitted splitted command parts used for execution of command
+	 * @return merged string of the diplomacy order provided
+	 */
 	public String diplomacy(String[] p_commandSplitted) {
 		StringBuilder l_sb = new StringBuilder();
 //		System.out.println("DEPLOYYYY");
