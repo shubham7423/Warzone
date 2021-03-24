@@ -70,6 +70,11 @@ public abstract class GamePhase extends Phase {
 		return printInvalidCommandMessage();
 	}
 	
+	/**
+	 * function to print invalid command as the following command cannot be used in this phase
+	 * @param p_playerName name of the winner to be displayed
+	 * @return string to print the invalid command message
+	 */
 	public String printWinner(String p_playerName) {
 		return printInvalidCommandMessage();
 	}
