@@ -37,7 +37,7 @@ public class PostEdit extends EditPhase {
 	@Override
 	public String editContinent(String[] p_commandSplitted) {
 		String l_result;
-		if (p_commandSplitted[0].equals("-add")) {
+		if ("-add".equals(p_commandSplitted[0])) {
 			l_result = d_gameEngine.getGameMap().addContinent(Integer.parseInt(p_commandSplitted[1]),
 					Integer.parseInt(p_commandSplitted[2]));
 		} else {
@@ -56,7 +56,7 @@ public class PostEdit extends EditPhase {
 	public String editCountry(String[] p_commandSplitted) {
 		String l_result;
 
-		if (p_commandSplitted[0].equals("-add")) {
+		if ("-add".equals(p_commandSplitted[0])) {
 			l_result = d_gameEngine.getGameMap().addCountry(Integer.parseInt(p_commandSplitted[1]),
 					Integer.parseInt(p_commandSplitted[2]));
 		} else {
@@ -74,7 +74,7 @@ public class PostEdit extends EditPhase {
 	@Override
 	public String editNeighbor(String[] p_commandSplitted) {
 		String l_result;
-		if (p_commandSplitted[0].equals("-add")) {
+		if ("-add".equals(p_commandSplitted[0])) {
 			l_result = d_gameEngine.getGameMap().addNeighbor(Integer.parseInt(p_commandSplitted[1]),
 					Integer.parseInt(p_commandSplitted[2]));
 		} else {
