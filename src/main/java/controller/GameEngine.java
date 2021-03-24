@@ -227,7 +227,7 @@ public class GameEngine {
 		String l_result = "";
 		int l_i = 1;
 		if (p_splittedCommand.length < 3) {
-			return "Please enter valid command. Command is \"gameplayer -add playername -remove playername\", irrespective of multiple addition and removal order.";
+			return "Please enter valid command. Command is \"gameplayer -add playername -remove playername\".";
 		}
 
 		int l_addRemoveCount = 0;
@@ -237,6 +237,10 @@ public class GameEngine {
 			if(p_splittedCommand[l_index].equals("-add") || p_splittedCommand[l_index].equals("-remove")){
 				l_addRemoveCount ++;
 			}
+		}
+		
+		if((p_splittedCommand.length -1) != (l_addRemoveCount*2)) {
+			return "Number of arguments does not match with the add and remove command.";
 		}
 		
 		if((p_splittedCommand.length-1)%l_argsPerCmd != 0) {
