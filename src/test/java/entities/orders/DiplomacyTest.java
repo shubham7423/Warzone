@@ -12,6 +12,10 @@ public class DiplomacyTest {
 
 GameEngine d_game;
 	
+	/**
+	 * Setup context for test to happen, object of game is created and players, 
+	 * countries and neighbors are setup and armies are assigned
+	 */
 	@Before
 	public void setUp() {
 		d_game = new GameEngine();
@@ -39,28 +43,40 @@ GameEngine d_game;
 		l_deploy2.executeOrder(d_game);
 	}
 
+	/**
+	 * This function resets the variables to null.
+	 */
 	@After
 	public void tearDown() {
 		d_game = null;
 	}
 
+	/**
+	 * Test where diplomacy card is executed successfully between 2 players
+	 */
 	@Test
 	public void testExecuteOrder1() {
 		d_game.d_players.get("Shubham").d_cardsOwned.put("diplomacy", 1);
-		Diplomacy l_bombCmd = new Diplomacy(d_game.d_players.get("Shubham"), "Meet");
-		assertEquals("Diplomacy between Players \"Shubham\" and \"Meet\" established successfully.", l_bombCmd.executeOrder(d_game));
+		Diplomacy l_diplomacyCmd = new Diplomacy(d_game.d_players.get("Shubham"), "Meet");
+		assertEquals("Diplomacy between Players \"Shubham\" and \"Meet\" established successfully.", l_diplomacyCmd.executeOrder(d_game));
 	}
 	
+	/**
+	 * Test where diplomacy card is used with a player that does not exist
+	 */
 	@Test
 	public void testExecuteOrder2() {
 		d_game.d_players.get("Shubham").d_cardsOwned.put("diplomacy", 1);
-		Diplomacy l_bombCmd = new Diplomacy(d_game.d_players.get("Shubham"), "Vandit");
-		assertEquals("Player \"Vandit\" does not exist", l_bombCmd.executeOrder(d_game));
+		Diplomacy l_diplomacyCmd = new Diplomacy(d_game.d_players.get("Shubham"), "Vandit");
+		assertEquals("Player \"Vandit\" does not exist", l_diplomacyCmd.executeOrder(d_game));
 	}
 	
+	/**
+	 * Test where diplomacy card is used even when a player does not have a diplomacy card
+	 */
 	@Test
 	public void testExecuteOrder3() {
-		Diplomacy l_bombCmd = new Diplomacy(d_game.d_players.get("Shubham"), "Meet");
-		assertEquals("Player \"Shubham\" does not have Diplomacy Card.", l_bombCmd.executeOrder(d_game));
+		Diplomacy l_diplomacyCmd = new Diplomacy(d_game.d_players.get("Shubham"), "Meet");
+		assertEquals("Player \"Shubham\" does not have Diplomacy Card.", l_diplomacyCmd.executeOrder(d_game));
 	}
 }

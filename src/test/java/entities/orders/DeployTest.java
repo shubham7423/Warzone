@@ -46,7 +46,7 @@ public class DeployTest {
 	}
 
 	/**
-	 * Test where armies greater than player have are tried to placed on a country,
+	 * Test where armies greater than player has, are tried to placed on a country,
 	 * rejected command with error message
 	 */
 	@Test
