@@ -303,9 +303,56 @@ public class GameEngine {
 		String[] l_commandParts;
 		String l_result = "";
 		int l_i = 1;
-		if (p_splittedCommand.length < 4) {
+		if (p_splittedCommand.length < 3) {
 			return "Please enter valid command";
 		}
+		
+
+		int l_addCount = 0;
+		int l_removeCount = 0;
+		
+		for(int l_index = 1; l_index<p_splittedCommand.length; l_index++) {
+			if(p_splittedCommand[l_index].equals("-add")){
+				l_addCount ++;
+			}
+			if(p_splittedCommand[l_index].equals("-remove")){
+				l_removeCount ++;
+			}
+		}
+		
+		if((p_splittedCommand.length-1) != ((l_addCount*3) + (l_removeCount*2))) {
+			return "Number of arguments does not match with the add and remove command.";
+		}
+		
+		int l_validAddRemovePlacement = 1;
+		while(l_validAddRemovePlacement<p_splittedCommand.length) {
+			if(!p_splittedCommand[l_validAddRemovePlacement].equals("-add") && !p_splittedCommand[l_validAddRemovePlacement].equals("-remove")) {
+				return "Misplacement of -add and -remove w.r.t number of arguments.";
+			}
+			if(p_splittedCommand[l_validAddRemovePlacement].equals("-add")) {
+				l_validAddRemovePlacement += 3;
+			} else {
+				l_validAddRemovePlacement += 2;
+			}
+		}
+		
+		l_validAddRemovePlacement = 1;
+		while(l_validAddRemovePlacement<p_splittedCommand.length) {
+			if(p_splittedCommand[l_validAddRemovePlacement].equals("-add")) {
+				if(!(isNumeric( p_splittedCommand[l_validAddRemovePlacement+1]) && isNumeric( p_splittedCommand[l_validAddRemovePlacement+2]))) {
+					return "You can only use String to represent value. change this to full command.";
+				}
+				l_validAddRemovePlacement += 3;
+			} else {
+				if(!isNumeric( p_splittedCommand[l_validAddRemovePlacement+1])) {
+					return "You can only use String to represent value. change this to full command.";
+				}
+				l_validAddRemovePlacement += 2;
+			}
+		}
+		System.out.println("Done.1");
+		
+		
 		try {			
 			while (l_i < p_splittedCommand.length) {
 				if (p_splittedCommand[l_i].equals("-add")) {
@@ -350,7 +397,7 @@ public class GameEngine {
 		String[] l_commandParts;
 		String l_result = "";
 		int l_i = 1;
-		if (p_splittedCommand.length < 4) {
+		if (p_splittedCommand.length < 3) {
 			return "Please enter valid command";
 		}
 		
