@@ -89,6 +89,7 @@ public class ExecuteOrders extends GamePlay {
 		int l_i = 0;
 		String l_result;
 		System.out.println("\nExecution Phase Started");
+		System.out.println(org.apache.commons.lang3.StringUtils.repeat("-", 20));
 		d_gameEngine.d_logEntryBuffer.setString("Execution Phase Started");
 		while(l_i < l_numOrders) {
 			Player l_currentPlayer = d_gameEngine.getPlayerOrder();
@@ -110,7 +111,7 @@ public class ExecuteOrders extends GamePlay {
 			System.exit(0);
 		}
 		else {
-			System.out.print("\nExecution Complete");
+			System.out.println("\nExecution Complete\n");
 			d_gameEngine.d_logEntryBuffer.setString("Execution Complete");
 			next();
 			d_gameEngine.getPhase().assignArmies();

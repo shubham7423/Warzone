@@ -134,6 +134,7 @@ public class IssueOrders extends GamePlay {
 		for(Player l_player: d_gameEngine.d_players.values()) {
 			l_player.setIsCommit(false);
 			l_player.d_negotiatedPlayerNames = new ArrayList<String>();
+			l_player.d_isConquered = false;
 		}
 		while (l_playersCompleted.size() < d_gameEngine.d_playerName.size()) {
 			if(!d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).getIsCommit()) {

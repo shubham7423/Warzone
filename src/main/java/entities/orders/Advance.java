@@ -106,15 +106,23 @@ public class Advance implements Orders {
 				d_player.getCountries().get(d_countryNameTo)
 						.setNumberOfArmiesPresent(d_armies - l_capabilityDestinationCountryArmies);
 				String[] l_cardNames = { "airlift", "bomb", "blockade", "diplomacy" };
-				Random r = new Random();
-				int l_cardNumber = r.nextInt(l_cardNames.length);
-				d_player.d_cardsOwned.replace(l_cardNames[l_cardNumber],
-						d_player.d_cardsOwned.get(l_cardNames[l_cardNumber]) + 1);
-
+				
+				if(!d_player.d_isConquered) {
+					Random r = new Random();
+					int l_cardNumber = r.nextInt(l_cardNames.length);
+					d_player.d_cardsOwned.replace(l_cardNames[l_cardNumber],
+							d_player.d_cardsOwned.get(l_cardNames[l_cardNumber]) + 1);
+					d_player.d_isConquered = true;
+					return String.format(
+							"Armies successfully moved from country \"%d\" to country \"%d\" and the ownership changed to \"%s\" player, Card \"%s\" rewarded to player \"%s\".",
+							d_countryNameFrom, d_countryNameTo, d_player.getName(), l_cardNames[l_cardNumber],
+							d_player.getName());
+				}
 				return String.format(
-						"Armies successfully moved from country \"%d\" to country \"%d\" and the ownership changed to \"%s\" player, Card \"%s\" rewarded to player \"%s\".",
-						d_countryNameFrom, d_countryNameTo, d_player.getName(), l_cardNames[l_cardNumber],
-						d_player.getName());
+						"Armies successfully moved from country \"%d\" to country \"%d\" and the ownership changed to \"%s\" player.",
+						d_countryNameFrom, d_countryNameTo, d_player.getName());
+				
+				
 			} else if (l_capabilitySourceCountryArmies == l_destinationCountryArmies) {
 				d_player.getCountries().get(d_countryNameFrom)
 						.setNumberOfArmiesPresent(l_sourceCountryArmies - l_capabilityDestinationCountryArmies);
