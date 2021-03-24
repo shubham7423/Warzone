@@ -227,7 +227,7 @@ public class GameEngine {
 		String l_result = "";
 		int l_i = 1;
 		if (p_splittedCommand.length < 3) {
-			return "Please enter valid command. Command is \"gameplayer -add playername -remove playername\".";
+			return "Please enter valid command. Command is \"gameplayer -add playerName -remove playerName\".";
 		}
 
 		int l_addRemoveCount = 0;
@@ -240,21 +240,16 @@ public class GameEngine {
 		}
 		
 		if((p_splittedCommand.length -1) != (l_addRemoveCount*2)) {
-			return "Number of arguments does not match with the add and remove command.";
-		}
-		
-		if((p_splittedCommand.length-1)%l_argsPerCmd != 0) {
-			return "Number of arguments does not match with the add and remove command."; 
+			return "Number of arguments does not match with the add and remove command. Command is: \"gameplayer -add playername -remove playername\".";
 		}
 		
 		int l_validAddRemovePlacement = 1;
 		while(l_validAddRemovePlacement<p_splittedCommand.length) {
 			if(!p_splittedCommand[l_validAddRemovePlacement].equals("-add") && !p_splittedCommand[l_validAddRemovePlacement].equals("-remove")) {
-				return "Misplacement of -add and -remove w.r.t number of arguments.";
+				return "Misplacement of -add and -remove keyword w.r.t number of arguments. Command is \"gameplayer -add playername -remove playername\". Use -add and -remove as per your need.";
 			}
 			l_validAddRemovePlacement += l_argsPerCmd;
 		}
-		System.out.println("Done.1");
 				
 		try {
 			while (l_i < p_splittedCommand.length) {	
@@ -285,7 +280,7 @@ public class GameEngine {
 				}
 			}
 		} catch (Exception p_e) {
-			System.out.println("valid command not entered");
+			System.out.println("Valid command not entered.");
 		}
 		return l_result;
 	}
@@ -308,10 +303,9 @@ public class GameEngine {
 		String l_result = "";
 		int l_i = 1;
 		if (p_splittedCommand.length < 3) {
-			return "Please enter valid command";
+			return "Please enter valid command. Command is: \"editcontinent -add continentId controlValue -remove continentId\"";
 		}
 		
-
 		int l_addCount = 0;
 		int l_removeCount = 0;
 		
@@ -325,13 +319,13 @@ public class GameEngine {
 		}
 		
 		if((p_splittedCommand.length-1) != ((l_addCount*3) + (l_removeCount*2))) {
-			return "Number of arguments does not match with the add and remove command.";
+			return "Number of arguments does not match with the add and remove command. Command is: \"editcontinent -add continentId controlValue -remove continentId\".";
 		}
 		
 		int l_validAddRemovePlacement = 1;
 		while(l_validAddRemovePlacement<p_splittedCommand.length) {
 			if(!p_splittedCommand[l_validAddRemovePlacement].equals("-add") && !p_splittedCommand[l_validAddRemovePlacement].equals("-remove")) {
-				return "Misplacement of -add and -remove w.r.t number of arguments.";
+				return "Misplacement of -add and -remove keyword w.r.t number of arguments. Command is: \"editcontinent -add continentId controlValue -remove continentId\". Use -add and -remove as per your need.";
 			}
 			if(p_splittedCommand[l_validAddRemovePlacement].equals("-add")) {
 				l_validAddRemovePlacement += 3;
@@ -344,18 +338,16 @@ public class GameEngine {
 		while(l_validAddRemovePlacement<p_splittedCommand.length) {
 			if(p_splittedCommand[l_validAddRemovePlacement].equals("-add")) {
 				if(!(isNumeric( p_splittedCommand[l_validAddRemovePlacement+1]) && isNumeric( p_splittedCommand[l_validAddRemovePlacement+2]))) {
-					return "You can only use String to represent value. change this to full command.";
+					return "You can only use Integer to represent continentId and controlValue for adding continent. Add Continent command is \"editneighbor -add continentId controlValue\".";
 				}
 				l_validAddRemovePlacement += 3;
 			} else {
 				if(!isNumeric( p_splittedCommand[l_validAddRemovePlacement+1])) {
-					return "You can only use String to represent value. change this to full command.";
+					return "You can only use Integer to represent continentId for removing continent. Remove Continent command is \"editneighbor -remove continentId\".";
 				}
 				l_validAddRemovePlacement += 2;
 			}
 		}
-		System.out.println("Done.1");
-		
 		
 		try {			
 			while (l_i < p_splittedCommand.length) {
@@ -387,7 +379,7 @@ public class GameEngine {
 				}
 			}
 		} catch (Exception p_e) {
-			System.out.println("valid command not entered");
+			System.out.println("valid command not entered.");
 		}
 		return l_result;
 	}
@@ -402,10 +394,9 @@ public class GameEngine {
 		String l_result = "";
 		int l_i = 1;
 		if (p_splittedCommand.length < 3) {
-			return "Please enter valid command";
+			return "Please enter valid command. Command is: \"editcountry -add countryId continentId -remove countryId\".";
 		}
 		
-
 		int l_addCount = 0;
 		int l_removeCount = 0;
 		
@@ -419,13 +410,13 @@ public class GameEngine {
 		}
 		
 		if((p_splittedCommand.length-1) != ((l_addCount*3) + (l_removeCount*2))) {
-			return "Number of arguments does not match with the add and remove command.";
+			return "Number of arguments does not match with the add and remove command. Command is: \"editcountry -add countryId continentId -remove countryId\".";
 		}
 		
 		int l_validAddRemovePlacement = 1;
 		while(l_validAddRemovePlacement<p_splittedCommand.length) {
 			if(!p_splittedCommand[l_validAddRemovePlacement].equals("-add") && !p_splittedCommand[l_validAddRemovePlacement].equals("-remove")) {
-				return "Misplacement of -add and -remove w.r.t number of arguments.";
+				return "Misplacement of -add and -remove keyword w.r.t number of arguments. Command is \"editcountry -add countryId continentId -remove countryId\". Use -add and -remove as per your need.";
 			}
 			if(p_splittedCommand[l_validAddRemovePlacement].equals("-add")) {
 				l_validAddRemovePlacement += 3;
@@ -438,17 +429,16 @@ public class GameEngine {
 		while(l_validAddRemovePlacement<p_splittedCommand.length) {
 			if(p_splittedCommand[l_validAddRemovePlacement].equals("-add")) {
 				if(!(isNumeric( p_splittedCommand[l_validAddRemovePlacement+1]) && isNumeric( p_splittedCommand[l_validAddRemovePlacement+2]))) {
-					return "You can only use String to represent value. change this to full command.";
+					return "You can only use Integer to represent countryId and continentId for adding Country. Add Country command is \"editcountry -add countryId continentId\".";
 				}
 				l_validAddRemovePlacement += 3;
 			} else {
 				if(!isNumeric( p_splittedCommand[l_validAddRemovePlacement+1])) {
-					return "You can only use String to represent value. change this to full command.";
+					return "You can only use Integer to represent countryId for removing Country. Remove Country command is \"editcountry -remove countryId\".";
 				}
 				l_validAddRemovePlacement += 2;
 			}
 		}
-		System.out.println("Done.1");
 
 		while (l_i < p_splittedCommand.length) {
 			if (p_splittedCommand[l_i].equals("-add")) {
@@ -491,11 +481,9 @@ public class GameEngine {
 		String l_result = "";
 		int l_i = 1;
 		if (p_splittedCommand.length < 4) {
-			return "Please enter valid command";
+			return "Please enter valid command. Command is \"editneighbor -add countryId neighborCountryId -remove countryId neighborCountryId\".";
 		}
 		
-
-
 		int l_addCount = 0;
 		int l_removeCount = 0;
 		
@@ -509,13 +497,13 @@ public class GameEngine {
 		}
 		
 		if((p_splittedCommand.length-1) != ((l_addCount*3) + (l_removeCount*3))) {
-			return "Number of arguments does not match with the add and remove command.";
+			return "Number of arguments does not match with the add and remove command. Command is \"editneighbor -add countryId neighborCountryId -remove countryId neighborCountryId\".";
 		}
 		
 		int l_validAddRemovePlacement = 1;
 		while(l_validAddRemovePlacement<p_splittedCommand.length) {
 			if(!p_splittedCommand[l_validAddRemovePlacement].equals("-add") && !p_splittedCommand[l_validAddRemovePlacement].equals("-remove")) {
-				return "Misplacement of -add and -remove w.r.t number of arguments.";
+				return "Misplacement of -add and -remove keyword w.r.t number of arguments. Command is \"editneighbor -add countryId neighborCountryId -remove countryId neighborCountryId\". Use -add and -remove as per your need.";
 			}
 			if(p_splittedCommand[l_validAddRemovePlacement].equals("-add")) {
 				l_validAddRemovePlacement += 3;
@@ -528,19 +516,17 @@ public class GameEngine {
 		while(l_validAddRemovePlacement<p_splittedCommand.length) {
 			if(p_splittedCommand[l_validAddRemovePlacement].equals("-add")) {
 				if(!(isNumeric( p_splittedCommand[l_validAddRemovePlacement+1]) && isNumeric( p_splittedCommand[l_validAddRemovePlacement+2]))) {
-					return "You can only use String to represent value. change this to full command.";
+					return "You can only use Integer to represent continentId and neighborCountryId for adding Neighbor. Add Neighbor command is \"editneighbor -add countryId neighborCountryId\".";
 				}
 				l_validAddRemovePlacement += 3;
 			} else {
 				if(!(isNumeric( p_splittedCommand[l_validAddRemovePlacement+1]) && isNumeric( p_splittedCommand[l_validAddRemovePlacement+2]))) {
-					return "You can only use String to represent value. change this to full command.";
+					return "You can only use Integer to represent continentId and neighborCountryId for removing Neighbor. Remove Neighbor command is \"editneighbor -remove countryId neighborCountryId\".";
 				}
 				l_validAddRemovePlacement += 3;
 			}
 		}
-		System.out.println("Done.1");
-		
-		
+
 		while (l_i < p_splittedCommand.length){
 			if (p_splittedCommand[l_i].equals("-add")) {
 				l_commandParts = new String[3];
