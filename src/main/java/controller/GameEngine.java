@@ -226,35 +226,62 @@ public class GameEngine {
 		String[] l_commandParts;
 		String l_result = "";
 		int l_i = 1;
-		if (p_splittedCommand.length < 2) {
-			return "Please enter valid command";
+		if (p_splittedCommand.length < 3) {
+			return "Please enter valid command. Command is \"gameplayer -add playername -remove playername\", irrespective of multiple addition and removal order.";
 		}
-		while (l_i < p_splittedCommand.length) {
-			if (p_splittedCommand[l_i].equals("-add")) {
-				l_commandParts = new String[3];
-				l_commandParts[0] = p_splittedCommand[l_i];
-				l_commandParts[1] = p_splittedCommand[l_i + 1];
-				if (!l_result.equals("")) {
-					l_result += "\n";
-				}
-				l_result += d_phase.gamePlayer(l_commandParts);
-				l_i = l_i + 2;
-			} else if (p_splittedCommand[l_i].equals("-remove")) {
-				l_commandParts = new String[2];
-				l_commandParts[0] = p_splittedCommand[l_i];
-				l_commandParts[1] = p_splittedCommand[l_i + 1];
-				if (!l_result.equals("")) {
-					l_result += "\n";
-				}
-				l_result += d_phase.gamePlayer(l_commandParts);
-				l_i = l_i + 2;
-			} else {
-				if (!l_result.equals("")) {
-					l_result += "\n";
-				}
-				l_result += "Command needs to have -add or -remove.";
-				l_i++;
+
+		int l_addRemoveCount = 0;
+		int l_argsPerCmd = 2;
+		
+		for(int l_index = 1; l_index<p_splittedCommand.length; l_index++) {
+			if(p_splittedCommand[l_index].equals("-add") || p_splittedCommand[l_index].equals("-remove")){
+				l_addRemoveCount ++;
 			}
+		}
+		
+		if((p_splittedCommand.length-1)%l_argsPerCmd != 0) {
+			return "Number of arguments does not match with the add and remove command."; 
+		}
+		
+		int l_validAddRemovePlacement = 1;
+		while(l_validAddRemovePlacement<p_splittedCommand.length) {
+			if(!p_splittedCommand[l_validAddRemovePlacement].equals("-add") && !p_splittedCommand[l_validAddRemovePlacement].equals("-remove")) {
+				return "Misplacement of -add and -remove w.r.t number of arguments.";
+			}
+			l_validAddRemovePlacement += l_argsPerCmd;
+		}
+		System.out.println("Done.1");
+				
+		try {
+			while (l_i < p_splittedCommand.length) {	
+				if (p_splittedCommand[l_i].equals("-add")) {
+					l_commandParts = new String[3];
+					l_commandParts[0] = p_splittedCommand[l_i];
+					l_commandParts[1] = p_splittedCommand[l_i + 1];
+					if (!l_result.equals("")) {
+						l_result += "\n";
+					}
+					l_result += d_phase.gamePlayer(l_commandParts);
+					l_i = l_i + 2;
+				} else if (p_splittedCommand[l_i].equals("-remove")) {
+					l_commandParts = new String[2];
+					l_commandParts[0] = p_splittedCommand[l_i];
+					l_commandParts[1] = p_splittedCommand[l_i + 1];
+					if (!l_result.equals("")) {
+						l_result += "\n";
+					}
+					l_result += d_phase.gamePlayer(l_commandParts);
+					l_i = l_i + 2;
+				} else {
+					if (!l_result.equals("")) {
+						l_result += "\n";
+					}
+					l_result += "Command needs to have -add or -remove.";
+					l_i++;
+				}
+			}
+		} catch (Exception p_e) {
+			System.out.println("valid command not entered");
 		}
 		return l_result;
 	}
@@ -276,36 +303,40 @@ public class GameEngine {
 		String[] l_commandParts;
 		String l_result = "";
 		int l_i = 1;
-		if (p_splittedCommand.length < 2) {
+		if (p_splittedCommand.length < 4) {
 			return "Please enter valid command";
 		}
-		while (l_i < p_splittedCommand.length) {
-			if (p_splittedCommand[l_i].equals("-add")) {
-				l_commandParts = new String[3];
-				l_commandParts[0] = p_splittedCommand[l_i];
-				l_commandParts[1] = p_splittedCommand[l_i + 1];
-				l_commandParts[2] = p_splittedCommand[l_i + 2];
-				if (!l_result.equals("")) {
-					l_result += "\n";
+		try {			
+			while (l_i < p_splittedCommand.length) {
+				if (p_splittedCommand[l_i].equals("-add")) {
+					l_commandParts = new String[3];
+					l_commandParts[0] = p_splittedCommand[l_i];
+					l_commandParts[1] = p_splittedCommand[l_i + 1];
+					l_commandParts[2] = p_splittedCommand[l_i + 2];
+					if (!l_result.equals("")) {
+						l_result += "\n";
+					}
+					l_result += d_phase.editContinent(l_commandParts);
+					l_i = l_i + 3;
+				} else if (p_splittedCommand[l_i].equals("-remove")) {
+					l_commandParts = new String[2];
+					l_commandParts[0] = p_splittedCommand[l_i];
+					l_commandParts[1] = p_splittedCommand[l_i + 1];
+					if (!l_result.equals("")) {
+						l_result += "\n";
+					}
+					l_result += d_phase.editContinent(l_commandParts);
+					l_i = l_i + 2;
+				} else {
+					if (!l_result.equals("")) {
+						l_result += "\n";
+					}
+					l_result += "Command needs to have -add or -remove.";
+					l_i++;
 				}
-				l_result += d_phase.editContinent(l_commandParts);
-				l_i = l_i + 3;
-			} else if (p_splittedCommand[l_i].equals("-remove")) {
-				l_commandParts = new String[2];
-				l_commandParts[0] = p_splittedCommand[l_i];
-				l_commandParts[1] = p_splittedCommand[l_i + 1];
-				if (!l_result.equals("")) {
-					l_result += "\n";
-				}
-				l_result += d_phase.editContinent(l_commandParts);
-				l_i = l_i + 2;
-			} else {
-				if (!l_result.equals("")) {
-					l_result += "\n";
-				}
-				l_result += "Command needs to have -add or -remove.";
-				l_i++;
 			}
+		} catch (Exception p_e) {
+			System.out.println("valid command not entered");
 		}
 		return l_result;
 	}
@@ -319,7 +350,7 @@ public class GameEngine {
 		String[] l_commandParts;
 		String l_result = "";
 		int l_i = 1;
-		if (p_splittedCommand.length < 2) {
+		if (p_splittedCommand.length < 4) {
 			return "Please enter valid command";
 		}
 		while (l_i < p_splittedCommand.length) {
@@ -362,7 +393,7 @@ public class GameEngine {
 		String[] l_commandParts;
 		String l_result = "";
 		int l_i = 1;
-		if (p_splittedCommand.length < 2) {
+		if (p_splittedCommand.length < 4) {
 			return "Please enter valid command";
 		}
 		while (l_i < p_splittedCommand.length){
