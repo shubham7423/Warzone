@@ -1,6 +1,7 @@
 package entities.orders;
 
 import controller.GameEngine;
+import controller.GameEngine;
 
 /**
  * Class for implementing Orders and is used to show map in game phase
@@ -16,7 +17,7 @@ public class ShowMap implements Orders {
 	 */
 	@Override
 	public String executeOrder(GameEngine p_game) {
-		return p_game.showMap();
+		return p_game.getPhase().showMap();
 	}
 
 }

@@ -91,7 +91,16 @@ public class Country {
 	}
 
 	/**
-	 * method to get number of armies present
+	 * method to set number of armies present
+	 * 
+	 * @param p_armiesPresent number of armies to be set
+	 */
+	public void setNumberOfArmiesPresent(int p_armiesPresent) {
+		d_armiesPresent = p_armiesPresent;
+	}
+
+	/**
+	 * method to set number of armies present
 	 * 
 	 * @return d_armiesPresent number of armies
 	 */

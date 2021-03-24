@@ -9,7 +9,7 @@ import org.junit.runners.Suite.SuiteClasses;
  *
  */
 @RunWith(Suite.class)
-@SuiteClasses({ CommandsTest.class, GameStarterTest.class })
+@SuiteClasses({ GameEngineTest.class})
 public class ControllerSuiteClass {
 
 }
