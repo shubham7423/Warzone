@@ -3,6 +3,7 @@ controller
 controller.state
 controller.state.edit
 controller.state.gamephase
+controller.state.gamephase.endphase
 controller.state.gamephase.gameplay
 controller.state.gamephase.gamesetup
 entities
