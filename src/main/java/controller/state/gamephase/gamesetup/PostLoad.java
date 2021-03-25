@@ -28,6 +28,7 @@ public class PostLoad extends GameSetup {
 	/**
 	 * function to load the map for playing the game
 	 * 
+	 * @param p_fileName Name of the map file to be loaded
 	 * @return string suggesting that map has already been loaded as it is in the
 	 *         postLoad phase
 	 */
@@ -91,6 +92,7 @@ public class PostLoad extends GameSetup {
 	 * function to add a player in the game and checks whether the player is already
 	 * present in the game or not
 	 * 
+	 * @param p_playerName Name of the player to be added
 	 * @return sting indicating the whether player is added or not
 	 */
 	@Override
@@ -110,6 +112,7 @@ public class PostLoad extends GameSetup {
 	 * function to remove a player from the game and checks whether the player is
 	 * already present in the game or not
 	 * 
+	 * @param p_playerName Name of the player to be removed
 	 * @return sting indicating the whether player is removed or not
 	 */
 	@Override
