@@ -1,4 +1,5 @@
 /**
- * Contains game engine and commands which are needed to start execution.
+ * Contains game phases, game engine and user command to start the game and to
+ * execute the commands.
  */
 package controller;

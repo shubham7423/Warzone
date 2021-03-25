@@ -16,7 +16,8 @@ import entities.mapops.WriteMap;
 import entities.mapops.MapValidation;
 
 /**
- * GameMap Class
+ * GameMap which holds variables which contains information continents,
+ * countries and neighbourhood between countries.
  *
  */
 public class GameMap {

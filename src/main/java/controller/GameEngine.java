@@ -258,7 +258,7 @@ public class GameEngine {
 		int l_argsPerCmd = 2;
 
 		for (int l_index = 1; l_index < p_splittedCommand.length; l_index++) {
-			if ("-add".equals(p_splittedCommand[l_index])|| "-remove".equals(p_splittedCommand[l_index])) {
+			if ("-add".equals(p_splittedCommand[l_index]) || "-remove".equals(p_splittedCommand[l_index])) {
 				l_addRemoveCount++;
 			}
 		}

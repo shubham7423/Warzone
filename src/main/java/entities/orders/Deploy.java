@@ -1,11 +1,10 @@
 package entities.orders;
 
 import controller.GameEngine;
-import controller.GameEngine;
 import entities.Player;
 
 /**
- * Deploy order class
+ * Players can place reinforcements to the countries they control.
  *
  */
 public class Deploy implements Orders {

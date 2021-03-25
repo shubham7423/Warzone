@@ -21,6 +21,8 @@ public class Bomb implements Orders {
 	private int d_country;
 
 	/**
+	 * Constructor to assign initial values
+	 * 
 	 * @param p_player  gets the object of Player class who uses the bomb card to
 	 *                  attack on specified country.
 	 * @param p_country gets the id of country on which bomb card will be used. Then
@@ -33,6 +35,8 @@ public class Bomb implements Orders {
 	}
 
 	/**
+	 * method to execute bomb command
+	 * 
 	 * @param p_game gets the object of GameEngine class for accessing details
 	 *               regarding country and their neighbors and player.
 	 * @return string
@@ -67,11 +71,6 @@ public class Bomb implements Orders {
 							d_country);
 				} else {
 					return "";
-					/*int l_bombCardCount = d_player.d_cardsOwned.get("bomb");
-					d_player.d_cardsOwned.replace("bomb", l_bombCardCount - 1);
-					return String.format(
-							"Bomb card cannot be used on country \"%d\", as number of armies are zero at country.",
-							d_country);*/
 				}
 			} else {
 				return String.format("Cannot bomb country \"%d\" as it is controlled by player \"%s\".", d_country,

@@ -16,7 +16,6 @@ public class PostEdit extends EditPhase {
 	 */
 	public PostEdit(GameEngine p_gameEngine) {
 		super(p_gameEngine);
-		// TODO Auto-generated constructor stub
 	}
 
 	/**

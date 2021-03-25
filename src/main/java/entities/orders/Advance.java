@@ -5,7 +5,6 @@ import java.util.Set;
 
 import controller.GameEngine;
 import entities.Player;
-import entities.Country;
 
 /**
  * This class represents the advance command. The attack system is very simple.
@@ -79,18 +78,18 @@ public class Advance implements Orders {
 
 			if (d_player.d_negotiatedPlayerNames
 					.contains(p_game.getGameMap().getCountries().get(d_countryNameTo).getPlayer().getName())) {
-				
+
 				return String.format(
 						"Armies cannot be moved to country \"%d\" as there is diplomacy established between the calling and the called player",
 						d_countryNameTo);
 			}
 
 			int l_sourceCountryArmies = p_game.getGameMap().getCountries().get(d_countryNameFrom)
-					.getNumberOfArmiesPresent(); 
+					.getNumberOfArmiesPresent();
 			int l_destinationCountryArmies = p_game.getGameMap().getCountries().get(d_countryNameTo)
-					.getNumberOfArmiesPresent(); 
+					.getNumberOfArmiesPresent();
 
-			int l_capabilitySourceCountryArmies = (int) Math.ceil(d_armies * 0.6); 
+			int l_capabilitySourceCountryArmies = (int) Math.ceil(d_armies * 0.6);
 			int l_capabilityDestinationCountryArmies = (int) Math.ceil(l_destinationCountryArmies * 0.7);
 
 			if (l_capabilitySourceCountryArmies > l_destinationCountryArmies) {
@@ -106,8 +105,8 @@ public class Advance implements Orders {
 				d_player.getCountries().get(d_countryNameTo)
 						.setNumberOfArmiesPresent(d_armies - l_capabilityDestinationCountryArmies);
 				String[] l_cardNames = { "airlift", "bomb", "blockade", "diplomacy" };
-				
-				if(!d_player.d_isConquered) {
+
+				if (!d_player.d_isConquered) {
 					Random r = new Random();
 					int l_cardNumber = r.nextInt(l_cardNames.length);
 					d_player.d_cardsOwned.replace(l_cardNames[l_cardNumber],
@@ -121,8 +120,7 @@ public class Advance implements Orders {
 				return String.format(
 						"Armies successfully moved from country \"%d\" to country \"%d\" and the ownership changed to \"%s\" player.",
 						d_countryNameFrom, d_countryNameTo, d_player.getName());
-				
-				
+
 			} else if (l_capabilitySourceCountryArmies == l_destinationCountryArmies) {
 				d_player.getCountries().get(d_countryNameFrom)
 						.setNumberOfArmiesPresent(l_sourceCountryArmies - l_capabilityDestinationCountryArmies);

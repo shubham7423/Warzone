@@ -27,3 +27,354 @@
 2021/03/24 14:11:57> Player "Meet" added to game
 2021/03/24 14:11:57> Player "Shubham" added to game
 2021/03/24 14:11:57> Player "Meet" added to game
+2021/03/25 11:42:41> Map Edit Phase Entered
+2021/03/25 11:42:41> Map "WorldMap.map" ready for edit
+2021/03/25 11:42:41> Continent "1" added to map
+2021/03/25 11:42:41> Country "1" successfully added to map
+2021/03/25 11:42:41> Country "1" already present in map
+2021/03/25 11:42:41> Country "1" successfully removed from map
+2021/03/25 11:42:41> Country "1" not present in map
+2021/03/25 11:42:41> Game Setup Phase Entered
+2021/03/25 11:42:41> Map "uk.map" loaded successfully
+2021/03/25 11:42:41> Game Setup Phase Entered
+2021/03/25 11:42:41> Map "risk.map" loaded successfully
+2021/03/25 11:42:41> Map Edit Phase Entered
+2021/03/25 11:42:41> Map "WorldMap.map" ready for edit
+2021/03/25 11:42:41> Continent "1" added to map
+2021/03/25 11:42:41> Continent "1" already present in map
+2021/03/25 11:42:41> Continent "1" successfully removed from map
+2021/03/25 11:42:41> Continent "1" not present in map
+2021/03/25 11:42:41> Game Setup Phase Entered
+2021/03/25 11:42:41> Map "risk.map" loaded successfully
+2021/03/25 11:42:41> Player "Jay" added to game
+2021/03/25 11:42:41> Player "Jay" already present in game
+2021/03/25 11:42:41> Player "Jay" removed from game
+2021/03/25 11:42:41> Player "Jay" not present in game
+2021/03/25 11:42:41> Game Setup Phase Entered
+2021/03/25 11:42:41> Map "risk.map" loaded successfully
+2021/03/25 11:42:41> Map Edit Phase Entered
+2021/03/25 11:42:41> Map "WorldMap.map" ready for edit
+2021/03/25 11:42:41> Continent "1" added to map
+2021/03/25 11:42:41> Country "1" successfully added to map
+2021/03/25 11:42:41> Country "2" successfully added to map
+2021/03/25 11:42:41> Country "2" is now a neighbor of country "1"
+2021/03/25 11:42:41> Country "2" already a neighbor of "1"
+2021/03/25 11:42:41> Country "2" removed from neighbors of "1"
+2021/03/25 11:42:41> Country "2" is not a neighbor of "1"
+2021/03/25 11:42:41> Map Edit Phase Entered
+2021/03/25 11:42:41> Map "risk.map" ready for edit
+2021/03/25 11:42:41> Map file "abc.map" saved successfully
+2021/03/25 11:42:41> Map Edit Phase Entered
+2021/03/25 11:42:41> Map "WorldMap.map" ready for edit
+2021/03/25 11:42:41> Player "Shubham" added to game
+2021/03/25 11:42:41> Player "Shubham" added to game
+2021/03/25 11:42:41> Player "Shubham" added to game
+2021/03/25 11:43:15> Map Edit Phase Entered
+2021/03/25 11:43:15> Map "WorldMap.map" ready for edit
+2021/03/25 11:43:15> Continent "1" added to map
+2021/03/25 11:43:15> Country "1" successfully added to map
+2021/03/25 11:43:15> Country "1" already present in map
+2021/03/25 11:43:15> Country "1" successfully removed from map
+2021/03/25 11:43:15> Country "1" not present in map
+2021/03/25 11:43:15> Game Setup Phase Entered
+2021/03/25 11:43:15> Map "uk.map" loaded successfully
+2021/03/25 11:43:15> Game Setup Phase Entered
+2021/03/25 11:43:15> Map "risk.map" loaded successfully
+2021/03/25 11:43:16> Map Edit Phase Entered
+2021/03/25 11:43:16> Map "WorldMap.map" ready for edit
+2021/03/25 11:43:16> Continent "1" added to map
+2021/03/25 11:43:16> Continent "1" already present in map
+2021/03/25 11:43:16> Continent "1" successfully removed from map
+2021/03/25 11:43:16> Continent "1" not present in map
+2021/03/25 11:43:16> Game Setup Phase Entered
+2021/03/25 11:43:16> Map "risk.map" loaded successfully
+2021/03/25 11:43:16> Player "Jay" added to game
+2021/03/25 11:43:16> Player "Jay" already present in game
+2021/03/25 11:43:16> Player "Jay" removed from game
+2021/03/25 11:43:16> Player "Jay" not present in game
+2021/03/25 11:43:16> Game Setup Phase Entered
+2021/03/25 11:43:16> Map "risk.map" loaded successfully
+2021/03/25 11:43:16> Map Edit Phase Entered
+2021/03/25 11:43:16> Map "WorldMap.map" ready for edit
+2021/03/25 11:43:16> Continent "1" added to map
+2021/03/25 11:43:16> Country "1" successfully added to map
+2021/03/25 11:43:16> Country "2" successfully added to map
+2021/03/25 11:43:16> Country "2" is now a neighbor of country "1"
+2021/03/25 11:43:16> Country "2" already a neighbor of "1"
+2021/03/25 11:43:16> Country "2" removed from neighbors of "1"
+2021/03/25 11:43:16> Country "2" is not a neighbor of "1"
+2021/03/25 11:43:16> Map Edit Phase Entered
+2021/03/25 11:43:16> Map "risk.map" ready for edit
+2021/03/25 11:43:16> Map file "abc.map" saved successfully
+2021/03/25 11:43:16> Map Edit Phase Entered
+2021/03/25 11:43:16> Map "WorldMap.map" ready for edit
+2021/03/25 11:43:16> Player "Shubham" added to game
+2021/03/25 11:43:16> Player "Shubham" added to game
+2021/03/25 11:43:16> Player "Shubham" added to game
+2021/03/25 11:44:00> Map Edit Phase Entered
+2021/03/25 11:44:00> Map "WorldMap.map" ready for edit
+2021/03/25 11:44:00> Continent "1" added to map
+2021/03/25 11:44:00> Country "1" successfully added to map
+2021/03/25 11:44:00> Country "1" already present in map
+2021/03/25 11:44:00> Country "1" successfully removed from map
+2021/03/25 11:44:00> Country "1" not present in map
+2021/03/25 11:44:00> Game Setup Phase Entered
+2021/03/25 11:44:00> Map "uk.map" loaded successfully
+2021/03/25 11:44:00> Game Setup Phase Entered
+2021/03/25 11:44:00> Map "risk.map" loaded successfully
+2021/03/25 11:44:00> Map Edit Phase Entered
+2021/03/25 11:44:00> Map "WorldMap.map" ready for edit
+2021/03/25 11:44:00> Continent "1" added to map
+2021/03/25 11:44:00> Continent "1" already present in map
+2021/03/25 11:44:00> Continent "1" successfully removed from map
+2021/03/25 11:44:00> Continent "1" not present in map
+2021/03/25 11:44:00> Game Setup Phase Entered
+2021/03/25 11:44:00> Map "risk.map" loaded successfully
+2021/03/25 11:44:00> Player "Jay" added to game
+2021/03/25 11:44:00> Player "Jay" already present in game
+2021/03/25 11:44:00> Player "Jay" removed from game
+2021/03/25 11:44:00> Player "Jay" not present in game
+2021/03/25 11:44:00> Game Setup Phase Entered
+2021/03/25 11:44:00> Map "risk.map" loaded successfully
+2021/03/25 11:44:00> Map Edit Phase Entered
+2021/03/25 11:44:00> Map "WorldMap.map" ready for edit
+2021/03/25 11:44:00> Continent "1" added to map
+2021/03/25 11:44:00> Country "1" successfully added to map
+2021/03/25 11:44:00> Country "2" successfully added to map
+2021/03/25 11:44:00> Country "2" is now a neighbor of country "1"
+2021/03/25 11:44:00> Country "2" already a neighbor of "1"
+2021/03/25 11:44:00> Country "2" removed from neighbors of "1"
+2021/03/25 11:44:00> Country "2" is not a neighbor of "1"
+2021/03/25 11:44:00> Map Edit Phase Entered
+2021/03/25 11:44:00> Map "risk.map" ready for edit
+2021/03/25 11:44:00> Map file "abc.map" saved successfully
+2021/03/25 11:44:00> Map Edit Phase Entered
+2021/03/25 11:44:00> Map "WorldMap.map" ready for edit
+2021/03/25 11:44:00> Player "Shubham" added to game
+2021/03/25 11:44:00> Player "Meet" added to game
+2021/03/25 11:44:00> Player "Shubham" added to game
+2021/03/25 11:44:00> Player "Meet" added to game
+2021/03/25 11:44:00> Player "Shubham" added to game
+2021/03/25 11:44:00> Player "Meet" added to game
+2021/03/25 11:44:00> Player "Shubham" added to game
+2021/03/25 11:44:00> Player "Meet" added to game
+2021/03/25 11:44:00> Player "Shubham" added to game
+2021/03/25 11:44:00> Player "Meet" added to game
+2021/03/25 11:44:00> Player "Shubham" added to game
+2021/03/25 11:44:00> Player "Meet" added to game
+2021/03/25 11:44:00> Player "Shubham" added to game
+2021/03/25 11:44:00> Player "Meet" added to game
+2021/03/25 11:44:00> Player "Shubham" added to game
+2021/03/25 11:44:00> Player "Meet" added to game
+2021/03/25 11:44:00> Player "Shubham" added to game
+2021/03/25 11:44:00> Player "Meet" added to game
+2021/03/25 11:44:00> Player "Shubham" added to game
+2021/03/25 11:44:00> Player "Meet" added to game
+2021/03/25 11:44:00> Player "Shubham" added to game
+2021/03/25 11:44:00> Player "Meet" added to game
+2021/03/25 11:44:00> Player "Shubham" added to game
+2021/03/25 11:44:00> Player "Meet" added to game
+2021/03/25 11:44:00> Player "Shubham" added to game
+2021/03/25 11:44:00> Player "Meet" added to game
+2021/03/25 11:44:00> Player "Shubham" added to game
+2021/03/25 11:44:00> Player "Meet" added to game
+2021/03/25 11:44:00> Player "Shubham" added to game
+2021/03/25 11:44:00> Player "Meet" added to game
+2021/03/25 11:44:00> Player "Shubham" added to game
+2021/03/25 11:44:00> Player "Meet" added to game
+2021/03/25 11:44:00> Player "Shubham" added to game
+2021/03/25 11:44:00> Player "Meet" added to game
+2021/03/25 11:44:00> Player "Shubham" added to game
+2021/03/25 11:44:00> Player "Meet" added to game
+2021/03/25 11:44:00> Player "Shubham" added to game
+2021/03/25 11:44:00> Player "Meet" added to game
+2021/03/25 11:44:00> Player "Shubham" added to game
+2021/03/25 11:44:00> Player "Meet" added to game
+2021/03/25 11:44:00> Player "Shubham" added to game
+2021/03/25 11:44:00> Player "Meet" added to game
+2021/03/25 11:44:00> Player "Shubham" added to game
+2021/03/25 11:44:00> Player "Meet" added to game
+2021/03/25 11:44:00> Player "Shubham" added to game
+2021/03/25 11:44:00> Player "Meet" added to game
+2021/03/25 11:44:00> Player "Shubham" added to game
+2021/03/25 11:44:00> Player "Meet" added to game
+2021/03/25 11:44:00> Player "Shubham" added to game
+2021/03/25 11:44:00> Player "Shubham" added to game
+2021/03/25 11:44:00> Player "Shubham" added to game
+2021/03/25 11:44:24> Map Edit Phase Entered
+2021/03/25 11:44:24> Map "WorldMap.map" ready for edit
+2021/03/25 11:44:24> Continent "1" added to map
+2021/03/25 11:44:24> Country "1" successfully added to map
+2021/03/25 11:44:24> Country "1" already present in map
+2021/03/25 11:44:24> Country "1" successfully removed from map
+2021/03/25 11:44:24> Country "1" not present in map
+2021/03/25 11:44:24> Game Setup Phase Entered
+2021/03/25 11:44:24> Map "uk.map" loaded successfully
+2021/03/25 11:44:24> Game Setup Phase Entered
+2021/03/25 11:44:24> Map "risk.map" loaded successfully
+2021/03/25 11:44:24> Map Edit Phase Entered
+2021/03/25 11:44:24> Map "WorldMap.map" ready for edit
+2021/03/25 11:44:24> Continent "1" added to map
+2021/03/25 11:44:24> Continent "1" already present in map
+2021/03/25 11:44:24> Continent "1" successfully removed from map
+2021/03/25 11:44:24> Continent "1" not present in map
+2021/03/25 11:44:24> Game Setup Phase Entered
+2021/03/25 11:44:24> Map "risk.map" loaded successfully
+2021/03/25 11:44:24> Player "Jay" added to game
+2021/03/25 11:44:24> Player "Jay" already present in game
+2021/03/25 11:44:24> Player "Jay" removed from game
+2021/03/25 11:44:24> Player "Jay" not present in game
+2021/03/25 11:44:24> Game Setup Phase Entered
+2021/03/25 11:44:24> Map "risk.map" loaded successfully
+2021/03/25 11:44:24> Map Edit Phase Entered
+2021/03/25 11:44:24> Map "WorldMap.map" ready for edit
+2021/03/25 11:44:24> Continent "1" added to map
+2021/03/25 11:44:24> Country "1" successfully added to map
+2021/03/25 11:44:24> Country "2" successfully added to map
+2021/03/25 11:44:24> Country "2" is now a neighbor of country "1"
+2021/03/25 11:44:24> Country "2" already a neighbor of "1"
+2021/03/25 11:44:24> Country "2" removed from neighbors of "1"
+2021/03/25 11:44:24> Country "2" is not a neighbor of "1"
+2021/03/25 11:44:24> Map Edit Phase Entered
+2021/03/25 11:44:24> Map "risk.map" ready for edit
+2021/03/25 11:44:24> Map file "abc.map" saved successfully
+2021/03/25 11:44:24> Map Edit Phase Entered
+2021/03/25 11:44:24> Map "WorldMap.map" ready for edit
+2021/03/25 11:44:24> Player "Shubham" added to game
+2021/03/25 11:44:24> Player "Shubham" added to game
+2021/03/25 11:44:24> Player "Shubham" added to game
+2021/03/25 11:46:29> Map Edit Phase Entered
+2021/03/25 11:46:29> Map "WorldMap.map" ready for edit
+2021/03/25 11:46:29> Continent "1" added to map
+2021/03/25 11:46:29> Country "1" successfully added to map
+2021/03/25 11:46:29> Country "1" already present in map
+2021/03/25 11:46:29> Country "1" successfully removed from map
+2021/03/25 11:46:29> Country "1" not present in map
+2021/03/25 11:46:29> Game Setup Phase Entered
+2021/03/25 11:46:29> Map "uk.map" loaded successfully
+2021/03/25 11:46:29> Game Setup Phase Entered
+2021/03/25 11:46:29> Map "risk.map" loaded successfully
+2021/03/25 11:46:29> Map Edit Phase Entered
+2021/03/25 11:46:29> Map "WorldMap.map" ready for edit
+2021/03/25 11:46:29> Continent "1" added to map
+2021/03/25 11:46:29> Continent "1" already present in map
+2021/03/25 11:46:29> Continent "1" successfully removed from map
+2021/03/25 11:46:29> Continent "1" not present in map
+2021/03/25 11:46:29> Game Setup Phase Entered
+2021/03/25 11:46:29> Map "risk.map" loaded successfully
+2021/03/25 11:46:29> Player "Jay" added to game
+2021/03/25 11:46:29> Player "Jay" already present in game
+2021/03/25 11:46:29> Player "Jay" removed from game
+2021/03/25 11:46:29> Player "Jay" not present in game
+2021/03/25 11:46:29> Game Setup Phase Entered
+2021/03/25 11:46:29> Map "risk.map" loaded successfully
+2021/03/25 11:46:29> Map Edit Phase Entered
+2021/03/25 11:46:29> Map "WorldMap.map" ready for edit
+2021/03/25 11:46:29> Continent "1" added to map
+2021/03/25 11:46:29> Country "1" successfully added to map
+2021/03/25 11:46:29> Country "2" successfully added to map
+2021/03/25 11:46:29> Country "2" is now a neighbor of country "1"
+2021/03/25 11:46:29> Country "2" already a neighbor of "1"
+2021/03/25 11:46:29> Country "2" removed from neighbors of "1"
+2021/03/25 11:46:29> Country "2" is not a neighbor of "1"
+2021/03/25 11:46:29> Map Edit Phase Entered
+2021/03/25 11:46:29> Map "risk.map" ready for edit
+2021/03/25 11:46:29> Map file "abc.map" saved successfully
+2021/03/25 11:46:29> Map Edit Phase Entered
+2021/03/25 11:46:29> Map "WorldMap.map" ready for edit
+2021/03/25 11:46:29> Player "Shubham" added to game
+2021/03/25 11:46:29> Player "Shubham" added to game
+2021/03/25 11:46:29> Player "Shubham" added to game
+2021/03/25 11:47:23> Map Edit Phase Entered
+2021/03/25 11:47:23> Map "WorldMap.map" ready for edit
+2021/03/25 11:47:23> Continent "1" added to map
+2021/03/25 11:47:23> Country "1" successfully added to map
+2021/03/25 11:47:23> Country "1" already present in map
+2021/03/25 11:47:23> Country "1" successfully removed from map
+2021/03/25 11:47:23> Country "1" not present in map
+2021/03/25 11:47:23> Game Setup Phase Entered
+2021/03/25 11:47:23> Map "uk.map" loaded successfully
+2021/03/25 11:47:23> Game Setup Phase Entered
+2021/03/25 11:47:23> Map "risk.map" loaded successfully
+2021/03/25 11:47:23> Map Edit Phase Entered
+2021/03/25 11:47:23> Map "WorldMap.map" ready for edit
+2021/03/25 11:47:23> Continent "1" added to map
+2021/03/25 11:47:23> Continent "1" already present in map
+2021/03/25 11:47:23> Continent "1" successfully removed from map
+2021/03/25 11:47:23> Continent "1" not present in map
+2021/03/25 11:47:23> Game Setup Phase Entered
+2021/03/25 11:47:23> Map "risk.map" loaded successfully
+2021/03/25 11:47:23> Player "Jay" added to game
+2021/03/25 11:47:23> Player "Jay" already present in game
+2021/03/25 11:47:23> Player "Jay" removed from game
+2021/03/25 11:47:23> Player "Jay" not present in game
+2021/03/25 11:47:23> Game Setup Phase Entered
+2021/03/25 11:47:23> Map "risk.map" loaded successfully
+2021/03/25 11:47:23> Map Edit Phase Entered
+2021/03/25 11:47:23> Map "WorldMap.map" ready for edit
+2021/03/25 11:47:23> Continent "1" added to map
+2021/03/25 11:47:23> Country "1" successfully added to map
+2021/03/25 11:47:23> Country "2" successfully added to map
+2021/03/25 11:47:23> Country "2" is now a neighbor of country "1"
+2021/03/25 11:47:23> Country "2" already a neighbor of "1"
+2021/03/25 11:47:23> Country "2" removed from neighbors of "1"
+2021/03/25 11:47:23> Country "2" is not a neighbor of "1"
+2021/03/25 11:47:23> Map Edit Phase Entered
+2021/03/25 11:47:23> Map "risk.map" ready for edit
+2021/03/25 11:47:23> Map file "abc.map" saved successfully
+2021/03/25 11:47:23> Map Edit Phase Entered
+2021/03/25 11:47:23> Map "WorldMap.map" ready for edit
+2021/03/25 11:47:23> Player "Shubham" added to game
+2021/03/25 11:47:23> Player "Shubham" added to game
+2021/03/25 11:47:23> Player "Shubham" added to game
+2021/03/25 11:47:23> Player "Shubham" added to game
+2021/03/25 11:47:23> Player "Meet" added to game
+2021/03/25 11:47:23> Player "Shubham" added to game
+2021/03/25 11:47:23> Player "Meet" added to game
+2021/03/25 11:47:23> Player "Shubham" added to game
+2021/03/25 11:47:23> Player "Meet" added to game
+2021/03/25 11:47:23> Player "Shubham" added to game
+2021/03/25 11:47:23> Player "Meet" added to game
+2021/03/25 11:47:23> Player "Shubham" added to game
+2021/03/25 11:47:23> Player "Meet" added to game
+2021/03/25 11:47:23> Player "Shubham" added to game
+2021/03/25 11:47:23> Player "Meet" added to game
+2021/03/25 11:47:23> Player "Shubham" added to game
+2021/03/25 11:47:23> Player "Meet" added to game
+2021/03/25 11:47:23> Player "Shubham" added to game
+2021/03/25 11:47:23> Player "Meet" added to game
+2021/03/25 11:47:23> Player "Shubham" added to game
+2021/03/25 11:47:23> Player "Meet" added to game
+2021/03/25 11:47:23> Player "Shubham" added to game
+2021/03/25 11:47:23> Player "Meet" added to game
+2021/03/25 11:47:23> Player "Shubham" added to game
+2021/03/25 11:47:23> Player "Meet" added to game
+2021/03/25 11:47:23> Player "Shubham" added to game
+2021/03/25 11:47:23> Player "Meet" added to game
+2021/03/25 11:47:23> Player "Shubham" added to game
+2021/03/25 11:47:23> Player "Meet" added to game
+2021/03/25 11:47:23> Player "Shubham" added to game
+2021/03/25 11:47:23> Player "Meet" added to game
+2021/03/25 11:47:23> Player "Shubham" added to game
+2021/03/25 11:47:23> Player "Meet" added to game
+2021/03/25 11:47:23> Player "Shubham" added to game
+2021/03/25 11:47:23> Player "Meet" added to game
+2021/03/25 11:47:23> Player "Shubham" added to game
+2021/03/25 11:47:23> Player "Meet" added to game
+2021/03/25 11:47:23> Player "Shubham" added to game
+2021/03/25 11:47:23> Player "Meet" added to game
+2021/03/25 11:47:23> Player "Shubham" added to game
+2021/03/25 11:47:23> Player "Meet" added to game
+2021/03/25 11:47:23> Player "Shubham" added to game
+2021/03/25 11:47:23> Player "Meet" added to game
+2021/03/25 11:47:23> Player "Shubham" added to game
+2021/03/25 11:47:23> Player "Meet" added to game
+2021/03/25 11:47:23> Player "Shubham" added to game
+2021/03/25 11:47:23> Player "Shubham" added to game
+2021/03/25 11:47:23> Player "Shubham" added to game
+2021/03/25 11:47:23> Player "Shubham" added to game
+2021/03/25 11:47:23> Player "Meet" added to game
+2021/03/25 11:47:23> Player "Shubham" added to game
+2021/03/25 11:47:23> Player "Meet" added to game
+2021/03/25 11:47:23> Player "Shubham" added to game
+2021/03/25 11:47:23> Player "Meet" added to game

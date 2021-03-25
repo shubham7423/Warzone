@@ -21,9 +21,9 @@ import controller.state.gamephase.gamesetup.PostLoad;
 public class AdvanceTest {
 
 	GameEngine d_game;
-	
+
 	/**
-	 * Setup context for test to happen, object of game is created and players, 
+	 * Setup context for test to happen, object of game is created and players,
 	 * countries and neighbors are setup and armies are assigned
 	 */
 	@Before
@@ -65,13 +65,16 @@ public class AdvanceTest {
 		Deploy l_deploy2 = new Deploy(d_game.d_players.get("Meet"), 2, 3);
 		l_deploy1.executeOrder(d_game);
 		l_deploy2.executeOrder(d_game);
-		
+
 		Advance l_advanceCmd = new Advance(d_game.d_players.get("Shubham"), 1, 2, 1);
-		assertEquals("Armies from country \"1\" were not able to advance to country \"2\" as the attacking armies could not defeat all the armies present in the defending country", l_advanceCmd.executeOrder(d_game));
+		assertEquals(
+				"Armies from country \"1\" were not able to advance to country \"2\" as the attacking armies could not defeat all the armies present in the defending country",
+				l_advanceCmd.executeOrder(d_game));
 	}
-	
+
 	/**
-	 * test where no. are cards are checked in the player's list of cards after the attack
+	 * test where no. are cards are checked in the player's list of cards after the
+	 * attack
 	 */
 	@Test
 	public void testExecuteOrder2() {
@@ -79,18 +82,18 @@ public class AdvanceTest {
 		Deploy l_deploy2 = new Deploy(d_game.d_players.get("Meet"), 2, 1);
 		l_deploy1.executeOrder(d_game);
 		l_deploy2.executeOrder(d_game);
-		
+
 		Advance l_advanceCmd = new Advance(d_game.d_players.get("Shubham"), 1, 2, 2);
 		HashMap<String, Integer> l_ordersBefore = new HashMap<String, Integer>();
 		l_ordersBefore.putAll(d_game.d_players.get("Shubham").d_cardsOwned);
-		
+
 		l_advanceCmd.executeOrder(d_game);
 		HashMap<String, Integer> l_ordersAfter = d_game.d_players.get("Shubham").d_cardsOwned;
 		assertFalse(l_ordersBefore.equals(l_ordersAfter));
 	}
-	
+
 	/**
-	 * test where exact no. of defending armies were defeated by the attackers 
+	 * test where exact no. of defending armies were defeated by the attackers
 	 */
 	@Test
 	public void testExecuteOrder3() {
@@ -100,11 +103,13 @@ public class AdvanceTest {
 		l_deploy1.executeOrder(d_game);
 		l_deploy2.executeOrder(d_game);
 		l_deploy3.executeOrder(d_game);
-		
+
 		Advance l_advanceCmd = new Advance(d_game.d_players.get("Shubham"), 1, 2, 2);
-		assertEquals("Armies from country \"1\" were not able to advance to country \"2\" as the attacking armies were only able to defeat the exact number of armies present in the defending country", l_advanceCmd.executeOrder(d_game));
+		assertEquals(
+				"Armies from country \"1\" were not able to advance to country \"2\" as the attacking armies were only able to defeat the exact number of armies present in the defending country",
+				l_advanceCmd.executeOrder(d_game));
 	}
-	
+
 	/**
 	 * test where advanced is used on a country that does not exist
 	 */
@@ -114,11 +119,11 @@ public class AdvanceTest {
 		Deploy l_deploy2 = new Deploy(d_game.d_players.get("Meet"), 2, 1);
 		l_deploy1.executeOrder(d_game);
 		l_deploy2.executeOrder(d_game);
-		
+
 		Advance l_advanceCmd = new Advance(d_game.d_players.get("Shubham"), 1, 5, 1);
 		assertEquals("Country \"5\" does not exist", l_advanceCmd.executeOrder(d_game));
 	}
-	
+
 	/**
 	 * test where advance is executed successfully
 	 */
@@ -128,9 +133,9 @@ public class AdvanceTest {
 		Deploy l_deploy2 = new Deploy(d_game.d_players.get("Meet"), 2, 1);
 		l_deploy1.executeOrder(d_game);
 		l_deploy2.executeOrder(d_game);
-		
+
 		Advance l_advanceCmd = new Advance(d_game.d_players.get("Shubham"), 1, 3, 1);
-		assertEquals("Armies successfully moved from country \"1\" to country \"3\"", l_advanceCmd.executeOrder(d_game));
+		assertEquals("Armies successfully moved from country \"1\" to country \"3\"",
+				l_advanceCmd.executeOrder(d_game));
 	}
 }
-

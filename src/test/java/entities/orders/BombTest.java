@@ -16,9 +16,9 @@ import controller.state.gamephase.gamesetup.PostLoad;
 public class BombTest {
 
 	GameEngine d_game;
-	
+
 	/**
-	 * Setup context for test to happen, object of game is created and players, 
+	 * Setup context for test to happen, object of game is created and players,
 	 * countries and neighbors are setup and armies are assigned
 	 */
 	@Before
@@ -37,13 +37,13 @@ public class BombTest {
 		d_game.d_players.get("Shubham").setNumberOfArmies();
 		d_game.d_players.get("Meet").addCountry(d_game.getGameMap().getCountries().get(2));
 		d_game.d_players.get("Meet").setNumberOfArmies();
-		
+
 		Deploy l_deploy1 = new Deploy(d_game.d_players.get("Shubham"), 1, 2);
 		Deploy l_deploy2 = new Deploy(d_game.d_players.get("Meet"), 2, 3);
 		l_deploy1.executeOrder(d_game);
 		l_deploy2.executeOrder(d_game);
 	}
-	
+
 	/**
 	 * This function resets the variables to null.
 	 */
@@ -59,9 +59,10 @@ public class BombTest {
 	public void testExecuteOrder1() {
 		d_game.d_players.get("Shubham").d_cardsOwned.put("bomb", 1);
 		Bomb l_bombCmd = new Bomb(d_game.d_players.get("Shubham"), 1);
-		assertEquals("Cannot bomb country \"1\" as it is controlled by player \"Shubham\".", l_bombCmd.executeOrder(d_game));
+		assertEquals("Cannot bomb country \"1\" as it is controlled by player \"Shubham\".",
+				l_bombCmd.executeOrder(d_game));
 	}
-	
+
 	/**
 	 * test where bomb card is used successfully
 	 */
@@ -71,16 +72,16 @@ public class BombTest {
 		Bomb l_bombCmd = new Bomb(d_game.d_players.get("Shubham"), 2);
 		assertEquals("Player \"Shubham\" bombed country \"2\" successfully.", l_bombCmd.executeOrder(d_game));
 	}
-	
+
 	/**
-	 * test where bomb card is used even when a player does not own one 
+	 * test where bomb card is used even when a player does not own one
 	 */
 	@Test
 	public void testExecuteOrder3() {
 		Bomb l_bombCmd = new Bomb(d_game.d_players.get("Shubham"), 1);
 		assertEquals("Player \"Shubham\" doesn't have bomb card.", l_bombCmd.executeOrder(d_game));
 	}
-	
+
 	/**
 	 * test where bomb card is used on a non neighboring country of the player
 	 */
@@ -88,9 +89,10 @@ public class BombTest {
 	public void testExecuteOrder4() {
 		d_game.d_players.get("Meet").d_cardsOwned.put("bomb", 1);
 		Bomb l_bombCmd = new Bomb(d_game.d_players.get("Meet"), 1);
-		assertEquals("The country \"1\" is not a neighbour country of the countries owned by player \"Meet\".", l_bombCmd.executeOrder(d_game));
+		assertEquals("The country \"1\" is not a neighbour country of the countries owned by player \"Meet\".",
+				l_bombCmd.executeOrder(d_game));
 	}
-	
+
 	/**
 	 * test where bomb card is used while there exist diplomacy between 2 players
 	 */
@@ -99,6 +101,7 @@ public class BombTest {
 		d_game.d_players.get("Shubham").d_cardsOwned.put("bomb", 1);
 		Bomb l_bombCmd = new Bomb(d_game.d_players.get("Shubham"), 2);
 		d_game.d_players.get("Shubham").d_negotiatedPlayerNames.add("Meet");
-		assertEquals("Cannot bomb, as diplomacy is established between \"Shubham\" and \"Meet\".", l_bombCmd.executeOrder(d_game));
+		assertEquals("Cannot bomb, as diplomacy is established between \"Shubham\" and \"Meet\".",
+				l_bombCmd.executeOrder(d_game));
 	}
 }

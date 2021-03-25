@@ -111,6 +111,7 @@ GameEngine d_game;
 	public void testExecuteOrder6() {
 		d_game.d_players.get("Shubham").d_cardsOwned.put("airlift", 1);
 		Airlift l_airliftCmd = new Airlift(d_game.d_players.get("Shubham"), 1, 3, 1);
-		assertEquals("Armies successfully moved from country \"1\" to country \"3\"", l_airliftCmd.executeOrder(d_game));
+		assertEquals("Armies successfully moved from country \"1\" to country \"3\"",
+				l_airliftCmd.executeOrder(d_game));
 	}
 }

@@ -46,6 +46,7 @@ public class ExecuteOrders extends GamePlay {
 	 * @param p_commandSplitted splitted command parts used for execution of command
 	 * @return string to print the invalid command message
 	 */
+	@Override
 	public String advance(String[] p_commandSplitted) {
 		return printInvalidCommandMessage();
 	}
@@ -55,6 +56,7 @@ public class ExecuteOrders extends GamePlay {
 	 * @param p_commandSplitted splitted command parts used for execution of command
 	 * @return string to print the invalid command message
 	 */
+	@Override
 	public String airlift(String[] p_commandSplitted) {
 		return printInvalidCommandMessage();
 	}
@@ -64,6 +66,7 @@ public class ExecuteOrders extends GamePlay {
 	 * @param p_commandSplitted splitted command parts used for execution of command
 	 * @return string to print the invalid command message
 	 */
+	@Override
 	public String bomb(String[] p_commandSplitted) {
 		return printInvalidCommandMessage();
 	}
@@ -73,6 +76,7 @@ public class ExecuteOrders extends GamePlay {
 	 * @param p_commandSplitted splitted command parts used for execution of command
 	 * @return string to print the invalid command message
 	 */
+	@Override
 	public String blockade(String[] p_commandSplitted) {
 		return printInvalidCommandMessage();
 	}
@@ -82,6 +86,7 @@ public class ExecuteOrders extends GamePlay {
 	 * @param p_commandSplitted splitted command parts used for execution of command
 	 * @return string to print the invalid command message
 	 */
+	@Override
 	public String diplomacy(String[] p_commandSplitted) {
 		return printInvalidCommandMessage();
 	}
@@ -101,6 +106,7 @@ public class ExecuteOrders extends GamePlay {
 	 * function to print invalid command as the following command cannot be used in this phase
 	 * @return string to print the invalid command message
 	 */
+	@Override
 	public String checkContinentOwnership() {
 		return printInvalidCommandMessage();
 	}
@@ -109,6 +115,7 @@ public class ExecuteOrders extends GamePlay {
 	 * function to execute order given by the player
 	 * @return string to output result of execution of order
 	 */
+	@Override
 	public String executeOrders() {
 		int l_numOrders = d_gameEngine.getPlayeraOrderSize();
 		int l_i = 0;

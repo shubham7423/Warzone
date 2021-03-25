@@ -9,13 +9,15 @@ import controller.GameEngine;
 import entities.GameMap;
 
 /**
- * PreEdit is inherited from the EditPhase class to support commands valid in pre editing phase
+ * PreEdit is inherited from the EditPhase class to support commands valid in
+ * pre editing phase
  *
  */
 public class PreEdit extends EditPhase {
-	
+
 	/**
-	 * constructor method that takes game engine object from the parent class 
+	 * constructor method that takes game engine object from the parent class
+	 * 
 	 * @param p_gameEngine object of game engine
 	 */
 	public PreEdit(GameEngine p_gameEngine) {
@@ -24,8 +26,10 @@ public class PreEdit extends EditPhase {
 
 	/**
 	 * as this command is applicable in this phase we process the editMap command
+	 * 
 	 * @param p_fileName name of the map file for editing
-	 * @return string indicating the result of the map editing whether it is available to edit or not
+	 * @return string indicating the result of the map editing whether it is
+	 *         available to edit or not
 	 */
 	@Override
 	public String editMap(String p_fileName) {
@@ -48,9 +52,10 @@ public class PreEdit extends EditPhase {
 		next();
 		return l_result;
 	}
-	
+
 	/**
 	 * validate map cannot be used in this phase
+	 * 
 	 * @return string to output the result
 	 */
 	public String validateMap() {
@@ -58,17 +63,21 @@ public class PreEdit extends EditPhase {
 	}
 
 	/**
-	 * as this command is not applicable in this phase we print invalid command string
+	 * as this command is not applicable in this phase we print invalid command
+	 * string
+	 * 
 	 * @param p_commandSplitted splitted command parts to execute
 	 * @return string containing invalid command string
 	 */
 	@Override
 	public String editContinent(String[] p_commandSplitted) {
-		return printInvalidCommandMessage();	
+		return printInvalidCommandMessage();
 	}
 
 	/**
-	 * as this command is not applicable in this phase we print invalid command string
+	 * as this command is not applicable in this phase we print invalid command
+	 * string
+	 * 
 	 * @param p_commandSplitted splitted command parts to execute
 	 * @return string containing invalid command string
 	 */
@@ -78,17 +87,21 @@ public class PreEdit extends EditPhase {
 	}
 
 	/**
-	 * as this command is not applicable in this phase we print invalid command string
+	 * as this command is not applicable in this phase we print invalid command
+	 * string
+	 * 
 	 * @param p_commandSplitted splitted command parts to execute
 	 * @return string containing invalid command string
 	 */
 	@Override
 	public String editNeighbor(String[] p_commandSplitted) {
-		return printInvalidCommandMessage();	
+		return printInvalidCommandMessage();
 	}
-	
+
 	/**
-	 * as this command is not applicable in this phase we print invalid command string
+	 * as this command is not applicable in this phase we print invalid command
+	 * string
+	 * 
 	 * @param p_fileName name of the map file for saving
 	 * @return string containing invalid command string
 	 */
@@ -104,8 +117,5 @@ public class PreEdit extends EditPhase {
 	public void next() {
 		d_gameEngine.setPhase(new PostEdit(d_gameEngine));
 	}
-	
-	
-
 
 }

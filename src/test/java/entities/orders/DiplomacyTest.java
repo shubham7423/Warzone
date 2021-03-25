@@ -8,12 +8,13 @@ import org.junit.Test;
 
 import controller.GameEngine;
 import controller.state.gamephase.gamesetup.PostLoad;
+
 public class DiplomacyTest {
 
-GameEngine d_game;
-	
+	GameEngine d_game;
+
 	/**
-	 * Setup context for test to happen, object of game is created and players, 
+	 * Setup context for test to happen, object of game is created and players,
 	 * countries and neighbors are setup and armies are assigned
 	 */
 	@Before
@@ -58,9 +59,10 @@ GameEngine d_game;
 	public void testExecuteOrder1() {
 		d_game.d_players.get("Shubham").d_cardsOwned.put("diplomacy", 1);
 		Diplomacy l_diplomacyCmd = new Diplomacy(d_game.d_players.get("Shubham"), "Meet");
-		assertEquals("Diplomacy between Players \"Shubham\" and \"Meet\" established successfully.", l_diplomacyCmd.executeOrder(d_game));
+		assertEquals("Diplomacy between Players \"Shubham\" and \"Meet\" established successfully.",
+				l_diplomacyCmd.executeOrder(d_game));
 	}
-	
+
 	/**
 	 * Test where diplomacy card is used with a player that does not exist
 	 */
@@ -70,9 +72,10 @@ GameEngine d_game;
 		Diplomacy l_diplomacyCmd = new Diplomacy(d_game.d_players.get("Shubham"), "Vandit");
 		assertEquals("Player \"Vandit\" does not exist", l_diplomacyCmd.executeOrder(d_game));
 	}
-	
+
 	/**
-	 * Test where diplomacy card is used even when a player does not have a diplomacy card
+	 * Test where diplomacy card is used even when a player does not have a
+	 * diplomacy card
 	 */
 	@Test
 	public void testExecuteOrder3() {

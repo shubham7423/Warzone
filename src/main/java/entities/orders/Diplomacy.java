@@ -1,6 +1,3 @@
-/**
- * 
- */
 package entities.orders;
 
 import controller.GameEngine;
@@ -20,8 +17,11 @@ public class Diplomacy implements Orders {
 
 	/**
 	 * Constructor of Diplomacy Card class for instantiating members.
-	 * @param p_player Player object of the player who wants to negotiate with other player for one time.
-	 * @param p_otherPlayer Name of the other player who is being negotiated for one time.
+	 * 
+	 * @param p_player      Player object of the player who wants to negotiate with
+	 *                      other player for one time.
+	 * @param p_otherPlayer Name of the other player who is being negotiated for one
+	 *                      time.
 	 */
 	public Diplomacy(Player p_player, String p_otherPlayer) {
 		d_player = p_player;
@@ -29,12 +29,13 @@ public class Diplomacy implements Orders {
 	}
 
 	/**
+	 * method to execute diplomacy command
+	 * 
 	 * @param p_game gets the object of GameEngine class
 	 * @return string Result based on the execution of the Diplomacy Card.
 	 */
 	@Override
 	public String executeOrder(GameEngine p_game) {
-		// TODO Auto-generated method stub
 		if (!p_game.d_playerName.contains(d_otherPlayerName)) {
 			return "Player \"" + d_otherPlayerName + "\" does not exist";
 		} else {

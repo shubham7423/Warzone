@@ -10,29 +10,36 @@ import controller.state.gamephase.gameplay.AssignArmies;
 import entities.Country;
 import entities.Player;
 
+/**
+ * Phase entered after preload class, it contains methods to add or remove
+ * players from game and to assign countries randomly to players.
+ *
+ */
 public class PostLoad extends GameSetup {
 
 	/**
-	 * constructor method that takes game engine object from the parent class 
+	 * constructor method that takes game engine object from the parent class
+	 * 
 	 * @param p_gameEngine object of the game engine
 	 */
 	public PostLoad(GameEngine p_gameEngine) {
 		super(p_gameEngine);
-		// TODO Auto-generated constructor stub
 	}
-	
+
 	/**
 	 * function to load the map for playing the game
-	 * @return string suggesting that map has already been loaded as it is in the postLoad phase
+	 * 
+	 * @return string suggesting that map has already been loaded as it is in the
+	 *         postLoad phase
 	 */
 	@Override
 	public String loadMap(String p_fileName) {
-		// TODO Auto-generated method stub
 		return "Map already loaded";
 	}
 
 	/**
 	 * function to support adding and removing of players to the game
+	 * 
 	 * @param p_commandSplitted splitted command parts used for execution of command
 	 * @return the result of the command provided
 	 */
@@ -46,9 +53,10 @@ public class PostLoad extends GameSetup {
 		}
 		return l_result;
 	}
-	
+
 	/**
 	 * function to assign countries to the players present in the game
+	 * 
 	 * @return string indicating that countries are assigned to the players
 	 */
 	public String assignCountries() {
@@ -79,15 +87,18 @@ public class PostLoad extends GameSetup {
 		d_gameEngine.getPhase().assignArmies();
 		return "Countries Assigned";
 	}
-	
+
 	/**
-	 * function to add a player in the game and checks whether the player is already present in the game or not 
+	 * function to add a player in the game and checks whether the player is already
+	 * present in the game or not
+	 * 
 	 * @return sting indicating the whether player is added or not
 	 */
 	@Override
 	public String addPlayer(String p_playerName) {
 		if (d_gameEngine.d_players.containsKey(p_playerName)) {
-			d_gameEngine.d_logEntryBuffer.setString(String.format("Player \"%s\" already present in game", p_playerName));
+			d_gameEngine.d_logEntryBuffer
+					.setString(String.format("Player \"%s\" already present in game", p_playerName));
 			return String.format("Player \"%s\" already present in game", p_playerName);
 		}
 		d_gameEngine.d_players.put(p_playerName, new Player(p_playerName));
@@ -97,7 +108,9 @@ public class PostLoad extends GameSetup {
 	}
 
 	/**
-	 * function to remove a player from the game and checks whether the player is already present in the game or not 
+	 * function to remove a player from the game and checks whether the player is
+	 * already present in the game or not
+	 * 
 	 * @return sting indicating the whether player is removed or not
 	 */
 	@Override
