@@ -39,10 +39,10 @@ public class ContinentTest {
 	 */
 	@Test
 	public void testAddContries() {
-		Country l_Country = new Country(1, d_continent);
-		d_continent.addCountry(l_Country);
+		Country l_country = new Country(1, d_continent);
+		d_continent.addCountry(l_country);
 		assertEquals(1, d_continent.getCountriesSet().size());
-		assertTrue(d_continent.getCountriesSet().contains(l_Country));
+		assertTrue(d_continent.getCountriesSet().contains(l_country));
 	}
 
 	/**
@@ -50,10 +50,10 @@ public class ContinentTest {
 	 */
 	@Test
 	public void testRemoveContries() {
-		Country l_Country = new Country(1, d_continent);
-		d_continent.addCountry(l_Country);
-		d_continent.removeCountry(l_Country);
+		Country l_country = new Country(1, d_continent);
+		d_continent.addCountry(l_country);
+		d_continent.removeCountry(l_country);
 		assertEquals(0, d_continent.getCountriesSet().size());
-		assertFalse(d_continent.getCountriesSet().contains(l_Country));
+		assertFalse(d_continent.getCountriesSet().contains(l_country));
 	}
 }
