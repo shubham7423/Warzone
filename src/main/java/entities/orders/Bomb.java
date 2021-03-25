@@ -45,11 +45,11 @@ public class Bomb implements Orders {
 	public String executeOrder(GameEngine p_game) {
 		if (d_player.d_cardsOwned.get("bomb") >= 1) {
 			if (!d_player.getCountries().containsKey(d_country)) {
-				HashSet<Integer> intCountry = new HashSet<>();
-				for (Country tempCountry : d_player.getCountries().values()) {
-					intCountry.addAll(tempCountry.getNeighborIds());
+				HashSet<Integer> l_intCountry = new HashSet<>();
+				for (Country l_tempCountry : d_player.getCountries().values()) {
+					l_intCountry.addAll(l_tempCountry.getNeighborIds());
 				}
-				if (!intCountry.contains(d_country)) {
+				if (!l_intCountry.contains(d_country)) {
 					return String.format(
 							"The country \"%d\" is not a neighbour country of the countries owned by player \"%s\".",
 							d_country, d_player.getName());
@@ -61,9 +61,9 @@ public class Bomb implements Orders {
 							p_game.getGameMap().getCountries().get(d_country).getPlayer().getName());
 				}
 
-				int l_armiesPresence = p_game.getGameMap().getCountries().get(d_country).getNumberOfArmiesPresent();
-				if (l_armiesPresence >= 0) {
-					p_game.getGameMap().getCountries().get(d_country).setNumberOfArmiesPresent(l_armiesPresence / 2);
+				int l_armiesPresent = p_game.getGameMap().getCountries().get(d_country).getNumberOfArmiesPresent();
+				if (l_armiesPresent >= 0) {
+					p_game.getGameMap().getCountries().get(d_country).setNumberOfArmiesPresent(l_armiesPresent / 2);
 					int l_bombCardCount = d_player.d_cardsOwned.get("bomb");
 					d_player.d_cardsOwned.replace("bomb", l_bombCardCount - 1);
 					return String.format("Player \"%s\" bombed country \"%d\" successfully.", d_player.getName(),

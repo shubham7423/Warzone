@@ -163,7 +163,7 @@ public class GameMap {
 	 * method to show Map from Map file in specific representation in edit map phase
 	 * print String of Countries, Continent, Corresponding neighbors
 	 * 
-	 * @return l_final_data Table containing data in string format
+	 * @return l_finalData Table containing data in string format
 	 */
 	public String showMapEdit() {
 		String[] l_column = { "Country", "Continent; Control Value", "Neighbors" };
@@ -171,7 +171,7 @@ public class GameMap {
 		Country l_country;
 		TextTable l_tt;
 		final ByteArrayOutputStream l_baos = new ByteArrayOutputStream();
-		String l_final_data;
+		String l_finalData;
 
 		int l_count = 0;
 
@@ -191,8 +191,8 @@ public class GameMap {
 			p_e.printStackTrace();
 		}
 
-		l_final_data = new String(l_baos.toByteArray(), StandardCharsets.UTF_8);
-		return l_final_data;
+		l_finalData = new String(l_baos.toByteArray(), StandardCharsets.UTF_8);
+		return l_finalData;
 	}
 
 	/**
@@ -200,7 +200,7 @@ public class GameMap {
 	 * phase print String of Countries, Continent, Owner, Armies present,
 	 * Corresponding Neighbors
 	 * 
-	 * @return l_final_data Table containing data in string format
+	 * @return l_finalData Table containing data in string format
 	 */
 	public String showMapPlay() {
 		String[] l_column = { "Country", "Continent; Control Value", "Owner", "Armies", "Neighbors" };
@@ -208,7 +208,7 @@ public class GameMap {
 		Country l_country;
 		TextTable l_tt;
 		final ByteArrayOutputStream l_baos = new ByteArrayOutputStream();
-		String l_final_data;
+		String l_finalData;
 		int l_count = 0;
 
 		for (HashMap.Entry<Integer, Country> l_item : d_countries.entrySet()) {
@@ -224,8 +224,8 @@ public class GameMap {
 		} catch (UnsupportedEncodingException p_e) {
 			p_e.printStackTrace();
 		}
-		l_final_data = new String(l_baos.toByteArray(), StandardCharsets.UTF_8);
-		return l_final_data;
+		l_finalData = new String(l_baos.toByteArray(), StandardCharsets.UTF_8);
+		return l_finalData;
 	}
 
 	/**
