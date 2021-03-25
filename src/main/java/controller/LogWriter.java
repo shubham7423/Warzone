@@ -31,16 +31,16 @@ public class LogWriter implements Observer {
 	 * function to display the current timestamp and the state changes have taken
 	 * places during execution
 	 * 
-	 * @param p_observable_state the object of Observable that contains the current
+	 * @param p_observableState the object of Observable that contains the current
 	 *                           state
 	 */
 	@Override
-	public void update(Observable p_observable_state) {
+	public void update(Observable p_observableState) {
 
 		try {
 			d_logFile = new FileWriter(
 					Paths.get(Paths.get("").toAbsolutePath().toString() + "/log/logfile.log").toString(), true);
-			d_logFile.append(d_dtf.format(d_now) + "> " + ((LogEntryBuffer) p_observable_state).getString() + "\n");
+			d_logFile.append(d_dtf.format(d_now) + "> " + ((LogEntryBuffer) p_observableState).getString() + "\n");
 			d_logFile.close();
 		} catch (IOException e) {
 			e.printStackTrace();
