@@ -9,8 +9,8 @@ import org.junit.Test;
  */
 public class CountryTest {
 
-	Continent d_Continent = new Continent(1, 2);
-	Country d_country = new Country(1, d_Continent);
+	Continent d_continent = new Continent(1, 2);
+	Country d_country = new Country(1, d_continent);
 
 	/**
 	 * Checks if country object is null.
@@ -30,7 +30,7 @@ public class CountryTest {
 
 	@Test
 	public void testContinent() {
-		assertEquals(d_Continent, d_country.getContinent());
+		assertEquals(d_continent, d_country.getContinent());
 	}
 
 	/**
@@ -57,15 +57,15 @@ public class CountryTest {
 	 */
 	@Test
 	public void testAddNeighbor() {
-		Country l_neighborCountry_1 = new Country(1, new Continent(1, 2));
-		d_country.addNeighbor(l_neighborCountry_1);
+		Country l_neighborCountry1 = new Country(1, new Continent(1, 2));
+		d_country.addNeighbor(l_neighborCountry1);
 		assertEquals(1, d_country.getNeighborCountries().size());
-		assertTrue(d_country.getNeighborCountries().contains(l_neighborCountry_1));
+		assertTrue(d_country.getNeighborCountries().contains(l_neighborCountry1));
 
-		Country l_neighborCountry_2 = new Country(2, new Continent(1, 2));
-		d_country.addNeighbor(l_neighborCountry_2);
+		Country l_neighborCountry2 = new Country(2, new Continent(1, 2));
+		d_country.addNeighbor(l_neighborCountry2);
 		assertEquals(2, d_country.getNeighborCountries().size());
-		assertTrue(d_country.getNeighborCountries().contains(l_neighborCountry_2));
+		assertTrue(d_country.getNeighborCountries().contains(l_neighborCountry2));
 	}
 
 	/**
