@@ -197,22 +197,58 @@ public class GameEngine {
 		return d_phase.deploy(p_splittedCommand);
 	}
 
+	/**
+	 * Function to support advance of armies from player country to enemy country or
+	 * own country
+	 * 
+	 * @param p_splittedCommand the command that has been splitted into multiple
+	 *                          parts for further processing
+	 * @return the result of the advance command
+	 */
 	public String advance(String[] p_splittedCommand) {
 		return d_phase.deploy(p_splittedCommand);
 	}
 
+	/**
+	 * Function to support airlift of armies to player's own countries
+	 * 
+	 * @param p_splittedCommand the command that has been splitted into multiple
+	 *                          parts for further processing
+	 * @return the result of the airlift command
+	 */
 	public String airlift(String[] p_splittedCommand) {
 		return d_phase.deploy(p_splittedCommand);
 	}
 
+	/**
+	 * Function to support bomb the country of enemy player
+	 * 
+	 * @param p_splittedCommand the command that has been splitted into multiple
+	 *                          parts for further processing
+	 * @return the result of the bomb command
+	 */
 	public String bomb(String[] p_splittedCommand) {
 		return d_phase.deploy(p_splittedCommand);
 	}
 
+	/**
+	 * Function to support blockade player own country
+	 * 
+	 * @param p_splittedCommand the command that has been splitted into multiple
+	 *                          parts for further processing
+	 * @return the result of the blockade command
+	 */
 	public String blockade(String[] p_splittedCommand) {
 		return d_phase.deploy(p_splittedCommand);
 	}
 
+	/**
+	 * Function to establish diplomacy among players
+	 * 
+	 * @param p_splittedCommand the command that has been splitted into multiple
+	 *                          parts for further processing
+	 * @return the result of the diplomacy command
+	 */
 	public String diplomacy(String[] p_splittedCommand) {
 		return d_phase.deploy(p_splittedCommand);
 	}
