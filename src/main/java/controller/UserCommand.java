@@ -45,7 +45,7 @@ public class UserCommand {
 		System.out.print("$ ");
 		l_userCommand = l_scannerScanner.nextLine();
 		String[] l_splittedCommandString = l_userCommand.split(" ");
-		if (l_splittedCommandString[0].equals("exit()")) {
+		if ("exit()".equals(l_splittedCommandString[0])) {
 			return "exit()";
 		}
 		return d_gameEngine.executeCommand(l_splittedCommandString);
@@ -60,7 +60,7 @@ public class UserCommand {
 		UserCommand l_UserCommand = new UserCommand();
 		while (true) {
 			String l_commandOpt = l_UserCommand.getCommand();
-			if (l_commandOpt.equals("exit()")) {
+			if ("exit()".equals(l_commandOpt)) {
 				break;
 			}
 			System.out.println(l_commandOpt);

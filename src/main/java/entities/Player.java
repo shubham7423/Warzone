@@ -204,7 +204,7 @@ public class Player {
 		while(!l_isCorrect) {
 			try {
 				String l_result = l_userCommand.getCommand();
-				if (l_result.equals("exit()")) {
+				if ("exit()".equals(l_result)) {
 					l_isCorrect = true;
 					d_isCommit = true;
 					return;

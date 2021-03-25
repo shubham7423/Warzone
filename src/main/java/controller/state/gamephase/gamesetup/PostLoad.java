@@ -39,7 +39,7 @@ public class PostLoad extends GameSetup {
 	@Override
 	public String gamePlayer(String[] p_commandSplitted) {
 		String l_result;
-		if (p_commandSplitted[0].equals("-add")) {
+		if ("-add".equals(p_commandSplitted[0])) {
 			l_result = addPlayer(p_commandSplitted[1]);
 		} else {
 			l_result = removePlayer(p_commandSplitted[1]);

@@ -58,7 +58,7 @@ public class ReadMap {
 				l_dataString = d_reader.nextLine();
 
 //				Read continents
-				if (l_dataString.equals("[continents]")) {
+				if ("[continents]".equals(l_dataString)) {
 					while (d_reader.hasNextLine()) {
 						l_line = d_reader.nextLine();
 						if (l_line.length() > 0) {
@@ -73,7 +73,7 @@ public class ReadMap {
 				}
 
 //				Read countries
-				else if (l_dataString.equals("[countries]")) {
+				else if ("[countries]".equals(l_dataString)) {
 					while (d_reader.hasNextLine()) {
 						l_line = d_reader.nextLine();
 						if (l_line.length() > 0) {
@@ -89,7 +89,7 @@ public class ReadMap {
 				}
 
 //				Read boundries
-				else if (l_dataString.equals("[borders]")) {
+				else if ("[borders]".equals(l_dataString)) {
 					while (d_reader.hasNextLine()) {
 						l_line = d_reader.nextLine();
 						if (l_line.length() > 0) {

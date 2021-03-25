@@ -232,7 +232,7 @@ public class GameEngine {
 		if (p_splittedCommand[1].split("\\.").length <= 1) {
 			return "File extension should be .map";
 		}
-		if (!p_splittedCommand[1].split("\\.")[1].equals("map")) {
+		if (!"map".equals(p_splittedCommand[1].split("\\.")[1])) {
 			return "File extension should be .map";
 		}
 		return d_phase.editMap(p_splittedCommand[1]);
@@ -258,7 +258,7 @@ public class GameEngine {
 		int l_argsPerCmd = 2;
 
 		for (int l_index = 1; l_index < p_splittedCommand.length; l_index++) {
-			if (p_splittedCommand[l_index].equals("-add") || p_splittedCommand[l_index].equals("-remove")) {
+			if ("-add".equals(p_splittedCommand[l_index])|| "-remove".equals(p_splittedCommand[l_index])) {
 				l_addRemoveCount++;
 			}
 		}
@@ -269,8 +269,8 @@ public class GameEngine {
 
 		int l_validAddRemovePlacement = 1;
 		while (l_validAddRemovePlacement < p_splittedCommand.length) {
-			if (!p_splittedCommand[l_validAddRemovePlacement].equals("-add")
-					&& !p_splittedCommand[l_validAddRemovePlacement].equals("-remove")) {
+			if (!"-add".equals(p_splittedCommand[l_validAddRemovePlacement])
+					&& !"-remove".equals(p_splittedCommand[l_validAddRemovePlacement])) {
 				return "Misplacement of -add and -remove keyword w.r.t number of arguments. Command is \"gameplayer -add playername -remove playername\". Use -add and -remove as per your need.";
 			}
 			l_validAddRemovePlacement += l_argsPerCmd;
@@ -278,26 +278,26 @@ public class GameEngine {
 
 		try {
 			while (l_i < p_splittedCommand.length) {
-				if (p_splittedCommand[l_i].equals("-add")) {
+				if ("-add".equals(p_splittedCommand[l_i])) {
 					l_commandParts = new String[3];
 					l_commandParts[0] = p_splittedCommand[l_i];
 					l_commandParts[1] = p_splittedCommand[l_i + 1];
-					if (!l_result.equals("")) {
+					if (!"".equals(l_result)) {
 						l_result += "\n";
 					}
 					l_result += d_phase.gamePlayer(l_commandParts);
 					l_i = l_i + 2;
-				} else if (p_splittedCommand[l_i].equals("-remove")) {
+				} else if ("-remove".equals(p_splittedCommand[l_i])) {
 					l_commandParts = new String[2];
 					l_commandParts[0] = p_splittedCommand[l_i];
 					l_commandParts[1] = p_splittedCommand[l_i + 1];
-					if (!l_result.equals("")) {
+					if (!"".equals(l_result)) {
 						l_result += "\n";
 					}
 					l_result += d_phase.gamePlayer(l_commandParts);
 					l_i = l_i + 2;
 				} else {
-					if (!l_result.equals("")) {
+					if (!"".equals(l_result)) {
 						l_result += "\n";
 					}
 					l_result += "Command needs to have -add or -remove.";
@@ -339,10 +339,10 @@ public class GameEngine {
 		int l_removeCount = 0;
 
 		for (int l_index = 1; l_index < p_splittedCommand.length; l_index++) {
-			if (p_splittedCommand[l_index].equals("-add")) {
+			if ("-add".equals(p_splittedCommand[l_index])) {
 				l_addCount++;
 			}
-			if (p_splittedCommand[l_index].equals("-remove")) {
+			if ("-remove".equals(p_splittedCommand[l_index])) {
 				l_removeCount++;
 			}
 		}
@@ -353,11 +353,11 @@ public class GameEngine {
 
 		int l_validAddRemovePlacement = 1;
 		while (l_validAddRemovePlacement < p_splittedCommand.length) {
-			if (!p_splittedCommand[l_validAddRemovePlacement].equals("-add")
-					&& !p_splittedCommand[l_validAddRemovePlacement].equals("-remove")) {
+			if (!"-add".equals(p_splittedCommand[l_validAddRemovePlacement])
+					&& !"-remove".equals(p_splittedCommand[l_validAddRemovePlacement])) {
 				return "Misplacement of -add and -remove keyword w.r.t number of arguments. Command is: \"editcontinent -add continentId controlValue -remove continentId\". Use -add and -remove as per your need.";
 			}
-			if (p_splittedCommand[l_validAddRemovePlacement].equals("-add")) {
+			if ("-add".equals(p_splittedCommand[l_validAddRemovePlacement])) {
 				l_validAddRemovePlacement += 3;
 			} else {
 				l_validAddRemovePlacement += 2;
@@ -366,7 +366,7 @@ public class GameEngine {
 
 		l_validAddRemovePlacement = 1;
 		while (l_validAddRemovePlacement < p_splittedCommand.length) {
-			if (p_splittedCommand[l_validAddRemovePlacement].equals("-add")) {
+			if ("-add".equals(p_splittedCommand[l_validAddRemovePlacement])) {
 				if (!(isNumeric(p_splittedCommand[l_validAddRemovePlacement + 1])
 						&& isNumeric(p_splittedCommand[l_validAddRemovePlacement + 2]))) {
 					return "You can only use Integer to represent continentId and controlValue for adding continent. Add Continent command is \"editneighbor -add continentId controlValue\".";
@@ -382,27 +382,27 @@ public class GameEngine {
 
 		try {
 			while (l_i < p_splittedCommand.length) {
-				if (p_splittedCommand[l_i].equals("-add")) {
+				if ("-add".equals(p_splittedCommand[l_i])) {
 					l_commandParts = new String[3];
 					l_commandParts[0] = p_splittedCommand[l_i];
 					l_commandParts[1] = p_splittedCommand[l_i + 1];
 					l_commandParts[2] = p_splittedCommand[l_i + 2];
-					if (!l_result.equals("")) {
+					if (!"".equals(l_result)) {
 						l_result += "\n";
 					}
 					l_result += d_phase.editContinent(l_commandParts);
 					l_i = l_i + 3;
-				} else if (p_splittedCommand[l_i].equals("-remove")) {
+				} else if ("-remove".equals(p_splittedCommand[l_i])) {
 					l_commandParts = new String[2];
 					l_commandParts[0] = p_splittedCommand[l_i];
 					l_commandParts[1] = p_splittedCommand[l_i + 1];
-					if (!l_result.equals("")) {
+					if (!"".equals(l_result)) {
 						l_result += "\n";
 					}
 					l_result += d_phase.editContinent(l_commandParts);
 					l_i = l_i + 2;
 				} else {
-					if (!l_result.equals("")) {
+					if (!"".equals(l_result)) {
 						l_result += "\n";
 					}
 					l_result += "Command needs to have -add or -remove.";
@@ -435,10 +435,10 @@ public class GameEngine {
 		int l_removeCount = 0;
 
 		for (int l_index = 1; l_index < p_splittedCommand.length; l_index++) {
-			if (p_splittedCommand[l_index].equals("-add")) {
+			if ("-add".equals(p_splittedCommand[l_index])) {
 				l_addCount++;
 			}
-			if (p_splittedCommand[l_index].equals("-remove")) {
+			if ("-remove".equals(p_splittedCommand[l_index])) {
 				l_removeCount++;
 			}
 		}
@@ -449,11 +449,11 @@ public class GameEngine {
 
 		int l_validAddRemovePlacement = 1;
 		while (l_validAddRemovePlacement < p_splittedCommand.length) {
-			if (!p_splittedCommand[l_validAddRemovePlacement].equals("-add")
-					&& !p_splittedCommand[l_validAddRemovePlacement].equals("-remove")) {
+			if (!"-add".equals(p_splittedCommand[l_validAddRemovePlacement])
+					&& !"-remove".equals(p_splittedCommand[l_validAddRemovePlacement])) {
 				return "Misplacement of -add and -remove keyword w.r.t number of arguments. Command is \"editcountry -add countryId continentId -remove countryId\". Use -add and -remove as per your need.";
 			}
-			if (p_splittedCommand[l_validAddRemovePlacement].equals("-add")) {
+			if ("-add".equals(p_splittedCommand[l_validAddRemovePlacement])) {
 				l_validAddRemovePlacement += 3;
 			} else {
 				l_validAddRemovePlacement += 2;
@@ -462,7 +462,7 @@ public class GameEngine {
 
 		l_validAddRemovePlacement = 1;
 		while (l_validAddRemovePlacement < p_splittedCommand.length) {
-			if (p_splittedCommand[l_validAddRemovePlacement].equals("-add")) {
+			if ("-add".equals(p_splittedCommand[l_validAddRemovePlacement])) {
 				if (!(isNumeric(p_splittedCommand[l_validAddRemovePlacement + 1])
 						&& isNumeric(p_splittedCommand[l_validAddRemovePlacement + 2]))) {
 					return "You can only use Integer to represent countryId and continentId for adding Country. Add Country command is \"editcountry -add countryId continentId\".";
@@ -477,27 +477,27 @@ public class GameEngine {
 		}
 
 		while (l_i < p_splittedCommand.length) {
-			if (p_splittedCommand[l_i].equals("-add")) {
+			if ("-add".equals(p_splittedCommand[l_i])) {
 				l_commandParts = new String[3];
 				l_commandParts[0] = p_splittedCommand[l_i];
 				l_commandParts[1] = p_splittedCommand[l_i + 1];
 				l_commandParts[2] = p_splittedCommand[l_i + 2];
-				if (!l_result.equals("")) {
+				if (!"".equals(l_result)) {
 					l_result += "\n";
 				}
 				l_result += d_phase.editCountry(l_commandParts);
 				l_i = l_i + 3;
-			} else if (p_splittedCommand[l_i].equals("-remove")) {
+			} else if ("-remove".equals(p_splittedCommand[l_i])) {
 				l_commandParts = new String[2];
 				l_commandParts[0] = p_splittedCommand[l_i];
 				l_commandParts[1] = p_splittedCommand[l_i + 1];
-				if (!l_result.equals("")) {
+				if (!"".equals(l_result)) {
 					l_result += "\n";
 				}
 				l_result += d_phase.editCountry(l_commandParts);
 				l_i = l_i + 2;
 			} else {
-				if (!l_result.equals("")) {
+				if (!"".equals(l_result)) {
 					l_result += "\n";
 				}
 				l_result += "Command needs to have -add or -remove.";
@@ -527,10 +527,10 @@ public class GameEngine {
 		int l_removeCount = 0;
 
 		for (int l_index = 1; l_index < p_splittedCommand.length; l_index++) {
-			if (p_splittedCommand[l_index].equals("-add")) {
+			if ("-add".equals(p_splittedCommand[l_index])) {
 				l_addCount++;
 			}
-			if (p_splittedCommand[l_index].equals("-remove")) {
+			if ("-remove".equals(p_splittedCommand[l_index])) {
 				l_removeCount++;
 			}
 		}
@@ -541,11 +541,11 @@ public class GameEngine {
 
 		int l_validAddRemovePlacement = 1;
 		while (l_validAddRemovePlacement < p_splittedCommand.length) {
-			if (!p_splittedCommand[l_validAddRemovePlacement].equals("-add")
-					&& !p_splittedCommand[l_validAddRemovePlacement].equals("-remove")) {
+			if (!"-add".equals(p_splittedCommand[l_validAddRemovePlacement])
+					&& !"-remove".equals(p_splittedCommand[l_validAddRemovePlacement])) {
 				return "Misplacement of -add and -remove keyword w.r.t number of arguments. Command is \"editneighbor -add countryId neighborCountryId -remove countryId neighborCountryId\". Use -add and -remove as per your need.";
 			}
-			if (p_splittedCommand[l_validAddRemovePlacement].equals("-add")) {
+			if ("-add".equals(p_splittedCommand[l_validAddRemovePlacement])) {
 				l_validAddRemovePlacement += 3;
 			} else {
 				l_validAddRemovePlacement += 3;
@@ -554,7 +554,7 @@ public class GameEngine {
 
 		l_validAddRemovePlacement = 1;
 		while (l_validAddRemovePlacement < p_splittedCommand.length) {
-			if (p_splittedCommand[l_validAddRemovePlacement].equals("-add")) {
+			if ("-add".equals(p_splittedCommand[l_validAddRemovePlacement])) {
 				if (!(isNumeric(p_splittedCommand[l_validAddRemovePlacement + 1])
 						&& isNumeric(p_splittedCommand[l_validAddRemovePlacement + 2]))) {
 					return "You can only use Integer to represent continentId and neighborCountryId for adding Neighbor. Add Neighbor command is \"editneighbor -add countryId neighborCountryId\".";
@@ -570,28 +570,28 @@ public class GameEngine {
 		}
 
 		while (l_i < p_splittedCommand.length) {
-			if (p_splittedCommand[l_i].equals("-add")) {
+			if ("-add".equals(p_splittedCommand[l_i])) {
 				l_commandParts = new String[3];
 				l_commandParts[0] = p_splittedCommand[l_i];
 				l_commandParts[1] = p_splittedCommand[l_i + 1];
 				l_commandParts[2] = p_splittedCommand[l_i + 2];
-				if (!l_result.equals("")) {
+				if (!"".equals(l_result)) {
 					l_result += "\n";
 				}
 				l_result += d_phase.editNeighbor(l_commandParts);
 				l_i = l_i + 3;
-			} else if (p_splittedCommand[l_i].equals("-remove")) {
+			} else if ("-remove".equals(p_splittedCommand[l_i])) {
 				l_commandParts = new String[3];
 				l_commandParts[0] = p_splittedCommand[l_i];
 				l_commandParts[1] = p_splittedCommand[l_i + 1];
 				l_commandParts[2] = p_splittedCommand[l_i + 2];
-				if (!l_result.equals("")) {
+				if (!"".equals(l_result)) {
 					l_result += "\n";
 				}
 				l_result += d_phase.editNeighbor(l_commandParts);
 				l_i = l_i + 3;
 			} else {
-				if (!l_result.equals("")) {
+				if (!"".equals(l_result)) {
 					l_result += "\n";
 				}
 				l_result += "Command needs to have -add or -remove.";
@@ -615,7 +615,7 @@ public class GameEngine {
 		if (p_splittedCommand[1].split("\\.").length <= 1) {
 			return "File extension should be .map";
 		}
-		if (!p_splittedCommand[1].split("\\.")[1].equals("map")) {
+		if (!"map".equals(p_splittedCommand[1].split("\\.")[1])) {
 			return "File extension should be .map";
 		}
 		return d_phase.saveMap(p_splittedCommand[1]);
@@ -654,7 +654,7 @@ public class GameEngine {
 		if (p_splittedCommand[1].split("\\.").length <= 1) {
 			return "File extension should be .map";
 		}
-		if (!p_splittedCommand[1].split("\\.")[1].equals("map")) {
+		if (!"map".equals(p_splittedCommand[1].split("\\.")[1])) {
 			return "File extension should be .map";
 		}
 		return d_phase.loadMap(p_splittedCommand[1]);
