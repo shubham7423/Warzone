@@ -81,11 +81,12 @@ public class PostLoad extends GameSetup {
 				break;
 			}
 		}
+		System.out.println("Countries Assigned");
 		d_gameEngine.d_logEntryBuffer.setString("Countries Assigned");
 		System.out.println("Countries Assigned");
 		next();
 		d_gameEngine.getPhase().assignArmies();
-		return "Countries Assigned";
+		return "";
 	}
 
 	/**

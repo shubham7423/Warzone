@@ -73,7 +73,8 @@ public class AdvanceTest {
 
 	/**
 	 * test where no. are cards are checked in the player's list of cards after the
-	 * attack
+	 * attack and correct owner is set when country is conquered and correct armies
+	 * are present in source and destination countries.
 	 */
 	@Test
 	public void testExecuteOrder2() {
@@ -88,11 +89,16 @@ public class AdvanceTest {
 
 		l_advanceCmd.executeOrder(d_game);
 		HashMap<String, Integer> l_ordersAfter = d_game.d_players.get("Shubham").d_cardsOwned;
+
+		assertEquals("Shubham", d_game.getGameMap().getCountries().get(2).getPlayer().getName());
+		assertEquals(1, d_game.getGameMap().getCountries().get(1).getNumberOfArmiesPresent());
+		assertEquals(1, d_game.getGameMap().getCountries().get(2).getNumberOfArmiesPresent());
 		assertFalse(l_ordersBefore.equals(l_ordersAfter));
 	}
 
 	/**
-	 * test where exact no. of defending armies were defeated by the attackers
+	 * test where exact no. of defending armies were defeated by the attackers and
+	 * correct armies remain in the countries
 	 */
 	@Test
 	public void testExecuteOrder3() {
@@ -104,9 +110,12 @@ public class AdvanceTest {
 		l_deploy3.executeOrder(d_game);
 
 		Advance l_advanceCmd = new Advance(d_game.d_players.get("Shubham"), 1, 2, 2);
+		String l_result = l_advanceCmd.executeOrder(d_game);
+		assertEquals(1, d_game.getGameMap().getCountries().get(1).getNumberOfArmiesPresent());
+		assertEquals(0, d_game.getGameMap().getCountries().get(2).getNumberOfArmiesPresent());
 		assertEquals(
 				"Armies from country \"1\" were not able to advance to country \"2\" as the attacking armies were only able to defeat the exact number of armies present in the defending country",
-				l_advanceCmd.executeOrder(d_game));
+				l_result);
 	}
 
 	/**

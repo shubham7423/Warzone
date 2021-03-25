@@ -187,7 +187,7 @@ public class EndPhase extends GamePhase {
 	 */
 	@Override
 	public void next() {
-
+		System.exit(0);
 	}
 
 	/**

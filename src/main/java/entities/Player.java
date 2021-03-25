@@ -23,7 +23,7 @@ public class Player {
 	private String d_name;
 	private HashMap<Integer, Country> d_countries;
 	private HashMap<Integer, Continent> d_continents;
-	private Queue<Orders> d_orders;
+	public Queue<Orders> d_orders;
 	private int d_numberOfArmies;
 	private boolean d_isCommit;
 	public HashMap<String, Integer> d_cardsOwned;
