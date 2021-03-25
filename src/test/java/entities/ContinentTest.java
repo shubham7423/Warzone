@@ -6,10 +6,8 @@ import org.junit.Test;
 
 /**
  * Tests for Continent
- *
  */
 public class ContinentTest {
-
 	Continent d_continent = new Continent(1, 3);
 
 	/**

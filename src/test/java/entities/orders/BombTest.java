@@ -11,7 +11,6 @@ import controller.state.gamephase.gamesetup.PostLoad;
 
 /**
  * Test to check that bomb command works perfectly
- *
  */
 public class BombTest {
 

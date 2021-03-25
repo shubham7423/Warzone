@@ -9,7 +9,6 @@ import entities.orders.AllTests;
 
 /**
  * Test suite to run all the test classes in the project
- *
  */
 @RunWith(Suite.class)
 @SuiteClasses({ ControllerSuiteClass.class, EntitiesSuiteClass.class, MapopsSuiteClass.class, AllTests.class })

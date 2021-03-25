@@ -6,7 +6,6 @@ import controller.GameEngine;
 
 /**
  * PostEdit is inherited from the EditPhase class to support commands valid in post editing phase
- *
  */
 public class PostEdit extends EditPhase {
 

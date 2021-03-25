@@ -6,7 +6,6 @@ import org.junit.runners.Suite.SuiteClasses;
 
 /**
  * Test suite to run all the test classes in controller package
- *
  */
 @RunWith(Suite.class)
 @SuiteClasses({ GameEngineTest.class})

@@ -6,7 +6,6 @@ import org.junit.runners.Suite.SuiteClasses;
 
 /**
  * Test suite to run all the test classes in mapops package
- *
  */
 @RunWith(Suite.class)
 @SuiteClasses({ MapValidationTest.class, ReadMapTest.class, WriteMapTest.class })

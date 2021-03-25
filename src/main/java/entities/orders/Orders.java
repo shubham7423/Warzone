@@ -4,7 +4,6 @@ import controller.GameEngine;
 
 /**
  * Interface implemented by all the order classes
- *
  */
 public interface Orders {
 	/**

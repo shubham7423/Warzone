@@ -11,7 +11,6 @@ import controller.state.gamephase.gamesetup.PostLoad;
 
 /**
  * Test to check that airlift command works perfectly
- *
  */
 public class AirliftTest {
 GameEngine d_game;

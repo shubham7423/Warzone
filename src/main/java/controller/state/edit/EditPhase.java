@@ -17,46 +17,7 @@ public abstract class EditPhase extends Phase {
 	 */
 	public EditPhase(GameEngine p_gameEngine) {
 		super(p_gameEngine);
-
 	}
-
-//	/**
-//	 * abstract function that can be used in edit phase of the command to edit map
-//	 * 
-//	 * @param p_fileName name of the map file used for editing
-//	 */
-//	abstract public String editMap(String p_fileName);
-//
-//	/**
-//	 * abstract function that can be used in edit phase of the command for adding
-//	 * and removing continents
-//	 * 
-//	 * @param p_commandSplitted splitted command parts used for execution of command
-//	 */
-//	abstract public String editContinent(String[] p_commandSplitted);
-//
-//	/**
-//	 * abstract function that can be used in edit phase of the command for adding
-//	 * and removing countries
-//	 * 
-//	 * @param p_commandSplitted splitted command parts used for execution of command
-//	 */
-//	abstract public String editCountry(String[] p_commandSplitted);
-//
-//	/**
-//	 * abstract function that can be used in edit phase of the command for adding
-//	 * and removing neighbors
-//	 * 
-//	 * @param p_commandSplitted splitted command parts used for execution of command
-//	 */
-//	abstract public String editNeighbor(String[] p_commandSplitted);
-//
-//	/**
-//	 * abstract function that can be used in edit phase of the command to save map
-//	 * 
-//	 * @param p_fileName name of the map file used for saving
-//	 */
-//	abstract public String saveMap(String p_fileName);
 
 	/**
 	 * function to print invalid command as the following command cannot be used in
@@ -228,5 +189,4 @@ public abstract class EditPhase extends Phase {
 	public String checkContinentOwnership() {
 		return printInvalidCommandMessage();
 	}
-
 }

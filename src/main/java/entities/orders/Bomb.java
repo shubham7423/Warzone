@@ -45,7 +45,6 @@ public class Bomb implements Orders {
 	public String executeOrder(GameEngine p_game) {
 		if (d_player.d_cardsOwned.get("bomb") >= 1) {
 			if (!d_player.getCountries().containsKey(d_country)) {
-
 				HashSet<Integer> intCountry = new HashSet<>();
 				for (Country tempCountry : d_player.getCountries().values()) {
 					intCountry.addAll(tempCountry.getNeighborIds());
@@ -80,5 +79,4 @@ public class Bomb implements Orders {
 			return String.format("Player \"%s\" doesn't have bomb card.", d_player.getName());
 		}
 	}
-
 }

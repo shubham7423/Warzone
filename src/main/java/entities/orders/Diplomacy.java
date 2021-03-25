@@ -10,7 +10,6 @@ import entities.Player;
  * turn after it is played.
  */
 public class Diplomacy implements Orders {
-
 	private Player d_player;
 	private Player d_otherPlayer;
 	private String d_otherPlayerName;

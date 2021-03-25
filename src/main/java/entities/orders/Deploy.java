@@ -5,10 +5,8 @@ import entities.Player;
 
 /**
  * Players can place reinforcements to the countries they control.
- *
  */
 public class Deploy implements Orders {
-
 	private Player d_player;
 	private int d_country;
 	private int d_armies;
@@ -45,5 +43,4 @@ public class Deploy implements Orders {
 		return String.format("Player \"%s\" deployed \"%d\" armies to country \"%d\"", d_player.getName(), d_armies,
 				d_country);
 	}
-
 }

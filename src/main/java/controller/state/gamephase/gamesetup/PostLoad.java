@@ -13,7 +13,6 @@ import entities.Player;
 /**
  * Phase entered after preload class, it contains methods to add or remove
  * players from game and to assign countries randomly to players.
- *
  */
 public class PostLoad extends GameSetup {
 
@@ -132,5 +131,4 @@ public class PostLoad extends GameSetup {
 	public void next() {
 		d_gameEngine.setPhase(new AssignArmies(d_gameEngine));
 	}
-
 }

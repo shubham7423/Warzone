@@ -7,10 +7,9 @@ import controller.state.edit.PreEdit;
 
 /**
  * Main class from where game starts, user commands are taken from here..
- *
  */
 public class UserCommand {
-	Scanner l_scannerScanner = new Scanner(System.in);
+	Scanner d_scannerScanner = new Scanner(System.in);
 
 	public GameEngine d_gameEngine;
 
@@ -43,7 +42,7 @@ public class UserCommand {
 		String l_userCommand;
 		d_gameEngine.setUserCommand(this);
 		System.out.print("$ ");
-		l_userCommand = l_scannerScanner.nextLine();
+		l_userCommand = d_scannerScanner.nextLine();
 		String[] l_splittedCommandString = l_userCommand.split(" ");
 		if ("exit()".equals(l_splittedCommandString[0])) {
 			return "exit()";
@@ -66,7 +65,7 @@ public class UserCommand {
 			System.out.println(l_commandOpt);
 		}
 		System.out.print("\nThank you for playing Warzone :)");
-		l_UserCommand.l_scannerScanner.close();
+		l_UserCommand.d_scannerScanner.close();
 	}
 
 	/**

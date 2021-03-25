@@ -8,7 +8,6 @@ import entities.orders.DeployTest;
 
 /**
  * Test suite to run all the test classes in entities package
- *
  */
 @RunWith(Suite.class)
 @SuiteClasses({ ContinentTest.class, CountryTest.class, DeployTest.class, GameMapTest.class, PlayerTest.class })

@@ -4,9 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * 
  * Continent in a Map
- *
  */
 public class Continent {
 	private int d_id;
@@ -82,5 +80,4 @@ public class Continent {
 		}
 		return l_countryNameSet;
 	}
-
 }

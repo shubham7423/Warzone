@@ -11,7 +11,6 @@ import controller.state.gamephase.gamesetup.PostLoad;
 
 /**
  * Test to check that blockade command works perfectly
- *
  */
 public class BlockadeTest {
 	GameEngine d_game;

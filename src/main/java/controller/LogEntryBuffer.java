@@ -3,7 +3,6 @@ package controller;
 /**
  * This is the class that inherits Observable class whose function is to obtain
  * the outputs that are obtained after executing commands
- *
  */
 public class LogEntryBuffer extends Observable {
 	private String d_value;

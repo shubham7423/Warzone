@@ -7,7 +7,6 @@ import entities.GameMap;
 
 /**
  * Test for WriteMap
- *
  */
 public class WriteMapTest {
 	/**

@@ -5,9 +5,7 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
- * 
  * Tests Country class
- *
  */
 public class CountryTest {
 

@@ -16,7 +16,6 @@ import controller.state.gamephase.gamesetup.PostLoad;
 
 /**
  * Test to check that advance command works perfectly
- *
  */
 public class AdvanceTest {
 

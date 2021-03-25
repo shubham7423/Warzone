@@ -9,6 +9,10 @@ import org.junit.Test;
 import controller.GameEngine;
 import controller.state.gamephase.gamesetup.PostLoad;
 
+/**
+ * Test to check that diplomacy card and negotiate command works perfectly.
+ *
+ */
 public class DiplomacyTest {
 
 	GameEngine d_game;

@@ -5,7 +5,6 @@ import java.util.Set;
 
 /**
  * Country in a Map
- *
  */
 public class Country {
 	private int d_id;

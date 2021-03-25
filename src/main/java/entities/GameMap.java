@@ -18,7 +18,6 @@ import entities.mapops.MapValidation;
 /**
  * GameMap which holds variables which contains information continents,
  * countries and neighbourhood between countries.
- *
  */
 public class GameMap {
 	private HashMap<Integer, Continent> d_continents;
@@ -188,9 +187,7 @@ public class GameMap {
 
 		try (PrintStream l_ps = new PrintStream(l_baos, true, "UTF-8")) {
 			l_tt.printTable(l_ps, 0);
-
 		} catch (UnsupportedEncodingException p_e) {
-
 			p_e.printStackTrace();
 		}
 
@@ -224,7 +221,6 @@ public class GameMap {
 		l_tt.setSort(0);
 		try (PrintStream l_ps = new PrintStream(l_baos, true, "UTF-8")) {
 			l_tt.printTable(l_ps, 0);
-
 		} catch (UnsupportedEncodingException p_e) {
 			p_e.printStackTrace();
 		}

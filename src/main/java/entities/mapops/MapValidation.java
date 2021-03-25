@@ -10,7 +10,6 @@ import entities.GameMap;
 /**
  * This class will validate the map of the game connection of all countries,
  * continents with their respective countries mapping
- *
  */
 public class MapValidation {
 	private boolean d_connectedGraph;

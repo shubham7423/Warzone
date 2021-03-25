@@ -12,7 +12,6 @@ import entities.orders.Deploy;
 
 /**
  * Test to check that deploy command works perfectly
- *
  */
 public class DeployTest {
 
@@ -68,5 +67,4 @@ public class DeployTest {
 		Deploy l_Deploy = new Deploy(d_game.d_players.get("Shubham"), l_country, l_armies);
 		assertEquals("Player \"Shubham\" does not control country \"4\"", l_Deploy.executeOrder(d_game));
 	}
-
 }

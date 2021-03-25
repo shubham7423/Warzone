@@ -7,7 +7,6 @@ import controller.GameEngine;
 
 /**
  * An abstract class for the Phase implementation of state pattern
- *
  */
 public abstract class Phase {
 	public GameEngine d_gameEngine;
@@ -96,8 +95,6 @@ public abstract class Phase {
 	 * @return output string of execution of command
 	 */
 	abstract public String removePlayer(String p_playerName);
-
-//	abstract public GameMap getGameMap();
 
 	/**
 	 * Abstract function to assign countries

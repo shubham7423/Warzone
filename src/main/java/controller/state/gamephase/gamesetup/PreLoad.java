@@ -6,7 +6,6 @@ import entities.GameMap;
 /**
  * Phase entered after map is saved successfully or at the start of the game, it
  * contains methods to load a map.
- *
  */
 public class PreLoad extends GameSetup {
 
@@ -64,7 +63,6 @@ public class PreLoad extends GameSetup {
 	 */
 	@Override
 	public String addPlayer(String p_playerName) {
-		// TODO Auto-generated method stub
 		return String.format("Map Not Loaded yet");
 	}
 
@@ -76,7 +74,6 @@ public class PreLoad extends GameSetup {
 	 */
 	@Override
 	public String removePlayer(String p_playerName) {
-		// TODO Auto-generated method stub
 		return String.format("Map Not Loaded yet");
 	}
 

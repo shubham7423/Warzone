@@ -129,11 +129,8 @@ public class Advance implements Orders {
 						"Armies from country \"%d\" were not able to advance to country \"%d\" as the attacking armies were only able to defeat the exact number of armies present in the defending country",
 						d_countryNameFrom, d_countryNameTo, d_player.getName());
 			} else {
-//			elif (l_capabilitySourceCountryArmies < l_destinationCountryArmies) {
 				d_player.getCountries().get(d_countryNameFrom)
-//						.setNumberOfArmiesPresent(l_sourceCountryArmies - l_capabilityDestinationCountryArmies);
 						.setNumberOfArmiesPresent(l_sourceCountryArmies - d_armies);
-//				d_player.getCountries().get(d_countryNameTo).removeArmies(l_capabilitySourceCountryArmies);
 				p_game.getGameMap().getCountries().get(d_countryNameTo).removeArmies(l_capabilitySourceCountryArmies);
 				return String.format(
 						"Armies from country \"%d\" were not able to advance to country \"%d\" as the attacking armies could not defeat all the armies present in the defending country",
@@ -141,5 +138,4 @@ public class Advance implements Orders {
 			}
 		}
 	}
-
 }

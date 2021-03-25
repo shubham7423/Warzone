@@ -18,7 +18,6 @@ public class ExecuteOrders extends GamePlay {
 	 */
 	public ExecuteOrders(GameEngine p_gameEngine) {
 		super(p_gameEngine);
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -27,7 +26,6 @@ public class ExecuteOrders extends GamePlay {
 	 */
 	@Override
 	public String assignArmies() {
-		// TODO Auto-generated method stub
 		return printInvalidCommandMessage();
 	}
 
@@ -37,7 +35,6 @@ public class ExecuteOrders extends GamePlay {
 	 */
 	@Override
 	public String issueOrders() {
-		// TODO Auto-generated method stub
 		return printInvalidCommandMessage();
 	}
 	
@@ -98,7 +95,6 @@ public class ExecuteOrders extends GamePlay {
 	 */
 	@Override
 	public String deploy(String[] p_commandSplitted) {
-		// TODO Auto-generated method stub
 		return printInvalidCommandMessage();
 	}
 	
@@ -158,5 +154,4 @@ public class ExecuteOrders extends GamePlay {
 	public void next() {
 		d_gameEngine.setPhase(new AssignArmies(d_gameEngine));
 	}
-
 }

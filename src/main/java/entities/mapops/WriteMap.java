@@ -7,7 +7,6 @@ import entities.*;
 
 /**
  * Class to write into map file
- * 
  */
 public class WriteMap {
 	private GameMap d_gameMap;

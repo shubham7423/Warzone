@@ -10,9 +10,7 @@ import controller.state.gamephase.gamesetup.PostLoad;
 import controller.state.gamephase.gamesetup.PreLoad;
 
 /**
- * 
  * GameEngine Test
- *
  */
 public class GameEngineTest {
 	private GameEngine d_gameEngine = new GameEngine();
@@ -49,30 +47,27 @@ public class GameEngineTest {
 		String l_loadResultString3 = d_gameEngine.executeCommand(l_loadCommand3);
 		assertEquals("File extension should be .map", l_loadResultString3);
 	}
-//
-//	/**
-//	 * Test to check addition and deletion of continents Checked by adding a correct
-//	 * continent id and, continent with id already present in map Checked by
-//	 * removing a continent and also checked that correct results are obtained by
-//	 * removing continent id which is not present in map.
-//	 */
+
+	/**
+	 * Test to check addition and deletion of continents Checked by adding a correct
+	 * continent id and, continent with id already present in map Checked by
+	 * removing a continent and also checked that correct results are obtained by
+	 * removing continent id which is not present in map.
+	 */
 	@Test
 	public void testEditContinent() {
 		d_gameEngine.setPhase(new PreEdit(d_gameEngine));
 		String[] l_loadCommand1 = new String[] { "editmap", "WorldMap.map" };
 		String l_loadResultString1 = d_gameEngine.executeCommand(l_loadCommand1);
 
-		//d_gameEngine.setPhase(new PreEdit(d_gameEngine));
 		String[] l_addContinent1 = new String[] { "editcontinent", "-add", "1", "2" };
 		String l_addResult1 = d_gameEngine.executeCommand(l_addContinent1);
 		assertEquals("Continent \"1\" added to map", l_addResult1);
 		
-		//d_gameEngine.setPhase(new PreEdit(d_gameEngine));
 		String[] l_addContinent2 = new String[] { "editcontinent", "-add", "1", "2" };
 		String l_addResult2 = d_gameEngine.executeCommand(l_addContinent2);
 		assertEquals("Continent \"1\" already present in map", l_addResult2);
 
-		//d_gameEngine.setPhase(new PreEdit(d_gameEngine));
 		String[] l_removeContinent1 = new String[] { "editcontinent", "-remove", "1" };
 		String l_removeResult1 = d_gameEngine.executeCommand(l_removeContinent1);
 		assertEquals("Continent \"1\" successfully removed from map", l_removeResult1);
@@ -114,8 +109,8 @@ public class GameEngineTest {
 		assertEquals("Country \"1\" not present in map", l_removeResult2);
 	}
 
-/**
- * Test to check addition and deletion of neighbors Checked by adding a country
+	/**
+	 * Test to check addition and deletion of neighbors Checked by adding a country
 	 * to neighbor list of another country, and also checked that correct results
 	 * were obtained by adding already added country to neighbor Checked that
 	 * countries are correctly removed from source country neighbor list and correct
@@ -254,5 +249,4 @@ public class GameEngineTest {
 		String l_resValString3 = l_gameEngine3.executeCommand(l_valString3);
 		assertEquals("Cannot validate map", l_resValString3);
 	}
-
 }

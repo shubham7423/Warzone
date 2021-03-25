@@ -11,11 +11,9 @@ import entities.GameMap;
 
 /**
  * Class to read map file
- *
  */
 public class ReadMap {
 	private GameMap d_gameMap;
-
 	private HashMap<String, Integer> d_continentsMap;
 	private HashMap<Integer, String> d_countriesMap;
 	Scanner d_reader;
@@ -112,7 +110,6 @@ public class ReadMap {
 		} catch (FileNotFoundException p_e) {
 			return false;
 		}
-
 	}
 
 	/**

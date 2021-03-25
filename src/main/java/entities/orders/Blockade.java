@@ -1,6 +1,3 @@
-/**
- * 
- */
 package entities.orders;
 
 import controller.GameEngine;

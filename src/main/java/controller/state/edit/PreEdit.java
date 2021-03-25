@@ -11,7 +11,6 @@ import entities.GameMap;
 /**
  * PreEdit is inherited from the EditPhase class to support commands valid in
  * pre editing phase
- *
  */
 public class PreEdit extends EditPhase {
 
@@ -117,5 +116,4 @@ public class PreEdit extends EditPhase {
 	public void next() {
 		d_gameEngine.setPhase(new PostEdit(d_gameEngine));
 	}
-
 }

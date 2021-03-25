@@ -211,5 +211,4 @@ public class EndPhase extends GamePhase {
 	public String checkContinentOwnership() {
 		return printInvalidCommandMessage();
 	}
-
 }

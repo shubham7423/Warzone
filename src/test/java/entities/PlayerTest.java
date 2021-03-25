@@ -6,7 +6,6 @@ import org.junit.Test;
 
 /**
  * Player class test case
- *
  */
 public class PlayerTest {
 
@@ -43,7 +42,6 @@ public class PlayerTest {
 		d_player.addCountry(l_country2);
 		d_player.removeCountry(2);
 		assertFalse(d_player.getCountries().keySet().contains(2));
-
 	}
 
 	/**
@@ -107,5 +105,4 @@ public class PlayerTest {
 		d_player.setNumberOfArmies();
 		assertEquals(7, d_player.getNumberOfArmies());
 	}
-
 }

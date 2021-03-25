@@ -8,9 +8,8 @@ import java.util.List;
  * observers and observables (subject). It also implements the notification
  * mechanism that the observable will trigger when its state changes.
  */
-
 public class Observable {
-	private List<Observer> observers = new ArrayList<Observer>();
+	private List<Observer> d_observers = new ArrayList<Observer>();
 
 	/**
 	 * attach a view to the model.
@@ -18,7 +17,7 @@ public class Observable {
 	 * @param p_o: view to be added to the list of observers to be notified.
 	 */
 	public void attach(Observer p_o) {
-		this.observers.add(p_o);
+		this.d_observers.add(p_o);
 	}
 
 	/**
@@ -27,8 +26,8 @@ public class Observable {
 	 * @param p_o: view to be removed from the list of observers.
 	 */
 	public void detach(Observer p_o) {
-		if (!observers.isEmpty()) {
-			observers.remove(p_o);
+		if (!d_observers.isEmpty()) {
+			d_observers.remove(p_o);
 		}
 	}
 
@@ -38,7 +37,7 @@ public class Observable {
 	 * @param p_o: object that contains the information to be observed.
 	 */
 	public void notifyObservers(Observable p_o) {
-		for (Observer observer : observers) {
+		for (Observer observer : d_observers) {
 			observer.update(p_o);
 		}
 	}

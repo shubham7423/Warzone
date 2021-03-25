@@ -18,7 +18,6 @@ import entities.orders.*;
  * Player in a game contains information about the continents and countries
  * controlled by player, cards the player have, method to order input from user,
  * queue to store player order and number of reinforcement armies player have.
- *
  */
 public class Player {
 	private String d_name;
