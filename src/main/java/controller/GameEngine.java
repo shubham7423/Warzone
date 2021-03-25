@@ -6,7 +6,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
 
-import org.junit.validator.PublicClassValidator;
 
 import controller.state.Phase;
 import controller.state.edit.EditPhase;
