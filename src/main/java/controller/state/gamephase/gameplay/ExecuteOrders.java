@@ -113,7 +113,7 @@ public class ExecuteOrders extends GamePlay {
 	 */
 	@Override
 	public String executeOrders() {
-		int l_numOrders = d_gameEngine.getPlayeraOrderSize();
+		int l_numOrders = d_gameEngine.getPlayersOrderSize();
 		int l_i = 0;
 		String l_result;
 		System.out.println("\nExecution Phase Started");
