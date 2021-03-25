@@ -188,123 +188,123 @@ public class Player {
 					switch (l_splittedOrder[0]) {
 					case "deploy":
 						if (l_splittedOrder.length != 3) {
-							String temp = "Invalid command. Correct command is - deploy countryId numarmies";
-							System.out.println(temp);
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
+							String l_temp = "Invalid command. Correct command is - deploy countryId numarmies";
+							System.out.println(l_temp);
+							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
 							continue;
 						} else if (!isNumeric(l_splittedOrder[1]) || !isNumeric(l_splittedOrder[2])) {
-							String temp = "After deploy keyword, you can only use integer to represent the countryId and numarmies";
-							System.out.println(temp);
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
+							String l_temp = "After deploy keyword, you can only use integer to represent the countryId and numarmies";
+							System.out.println(l_temp);
+							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
 							continue;
 						} else {
 							Deploy l_deploy = new Deploy(this, Integer.parseInt(l_splittedOrder[1]),
 									Integer.parseInt(l_splittedOrder[2]));
 							d_orders.add(l_deploy);
-							String temp = "deploy " + Integer.parseInt(l_splittedOrder[1]) + " "
+							String l_temp = "deploy " + Integer.parseInt(l_splittedOrder[1]) + " "
 									+ Integer.parseInt(l_splittedOrder[2]);
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
+							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
 							l_isCorrect = true;
 						}
 						break;
 					case "advance":
 						if (l_splittedOrder.length != 4) {
-							String temp = "Invalid command. Correct command is - advance countryFrom countryTo numarmies";
-							System.out.println(temp);
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
+							String l_temp = "Invalid command. Correct command is - advance countryFrom countryTo numarmies";
+							System.out.println(l_temp);
+							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
 							continue;
 						} else if (!isNumeric(l_splittedOrder[1]) || !isNumeric(l_splittedOrder[2])
 								|| !isNumeric(l_splittedOrder[3])) {
-							String temp = "After advance keyword, you can only use integer to represent the countryFrom, countryTo and numarmies";
-							System.out.println(temp);
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
+							String l_temp = "After advance keyword, you can only use integer to represent the countryFrom, countryTo and numarmies";
+							System.out.println(l_temp);
+							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
 							continue;
 						} else {
 							Advance l_advance = new Advance(this, Integer.parseInt(l_splittedOrder[1]),
 									Integer.parseInt(l_splittedOrder[2]), Integer.parseInt(l_splittedOrder[3]));
 							d_orders.add(l_advance);
-							String temp = "advance " + Integer.parseInt(l_splittedOrder[1]) + " "
+							String l_temp = "advance " + Integer.parseInt(l_splittedOrder[1]) + " "
 									+ Integer.parseInt(l_splittedOrder[2]) + " " + Integer.parseInt(l_splittedOrder[3]);
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
+							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
 							l_isCorrect = true;
 						}
 						break;
 					case "bomb":
 						if (l_splittedOrder.length != 2) {
-							String temp = "Invalid command. Correct command is - bomb countryId";
-							System.out.println(temp);
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
+							String l_temp = "Invalid command. Correct command is - bomb countryId";
+							System.out.println(l_temp);
+							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
 							continue;
 						} else if (!isNumeric(l_splittedOrder[1])) {
-							String temp = "After bomb keyword, you can only use integer to represent the countryId";
-							System.out.println(temp);
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
+							String l_temp = "After bomb keyword, you can only use integer to represent the countryId";
+							System.out.println(l_temp);
+							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
 							continue;
 						} else {
 							Bomb l_bomb = new Bomb(this, Integer.parseInt(l_splittedOrder[1]));
 							d_orders.add(l_bomb);
-							String temp = "bomb " + Integer.parseInt(l_splittedOrder[1]);
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
+							String l_temp = "bomb " + Integer.parseInt(l_splittedOrder[1]);
+							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
 							l_isCorrect = true;
 						}
 						break;
 					case "blockade":
 						if (l_splittedOrder.length != 2) {
-							String temp = "Invalid command. Correct command is - blockade countryId";
-							System.out.println(temp);
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
+							String l_temp = "Invalid command. Correct command is - blockade countryId";
+							System.out.println(l_temp);
+							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
 							continue;
 						} else if (!isNumeric(l_splittedOrder[1])) {
-							String temp = "After blockade keyword, you can only use integer to represent the countryId";
-							System.out.println(temp);
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
+							String l_temp = "After blockade keyword, you can only use integer to represent the countryId";
+							System.out.println(l_temp);
+							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
 							continue;
 						} else {
 							Blockade l_blockade = new Blockade(this, Integer.parseInt(l_splittedOrder[1]));
 							d_orders.add(l_blockade);
-							String temp = "blockade " + Integer.parseInt(l_splittedOrder[1]);
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
+							String l_temp = "blockade " + Integer.parseInt(l_splittedOrder[1]);
+							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
 							l_isCorrect = true;
 						}
 						break;
 					case "airlift":
 						if (l_splittedOrder.length != 4) {
-							String temp = "Invalid command. Correct command is - airlift sourceCountryId targetCountryId numarmies";
-							System.out.println(temp);
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
+							String l_temp = "Invalid command. Correct command is - airlift sourceCountryId targetCountryId numarmies";
+							System.out.println(l_temp);
+							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
 							continue;
 						} else if (!isNumeric(l_splittedOrder[1]) || !isNumeric(l_splittedOrder[2])
 								|| !isNumeric(l_splittedOrder[3])) {
-							String temp = "After airlift keyword, you can only use integer to represent the sourceCountryId, targetCountryId and numarmies";
-							System.out.println(temp);
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
+							String l_temp = "After airlift keyword, you can only use integer to represent the sourceCountryId, targetCountryId and numarmies";
+							System.out.println(l_temp);
+							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
 							continue;
 						} else {
 							Airlift l_airlift = new Airlift(this, Integer.parseInt(l_splittedOrder[1]),
 									Integer.parseInt(l_splittedOrder[2]), Integer.parseInt(l_splittedOrder[3]));
 							d_orders.add(l_airlift);
-							String temp = "airlift " + Integer.parseInt(l_splittedOrder[1]) + " "
+							String l_temp = "airlift " + Integer.parseInt(l_splittedOrder[1]) + " "
 									+ Integer.parseInt(l_splittedOrder[2]) + " " + Integer.parseInt(l_splittedOrder[3]);
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
+							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
 							l_isCorrect = true;
 						}
 						break;
 					case "negotiate":
 						if (l_splittedOrder.length != 2) {
-							String temp = "Invalid command. Correct command is - negotiate playerId";
-							System.out.println(temp);
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
+							String l_temp = "Invalid command. Correct command is - negotiate playerId";
+							System.out.println(l_temp);
+							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
 							continue;
 						} else if (isNumeric(l_splittedOrder[1])) {
-							String temp = "After negotiate keyword, you can not use integer to represent the playerName";
-							System.out.println(temp);
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
+							String l_temp = "After negotiate keyword, you can not use integer to represent the playerName";
+							System.out.println(l_temp);
+							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
 							continue;
 						} else {
 							Diplomacy l_diplomacy = new Diplomacy(this, l_splittedOrder[1]);
 							d_orders.add(l_diplomacy);
-							String temp = "negotiate " + l_splittedOrder[1];
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(temp);
+							String l_temp = "negotiate " + l_splittedOrder[1];
+							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
 							l_isCorrect = true;
 						}
 						break;
@@ -314,7 +314,7 @@ public class Player {
 						break;
 					}
 				}
-			} catch (Exception p_e) {
+			} catch (Exception p_exception) {
 				System.out.println("Something went wront. Exception occured.");
 			}
 		}
