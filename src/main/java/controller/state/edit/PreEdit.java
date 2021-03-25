@@ -41,8 +41,8 @@ public class PreEdit extends EditPhase {
 			try {
 				Files.createDirectories(Paths.get(Paths.get("").toAbsolutePath().toString() + "/maps"));
 				Files.createFile(Paths.get(Paths.get("").toAbsolutePath().toString() + "/maps/" + p_fileName));
-			} catch (IOException p_e) {
-				p_e.printStackTrace();
+			} catch (IOException p_exception) {
+				p_exception.printStackTrace();
 			}
 		}
 		l_result = String.format("Map \"%s\" ready for edit", p_fileName);
