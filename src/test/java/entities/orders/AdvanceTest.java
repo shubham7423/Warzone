@@ -78,6 +78,65 @@ public class AdvanceTest {
 	 */
 	@Test
 	public void testExecuteOrder2() {
+		d_game.getGameMap().addCountry(4, 1);
+		d_game.getGameMap().addCountry(5, 1);
+		d_game.getGameMap().addCountry(6, 1);
+		d_game.getGameMap().addCountry(7, 1);
+		d_game.getGameMap().addCountry(8, 1);
+		d_game.getGameMap().addCountry(9, 1);
+		d_game.getGameMap().addCountry(10, 1);
+		d_game.getGameMap().addCountry(11, 1);
+		d_game.getGameMap().addCountry(12, 1);
+		d_game.getGameMap().addCountry(13, 1);
+		
+		d_game.getGameMap().getCountries().get(4).setPlayer(d_game.d_players.get("Shubham"));
+		d_game.getGameMap().getCountries().get(5).setPlayer(d_game.d_players.get("Shubham"));
+		d_game.getGameMap().getCountries().get(6).setPlayer(d_game.d_players.get("Shubham"));
+		d_game.getGameMap().getCountries().get(7).setPlayer(d_game.d_players.get("Shubham"));
+		d_game.getGameMap().getCountries().get(8).setPlayer(d_game.d_players.get("Shubham"));
+		d_game.getGameMap().getCountries().get(9).setPlayer(d_game.d_players.get("Shubham"));
+		d_game.getGameMap().getCountries().get(10).setPlayer(d_game.d_players.get("Shubham"));
+		d_game.getGameMap().getCountries().get(11).setPlayer(d_game.d_players.get("Shubham"));
+		d_game.getGameMap().getCountries().get(12).setPlayer(d_game.d_players.get("Shubham"));
+		d_game.getGameMap().getCountries().get(13).setPlayer(d_game.d_players.get("Shubham"));
+		
+		d_game.d_players.get("Shubham").addCountry(d_game.getGameMap().getCountries().get(4));
+		d_game.d_players.get("Shubham").addCountry(d_game.getGameMap().getCountries().get(5));
+		d_game.d_players.get("Shubham").addCountry(d_game.getGameMap().getCountries().get(6));
+		d_game.d_players.get("Shubham").addCountry(d_game.getGameMap().getCountries().get(7));
+		d_game.d_players.get("Shubham").addCountry(d_game.getGameMap().getCountries().get(8));
+		d_game.d_players.get("Shubham").addCountry(d_game.getGameMap().getCountries().get(9));
+		d_game.d_players.get("Shubham").addCountry(d_game.getGameMap().getCountries().get(10));
+		d_game.d_players.get("Shubham").addCountry(d_game.getGameMap().getCountries().get(11));
+		d_game.d_players.get("Shubham").addCountry(d_game.getGameMap().getCountries().get(12));
+		d_game.d_players.get("Shubham").addCountry(d_game.getGameMap().getCountries().get(13));
+		d_game.d_players.get("Shubham").setNumberOfArmies();
+		
+		Deploy l_deploy1 = new Deploy(d_game.d_players.get("Shubham"), 1, 4);
+		Deploy l_deploy2 = new Deploy(d_game.d_players.get("Meet"), 2, 1);
+		l_deploy1.executeOrder(d_game);
+		l_deploy2.executeOrder(d_game);
+
+		Advance l_advanceCmd = new Advance(d_game.d_players.get("Shubham"), 1, 2, 2);
+		HashMap<String, Integer> l_ordersBefore = new HashMap<String, Integer>();
+		l_ordersBefore.putAll(d_game.d_players.get("Shubham").d_cardsOwned);
+
+		l_advanceCmd.executeOrder(d_game);
+		HashMap<String, Integer> l_ordersAfter = d_game.d_players.get("Shubham").d_cardsOwned;
+
+		assertEquals("Shubham", d_game.getGameMap().getCountries().get(2).getPlayer().getName());
+		assertEquals(2, d_game.getGameMap().getCountries().get(1).getNumberOfArmiesPresent());
+		assertEquals(1, d_game.getGameMap().getCountries().get(2).getNumberOfArmiesPresent());
+		assertFalse(l_ordersBefore.equals(l_ordersAfter));
+	}
+	
+	/**
+	 * test where no. are cards are checked in the player's list of cards after the
+	 * attack and correct owner is set when country is conquered and correct armies
+	 * are present in source and destination countries.
+	 */
+	@Test
+	public void testExecuteOrder6() {
 		Deploy l_deploy1 = new Deploy(d_game.d_players.get("Shubham"), 1, 3);
 		Deploy l_deploy2 = new Deploy(d_game.d_players.get("Meet"), 2, 1);
 		l_deploy1.executeOrder(d_game);

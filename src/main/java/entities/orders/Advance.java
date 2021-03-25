@@ -107,8 +107,7 @@ public class Advance implements Orders {
 				String[] l_cardNames = { "airlift", "bomb", "blockade", "diplomacy" };
 
 				if (!d_player.d_isConquered) {
-					Random r = new Random();
-					int l_cardNumber = r.nextInt(l_cardNames.length);
+					int l_cardNumber = p_game.d_random.nextInt(l_cardNames.length);
 					d_player.d_cardsOwned.replace(l_cardNames[l_cardNumber],
 							d_player.d_cardsOwned.get(l_cardNames[l_cardNumber]) + 1);
 					d_player.d_isConquered = true;

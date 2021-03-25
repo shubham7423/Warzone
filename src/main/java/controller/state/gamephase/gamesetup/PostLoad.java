@@ -66,13 +66,12 @@ public class PostLoad extends GameSetup {
 		HashMap<Integer, Country> l_countries = d_gameEngine.getGameMap().getCountries();
 		List<Country> l_countryObjects = new ArrayList<Country>();
 		l_countryObjects.addAll(l_countries.values());
-		Random l_random = new Random();
 		while (true) {
 			for (Player p_player : d_gameEngine.d_players.values()) {
 				if (l_countryObjects.size() == 0) {
 					break;
 				}
-				int l_idOfCountry = l_random.nextInt(l_countryObjects.size());
+				int l_idOfCountry = d_gameEngine.d_random.nextInt(l_countryObjects.size());
 				p_player.addCountry(l_countryObjects.get(l_idOfCountry));
 				l_countryObjects.get(l_idOfCountry).setPlayer(p_player);
 				l_countryObjects.remove(l_countryObjects.get(l_idOfCountry));
