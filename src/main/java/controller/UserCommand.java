@@ -25,10 +25,10 @@ public class UserCommand {
 	/**
 	 * function to manually set the phase of the game depending upon the user
 	 * 
-	 * @param p the phase that has to be set for next steps in the game
+	 * @param p_phase the phase that has to be set for next steps in the game
 	 */
-	public void setPhase(Phase p) {
-		d_gameEngine.setPhase(p);
+	public void setPhase(Phase p_phase) {
+		d_gameEngine.setPhase(p_phase);
 	}
 
 	/**
@@ -56,16 +56,16 @@ public class UserCommand {
 	public void start() {
 		System.out.println("Welcome to Warzone");
 		new GameEngine().d_logEntryBuffer.setString("Game Started");
-		UserCommand l_UserCommand = new UserCommand();
+		UserCommand l_userCommand = new UserCommand();
 		while (true) {
-			String l_commandOpt = l_UserCommand.getCommand();
+			String l_commandOpt = l_userCommand.getCommand();
 			if ("exit()".equals(l_commandOpt)) {
 				break;
 			}
 			System.out.println(l_commandOpt);
 		}
 		System.out.print("\nThank you for playing Warzone :)");
-		l_UserCommand.d_scannerScanner.close();
+		l_userCommand.d_scannerScanner.close();
 	}
 
 	/**
