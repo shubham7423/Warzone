@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Random;
+
+import org.junit.validator.PublicClassValidator;
 
 import controller.state.Phase;
 import controller.state.edit.EditPhase;
@@ -28,6 +31,7 @@ public class GameEngine {
 	public LogEntryBuffer d_logEntryBuffer;
 	private LogWriter d_logWriter;
 	public Player d_neutralPlayer;
+	public Random d_random;
 
 	/**
 	 * Game Engine constructor which creates a neutral player when game is started
@@ -38,6 +42,7 @@ public class GameEngine {
 		d_logEntryBuffer = new LogEntryBuffer();
 		d_logWriter = new LogWriter(d_logEntryBuffer);
 		d_neutralPlayer = new Player("neutralPlayer#1");
+		d_random = new Random();
 	}
 
 	/**
