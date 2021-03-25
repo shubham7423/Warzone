@@ -704,37 +704,11 @@ public class GameEngine {
 	 * @return the result of assigning countries to the players
 	 */
 	public String assignCountries(String[] p_splittedCommand) {
-//		try {
 		if (p_splittedCommand.length > 1) {
 			return String.format("Invalid Command");
 		}
 		return d_phase.assignCountries();
-//		}
-//		finally {
-//			d_phase.assignArmies();
-//		}
-
-//		if (p_splittedCommand.length > 1) {
-//			return String.format("Invalid Command");
-//		}
-//		String l_result =  d_phase.assignCountries();
-//		d_phase.assignArmies();
-//		return l_result;
 	}
-
-//	public void getCommand() {
-//		UserCommand l_userCommand = new UserCommand();
-//		GameStarter l_gameStarter = new GameStarter();
-//		l_gameStarter.setPhase(new PreEdit(l_gameStarter));
-//		System.out.println("Welcome to Warzone");
-//		while (true) {
-//			String[] l_splittedCommandString = l_userCommand.getCommand();
-//			if (l_splittedCommandString[0].equals("exit()")) {
-//				break;
-//			}
-//			System.out.println(l_gameStarter.executeCommand(l_splittedCommandString));
-//		}
-//	}
 
 	/**
 	 * function to process the entire command provided by the user that will be
@@ -744,7 +718,6 @@ public class GameEngine {
 	 */
 	public void setUserCommand(UserCommand p_userCommand) {
 		d_userCommand = p_userCommand;
-//		System.out.println(d_userCommand);
 	}
 
 	/**
