@@ -25,7 +25,7 @@ public class GameEngine {
 	public HashMap<String, Player> d_players = new HashMap<>();
 	public ArrayList<String> d_playerName = new ArrayList<>();
 	public UserCommand d_userCommand;
-	public LogEntryBuffer d_logEntryBuffer;;
+	public LogEntryBuffer d_logEntryBuffer;
 	private LogWriter d_logWriter;
 	public Player d_neutralPlayer;
 
@@ -127,7 +127,7 @@ public class GameEngine {
 	 * 
 	 * @return an integer representing the size of the orders, the players has
 	 */
-	public int getPlayeraOrderSize() {
+	public int getPlayersOrderSize() {
 		return d_playersOrder.size();
 	}
 
@@ -140,8 +140,8 @@ public class GameEngine {
 		d_playersOrder.add(p_player);
 	}
 
-	/***
-	 * function to remove and order from the order queue of the player
+	/**
+	 * function to remove an order from the order queue of the player
 	 * 
 	 * @return removal of order from the queue of the player
 	 */
@@ -221,7 +221,7 @@ public class GameEngine {
 	}
 
 	/**
-	 * Function to support bomb the country of enemy player
+	 * Function to support bombing of the country of enemy player
 	 * 
 	 * @param p_splittedCommand the command that has been splitted into multiple
 	 *                          parts for further processing
@@ -232,7 +232,7 @@ public class GameEngine {
 	}
 
 	/**
-	 * Function to support blockade player own country
+	 * Function to support blockade card that blocks player own country
 	 * 
 	 * @param p_splittedCommand the command that has been splitted into multiple
 	 *                          parts for further processing
@@ -658,7 +658,7 @@ public class GameEngine {
 	}
 
 	/**
-	 * function to allow validation of map to to check connectivity of the graph of
+	 * function to allow validation of map to check connectivity of the graph of
 	 * the map
 	 * 
 	 * @param p_splittedCommand the command that has been splitted into multiple
