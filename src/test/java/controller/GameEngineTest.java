@@ -2,12 +2,18 @@ package controller;
 
 import static org.junit.Assert.*;
 
+import java.util.HashMap;
+
 import org.junit.Test;
 
 import controller.state.edit.PostEdit;
 import controller.state.edit.PreEdit;
+import controller.state.gamephase.gameplay.ExecuteOrders;
+import controller.state.gamephase.gameplay.IssueOrders;
 import controller.state.gamephase.gamesetup.PostLoad;
 import controller.state.gamephase.gamesetup.PreLoad;
+import entities.orders.Advance;
+import entities.orders.Deploy;
 
 /**
  * GameEngine Test
@@ -24,6 +30,27 @@ public class GameEngineTest {
 		String[] l_newStrings = new String[] { "loadmap", "risk.map" };
 		String l_result = d_gameEngine.executeCommand(l_newStrings);
 		assertEquals("Map \"risk.map\" loaded successfully", l_result);
+	}
+
+	/**
+	 * Test to check if specific orders can be executed in specific phase.
+	 */
+	@Test
+	public void testPhase() {
+		d_gameEngine.setPhase(new PreLoad(d_gameEngine));
+		String[] l_newStrings = new String[] { "deploy", "2", "3" };
+		String l_result = d_gameEngine.executeCommand(l_newStrings);
+		assertEquals("Invalid command in phase PreLoad", l_result);
+
+		d_gameEngine.setPhase(new PostLoad(d_gameEngine));
+		l_newStrings = new String[] { "loadmap", "risk.map" };
+		l_result = d_gameEngine.executeCommand(l_newStrings);
+		assertEquals("Map already loaded", l_result);
+
+		d_gameEngine.setPhase(new IssueOrders(d_gameEngine));
+		l_newStrings = new String[] { "loadmap", "risk.map" };
+		l_result = d_gameEngine.executeCommand(l_newStrings);
+		assertEquals("Invalid command in phase IssueOrders", l_result);
 	}
 
 	/**
@@ -63,7 +90,7 @@ public class GameEngineTest {
 		String[] l_addContinent1 = new String[] { "editcontinent", "-add", "1", "2" };
 		String l_addResult1 = d_gameEngine.executeCommand(l_addContinent1);
 		assertEquals("Continent \"1\" added to map", l_addResult1);
-		
+
 		String[] l_addContinent2 = new String[] { "editcontinent", "-add", "1", "2" };
 		String l_addResult2 = d_gameEngine.executeCommand(l_addContinent2);
 		assertEquals("Continent \"1\" already present in map", l_addResult2);
@@ -85,7 +112,7 @@ public class GameEngineTest {
 	 */
 	@Test
 	public void testEditCountry() {
-		
+
 		d_gameEngine.setPhase(new PreEdit(d_gameEngine));
 		String[] l_loadCommand1 = new String[] { "editmap", "WorldMap.map" };
 		String l_loadResultString1 = d_gameEngine.executeCommand(l_loadCommand1);
@@ -152,7 +179,7 @@ public class GameEngineTest {
 	 */
 	@Test
 	public void testEditMap() {
-		
+
 		d_gameEngine.setPhase(new PreEdit(d_gameEngine));
 		String[] l_loadCommand1 = new String[] { "editmap", "WorldMap.map" };
 		String l_editResultString1 = d_gameEngine.executeCommand(l_loadCommand1);
@@ -177,7 +204,7 @@ public class GameEngineTest {
 	 */
 	@Test
 	public void testSaveMap() {
-		
+
 		d_gameEngine.setPhase(new PreEdit(d_gameEngine));
 		String[] l_loadCommand1 = new String[] { "editmap", "risk.map" };
 		String l_loadResultString1 = d_gameEngine.executeCommand(l_loadCommand1);
@@ -199,7 +226,7 @@ public class GameEngineTest {
 	 */
 	@Test
 	public void testGamePlayer() {
-		
+
 		d_gameEngine.setPhase(new PreLoad(d_gameEngine));
 		String[] l_newStrings = new String[] { "loadmap", "risk.map" };
 		String l_result = d_gameEngine.executeCommand(l_newStrings);
@@ -220,7 +247,7 @@ public class GameEngineTest {
 		String l_removeResult2 = d_gameEngine.executeCommand(l_removePlayer2);
 		assertEquals("Player \"Jay\" not present in game", l_removeResult2);
 	}
-	
+
 	/**
 	 * This function tests the validateMap function with different conditions like
 	 * if the map is null, without countries, not traversable and other different
@@ -248,5 +275,46 @@ public class GameEngineTest {
 		String[] l_valString3 = new String[] { "validatemap" };
 		String l_resValString3 = l_gameEngine3.executeCommand(l_valString3);
 		assertEquals("Cannot validate map", l_resValString3);
+	}
+
+	/**
+	 * Check to see if correct player is declared as winner.
+	 */
+	@Test
+	public void winningTest() {
+		GameEngine l_gameEngine = new GameEngine();
+
+		l_gameEngine.setPhase(new PostLoad(l_gameEngine));
+		String[] l_newString1 = new String[] { "gameplayer", "-add", "Shubham", "-add", "Meet" };
+		String l_result1 = l_gameEngine.executeCommand(l_newString1);
+		l_gameEngine.getGameMap().addContinent(1, 5);
+		l_gameEngine.getGameMap().addCountry(1, 1);
+		l_gameEngine.getGameMap().addCountry(2, 1);
+		l_gameEngine.getGameMap().addNeighbor(1, 2);
+		l_gameEngine.getGameMap().getCountries().get(1).setPlayer(l_gameEngine.d_players.get("Shubham"));
+		l_gameEngine.getGameMap().getCountries().get(2).setPlayer(l_gameEngine.d_players.get("Meet"));
+		l_gameEngine.d_players.get("Shubham").addCountry(l_gameEngine.getGameMap().getCountries().get(1));
+		l_gameEngine.d_players.get("Shubham").setNumberOfArmies();
+		l_gameEngine.d_players.get("Meet").addCountry(l_gameEngine.getGameMap().getCountries().get(2));
+		l_gameEngine.d_players.get("Meet").setNumberOfArmies();
+
+		l_gameEngine.setPhase(new IssueOrders(l_gameEngine));
+		Deploy l_deploy = new Deploy(l_gameEngine.d_players.get("Shubham"), 1, 3);
+		l_gameEngine.d_players.get("Shubham").d_orders.add(l_deploy);
+		l_gameEngine.addPlayerOrder(l_gameEngine.d_players.get("Shubham"));
+
+		Advance l_advanceCmd = new Advance(l_gameEngine.d_players.get("Shubham"), 1, 2, 2);
+		HashMap<String, Integer> l_ordersBefore = new HashMap<String, Integer>();
+		l_ordersBefore.putAll(l_gameEngine.d_players.get("Shubham").d_cardsOwned);
+
+		l_gameEngine.d_players.get("Shubham").d_orders.add(l_advanceCmd);
+		l_gameEngine.addPlayerOrder(l_gameEngine.d_players.get("Shubham"));
+
+		l_gameEngine.setPhase(new ExecuteOrders(l_gameEngine));
+		l_gameEngine.getPhase().executeOrders();
+		assertEquals(1, l_gameEngine.d_playerName.size());
+
+		HashMap<String, Integer> l_ordersAfter = l_gameEngine.d_players.get("Shubham").d_cardsOwned;
+		assertFalse(l_ordersBefore.equals(l_ordersAfter));
 	}
 }

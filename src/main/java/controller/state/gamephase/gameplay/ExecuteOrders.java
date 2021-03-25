@@ -136,7 +136,7 @@ public class ExecuteOrders extends GamePlay {
 		if(d_gameEngine.d_playerName.size() == 1) {
 			d_gameEngine.setPhase(new EndPhase(d_gameEngine));
 			System.out.println(d_gameEngine.getPhase().printWinner(d_gameEngine.d_playerName.get(0)));
-			System.exit(0);
+			return d_gameEngine.getPhase().printWinner(d_gameEngine.d_playerName.get(0));
 		}
 		else {
 			System.out.println("\nExecution Complete\n");
