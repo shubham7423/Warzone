@@ -194,7 +194,6 @@ public class GameEngineTest {
 		String[] l_loadCommand3 = new String[] { "editmap", "WorldMap.map" };
 		String l_editResultString3 = d_gameEngine.executeCommand(l_loadCommand3);
 		assertEquals("Invalid command in phase PostEdit", l_editResultString3);
-
 	}
 
 	/**
