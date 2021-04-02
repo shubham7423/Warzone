@@ -24,7 +24,6 @@ public class LogWriter implements Observer {
 	public LogWriter(LogEntryBuffer p_logEntry) {
 		p_logEntry.attach(this);
 		d_dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-		d_now = LocalDateTime.now();
 	}
 
 	/**
@@ -38,6 +37,7 @@ public class LogWriter implements Observer {
 	public void update(Observable p_observableState) {
 
 		try {
+			d_now = LocalDateTime.now();
 			d_logFile = new FileWriter(
 					Paths.get(Paths.get("").toAbsolutePath().toString() + "/log/logfile.log").toString(), true);
 			d_logFile.append(d_dtf.format(d_now) + "> " + ((LogEntryBuffer) p_observableState).getString() + "\n");

@@ -685,19 +685,23 @@ public class GameEngine {
 	 * @return the result of loading of map
 	 */
 	public String loadMap(String[] p_splittedCommand) {
-		if (d_phase instanceof EditPhase) {
-			setPhase(new PreLoad(this));
+		try {			
+			if (d_phase instanceof EditPhase) {
+				setPhase(new PreLoad(this));
+			}
+			if (p_splittedCommand.length < 2) {
+				return "Please enter valid command";
+			}
+			if (p_splittedCommand[1].split("\\.").length <= 1) {
+				return "File extension should be .map";
+			}
+			if (!"map".equals(p_splittedCommand[1].split("\\.")[1])) {
+				return "File extension should be .map";
+			}
+			return d_phase.loadMap(p_splittedCommand[1]);
+		} catch (Exception p_e) {
+			return "Enter valid loadmap command with valid map file. Command is \"loadmap fileName.map\"";
 		}
-		if (p_splittedCommand.length < 2) {
-			return "Please enter valid command";
-		}
-		if (p_splittedCommand[1].split("\\.").length <= 1) {
-			return "File extension should be .map";
-		}
-		if (!"map".equals(p_splittedCommand[1].split("\\.")[1])) {
-			return "File extension should be .map";
-		}
-		return d_phase.loadMap(p_splittedCommand[1]);
 	}
 
 	/**
