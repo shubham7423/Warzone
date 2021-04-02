@@ -39,7 +39,7 @@ public class Bomb implements Orders {
 	 * 
 	 * @param p_game gets the object of GameEngine class for accessing details
 	 *               regarding country and their neighbors and player.
-	 * @return string
+	 * @return This will provide us with the message after we execute Bomb Card. 
 	 */
 	@Override
 	public String executeOrder(GameEngine p_game) {

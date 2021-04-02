@@ -315,7 +315,7 @@ public class Player {
 					}
 				}
 			} catch (Exception p_exception) {
-				System.out.println("Something went wront. Exception occured.");
+				System.out.println("Invalid command in phase IssueOrders.");
 			}
 		}
 	}
