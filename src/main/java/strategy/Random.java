@@ -1,4 +1,4 @@
-package strategy;
+/*package strategy;
 
 import controller.GameEngine;
 import entities.Country;
@@ -7,10 +7,10 @@ import entities.orders.Orders;
 
 public class Random extends PlayerStrategy{
 	
+	Random d_random;
 	
-	
-	public Random(Player p_player,GameEngine p_gameEngine) {
-		super(p_player,p_gameEngine);
+	public Random(Player p_player, GameEngine p_gameEngine) {
+		super(p_player, p_gameEngine);
 	}
 
 	public Orders createOrder() {
@@ -28,4 +28,4 @@ public class Random extends PlayerStrategy{
 	public Country toDefend() {
 		
 	}
-}
+}*/

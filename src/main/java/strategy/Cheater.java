@@ -1,4 +1,4 @@
-package strategy;
+/*package strategy;
 
 import controller.GameEngine;
 import entities.Country;
@@ -7,10 +7,8 @@ import entities.orders.Orders;
 
 public class Cheater extends PlayerStrategy{
 		
-	
-	
-	public Cheater(Player p_player ,GameEngine p_gameEngine) {
-		super(p_player,p_gameEngine);
+	public Cheater(Player p_player, GameEngine p_gameEngine) {
+		super(p_player, p_gameEngine);
 	}
 	
 	public Orders createOrder() {
@@ -28,4 +26,4 @@ public class Cheater extends PlayerStrategy{
 	public Country toDefend() {
 		
 	}
-}
+}*/

@@ -1,4 +1,4 @@
-package strategy;
+/*package strategy;
 
 import controller.GameEngine;
 import entities.Country;
@@ -9,8 +9,8 @@ public class Aggresive extends PlayerStrategy{
 
 	
 	
-	public Aggresive(Player p_player,GameEngine p_gameEngine) {
-		super(p_player,p_gameEngine);
+	public Aggresive(Player p_player, GameEngine p_gameEngine) {
+		super(p_player, p_gameEngine);
 	}
 	
 	public Orders createOrder() {
@@ -28,4 +28,4 @@ public class Aggresive extends PlayerStrategy{
 	public Country toDefend() {
 		
 	}
-}
+}*/

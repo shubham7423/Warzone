@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import controller.GameEngine;
 import controller.UserCommand;
 
 import controller.state.gamephase.gameplay.IssueOrders;
@@ -19,7 +20,7 @@ import entities.orders.*;
  * controlled by player, cards the player have, method to order input from user,
  * queue to store player order and number of reinforcement armies player have.
  */
-public class Player {
+public abstract class Player {
 	private String d_name;
 	private HashMap<Integer, Country> d_countries;
 	private HashMap<Integer, Continent> d_continents;
@@ -29,7 +30,7 @@ public class Player {
 	public HashMap<String, Integer> d_cardsOwned;
 	public ArrayList<String> d_negotiatedPlayerNames;
 	public boolean d_isConquered;
-	public PlayerStrategy d_strategy;
+	private PlayerStrategy d_strategy;
 		
 
 	/**
