@@ -11,7 +11,7 @@ import controller.state.gamephase.gameplay.IssueOrders;
 import entities.orders.Advance;
 import entities.orders.Deploy;
 import entities.orders.Orders;
-
+import strategy.PlayerStrategy;
 import entities.orders.*;
 
 /**
@@ -29,6 +29,8 @@ public class Player {
 	public HashMap<String, Integer> d_cardsOwned;
 	public ArrayList<String> d_negotiatedPlayerNames;
 	public boolean d_isConquered;
+	public PlayerStrategy d_strategy;
+		
 
 	/**
 	 * Constructor of player which sets initial values for player data
@@ -58,6 +60,10 @@ public class Player {
 	 */
 	public String getName() {
 		return d_name;
+	}
+	
+	public void setStrategy(PlayerStrategy p_strat) {
+		d_strategy = p_strat;
 	}
 
 	/**
