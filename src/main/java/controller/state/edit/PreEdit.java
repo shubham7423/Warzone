@@ -34,9 +34,6 @@ public class PreEdit extends EditPhase {
 	public String editMap(String p_fileName) {
 		String l_result;
 		l_result = d_gameEngine.getGameMap().loadMap(p_fileName);
-		if (l_result.equals(String.format("Map \"%s\" cannot be loaded", p_fileName))) {
-			return l_result;
-		}
 		if (!Files.exists(Paths.get(Paths.get("").toAbsolutePath().toString() + "/maps/" + p_fileName))) {
 			try {
 				Files.createDirectories(Paths.get(Paths.get("").toAbsolutePath().toString() + "/maps"));
