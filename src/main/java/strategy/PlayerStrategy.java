@@ -16,8 +16,8 @@ public abstract class PlayerStrategy {
 	}
 	
 	public abstract Orders createOrder();
-	public abstract Country toAttack(int p_countryId); 
-	public abstract Country toAttackFrom(int p_countryId); 
-	public abstract Country toMoveFrom(int p_countryId); 
-	public abstract Country toDefend(int p_countryId);
+//	public abstract Country toAttack(); 
+//	public abstract Country toAttackFrom(); 
+//	public abstract Country toMoveFrom(); 
+//	public abstract Country toDefend();
 }
