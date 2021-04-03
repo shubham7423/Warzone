@@ -20,7 +20,7 @@ import entities.orders.*;
  * controlled by player, cards the player have, method to order input from user,
  * queue to store player order and number of reinforcement armies player have.
  */
-public abstract class Player {
+public class Player {
 	private String d_name;
 	private HashMap<Integer, Country> d_countries;
 	private HashMap<Integer, Continent> d_continents;
