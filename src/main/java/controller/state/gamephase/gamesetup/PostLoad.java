@@ -57,8 +57,8 @@ public class PostLoad extends GameSetup {
 			boolean l_isCorrect = false;
 			if(l_player.d_strategy == null) {
 				System.out.println("1.Random Player \n2.Human Player \n3.Benevolent Player \n4.Aggresive Player \n5.Cheater Player");
-				System.out.print("Enter strategy for player " + l_player.getName() + ": ");
 				while(!l_isCorrect) {
+					System.out.print("Enter strategy for player " + l_player.getName() + ": ");
 					switch(new Scanner(System.in).nextInt()) {
 						case 1:
 							l_player.setStrategy(new RandomPlayer(l_player, d_gameEngine));
@@ -82,7 +82,7 @@ public class PostLoad extends GameSetup {
 							break;
 							
 						default:
-							System.out.println("Please enter valid behaviour ID");
+							System.out.println("Please enter valid behaviour");
 					}
 				}
 				
