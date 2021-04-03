@@ -10,6 +10,7 @@ import controller.GameEngine;
 import controller.state.gamephase.gameplay.AssignArmies;
 import entities.Country;
 import entities.Player;
+import strategy.Benevolent;
 import strategy.RandomPlayer;
 
 /**
@@ -70,6 +71,7 @@ public class PostLoad extends GameSetup {
 							break;
 							
 						case 3:
+							l_player.setStrategy(new Benevolent(l_player, d_gameEngine));
 							l_isCorrect = true;
 							break;
 							

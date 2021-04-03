@@ -32,7 +32,6 @@ public class RandomPlayer extends PlayerStrategy{
 		int l_randomEnemyCountry;
 		switch (l_randomOrder) {
 			case 1:
-				
 				l_randomOwnCountry = d_gameEngine.d_random.nextInt(l_randCountries.size());
 //				l_randomOwnCountry = l_randomOwnCountry == 0 ? 1 : l_randomOwnCountry;
 				System.out.println("ARMIES: " + d_player.getNumberOfArmies());
