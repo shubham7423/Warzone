@@ -160,6 +160,7 @@ public class IssueOrders extends GamePlay {
 					d_gameEngine
 							.addPlayerOrder(d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)));
 				}
+				d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).setIsCommit(true);
 			} else {
 				l_playersCompleted.add(d_gameEngine.d_playerName.get(l_currentPlayer));
 			}

@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 
 import controller.GameEngine;
 import controller.state.gamephase.gameplay.AssignArmies;
 import entities.Country;
 import entities.Player;
+import strategy.RandomPlayer;
 
 /**
  * Phase entered after preload class, it contains methods to add or remove
@@ -50,6 +52,41 @@ public class PostLoad extends GameSetup {
 			l_result = addPlayer(p_commandSplitted[1]);
 		} else {
 			l_result = removePlayer(p_commandSplitted[1]);
+		}
+		for(Player l_player: d_gameEngine.d_players.values()) {
+			boolean l_isCorrect = false;
+			if(l_player.d_strategy == null) {
+				System.out.println("1.Random Player \n2.Human Player \n3.Benevolent Player \n4.Aggresive Player \n5.Cheater Player");
+				System.out.print("Enter strategy for player " + l_player.getName() + ": ");
+				while(!l_isCorrect) {
+					switch(new Scanner(System.in).nextInt()) {
+						case 1:
+							l_player.setStrategy(new RandomPlayer(l_player, d_gameEngine));
+							l_isCorrect = true;
+							break;
+						
+						case 2:
+							l_isCorrect = true;
+							break;
+							
+						case 3:
+							l_isCorrect = true;
+							break;
+							
+						case 4:
+							l_isCorrect = true;
+							break;
+							
+						case 5:
+							l_isCorrect = true;
+							break;
+							
+						default:
+							System.out.println("Please enter valid behaviour ID");
+					}
+				}
+				
+			}
 		}
 		return l_result;
 	}
