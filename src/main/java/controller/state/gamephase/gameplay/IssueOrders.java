@@ -5,6 +5,7 @@ import java.util.HashSet;
 
 import controller.GameEngine;
 import entities.Player;
+import strategy.HumanPlayer;
 
 /**
  * IssueOrder class that inherits GamePlay interface to support functions during
@@ -160,7 +161,9 @@ public class IssueOrders extends GamePlay {
 					d_gameEngine
 							.addPlayerOrder(d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)));
 				}
-				d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).setIsCommit(true);
+				if(!(d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).getPlayerBehaviour() instanceof HumanPlayer)) {
+					d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).setIsCommit(true);
+				}
 			} else {
 				l_playersCompleted.add(d_gameEngine.d_playerName.get(l_currentPlayer));
 			}

@@ -67,6 +67,10 @@ public class Player {
 	public void setStrategy(PlayerStrategy p_strat) {
 		d_strategy = p_strat;
 	}
+	
+	public PlayerStrategy getPlayerBehaviour() {
+		return d_strategy;
+	}
 
 	/**
 	 * method to get the countries occupied by player
