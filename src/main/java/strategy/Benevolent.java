@@ -1,6 +1,7 @@
 package strategy;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
@@ -23,15 +24,16 @@ public class Benevolent extends PlayerStrategy{
 	public Orders createOrder() {
 		Orders l_order = null;
 		int l_randomOrder = d_gameEngine.d_random.nextInt(5-1) + 1;
-		List<Integer> l_randCountries = new ArrayList<>(d_gameEngine.getGameMap().getCountries().keySet());
-		List<Integer> l_neighborCountries = new ArrayList<>(getNeighborCountries()); 
 		List<Integer> l_playerCountries = new ArrayList<>(d_player.getCountries().keySet());
 		int l_randomArmies;
 		int l_randomOwnCountry;
-		int l_randomEnemyCountry;
 		switch (l_randomOrder) {
 			case 1:
 				Country l_weakCountry = null;
+				List<Integer> l_armies = new ArrayList<>(d_player.getNumberOfArmies());
+				List<Integer> l_sortedArmies = new ArrayList<>(l_armies);
+				Collections.sort(l_sortedArmies);
+				int l_minArmies = l_sortedArmies.get(0);
 				
 				//l_order = new Deploy(d_player, l_randCountries.get(l_randomOwnCountry), l_randomArmies);
 				//System.out.println("Deploy " + l_randCountries.get(l_randomOwnCountry) + ",armies:  " + l_randomArmies);
@@ -48,7 +50,7 @@ public class Benevolent extends PlayerStrategy{
 				//d_gameEngine.d_logEntryBuffer.setString("Move from: " + l_playerCountries.get(l_randomOwnCountry) + ", to:  " + l_randomNeighborId + ", armies: " + l_randomArmies);
 				break;
 			
-			case 4:
+			/*case 4:
 				l_randomEnemyCountry = d_gameEngine.d_random.nextInt(l_neighborCountries.size());
 //				l_randomEnemyCountry = l_randomEnemyCountry == 0 ? 1 : l_randomEnemyCountry;
 				l_order = new Bomb(d_player, l_neighborCountries.get(l_randomEnemyCountry));
@@ -64,7 +66,7 @@ public class Benevolent extends PlayerStrategy{
 				l_order = new Airlift(d_player, l_playerCountries.get(l_randomOwnCountry), l_randomToCountryId, l_randomArmies);
 				System.out.println("Airlift from: " + l_playerCountries.get(l_randomOwnCountry) + ", to:  " + l_randomToCountryId + ", armies: " + l_randomArmies);
 				d_gameEngine.d_logEntryBuffer.setString("Airlift from: " + l_playerCountries.get(l_randomOwnCountry) + ", to:  " + l_randomToCountryId + ", armies: " + l_randomArmies);
-				break;
+				break;*/
 				
 			default:
 				System.out.println("EXIT::" + l_randomOrder);
