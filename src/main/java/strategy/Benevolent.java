@@ -24,18 +24,25 @@ public class Benevolent extends PlayerStrategy{
 	public Orders createOrder() {
 		Orders l_order = null;
 		int l_randomOrder = d_gameEngine.d_random.nextInt(5-1) + 1;
+		List<Integer> l_randCountries = new ArrayList<>(d_gameEngine.getGameMap().getCountries().keySet());
 		List<Integer> l_playerCountries = new ArrayList<>(d_player.getCountries().keySet());
 		int l_randomArmies;
 		int l_randomOwnCountry;
 		switch (l_randomOrder) {
 			case 1:
-				Country l_weakCountry = null;
-				List<Integer> l_armies = new ArrayList<>(d_player.getNumberOfArmies());
+				Country l_weakCountry = d_player.getCountries().get(0);
+				for(Country country: d_player.getCountries().values()) {
+					if(l_weakCountry.getNumberOfArmiesPresent() < country.getNumberOfArmiesPresent() & d_player.getCountries().containsKey(country)) {
+						l_weakCountry = country;
+					}
+				}
+				/*List<Integer> l_armies = new ArrayList<>(d_player.getNumberOfArmies());
 				List<Integer> l_sortedArmies = new ArrayList<>(l_armies);
 				Collections.sort(l_sortedArmies);
-				int l_minArmies = l_sortedArmies.get(0);
-				
-				//l_order = new Deploy(d_player, l_randCountries.get(l_randomOwnCountry), l_randomArmies);
+				int l_minArmies = l_sortedArmies.get(0);*/
+				l_randomArmies = d_gameEngine.d_random.nextInt(d_player.getNumberOfArmies());
+				l_randomArmies = l_randomArmies == 0 ? 1 : l_randomArmies;
+				l_order = new Deploy(d_player, l_weakCountry.getId() , l_randomArmies);
 				//System.out.println("Deploy " + l_randCountries.get(l_randomOwnCountry) + ",armies:  " + l_randomArmies);
 				//d_gameEngine.d_logEntryBuffer.setString("Deploy " + l_randCountries.get(l_randomOwnCountry) + ",armies:  " + l_randomArmies);
 				break;
