@@ -54,6 +54,18 @@ public class PostLoad extends GameSetup {
 		} else {
 			l_result = removePlayer(p_commandSplitted[1]);
 		}
+		return l_result;
+	}
+
+	/**
+	 * function to assign countries to the players present in the game
+	 * 
+	 * @return string indicating that countries are assigned to the players
+	 */
+	public String assignCountries() {
+		if (d_gameEngine.d_players.size() < 2) {
+			return "There must be at least two player";
+		}
 		for(Player l_player: d_gameEngine.d_players.values()) {
 			boolean l_isCorrect = false;
 			if(l_player.d_strategy == null) {
@@ -89,18 +101,6 @@ public class PostLoad extends GameSetup {
 				}
 				
 			}
-		}
-		return l_result;
-	}
-
-	/**
-	 * function to assign countries to the players present in the game
-	 * 
-	 * @return string indicating that countries are assigned to the players
-	 */
-	public String assignCountries() {
-		if (d_gameEngine.d_players.size() < 2) {
-			return "There must be at least two player";
 		}
 		HashMap<Integer, Country> l_countries = d_gameEngine.getGameMap().getCountries();
 		List<Country> l_countryObjects = new ArrayList<Country>();
