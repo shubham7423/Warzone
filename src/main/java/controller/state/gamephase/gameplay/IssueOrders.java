@@ -170,7 +170,7 @@ public class IssueOrders extends GamePlay {
 			}
 		}
 		next();
-		d_gameEngine.d_logEntryBuffer.setString("Deploy completed");
+		d_gameEngine.d_logEntryBuffer.setString("Issue orders phase completed");
 		d_gameEngine.getPhase().executeOrders();
 		return "";
 	}
