@@ -179,8 +179,12 @@ public class Player {
 	 * method to issue order called by Game engine
 	 */
 	public void issueOrder() {
-		
-		d_orders.add(d_strategy.createOrder());
+		Orders l_order = d_strategy.createOrder();
+		if(l_order instanceof Exit) {
+			return;
+		} else {
+			d_orders.add(l_order);
+		}
 //		UserCommand l_userCommand = new UserCommand();
 //		l_userCommand.setPhase(new IssueOrders(null));
 //		String[] l_splittedOrder = null;
@@ -328,24 +332,6 @@ public class Player {
 //				System.out.println("Invalid command in phase IssueOrders.");
 //			}
 //		}
-	}
-
-	/**
-	 * This function is used to check if a string can be converted to integer or
-	 * not.
-	 * 
-	 * @param p_str represents the string to be casted to Integer value.
-	 * @return true if the string can be parsed to an Integer.
-	 */
-	public static boolean isNumeric(String p_str) {
-		try {
-			Integer.parseInt(p_str);
-			return true;
-		} catch (NumberFormatException p_e) {
-			return false;
-		} catch (Exception p_e) {
-			return false;
-		}
 	}
 
 	/**
