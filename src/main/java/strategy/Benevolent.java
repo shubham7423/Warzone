@@ -28,26 +28,40 @@ public class Benevolent extends PlayerStrategy{
 		List<Integer> l_playerCountries = new ArrayList<>(d_player.getCountries().keySet());
 		int l_randomArmies;
 		int l_randomOwnCountry;
+		Country l_weakCountry;
 		switch (l_randomOrder) {
 			case 1:
-				Country l_weakCountry = d_player.getCountries().get(0);
-				for(Country country: d_player.getCountries().values()) {
-					if(l_weakCountry.getNumberOfArmiesPresent() < country.getNumberOfArmiesPresent() & d_player.getCountries().containsKey(country)) {
-						l_weakCountry = country;
+				l_weakCountry = d_player.getCountries().get(0);
+				for(Country l_country: d_player.getCountries().values()) {
+					if(l_weakCountry.getNumberOfArmiesPresent() < l_country.getNumberOfArmiesPresent() && d_player.getCountries().containsKey(l_country)) {
+						l_weakCountry = l_country;
 					}
 				}
-				/*List<Integer> l_armies = new ArrayList<>(d_player.getNumberOfArmies());
-				List<Integer> l_sortedArmies = new ArrayList<>(l_armies);
-				Collections.sort(l_sortedArmies);
-				int l_minArmies = l_sortedArmies.get(0);*/
 				l_randomArmies = d_gameEngine.d_random.nextInt(d_player.getNumberOfArmies());
 				l_randomArmies = l_randomArmies == 0 ? 1 : l_randomArmies;
 				l_order = new Deploy(d_player, l_weakCountry.getId() , l_randomArmies);
-				//System.out.println("Deploy " + l_randCountries.get(l_randomOwnCountry) + ",armies:  " + l_randomArmies);
-				//d_gameEngine.d_logEntryBuffer.setString("Deploy " + l_randCountries.get(l_randomOwnCountry) + ",armies:  " + l_randomArmies);
+				System.out.println("Deploy " + l_weakCountry.getId() + ",armies:  " + l_randomArmies);
+				d_gameEngine.d_logEntryBuffer.setString("Deploy " + l_weakCountry.getId() + ",armies:  " + l_randomArmies);
 				break;
 	
 			case 2:
+				Country l_strongNeighbour;
+				l_weakCountry = d_player.getCountries().get(0);
+				for(Country l_country: d_player.getCountries().values()) {
+					if(l_weakCountry.getNumberOfArmiesPresent() < l_country.getNumberOfArmiesPresent() && d_player.getCountries().containsKey(l_country)) {
+						l_weakCountry = l_country;
+					}
+				}
+				l_strongNeighbour = l_weakCountry.getNeighborCountries().iterator().next();
+				for (Country l_country : l_weakCountry.getNeighborCountries()) {
+					if(l_country.getNumberOfArmiesPresent() > l_strongNeighbour.getNumberOfArmiesPresent() && d_player.getCountries().containsKey(l_country)) {
+					}
+				}
+				l_randomArmies = d_gameEngine.d_random.nextInt(d_player.getNumberOfArmies());
+				l_randomArmies = l_randomArmies == 0 ? 1 : l_randomArmies;
+				//l_order = new Advance(d_player, l_weakCountry1.getId(), l_weakCountry1.getId() , l_randomArmies);
+				//System.out.println("Deploy " + l_weakCountry.getId() + ",armies:  " + l_randomArmies);
+				//d_gameEngine.d_logEntryBuffer.setString("Deploy " + l_weakCountry.getId() + ",armies:  " + l_randomArmies);
 				break;
 				
 			case 3:
