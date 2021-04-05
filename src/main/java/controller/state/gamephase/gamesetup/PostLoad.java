@@ -10,7 +10,9 @@ import controller.GameEngine;
 import controller.state.gamephase.gameplay.AssignArmies;
 import entities.Country;
 import entities.Player;
+import strategy.Aggresive;
 import strategy.Benevolent;
+import strategy.Cheater;
 import strategy.HumanPlayer;
 import strategy.RandomPlayer;
 
@@ -90,10 +92,12 @@ public class PostLoad extends GameSetup {
 							break;
 							
 						case 4:
+							l_player.setStrategy(new Aggresive(l_player, d_gameEngine));
 							l_isCorrect = true;
 							break;
 							
 						case 5:
+							l_player.setStrategy(new Cheater(l_player, d_gameEngine));
 							l_isCorrect = true;
 							break;
 							
