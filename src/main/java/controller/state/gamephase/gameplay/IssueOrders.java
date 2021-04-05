@@ -146,9 +146,12 @@ public class IssueOrders extends GamePlay {
 			l_player.d_negotiatedPlayerNames = new ArrayList<String>();
 			l_player.d_isConquered = false;
 		}
+		
 		while (l_playersCompleted.size() < d_gameEngine.d_playerName.size()) {
+			d_gameEngine.d_logEntryBuffer.setString(""+l_currentPlayer);
 			if (!d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).getIsCommit()) {
-				System.out.println(d_gameEngine.getGameMap().showMapPlay());
+				d_gameEngine.d_logEntryBuffer.setString("XXXXX");
+//				System.out.println(d_gameEngine.getGameMap().showMapPlay());
 				System.out.println("Player " + d_gameEngine.d_playerName.get(l_currentPlayer) + "'s turn");
 				d_gameEngine.d_logEntryBuffer
 						.setString("Player " + d_gameEngine.d_playerName.get(l_currentPlayer) + "'s turn");
