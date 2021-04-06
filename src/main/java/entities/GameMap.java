@@ -183,7 +183,6 @@ public class GameMap {
 
 		l_tt = new TextTable(l_column, l_data);
 		l_tt.setAddRowNumbering(false);
-		l_tt.setSort(0);
 
 		try (PrintStream l_ps = new PrintStream(l_baos, true, "UTF-8")) {
 			l_tt.printTable(l_ps, 0);
@@ -218,7 +217,6 @@ public class GameMap {
 		}
 		l_tt = new TextTable(l_column, l_data);
 		l_tt.setAddRowNumbering(false);
-		l_tt.setSort(0);
 		try (PrintStream l_ps = new PrintStream(l_baos, true, "UTF-8")) {
 			l_tt.printTable(l_ps, 0);
 		} catch (UnsupportedEncodingException p_e) {
