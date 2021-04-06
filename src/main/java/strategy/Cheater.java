@@ -13,6 +13,12 @@ import java.util.*;
  * countries that are recently conquered.
  */
 public class Cheater extends PlayerStrategy {
+	
+	/**
+	 * Constructor to Instantiate the members of Cheater Class. 
+	 * @param p_player The properties of Cheater player to be given to this class.
+	 * @param p_gameEngine Object of Game Engine.
+	 */
 	public Cheater(Player p_player, GameEngine p_gameEngine) {
 		super(p_player, p_gameEngine);
 	}
@@ -25,11 +31,18 @@ public class Cheater extends PlayerStrategy {
 	public Orders createOrder() {
 		// get all the neighbors of the cheater player
 		Collection<Country> l_playerOwnedCountriesBefore = d_player.getCountries().values();
+		Collection<Integer> l_playerOwnedCountriesBeforeIds = d_player.getCountries().keySet();
 		HashSet<Integer> l_playerOwnedCountriesAfter = new HashSet<>();
 		for (Country l_currentCountry : l_playerOwnedCountriesBefore) {
 			l_playerOwnedCountriesAfter.addAll(l_currentCountry.getNeighborIds());
 		}
 
+		for(Integer l_currentCountryIdInteger : l_playerOwnedCountriesAfter) {
+			Country l_country = d_gameEngine.getGameMap().getCountries().get(l_currentCountryIdInteger);
+			if(!l_playerOwnedCountriesBeforeIds.contains(l_country.getId())) {
+				l_country.placeArmies(l_country.getNumberOfArmiesPresent());
+			}
+		}
 		return new Dummy();
 	}
 }
