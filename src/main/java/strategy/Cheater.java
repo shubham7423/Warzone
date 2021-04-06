@@ -41,6 +41,7 @@ public class Cheater extends PlayerStrategy {
 			if(!l_playerOwnedCountriesBeforeIds.contains(l_country.getId())) {
 				l_country.placeArmies(l_country.getNumberOfArmiesPresent());
 				d_player.addCountry(l_country);
+				l_country.getPlayer().removeCountry(l_country.getId());
 				l_country.setPlayer(d_player);
 			}
 		}
