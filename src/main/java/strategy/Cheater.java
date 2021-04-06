@@ -29,7 +29,6 @@ public class Cheater extends PlayerStrategy {
 	 */
 	@Override
 	public Orders createOrder() {
-		// get all the neighbors of the cheater player
 		Collection<Country> l_playerOwnedCountriesBefore = d_player.getCountries().values();
 		Collection<Integer> l_playerOwnedCountriesBeforeIds = d_player.getCountries().keySet();
 		HashSet<Integer> l_playerOwnedCountriesAfter = new HashSet<>();
@@ -41,6 +40,8 @@ public class Cheater extends PlayerStrategy {
 			Country l_country = d_gameEngine.getGameMap().getCountries().get(l_currentCountryIdInteger);
 			if(!l_playerOwnedCountriesBeforeIds.contains(l_country.getId())) {
 				l_country.placeArmies(l_country.getNumberOfArmiesPresent());
+				d_player.addCountry(l_country);
+				l_country.setPlayer(d_player);
 			}
 		}
 		return new Dummy();
