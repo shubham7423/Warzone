@@ -27,8 +27,10 @@ public class Aggresive extends PlayerStrategy{
 		int l_randomOrder;
 		List<Integer> l_randCountries = new ArrayList<>(d_gameEngine.getGameMap().getCountries().keySet());
 		List<Integer> l_playerCountries = new ArrayList<>(d_player.getCountries().keySet());
+		List<Integer> l_neighborCountries = new ArrayList<>(getNeighborCountries());
 		int l_randomArmies;
 		int l_randomOwnCountry;
+		int l_randomEnemyCountry;
 		Country l_strongCountry;
 		boolean l_isComplete = false;
 		
@@ -54,40 +56,41 @@ public class Aggresive extends PlayerStrategy{
 					l_isComplete = true;
 					break;
 		
-				/*case 2:
+				case 2:
 					l_strongCountry = d_player.getCountries().values().iterator().next();
 					for(Country l_country: d_player.getCountries().values()) {
 						if(l_strongCountry.getNumberOfArmiesPresent() < l_country.getNumberOfArmiesPresent() && d_player.getCountries().containsKey(l_country.getId())) {
 							l_strongCountry = l_country;
 						}
 					}
-					
-					for(Country l_country: d_player.getCountries().values()) {
-						if(!l_country.equals(l_weakCountry) && (l_country.getNeighborIds().contains(l_weakCountry.getId()))) {
-							if(l_strongNeighbour == null) {
-								l_strongNeighbour = l_country;
-							}
-							else {
-								if(l_country.getNumberOfArmiesPresent() > l_strongNeighbour.getNumberOfArmiesPresent()) {
-									l_strongNeighbour = l_country;
-								}
-							}
-						}
-					}
-					
-					if(l_strongNeighbour == null || l_strongNeighbour.getNumberOfArmiesPresent() < 2) {
-						continue;
-					}
+					l_randomEnemyCountry = d_gameEngine.d_random.nextInt(l_neighborCountries.size());
 					l_randomArmies = d_gameEngine.d_random.nextInt(d_player.getNumberOfArmies());
 					l_randomArmies = l_randomArmies == 0 ? 1 : l_randomArmies;
 					
-					l_order = new Advance(d_player, l_strongNeighbour.getId(), l_weakCountry.getId() , l_randomArmies);
-					System.out.println("Advance from: " + l_strongNeighbour.getId() + ", to: " + l_weakCountry.getId() + ", armies:  " + l_randomArmies);
-					d_gameEngine.d_logEntryBuffer.setString("Advance from: " + l_strongNeighbour.getId() + ", to: " + l_weakCountry.getId() + ", armies:  " + l_randomArmies);
+					l_order = new Advance(d_player, l_strongCountry.getId(), l_neighborCountries.get(l_randomEnemyCountry) , l_randomArmies);
+					System.out.println("Advance from: " + l_strongCountry.getId() + ", to: " + l_neighborCountries.get(l_randomEnemyCountry) + ", armies:  " + l_randomArmies);
+					d_gameEngine.d_logEntryBuffer.setString("Advance from: " + l_strongCountry.getId() + ", to: " + l_neighborCountries.get(l_randomEnemyCountry) + ", armies:  " + l_randomArmies);
 					l_isComplete = true;
 					break;
 					
 				case 3:
+					l_strongCountry = d_player.getCountries().values().iterator().next();
+					for(Country l_country: d_player.getCountries().values()) {
+						if(l_strongCountry.getNumberOfArmiesPresent() < l_country.getNumberOfArmiesPresent() && d_player.getCountries().containsKey(l_country.getId())) {
+							l_strongCountry = l_country;
+						}
+					}
+					l_randomEnemyCountry = d_gameEngine.d_random.nextInt(l_neighborCountries.size());
+					l_randomArmies = d_gameEngine.d_random.nextInt(d_player.getNumberOfArmies());
+					l_randomArmies = l_randomArmies == 0 ? 1 : l_randomArmies;
+					
+					l_order = new Advance(d_player, l_neighborCountries.get(l_randomEnemyCountry), l_strongCountry.getId() , l_randomArmies);
+					System.out.println("Advance from: " + l_neighborCountries.get(l_randomEnemyCountry) + ", to: " + l_strongCountry.getId()  + ", armies:  " + l_randomArmies);
+					d_gameEngine.d_logEntryBuffer.setString("Advance from: " + l_neighborCountries.get(l_randomEnemyCountry) + ", to: " + l_strongCountry.getId()  + ", armies:  " + l_randomArmies);
+					l_isComplete = true;
+					break;
+					
+				/*case 4:
 					Country l_strongCountry = null;
 					if(d_player.d_cardsOwned.get("airlift") < 1) {
 						continue;
@@ -119,11 +122,11 @@ public class Aggresive extends PlayerStrategy{
 					System.out.println("Move from: " + l_strongCountry.getId() + ", to: " + l_weakCountry.getId() + ", armies:  " + l_randomArmies);
 					d_gameEngine.d_logEntryBuffer.setString("Move from: " + l_strongCountry.getId() + ", to: " + l_weakCountry.getId() + ", armies:  " + l_randomArmies);
 					l_isComplete = true;
-					break;
+					break;*/
 					
 				default:
 					System.out.println("EXIT::" + l_randomOrder);
-					break;*/
+					break;
 			}
 		}
 		
