@@ -23,7 +23,7 @@ import entities.orders.Deploy;
 public class GameEngine {
 	private Phase d_phase;
 	private GameMap d_gameMap = new GameMap();
-	private Queue<Player> d_playersOrder = new LinkedList<>();
+	public Queue<Player> d_playersOrder = new LinkedList<>();
 	public HashMap<String, Player> d_players = new HashMap<>();
 	public ArrayList<String> d_playerName = new ArrayList<>();
 	public UserCommand d_userCommand;

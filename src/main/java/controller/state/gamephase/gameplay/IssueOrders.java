@@ -164,6 +164,7 @@ public class IssueOrders extends GamePlay {
 //						d_gameEngine.addPlayerOrder(d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)));
 //					}
 //				}
+				d_gameEngine.addPlayerOrder(d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)));
 				if(!(d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).getPlayerBehaviour() instanceof HumanPlayer)) {
 					d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).setIsCommit(true);
 				}

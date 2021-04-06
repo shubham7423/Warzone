@@ -34,6 +34,7 @@ public class RandomPlayer extends PlayerStrategy {
 		boolean l_isComplete = false;
 		
 		if(l_playerCountries.size() == 0) {
+			System.out.println("DUMMY RETURNED");
 			return new Dummy();
 		}
 		

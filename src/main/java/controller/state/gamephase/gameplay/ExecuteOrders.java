@@ -125,6 +125,7 @@ public class ExecuteOrders extends GamePlay {
 			Player l_currentPlayer = d_gameEngine.getPlayerOrder();
 			Orders l_order = l_currentPlayer.nextOrder();
 			if(l_order instanceof Dummy) {
+				++l_i;
 				continue;
 			}
 			l_result = l_order.executeOrder(d_gameEngine);
