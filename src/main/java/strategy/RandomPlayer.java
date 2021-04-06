@@ -60,7 +60,7 @@ public class RandomPlayer extends PlayerStrategy {
 				// l_randomOwnCountry = l_randomOwnCountry == 0 ? 1 : l_randomOwnCountry;
 				l_randomEnemyCountry = d_gameEngine.d_random.nextInt(l_neighborCountries.size());
 				// l_randomEnemyCountry = l_randomEnemyCountry == 0 ? 1 : l_randomEnemyCountry;
-				if (d_gameEngine.getGameMap().getCountries().get(l_playerCountries.get(l_randomOwnCountry))
+		 		if (d_gameEngine.getGameMap().getCountries().get(l_playerCountries.get(l_randomOwnCountry))
 						.getNumberOfArmiesPresent() <= 1) {
 					l_randomArmies = d_gameEngine.d_random.nextInt(1);
 				} else {
