@@ -6,6 +6,8 @@ import java.util.Set;
 import controller.GameEngine;
 import controller.state.gamephase.endphase.EndPhase;
 import entities.Player;
+import entities.orders.Dummy;
+import entities.orders.Orders;
 
 /**
  * ExecuteOrder class that inherits GamePlay interface to support functions during this command
@@ -121,7 +123,11 @@ public class ExecuteOrders extends GamePlay {
 		d_gameEngine.d_logEntryBuffer.setString("Execution Phase Started");
 		while(l_i < l_numOrders) {
 			Player l_currentPlayer = d_gameEngine.getPlayerOrder();
-			l_result = l_currentPlayer.nextOrder().executeOrder(d_gameEngine);
+			Orders l_order = l_currentPlayer.nextOrder();
+			if(l_order instanceof Dummy) {
+				continue;
+			}
+			l_result = l_order.executeOrder(d_gameEngine);
 			System.out.println(l_currentPlayer.getName() + ": " + l_result);
 			d_gameEngine.d_logEntryBuffer.setString(l_currentPlayer.getName() + ": " + l_result);
 			++l_i;

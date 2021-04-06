@@ -13,6 +13,7 @@ import entities.orders.Advance;
 import entities.orders.Airlift;
 import entities.orders.Bomb;
 import entities.orders.Deploy;
+import entities.orders.Dummy;
 import entities.orders.Orders;
 
 public class Benevolent extends PlayerStrategy{
@@ -31,14 +32,16 @@ public class Benevolent extends PlayerStrategy{
 		Country l_weakCountry;
 		boolean l_isComplete = false;
 		
+		if(l_playerCountries.size() == 0) {
+			return new Dummy();
+		}
+		
 		while(!l_isComplete) {
 			l_randomOrder = d_gameEngine.d_random.nextInt(3-1) + 1;
 			switch (l_randomOrder) {
 				case 1:
 					l_weakCountry = d_player.getCountries().values().iterator().next();
 					for(Country l_country: d_player.getCountries().values()) {
-						System.out.println(l_weakCountry.getId());
-						
 						if(l_weakCountry.getNumberOfArmiesPresent() > l_country.getNumberOfArmiesPresent() && d_player.getCountries().containsKey(l_country.getId())) {
 							l_weakCountry = l_country;
 						}

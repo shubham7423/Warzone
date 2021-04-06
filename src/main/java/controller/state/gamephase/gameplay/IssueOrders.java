@@ -159,11 +159,11 @@ public class IssueOrders extends GamePlay {
 				System.out.println("Cards: "
 						+ d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).d_cardsOwned);
 				d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).issueOrder();
-				if (!d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).getIsCommit()) {
-					if(!(d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).getPlayerBehaviour() instanceof Cheater)) {
-						d_gameEngine.addPlayerOrder(d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)));
-					}
-				}
+//				if (!d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).getIsCommit()) {
+//					if(!(d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).getPlayerBehaviour() instanceof Cheater)) {
+//						d_gameEngine.addPlayerOrder(d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)));
+//					}
+//				}
 				if(!(d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).getPlayerBehaviour() instanceof HumanPlayer)) {
 					d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).setIsCommit(true);
 				}

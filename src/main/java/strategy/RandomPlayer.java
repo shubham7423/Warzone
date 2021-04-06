@@ -11,6 +11,7 @@ import entities.orders.Advance;
 import entities.orders.Airlift;
 import entities.orders.Bomb;
 import entities.orders.Deploy;
+import entities.orders.Dummy;
 import entities.orders.Orders;
 
 public class RandomPlayer extends PlayerStrategy {
@@ -32,6 +33,9 @@ public class RandomPlayer extends PlayerStrategy {
 		int l_randomEnemyCountry;
 		boolean l_isComplete = false;
 		
+		if(l_playerCountries.size() == 0) {
+			return new Dummy();
+		}
 		
 		
 		while(!l_isComplete) {
@@ -39,6 +43,7 @@ public class RandomPlayer extends PlayerStrategy {
 			switch (l_randomOrder) {
 			case 1:	
 				l_randomOwnCountry = d_gameEngine.d_random.nextInt(l_playerCountries.size());
+				
 				// l_randomOwnCountry = l_randomOwnCountry == 0 ? 1 : l_randomOwnCountry;
 				System.out.println("ARMIES: " + d_player.getNumberOfArmies());
 				l_randomArmies = d_gameEngine.d_random.nextInt(d_player.getNumberOfArmies());

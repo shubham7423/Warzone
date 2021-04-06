@@ -184,7 +184,7 @@ public class Player {
 	 */
 	public void issueOrder() {
 		Orders l_order = d_strategy.createOrder();
-		if(l_order instanceof Exit || l_order instanceof Dummy) {
+		if(l_order instanceof Exit) {
 			return;
 		} else {
 			d_orders.add(l_order);
