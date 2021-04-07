@@ -9844,3 +9844,473 @@
 2021/04/06 12:23:13> Assigned Reinforcements to players
 2021/04/06 12:23:13> Issue orders phase entered
 2021/04/06 12:23:13> Player a's turn
+2021/04/07 11:13:28> Game Started
+2021/04/07 11:13:42> Game Setup Phase Entered
+2021/04/07 11:13:42> Map "uk.map" loaded successfully
+2021/04/07 11:14:05> Player "a" added to game
+2021/04/07 11:14:05> Player "b" added to game
+2021/04/07 11:14:13> Countries Assigned
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Deploy 1,armies:  4
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Attack from: 5, to:  2, armies: 0
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Player "a" deployed "4" armies to country "1"
+2021/04/07 11:14:13> b: Country "5" should remain with atleast 1 armies after advancing command
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Deploy 4,armies:  4
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Move from: 5, to:  3, armies: 0
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Player "a" deployed "4" armies to country "4"
+2021/04/07 11:14:13> b: Country "5" should remain with atleast 1 armies after advancing command
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Move from: 4, to:  2, armies: 2
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Deploy 2,armies:  2
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Armies successfully moved from country "4" to country "2" and the ownership changed to "a" player, Card "diplomacy" rewarded to player "a".
+2021/04/07 11:14:13> b: Player "b" does not control country "2"
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Deploy 4,armies:  4
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Attack from: 5, to:  4, armies: 0
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Player "a" deployed "4" armies to country "4"
+2021/04/07 11:14:13> b: Country "5" should remain with atleast 1 armies after advancing command
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Attack from: 1, to:  4, armies: 1
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Move from: 5, to:  3, armies: 0
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Armies cannot be moved from country "1" to country "4" because they are not neighbors
+2021/04/07 11:14:13> b: Country "5" should remain with atleast 1 armies after advancing command
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Deploy 2,armies:  3
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Deploy 5,armies:  2
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Player "a" deployed "3" armies to country "2"
+2021/04/07 11:14:13> b: Player "b" deployed "2" armies to country "5"
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Deploy 1,armies:  2
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Attack from: 5, to:  1, armies: 0
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Player "a" deployed "2" armies to country "1"
+2021/04/07 11:14:13> b: Armies cannot be moved from country "5" to country "1" because they are not neighbors
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Deploy 2,armies:  1
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Deploy 5,armies:  1
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Player "a" deployed "1" armies to country "2"
+2021/04/07 11:14:13> b: Player "b" deployed "1" armies to country "5"
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Deploy 3,armies:  1
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Attack from: 5, to:  1, armies: 0
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Player "a" deployed "1" armies to country "3"
+2021/04/07 11:14:13> b: Armies cannot be moved from country "5" to country "1" because they are not neighbors
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Deploy 4,armies:  4
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Move from: 5, to:  3, armies: 0
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Player "a" deployed "4" armies to country "4"
+2021/04/07 11:14:13> b: Armies from country "5" were not able to advance to country "3" as the attacking armies could not defeat all the armies present in the defending country
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Attack from: 3, to:  2, armies: 0
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Attack from: 5, to:  1, armies: 1
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Armies successfully moved from country "3" to country "2"
+2021/04/07 11:14:13> b: Armies cannot be moved from country "5" to country "1" because they are not neighbors
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Move from: 4, to:  2, armies: 8
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Attack from: 5, to:  3, armies: 1
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Armies successfully moved from country "4" to country "2"
+2021/04/07 11:14:13> b: Armies from country "5" were not able to advance to country "3" as the attacking armies were only able to defeat the exact number of armies present in the defending country
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Deploy 3,armies:  6
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Deploy 5,armies:  3
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Player "a" deployed "6" armies to country "3"
+2021/04/07 11:14:13> b: Player "b" deployed "3" armies to country "5"
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Move from: 3, to:  5, armies: 0
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Move from: 5, to:  4, armies: 1
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Armies from country "3" were not able to advance to country "5" as the attacking armies could not defeat all the armies present in the defending country
+2021/04/07 11:14:13> b: Armies from country "5" were not able to advance to country "4" as the attacking armies could not defeat all the armies present in the defending country
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Move from: 3, to:  1, armies: 0
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Move from: 5, to:  4, armies: 3
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Armies successfully moved from country "3" to country "1"
+2021/04/07 11:14:13> b: Armies successfully moved from country "5" to country "4" and the ownership changed to "b" player, Card "airlift" rewarded to player "b".
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Attack from: 1, to:  4, armies: 4
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Attack from: 4, to:  5, armies: 0
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Armies cannot be moved from country "1" to country "4" because they are not neighbors
+2021/04/07 11:14:13> b: Armies successfully moved from country "4" to country "5"
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Deploy 1,armies:  1
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Deploy 5,armies:  1
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Player "a" deployed "1" armies to country "1"
+2021/04/07 11:14:13> b: Player "b" deployed "1" armies to country "5"
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Attack from: 2, to:  1, armies: 8
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Attack from: 5, to:  5, armies: 0
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Armies successfully moved from country "2" to country "1"
+2021/04/07 11:14:13> b: Armies cannot be moved from country "5" to country "5" because they are not neighbors
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Attack from: 2, to:  5, armies: 4
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Move from: 4, to:  2, armies: 1
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Armies cannot be moved from country "2" to country "5" because they are not neighbors
+2021/04/07 11:14:13> b: Armies from country "4" were not able to advance to country "2" as the attacking armies could not defeat all the armies present in the defending country
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Attack from: 1, to:  3, armies: 9
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Deploy 5,armies:  1
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Armies successfully moved from country "1" to country "3"
+2021/04/07 11:14:13> b: Player "b" deployed "1" armies to country "5"
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Move from: 3, to:  1, armies: 0
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Attack from: 5, to:  1, armies: 1
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Armies successfully moved from country "3" to country "1"
+2021/04/07 11:14:13> b: Armies cannot be moved from country "5" to country "1" because they are not neighbors
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Move from: 1, to:  2, armies: 1
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Deploy 5,armies:  1
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Armies successfully moved from country "1" to country "2"
+2021/04/07 11:14:13> b: Player "b" deployed "1" armies to country "5"
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Attack from: 2, to:  2, armies: 4
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Attack from: 5, to:  3, armies: 2
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Armies cannot be moved from country "2" to country "2" because they are not neighbors
+2021/04/07 11:14:13> b: Armies from country "5" were not able to advance to country "3" as the attacking armies could not defeat all the armies present in the defending country
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Move from: 2, to:  4, armies: 1
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Attack from: 5, to:  5, armies: 0
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Armies from country "2" were not able to advance to country "4" as the attacking armies were only able to defeat the exact number of armies present in the defending country
+2021/04/07 11:14:13> b: Armies cannot be moved from country "5" to country "5" because they are not neighbors
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Attack from: 3, to:  1, armies: 9
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Move from: 4, to:  2, armies: 0
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Armies successfully moved from country "3" to country "1"
+2021/04/07 11:14:13> b: Country "4" should remain with atleast 1 armies after advancing command
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Deploy 3,armies:  1
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Deploy 4,armies:  1
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Player "a" deployed "1" armies to country "3"
+2021/04/07 11:14:13> b: Player "b" deployed "1" armies to country "4"
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Move from: 2, to:  4, armies: 2
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Deploy 5,armies:  1
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Armies successfully moved from country "2" to country "4" and the ownership changed to "a" player, Card "airlift" rewarded to player "a".
+2021/04/07 11:14:13> b: Player "b" deployed "1" armies to country "5"
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Attack from: 2, to:  2, armies: 1
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Move from: 5, to:  4, armies: 2
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Armies cannot be moved from country "2" to country "2" because they are not neighbors
+2021/04/07 11:14:13> b: Armies successfully moved from country "5" to country "4" and the ownership changed to "b" player, Card "blockade" rewarded to player "b".
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Attack from: 2, to:  4, armies: 1
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Attack from: 4, to:  3, armies: 0
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Armies from country "2" were not able to advance to country "4" as the attacking armies were only able to defeat the exact number of armies present in the defending country
+2021/04/07 11:14:13> b: Country "4" should remain with atleast 1 armies after advancing command
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Attack from: 3, to:  4, armies: 3
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Deploy 5,armies:  1
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Armies successfully moved from country "3" to country "4" and the ownership changed to "a" player, Card "blockade" rewarded to player "a".
+2021/04/07 11:14:13> b: Player "b" deployed "1" armies to country "5"
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Attack from: 1, to:  1, armies: 8
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Deploy 5,armies:  1
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Armies cannot be moved from country "1" to country "1" because they are not neighbors
+2021/04/07 11:14:13> b: Player "b" deployed "1" armies to country "5"
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Attack from: 4, to:  2, armies: 1
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Deploy 5,armies:  2
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Armies successfully moved from country "4" to country "2"
+2021/04/07 11:14:13> b: Player "b" deployed "2" armies to country "5"
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Move from: 4, to:  5, armies: 1
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Move from: 5, to:  3, armies: 2
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Armies from country "4" were not able to advance to country "5" as the attacking armies could not defeat all the armies present in the defending country
+2021/04/07 11:14:13> b: Armies from country "5" were not able to advance to country "3" as the attacking armies were only able to defeat the exact number of armies present in the defending country
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Deploy 4,armies:  1
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Deploy 5,armies:  1
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Player "a" deployed "1" armies to country "4"
+2021/04/07 11:14:13> b: Player "b" deployed "1" armies to country "5"
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Attack from: 4, to:  4, armies: 0
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Attack from: 5, to:  2, armies: 0
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Armies cannot be moved from country "4" to country "4" because they are not neighbors
+2021/04/07 11:14:13> b: Armies cannot be moved from country "5" to country "2" because they are not neighbors
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Move from: 2, to:  4, armies: 1
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Attack from: 5, to:  5, armies: 0
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Armies successfully moved from country "2" to country "4"
+2021/04/07 11:14:13> b: Armies cannot be moved from country "5" to country "5" because they are not neighbors
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Deploy 1,armies:  6
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Attack from: 5, to:  4, armies: 1
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Player "a" deployed "6" armies to country "1"
+2021/04/07 11:14:13> b: Armies from country "5" were not able to advance to country "4" as the attacking armies could not defeat all the armies present in the defending country
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Move from: 1, to:  3, armies: 13
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Attack from: 5, to:  5, armies: 0
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Armies successfully moved from country "1" to country "3"
+2021/04/07 11:14:13> b: Armies cannot be moved from country "5" to country "5" because they are not neighbors
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Attack from: 1, to:  4, armies: 5
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Deploy 5,armies:  1
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Armies cannot be moved from country "1" to country "4" because they are not neighbors
+2021/04/07 11:14:13> b: Player "b" deployed "1" armies to country "5"
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Deploy 3,armies:  4
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Move from: 5, to:  3, armies: 1
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Player "a" deployed "4" armies to country "3"
+2021/04/07 11:14:13> b: Armies from country "5" were not able to advance to country "3" as the attacking armies could not defeat all the armies present in the defending country
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> Assigned Reinforcements to players
+2021/04/07 11:14:13> Issue orders phase entered
+2021/04/07 11:14:13> Player a's turn
+2021/04/07 11:14:13> Attack from: 3, to:  5, armies: 8
+2021/04/07 11:14:13> Player b's turn
+2021/04/07 11:14:13> Move from: 5, to:  3, armies: 1
+2021/04/07 11:14:13> Issue orders phase completed
+2021/04/07 11:14:13> Execution Phase Started
+2021/04/07 11:14:13> a: Armies successfully moved from country "3" to country "5" and the ownership changed to "a" player, Card "blockade" rewarded to player "a".
+2021/04/07 11:14:13> b: Player "b" does not control country "5" ,hence armies cannot be moved.
+2021/04/07 11:14:13> Execution Complete
+2021/04/07 11:14:13> 
+Winner:  a
+2021/04/07 11:14:46> Game Started
+2021/04/07 11:14:53> Game Setup Phase Entered
+2021/04/07 11:14:53> Map "uk.map" loaded successfully
+2021/04/07 11:15:05> Player "a" added to game
+2021/04/07 11:15:05> Player "b" added to game
+2021/04/07 11:15:20> Countries Assigned
+2021/04/07 11:15:20> Assigned Reinforcements to players
+2021/04/07 11:15:20> Issue orders phase entered
+2021/04/07 11:15:20> Player a's turn
+2021/04/07 11:15:20> Attack from: 2, to:  3, armies: 0
+2021/04/07 11:15:20> Player b's turn
