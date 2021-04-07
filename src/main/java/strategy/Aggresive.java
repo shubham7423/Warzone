@@ -16,12 +16,29 @@ import entities.orders.Deploy;
 import entities.orders.Dummy;
 import entities.orders.Orders;
 
+/**
+ * concrete strategy class of Aggressive player.
+ * An aggressive computer player strategy that focuses on centralization of forces and then attack, i.e. it deploys on its strongest country,
+ * then always attack with its strongest country, then moves its armies in order to maximize aggregation of forces in one country.
+ */
 public class Aggresive extends PlayerStrategy{
 
+	/**
+	 * constructor method for the class
+	 * @param p_player name of the aggressive player
+	 * @param p_gameEngine object of GameEngine class
+	 */
 	public Aggresive(Player p_player, GameEngine p_gameEngine) {
 		super(p_player, p_gameEngine);
 	}
 	
+	/**
+	 * this function creates orders keeping in mind how the aggressive player plays.
+	 * it uses a switch case to create any random order(move armies, deploy armies, advance armies, cards)
+	 * deploys on its strongest country
+	 * attack with its strongest country
+	 * moves its armies in order to maximize aggregation of forces in one country
+	 */
 	public Orders createOrder() {
 		Orders l_order = null;
 		int l_randomOrder;
@@ -140,6 +157,10 @@ public class Aggresive extends PlayerStrategy{
 		return l_order;
 	}
 	
+	/**
+	 * function to get neighboring countries of any country
+	 * @return the neighbors of the respective countries
+	 */
 	public HashSet getNeighborCountries() {
 		HashSet<Integer> l_neighbours = new HashSet<>();
 		for(Country l_country: d_gameEngine.getGameMap().getCountries().values()) {
