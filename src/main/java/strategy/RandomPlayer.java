@@ -14,14 +14,31 @@ import entities.orders.Deploy;
 import entities.orders.Dummy;
 import entities.orders.Orders;
 
+/**
+ * concrete strategy class of Random player.
+ * A random computer player strategy that deploys on a random country, attacks random neighboring countries,
+ * and moves armies randomly between its countries.
+ */
 public class RandomPlayer extends PlayerStrategy {
 
 	RandomPlayer d_random;
 
+	/**
+	 * constructor method for the class
+	 * @param p_player name of the aggressive player
+	 * @param p_gameEngine object of GameEngine class
+	 */
 	public RandomPlayer(Player p_player, GameEngine p_gameEngine) {
 		super(p_player, p_gameEngine);
 	}
 
+	/**
+	 * this function creates orders keeping in mind how the aggressive player plays.
+	 * it uses a switch case to create any random order(move armies, deploy armies, advance armies, cards)
+	 * deploys on a random country
+	 * attacks random neighboring countries
+	 * moves armies randomly between its countries
+	 */
 	public Orders createOrder() {
 		Orders l_order = null;
 		int l_randomOrder;
@@ -147,6 +164,10 @@ public class RandomPlayer extends PlayerStrategy {
 
 	}
 
+	/**
+	 * function to get neighboring countries of any country
+	 * @return the neighbors of the respective countries
+	 */
 	public HashSet getNeighborCountries() {
 		HashSet<Integer> l_neighbours = new HashSet<>();
 		for (Country l_country : d_gameEngine.getGameMap().getCountries().values()) {

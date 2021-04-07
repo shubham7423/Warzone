@@ -37,7 +37,7 @@ public class Benevolent extends PlayerStrategy{
 	 * it uses a switch case to create any random order(move armies, deploy armies, advance armies, cards)
 	 * deploys on its weakest country
 	 * never attacks
-	 *  moves its armies in order to reinforce its weaker country
+	 * moves its armies in order to reinforce its weaker country
 	 */
 	public Orders createOrder() {
 		Orders l_order = null;
