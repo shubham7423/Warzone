@@ -16,12 +16,29 @@ import entities.orders.Deploy;
 import entities.orders.Dummy;
 import entities.orders.Orders;
 
+/**
+ * concrete strategy class of Benevolent player.
+ * A benevolent computer player strategy that focuses on protecting its weak countries (deploys on its weakest country, never attacks,
+ * then moves its armies in order to reinforce its weaker country).
+ */
 public class Benevolent extends PlayerStrategy{
 
+	/**
+	 * constructor method for the class
+	 * @param p_player name of the aggressive player
+	 * @param p_gameEngine object of GameEngine class
+	 */
 	public Benevolent(Player p_player, GameEngine p_gameEngine) {
 		super(p_player, p_gameEngine);
 	}
 	
+	/**
+	 * this function creates orders keeping in mind how the aggressive player plays.
+	 * it uses a switch case to create any random order(move armies, deploy armies, advance armies, cards)
+	 * deploys on its weakest country
+	 * never attacks
+	 *  moves its armies in order to reinforce its weaker country
+	 */
 	public Orders createOrder() {
 		Orders l_order = null;
 		int l_randomOrder;
@@ -133,6 +150,10 @@ public class Benevolent extends PlayerStrategy{
 		return l_order;
 	}
 	
+	/**
+	 * function to get neighboring countries of any country
+	 * @return the neighbors of the respective countries
+	 */
 	public HashSet getNeighborCountries() {
 		HashSet<Integer> l_neighbours = new HashSet<>();
 		for(Country l_country: d_gameEngine.getGameMap().getCountries().values()) {
