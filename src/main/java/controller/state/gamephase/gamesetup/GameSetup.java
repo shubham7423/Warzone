@@ -24,7 +24,7 @@ public abstract class GameSetup extends GamePhase {
 	}
 	
 	public String saveGame() {
-		return null;
+		return printInvalidCommandMessage();
 	}
 
 	/**
