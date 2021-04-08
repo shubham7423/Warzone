@@ -23,7 +23,7 @@ public abstract class GameSetup extends GamePhase {
 		return null;
 	}
 	
-	public String saveGame() {
+	public String saveGame(String p_fileName) {
 		return printInvalidCommandMessage();
 	}
 
