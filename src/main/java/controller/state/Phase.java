@@ -19,6 +19,10 @@ public abstract class Phase {
 	public Phase(GameEngine p_gameEngine) {
 		d_gameEngine = p_gameEngine;
 	}
+	
+	abstract public String saveGame();
+	
+	abstract public String loadGame();
 
 	/**
 	 * abstract function to support editMap command

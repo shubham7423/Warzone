@@ -17,6 +17,14 @@ public class EndPhase extends GamePhase {
 	public EndPhase(GameEngine p_gameEngine) {
 		super(p_gameEngine);
 	}
+	
+	public String saveGame() {
+		return printInvalidCommandMessage();
+	}
+	
+	public String loadGame() {
+		return printInvalidCommandMessage();
+	}
 
 	/**
 	 * function to print invalid command as the following command cannot be used in

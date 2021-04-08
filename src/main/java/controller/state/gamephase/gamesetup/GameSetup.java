@@ -18,6 +18,14 @@ public abstract class GameSetup extends GamePhase {
 	public GameSetup(GameEngine p_gameEngine) {
 		super(p_gameEngine);
 	}
+	
+	public String loadGame() {
+		return null;
+	}
+	
+	public String saveGame() {
+		return null;
+	}
 
 	/**
 	 * function to print invalid command as the following command cannot be used in
