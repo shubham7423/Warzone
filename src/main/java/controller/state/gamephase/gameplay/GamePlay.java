@@ -18,7 +18,7 @@ public abstract class GamePlay extends GamePhase {
 		super(p_gameEngine);
 	}
 	
-	public String saveGame() {
+	public String saveGame(String p_fileName) {
 		return null;
 	}
 	

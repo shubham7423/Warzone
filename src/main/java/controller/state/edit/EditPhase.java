@@ -19,7 +19,7 @@ public abstract class EditPhase extends Phase {
 		super(p_gameEngine);
 	}
 	
-	public String saveGame() {
+	public String saveGame(String p_fileName) {
 		return printInvalidCommandMessage();
 	}
 	
