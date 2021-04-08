@@ -56,16 +56,24 @@ public class Aggresive extends PlayerStrategy{
 		}
 		
 		while(!l_isComplete) {
-			l_randomOrder = d_gameEngine.d_random.nextInt(4-1) + 1;
+			l_randomOrder = d_gameEngine.d_random.nextInt(5-1) + 1;
+			l_strongCountry = d_player.getCountries().values().iterator().next();
+			for(Country l_country: d_player.getCountries().values()) {
+				if(l_strongCountry.getNumberOfArmiesPresent() < l_country.getNumberOfArmiesPresent() && d_player.getCountries().containsKey(l_country.getId())) {
+					if(getStrongNeighbors(l_country).size() != 0) {
+						l_strongCountry = l_country;
+					}
+				}
+			}
 			switch (l_randomOrder) {
 				case 1:
 					System.out.println("DEPLOY");
 					l_strongCountry = d_player.getCountries().values().iterator().next();
-					for(Country l_country: d_player.getCountries().values()) {
-						if(l_strongCountry.getNumberOfArmiesPresent() < l_country.getNumberOfArmiesPresent() && d_player.getCountries().containsKey(l_country.getId())) {
-							l_strongCountry = l_country;
-						}
-					}
+//					for(Country l_country: d_player.getCountries().values()) {
+//						if(l_strongCountry.getNumberOfArmiesPresent() < l_country.getNumberOfArmiesPresent() && d_player.getCountries().containsKey(l_country.getId())) {
+//							l_strongCountry = l_country;
+//						}
+//					}
 //					l_randomArmies = d_gameEngine.d_random.nextInt(d_player.getNumberOfArmies());
 //					l_randomArmies = l_randomArmies == 0 ? 1 : l_randomArmies;
 					l_randomArmies = d_player.getNumberOfArmies();
@@ -77,14 +85,14 @@ public class Aggresive extends PlayerStrategy{
 		
 				case 2:
 					System.out.println("ADVANCE1");
-					l_strongCountry = d_player.getCountries().values().iterator().next();
-					for(Country l_country: d_player.getCountries().values()) {
-						if(l_strongCountry.getNumberOfArmiesPresent() < l_country.getNumberOfArmiesPresent() && d_player.getCountries().containsKey(l_country.getId())) {
-							if(getStrongNeighbors(l_country).size() != 0) {
-								l_strongCountry = l_country;
-							}
-						}
-					}
+//					l_strongCountry = d_player.getCountries().values().iterator().next();
+//					for(Country l_country: d_player.getCountries().values()) {
+//						if(l_strongCountry.getNumberOfArmiesPresent() < l_country.getNumberOfArmiesPresent() && d_player.getCountries().containsKey(l_country.getId())) {
+//							if(getStrongNeighbors(l_country).size() != 0) {
+//								l_strongCountry = l_country;
+//							}
+//						}
+//					}
 					
 					if(l_strongCountry.getNumberOfArmiesPresent()<2) {
 						continue;
@@ -109,36 +117,36 @@ public class Aggresive extends PlayerStrategy{
 					l_isComplete = true;
 					break;
 					
-//				case 3:
-//					System.out.println("ADVANCE2");
+				case 3:
+					System.out.println("ADVANCE2");
 //					l_strongCountry = d_player.getCountries().values().iterator().next();
 //					for(Country l_country: d_player.getCountries().values()) {
 //						if(l_strongCountry.getNumberOfArmiesPresent() < l_country.getNumberOfArmiesPresent() && d_player.getCountries().containsKey(l_country.getId())) {
 //							l_strongCountry = l_country;
 //						}
 //					}
-//					
-//					if(l_strongCountry.getNumberOfArmiesPresent()<2) {
-//						continue;
-//					}
-//					
-//					int l_randomNeighbor = d_gameEngine.d_random.nextInt(d_gameEngine.getGameMap().getCountries()
-//							.get(l_playerCountries.get(l_strongCountry.getId())).getNeighborCountries().size());
-//					if (d_gameEngine.getGameMap().getCountries().get(l_playerCountries.get(l_randomNeighbor))
-//							.getNumberOfArmiesPresent() == 0) {
-//						l_randomArmies = d_gameEngine.d_random.nextInt(1);
-//					} else {
-//						l_randomArmies = d_gameEngine.d_random.nextInt(d_gameEngine.getGameMap().getCountries()
-//								.get(l_playerCountries.get(l_randomNeighbor)).getNumberOfArmiesPresent());
-//					}
-//					
-//					l_order = new Advance(d_player, l_neighborCountries.get(l_randomNeighbor), l_strongCountry.getId() , l_randomArmies);
-//					System.out.println("Advance from: " + l_neighborCountries.get(l_randomNeighbor) + ", to: " + l_strongCountry.getId()  + ", armies:  " + l_randomArmies);
-//					d_gameEngine.d_logEntryBuffer.setString("Advance from: " + l_neighborCountries.get(l_randomNeighbor) + ", to: " + l_strongCountry.getId()  + ", armies:  " + l_randomArmies);
-//					l_isComplete = true;
-//					break;
 					
-				case 3:
+					if(l_strongCountry.getNumberOfArmiesPresent()<2) {
+						continue;
+					}
+					
+					int l_randomNeighbor = d_gameEngine.d_random.nextInt(d_gameEngine.getGameMap().getCountries()
+							.get(l_playerCountries.get(l_strongCountry.getId())).getNeighborCountries().size());
+					if (d_gameEngine.getGameMap().getCountries().get(l_playerCountries.get(l_randomNeighbor))
+							.getNumberOfArmiesPresent() == 0) {
+						l_randomArmies = d_gameEngine.d_random.nextInt(1);
+					} else {
+						l_randomArmies = d_gameEngine.d_random.nextInt(d_gameEngine.getGameMap().getCountries()
+								.get(l_playerCountries.get(l_randomNeighbor)).getNumberOfArmiesPresent());
+					}
+					
+					l_order = new Advance(d_player, l_neighborCountries.get(l_randomNeighbor), l_strongCountry.getId() , l_randomArmies);
+					System.out.println("Advance from: " + l_neighborCountries.get(l_randomNeighbor) + ", to: " + l_strongCountry.getId()  + ", armies:  " + l_randomArmies);
+					d_gameEngine.d_logEntryBuffer.setString("Advance from: " + l_neighborCountries.get(l_randomNeighbor) + ", to: " + l_strongCountry.getId()  + ", armies:  " + l_randomArmies);
+					l_isComplete = true;
+					break;
+					
+				case 4:
 					System.out.println("BOMB");
 					if(d_player.d_cardsOwned.get("bomb") < 1) {
 						continue;
@@ -150,17 +158,17 @@ public class Aggresive extends PlayerStrategy{
 					d_gameEngine.d_logEntryBuffer.setString("Bomb " + l_neighborCountries.get(l_randomEnemyCountry));
 					break;
 					
-				case 4:
+				case 5:
 					System.out.println("AIRLIFT");
 					if(d_player.d_cardsOwned.get("airlift") < 1) {
 						continue;
 					}
-					l_strongCountry = d_player.getCountries().values().iterator().next();
-					for(Country l_country: d_player.getCountries().values()) {
-						if(l_strongCountry.getNumberOfArmiesPresent() < l_country.getNumberOfArmiesPresent() && d_player.getCountries().containsKey(l_country.getId())) {
-							l_strongCountry = l_country;
-						}
-					}
+//					l_strongCountry = d_player.getCountries().values().iterator().next();
+//					for(Country l_country: d_player.getCountries().values()) {
+//						if(l_strongCountry.getNumberOfArmiesPresent() < l_country.getNumberOfArmiesPresent() && d_player.getCountries().containsKey(l_country.getId())) {
+//							l_strongCountry = l_country;
+//						}
+//					}
 					l_randomOwnCountry = d_gameEngine.d_random.nextInt(l_playerCountries.size());
 					// l_randomOwnCountry = l_randomOwnCountry == 0 ? 1 : l_randomOwnCountry;
 					l_randomArmies = d_gameEngine.d_random.nextInt(d_gameEngine.getGameMap().getCountries()
