@@ -118,6 +118,10 @@ public class GameEngine {
 		case "blockade":
 			l_result = blockade(p_splittedCommand);
 			break;
+			
+		case "savegame":
+			l_result = saveGame(p_splittedCommand);
+			break;
 
 		default:
 			l_result = "Command not found";
@@ -641,6 +645,26 @@ public class GameEngine {
 		return l_result;
 	}
 
+	/**
+	 * function to allow saving of game to the directory
+	 * 
+	 * @param p_splittedCommand the command that has been splitted into multiple
+	 *                          parts for further processing
+	 * @return the result of executing the savegame command
+	 */
+	public String saveGame(String[] p_splittedCommand) {
+		if (p_splittedCommand.length != 2) {
+			return "Please enter valid command. Valid command is : \"savegame filename.game\"";
+		}
+		if (p_splittedCommand[1].split("\\.").length <= 1) {
+			return "File extension should be .game";
+		}
+		if (!"game".equals(p_splittedCommand[1].split("\\.")[1])) {
+			return "File extension should be .game";
+		}
+		return d_phase.saveGame(p_splittedCommand[1]);
+	}
+	
 	/**
 	 * function to allow saving of map to the directory
 	 * 

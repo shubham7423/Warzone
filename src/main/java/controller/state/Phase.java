@@ -20,7 +20,11 @@ public abstract class Phase {
 		d_gameEngine = p_gameEngine;
 	}
 	
-	abstract public String saveGame();
+	/**
+	 * Abstract function to save the game.
+	 * @return output string of execution of command.
+	 */
+	abstract public String saveGame(String p_fileName);
 	
 	abstract public String loadGame();
 
