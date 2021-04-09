@@ -6,7 +6,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
 
-
 import controller.state.Phase;
 import controller.state.edit.EditPhase;
 import controller.state.edit.PreEdit;
@@ -31,6 +30,8 @@ public class GameEngine {
 	private LogWriter d_logWriter;
 	public Player d_neutralPlayer;
 	public Random d_random;
+	private int d_turnNumber = 0;
+	private int d_maxTurn = 500;
 
 	/**
 	 * Game Engine constructor which creates a neutral player when game is started
@@ -169,6 +170,33 @@ public class GameEngine {
 	 */
 	public GameMap getGameMap() {
 		return d_gameMap;
+	}
+
+	/**
+	 * function to return the maximum turns in a game. Game is draw when maximum.
+	 * turns reached.
+	 * 
+	 * @return maximum turns in game
+	 */
+	public int getMaxTurns() {
+		return d_maxTurn;
+	}
+
+	/**
+	 * function to return current turn in game play.
+	 * 
+	 * @return return current turn number
+	 */
+	public int getCurrentTurn() {
+		return d_turnNumber;
+	}
+
+	/**
+	 * function to increment the value of current turn, incremented when one
+	 * execution phase is completed.
+	 */
+	public void incrementTurn() {
+		++d_turnNumber;
 	}
 
 	/**
@@ -662,8 +690,8 @@ public class GameEngine {
 	}
 
 	/**
-	 * function to allow validation of map to check connectivity of the graph of
-	 * the map
+	 * function to allow validation of map to check connectivity of the graph of the
+	 * map
 	 * 
 	 * @param p_splittedCommand the command that has been splitted into multiple
 	 *                          parts for further processing
@@ -685,7 +713,7 @@ public class GameEngine {
 	 * @return the result of loading of map
 	 */
 	public String loadMap(String[] p_splittedCommand) {
-		try {			
+		try {
 			if (d_phase instanceof EditPhase) {
 				setPhase(new PreLoad(this));
 			}

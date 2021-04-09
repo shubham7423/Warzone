@@ -13,7 +13,7 @@ import entities.orders.Orders;
  * ExecuteOrder class that inherits GamePlay interface to support functions during this command
  */
 public class ExecuteOrders extends GamePlay {
-
+	
 	/**
 	 * constructor method that takes game engine object from the parent class 
 	 * @param p_gameEngine object of the game engine
@@ -118,6 +118,13 @@ public class ExecuteOrders extends GamePlay {
 		int l_numOrders = d_gameEngine.getPlayersOrderSize();
 		int l_i = 0;
 		String l_result;
+		if(d_gameEngine.getCurrentTurn() == d_gameEngine.getMaxTurns()) {
+			d_gameEngine.setPhase(new EndPhase(d_gameEngine));
+			System.out.println(d_gameEngine.getPhase().printWinner("Draw"));
+			d_gameEngine.d_logEntryBuffer.setString("Execution Complete");
+			d_gameEngine.d_logEntryBuffer.setString(d_gameEngine.getPhase().printWinner("Draw"));
+			return d_gameEngine.getPhase().printWinner("Draw");
+		}
 		System.out.println("\nExecution Phase Started");
 		System.out.println(org.apache.commons.lang3.StringUtils.repeat("-", 20));
 		d_gameEngine.d_logEntryBuffer.setString("Execution Phase Started");
@@ -148,6 +155,7 @@ public class ExecuteOrders extends GamePlay {
 			return d_gameEngine.getPhase().printWinner(d_gameEngine.d_playerName.get(0));
 		}
 		else {
+			d_gameEngine.incrementTurn();;
 			System.out.println("\nExecution Complete\n");
 			d_gameEngine.d_logEntryBuffer.setString("Execution Complete");
 			next();
