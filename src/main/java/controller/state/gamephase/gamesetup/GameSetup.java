@@ -76,7 +76,7 @@ public abstract class GameSetup extends GamePhase {
 			}
 			l_winnersMap.put(l_map, l_gameWinner);
 		}
-//		System.out.println(l_winnersMap);
+		
 		return l_winnersMap.toString();
 	}
 
