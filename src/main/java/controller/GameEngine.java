@@ -123,6 +123,10 @@ public class GameEngine {
 			l_result = saveGame(p_splittedCommand);
 			break;
 
+		case "loadgame":
+			l_result = loadGame(p_splittedCommand);
+			break;
+
 		default:
 			l_result = "Command not found";
 		}
@@ -646,7 +650,7 @@ public class GameEngine {
 	}
 
 	/**
-	 * function to allow saving of game to the directory
+	 * Function to allow saving of game to the directory
 	 * 
 	 * @param p_splittedCommand the command that has been splitted into multiple
 	 *                          parts for further processing
@@ -663,6 +667,26 @@ public class GameEngine {
 			return "File extension should be .game";
 		}
 		return d_phase.saveGame(p_splittedCommand[1]);
+	}
+	
+	/**
+	 * Function to allow loading the game from the directory
+	 * 
+	 * @param p_splittedCommand the command that has been splitted into multiple
+	 *                          parts for further processing
+	 * @return the result of executing the loadgame command
+	 */
+	public String loadGame(String[] p_splittedCommand) {
+		if (p_splittedCommand.length != 2) {
+			return "Please enter valid command. Valid command is : \"loadgame filename.game\"";
+		}
+		if (p_splittedCommand[1].split("\\.").length <= 1) {
+			return "File extension should be .map";
+		}
+		if (!"game".equals(p_splittedCommand[1].split("\\.")[1])) {
+			return "File extension should be .game";
+		}
+		return d_phase.loadGame(p_splittedCommand[1]);
 	}
 	
 	/**
