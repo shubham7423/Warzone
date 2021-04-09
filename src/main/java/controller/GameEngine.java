@@ -2,6 +2,7 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
@@ -120,7 +121,7 @@ public class GameEngine {
 		case "blockade":
 			l_result = blockade(p_splittedCommand);
 			break;
-			
+
 		case "tournament":
 			l_result = tournament(p_splittedCommand);
 			break;
@@ -186,9 +187,10 @@ public class GameEngine {
 	public int getMaxTurns() {
 		return d_maxTurn;
 	}
-	
+
 	/**
 	 * function to set maximum turns per game.
+	 * 
 	 * @param p_maxTurn number of turns.
 	 */
 	public void setMaxTurns(int p_maxTurn) {
@@ -758,34 +760,41 @@ public class GameEngine {
 		}
 		return d_phase.assignCountries();
 	}
-	
+
+	/**
+	 * function to start tournament, user provides list of maps, players strategies,
+	 * number of games per map and the maximum turns per game.
+	 * 
+	 * @param p_splittedCommand splitted command that contains list of maps, players
+	 *                          strategies, number of games per map and the maximum
+	 *                          turns per game.
+	 * @return String which contains winners of each games played on each maps.
+	 */
 	public String tournament(String[] p_splittedCommand) {
 		int l_i = 2;
 		ArrayList<String> l_maps = new ArrayList<>();
 		ArrayList<String> l_players = new ArrayList<>();
 		int l_numGames;
 		int l_numTurns;
-		while(!p_splittedCommand[l_i].equals("-P")) {
+		while (!p_splittedCommand[l_i].equals("-P")) {
 			l_maps.add(p_splittedCommand[l_i]);
 			++l_i;
 		}
-		System.out.println(l_maps);
 		++l_i;
 		while (!p_splittedCommand[l_i].equals("-G")) {
 			l_players.add(p_splittedCommand[l_i]);
 			++l_i;
 		}
-		System.out.println(l_players);
+		if (l_players.size() > new HashSet<String>(l_players).size()) {
+			return "Duplicate players not permitted.";
+		}
 		++l_i;
 		l_numGames = Integer.parseInt(p_splittedCommand[l_i]);
-		System.out.println(l_numGames);
 		++l_i;
 		++l_i;
 		l_numTurns = Integer.parseInt(p_splittedCommand[l_i]);
-		System.out.println("fgh: " + l_numTurns);
 		setPhase(new PreLoad(this));
-		d_phase.tournament(l_maps, l_players, l_numGames, l_numTurns);
-		return "abcd";
+		return d_phase.tournament(l_maps, l_players, l_numGames, l_numTurns);
 	}
 
 	/**
