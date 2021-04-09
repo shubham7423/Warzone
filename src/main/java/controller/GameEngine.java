@@ -9,6 +9,7 @@ import java.util.Random;
 import controller.state.Phase;
 import controller.state.edit.EditPhase;
 import controller.state.edit.PreEdit;
+import controller.state.gamephase.GamePhase;
 import controller.state.gamephase.gamesetup.PreLoad;
 import entities.GameMap;
 import entities.Player;
@@ -184,6 +185,14 @@ public class GameEngine {
 	 */
 	public int getMaxTurns() {
 		return d_maxTurn;
+	}
+	
+	/**
+	 * function to set maximum turns per game.
+	 * @param p_maxTurn number of turns.
+	 */
+	public void setMaxTurns(int p_maxTurn) {
+		d_maxTurn = p_maxTurn;
 	}
 
 	/**
@@ -751,7 +760,6 @@ public class GameEngine {
 	}
 	
 	public String tournament(String[] p_splittedCommand) {
-		System.out.println(p_splittedCommand.toString());
 		int l_i = 2;
 		ArrayList<String> l_maps = new ArrayList<>();
 		ArrayList<String> l_players = new ArrayList<>();
@@ -775,7 +783,8 @@ public class GameEngine {
 		++l_i;
 		l_numTurns = Integer.parseInt(p_splittedCommand[l_i]);
 		System.out.println("fgh: " + l_numTurns);
-//		d_phase
+		setPhase(new PreLoad(this));
+		d_phase.tournament(l_maps, l_players, l_numGames, l_numTurns);
 		return "abcd";
 	}
 

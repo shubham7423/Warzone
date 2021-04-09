@@ -1,5 +1,7 @@
 package controller.state.edit;
 
+import java.util.ArrayList;
+
 import controller.GameEngine;
 import controller.GameEngine;
 import controller.state.Phase;
@@ -24,6 +26,14 @@ public abstract class EditPhase extends Phase {
 	}
 	
 	public String loadGame() {
+		return printInvalidCommandMessage();
+	}
+	
+	public String tournament(ArrayList<String> p_maps, ArrayList<String> p_players, int p_games, int p_turns) {
+		return printInvalidCommandMessage();
+	}
+	
+	public String returnWinner() {
 		return printInvalidCommandMessage();
 	}
 
