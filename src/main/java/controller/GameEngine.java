@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -771,6 +772,7 @@ public class GameEngine {
 	 * @return String which contains winners of each games played on each maps.
 	 */
 	public String tournament(String[] p_splittedCommand) {
+		ArrayList<String> l_playerStrategy = new ArrayList<>(Arrays.asList("Random", "Aggresive", "Benevolent", "Cheater"));
 		int l_i = 2;
 		ArrayList<String> l_maps = new ArrayList<>();
 		ArrayList<String> l_players = new ArrayList<>();
@@ -782,6 +784,9 @@ public class GameEngine {
 		}
 		++l_i;
 		while (!p_splittedCommand[l_i].equals("-G")) {
+			if(!l_playerStrategy.contains(p_splittedCommand[l_i])) {
+				return "Only strategies Random, Aggresive, Benevolent and Cheater are allowed.";
+			}
 			l_players.add(p_splittedCommand[l_i]);
 			++l_i;
 		}
