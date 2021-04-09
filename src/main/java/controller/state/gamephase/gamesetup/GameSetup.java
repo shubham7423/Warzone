@@ -26,6 +26,10 @@ public abstract class GameSetup extends GamePhase {
 	public String saveGame() {
 		return null;
 	}
+	
+	public String tournament(String[] p_commandSplitted) {		
+		return null;
+	}
 
 	/**
 	 * function to print invalid command as the following command cannot be used in

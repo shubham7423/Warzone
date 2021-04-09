@@ -80,6 +80,7 @@ public class UserCommand {
 			System.out.println("Number of turns exceeded memory limit.");
 		} catch (Exception e) {
 			System.out.println("Exception");
+			e.printStackTrace();
 		}
 	}
 }

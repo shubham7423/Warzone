@@ -119,6 +119,10 @@ public class GameEngine {
 		case "blockade":
 			l_result = blockade(p_splittedCommand);
 			break;
+			
+		case "tournament":
+			l_result = tournament(p_splittedCommand);
+			break;
 
 		default:
 			l_result = "Command not found";
@@ -744,6 +748,35 @@ public class GameEngine {
 			return String.format("Invalid Command");
 		}
 		return d_phase.assignCountries();
+	}
+	
+	public String tournament(String[] p_splittedCommand) {
+		System.out.println(p_splittedCommand.toString());
+		int l_i = 2;
+		ArrayList<String> l_maps = new ArrayList<>();
+		ArrayList<String> l_players = new ArrayList<>();
+		int l_numGames;
+		int l_numTurns;
+		while(!p_splittedCommand[l_i].equals("-P")) {
+			l_maps.add(p_splittedCommand[l_i]);
+			++l_i;
+		}
+		System.out.println(l_maps);
+		++l_i;
+		while (!p_splittedCommand[l_i].equals("-G")) {
+			l_players.add(p_splittedCommand[l_i]);
+			++l_i;
+		}
+		System.out.println(l_players);
+		++l_i;
+		l_numGames = Integer.parseInt(p_splittedCommand[l_i]);
+		System.out.println(l_numGames);
+		++l_i;
+		++l_i;
+		l_numTurns = Integer.parseInt(p_splittedCommand[l_i]);
+		System.out.println("fgh: " + l_numTurns);
+//		d_phase
+		return "abcd";
 	}
 
 	/**
