@@ -56,7 +56,7 @@ public class ConquestReadMap {
 				l_dataString = d_reader.nextLine();
 
 //				Read continents
-				if ("[continents]".equals(l_dataString)) {
+				if ("[Continents]".equals(l_dataString)) {
 					while (d_reader.hasNextLine()) {
 						l_line = d_reader.nextLine();
 						if (l_line.length() > 0) {
