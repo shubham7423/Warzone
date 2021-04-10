@@ -27,7 +27,6 @@ public class HumanPlayer extends PlayerStrategy {
 	 */
 	public HumanPlayer(Player p_player, GameEngine p_gameEngine) {
 		super(p_player, p_gameEngine);
-		// TODO Auto-generated constructor stub
 	}
 
 	/**
@@ -40,7 +39,6 @@ public class HumanPlayer extends PlayerStrategy {
 	 */
 	@Override
 	public Orders createOrder() {
-		// TODO Auto-generated method stub
 		UserCommand l_userCommand = new UserCommand();
 		l_userCommand.setPhase(new IssueOrders(null));
 		String[] l_splittedOrder = null;
