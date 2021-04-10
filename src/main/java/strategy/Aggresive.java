@@ -40,7 +40,6 @@ public class Aggresive extends PlayerStrategy{
 	public Orders createOrder() {
 		Orders l_order = null;
 		int l_randomOrder;
-		List<Integer> l_randCountries = new ArrayList<>(d_gameEngine.getGameMap().getCountries().keySet());
 		List<Integer> l_playerCountries = new ArrayList<>(d_player.getCountries().keySet());
 		List<Integer> l_neighborCountries = new ArrayList<>(getNeighborCountries());
 		int l_randomArmies;
