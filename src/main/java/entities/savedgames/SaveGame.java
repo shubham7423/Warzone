@@ -89,10 +89,13 @@ public class SaveGame {
 
 			d_writer.newLine();
 //			d_writer.write("[PlayerName|Strategy|#Continents|#Countries|NumArmies|[ContinentId]|[CountryId CountryArmies]|[Airlift,Bomb,Blockade,Diplomacy]]");
-			d_writer.write("[PlayerName|Strategy|#Continents|#Countries|NumArmies|[ContinentId]|[CountryId CountryArmies]]");
+			d_writer.write("[PlayerName|Strategy|#Continents|#Countries|NumArmies|[ContinentId]|[CountryId CountryArmies]|[Airlift,Blockade,Bomb,Diplomacy]]");
 			d_writer.newLine();
 			for(Player l_currentPlayer : d_gameEngine.d_players.values()) {
+				//player name
 				d_writer.write(l_currentPlayer.getName());
+				
+				//behavior of the player
 				d_writer.write("|");
 				{
 					if(l_currentPlayer.getPlayerBehaviour() instanceof Aggresive) {
@@ -107,12 +110,20 @@ public class SaveGame {
 						d_writer.write("randomPlayer");						
 					}
 				}
+				
+				//number of continents owned by the player
 				d_writer.write("|");
 				d_writer.write(l_currentPlayer.getContinents().size()+"");
+				
+				//number of countries owned by the player
 				d_writer.write("|");
 				d_writer.write(l_currentPlayer.getCountries().size()+"");
+				
+				//number of armies owned by the player
 				d_writer.write("|");
 				d_writer.write(l_currentPlayer.getNumberOfArmies()+"");
+				
+				//all continents owned by the player
 				d_writer.write("|");
 				d_writer.write("[");
 				boolean l_tempFlag = false;
@@ -124,6 +135,8 @@ public class SaveGame {
 					d_writer.write(l_continent.getId()+"");
 				}
 				d_writer.write("]");
+				
+				//all countries owned by the player and it's armies placed in each country
 				d_writer.write("|");
 				d_writer.write("[");
 				l_tempFlag = false;
@@ -135,12 +148,22 @@ public class SaveGame {
 					d_writer.write(l_country.getId()+" "+l_country.getNumberOfArmiesPresent());
 				}
 				d_writer.write("]");
+
+				//cards owned by the player
+				d_writer.write("|");
+				d_writer.write("[");
+				HashMap<String, Integer> l_cardsOwned = l_currentPlayer.d_cardsOwned;
+				d_writer.write("airlift " +l_cardsOwned.get("airlift"));
+				d_writer.write(",blockade " +l_cardsOwned.get("blockade"));
+				d_writer.write(",bomb " +l_cardsOwned.get("bomb"));
+				d_writer.write(",diplomacy " +l_cardsOwned.get("diplomacy"));
+				d_writer.write("]");
 				d_writer.newLine();
 			}
 			
 			d_writer.close();
 			l_fw.close();
-			return "Saved the game map, playername.";
+			return "Game saved successfully in "+p_fileName;
 		} catch (Exception p_e) {
 			System.out.println("Exception " + p_e.getMessage());
 			p_e.printStackTrace();
