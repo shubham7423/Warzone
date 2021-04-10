@@ -1,12 +1,20 @@
 package entities.savedgames;
 
+import java.util.HashMap;
+import java.util.Scanner;
+
 import controller.GameEngine;
+import entities.GameMap;
 
 /**
  * Class to load a game from a ".game" file.
  */
 public class LoadGame {
 	private GameEngine d_gameEngine;
+	private GameMap d_gameMap;
+	private HashMap<String, Integer> d_continentsMap;
+	private HashMap<Integer, String> d_countriesMap;
+	Scanner d_reader;
 	
 	public LoadGame(GameEngine p_gameEngine){
 		d_gameEngine = p_gameEngine;
