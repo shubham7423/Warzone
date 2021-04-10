@@ -2,9 +2,9 @@ package entities.savedgames;
 
 import controller.GameEngine;
 
-public class Loadgame {
+public class LoadGame {
 	
-	public Loadgame(GameEngine p_GameEngine){	
+	public LoadGame(GameEngine p_GameEngine){	
 	}
 	
 	public String loadGame(String p_fileName){

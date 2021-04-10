@@ -14,6 +14,7 @@ import controller.state.gamephase.gamesetup.PreLoad;
 import entities.GameMap;
 import entities.Player;
 import entities.orders.Deploy;
+import entities.savedgames.*;
 
 /**
  * Game Engine class is the starting point of the game where commands are
@@ -31,6 +32,7 @@ public class GameEngine {
 	private LogWriter d_logWriter;
 	public Player d_neutralPlayer;
 	public Random d_random;
+	public SaveGame d_saveGame;
 
 	/**
 	 * Game Engine constructor which creates a neutral player when game is started
@@ -42,6 +44,7 @@ public class GameEngine {
 		d_logWriter = new LogWriter(d_logEntryBuffer);
 		d_neutralPlayer = new Player("neutralPlayer#1");
 		d_random = new Random();
+		d_saveGame = new SaveGame(this);
 	}
 
 	/**
