@@ -33,7 +33,8 @@ public class GameEngine {
 	public Player d_neutralPlayer;
 	public Random d_random;
 	public SaveGame d_saveGame;
-
+	public LoadGame d_loadGame;
+	
 	/**
 	 * Game Engine constructor which creates a neutral player when game is started
 	 * and also initializes LogEntryBuffer which is observable and attaches it to
@@ -45,6 +46,7 @@ public class GameEngine {
 		d_neutralPlayer = new Player("neutralPlayer#1");
 		d_random = new Random();
 		d_saveGame = new SaveGame(this);
+		d_loadGame = new LoadGame(this);
 	}
 
 	/**
