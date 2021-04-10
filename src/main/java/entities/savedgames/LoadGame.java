@@ -55,6 +55,23 @@ public class LoadGame {
 						}
 					}
 				}
+				
+//				Read countries
+				else if ("[countries]".equals(l_dataString)) {
+					while (d_reader.hasNextLine()) {
+						l_line = d_reader.nextLine();
+						if (l_line.length() > 0) {
+							String[] l_countries = l_line.split(" ");
+							++l_countryCtn;
+							d_countriesMap.put(l_countryCtn, l_countries[1]);
+							d_gameEngine.getGameMap().addCountry(Integer.parseInt(l_countries[0]), Integer.parseInt(l_countries[2]));
+						} else {
+							break;
+						}
+					}
+				}
+				
+				
 			}
 		}catch (FileNotFoundException p_e) {
 			System.out.println("Exception " + p_e.getMessage());
