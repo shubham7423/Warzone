@@ -1,17 +1,14 @@
 package strategy;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Random;
 
 import controller.GameEngine;
 import entities.Country;
 import entities.Player;
 import entities.orders.Advance;
 import entities.orders.Airlift;
-import entities.orders.Bomb;
 import entities.orders.Deploy;
 import entities.orders.Dummy;
 import entities.orders.Orders;
