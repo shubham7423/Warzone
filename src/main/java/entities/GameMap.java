@@ -2,17 +2,22 @@ package entities;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 import dnl.utils.text.table.TextTable;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Paths;
 
 import entities.mapops.ReadMap;
 import entities.mapops.WriteMap;
+import entities.mapops.ConquestReadMap;
 import entities.mapops.MapValidation;
 
 /**
@@ -152,11 +157,25 @@ public class GameMap {
 	 */
 	public String loadMap(String p_fileName) {
 		ReadMap l_mapRead = new ReadMap(this);
-		Boolean l_loadCheck = l_mapRead.readFullMap(p_fileName);
-		if (!l_loadCheck) {
-			return String.format("Map \"%s\" cannot be loaded", p_fileName);
+		ConquestReadMap l_conquestMapRead = new ConquestReadMap(this);
+		Boolean l_loadCheck;
+		
+		if(isConquestMap(p_fileName)==true) {
+			l_loadCheck = l_conquestMapRead.readFullMap(p_fileName);
+			if (!l_loadCheck) {
+				return String.format("Map \"%s\" cannot be loaded", p_fileName);
+			}else {
+				return String.format("Conquest Map \"%s\" loaded successfully", p_fileName);
+			}
 		}
-		return String.format("Map \"%s\" loaded successfully", p_fileName);
+		else {
+			l_loadCheck = l_mapRead.readFullMap(p_fileName);
+			if (!l_loadCheck) {
+				return String.format("Map \"%s\" cannot be loaded", p_fileName);
+			}else {
+				return String.format("Domination Map \"%s\" loaded successfully", p_fileName);
+			}
+		}
 	}
 
 	/**
@@ -265,7 +284,13 @@ public class GameMap {
 		if (!l_writeMap.writeFullMap(p_fileName)) {
 			return String.format("Map file \"%s\" cannot be saved", p_fileName);
 		}
-		return String.format("Map file \"%s\" saved successfully", p_fileName);
+		if(isConquestMap(p_fileName)==true) {
+			return String.format("Conquest Map file \"%s\" saved successfully", p_fileName);
+		}
+		else {
+			return String.format("Domination Map file \"%s\" saved successfully", p_fileName);
+		}
+		
 	}
 
 	/**
@@ -305,5 +330,32 @@ public class GameMap {
 	 */
 	public HashMap<Integer, Country> getCountries() {
 		return d_countries;
+	}
+	
+	/**
+	 */
+	public Boolean isConquestMap(String p_filePath) {
+		File l_mapFile = new File(
+				Paths.get(Paths.get("").toAbsolutePath().toString() + "/maps/" + p_filePath).toString());
+		Scanner l_reader = null;
+		String l_dataString;
+		try {
+			l_reader = new Scanner(l_mapFile);
+			while (l_reader.hasNextLine()) {
+				l_dataString = l_reader.nextLine();
+				if ("[Territories]".equals(l_dataString)) {
+					return true;
+				}
+				else {
+					return false;		
+				}
+			}
+		} catch (FileNotFoundException e) {
+			System.out.println("File not found");
+			e.printStackTrace();
+		} finally {
+			l_reader.close();
+		}
+		return false;
 	}
 }
