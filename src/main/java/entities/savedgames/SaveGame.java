@@ -11,6 +11,7 @@ import controller.GameEngine;
 import entities.Continent;
 import entities.Country;
 import entities.GameMap;
+import entities.Player;
 
 /**
  * Class to save the game into a ".game" file.
@@ -30,13 +31,8 @@ public class SaveGame {
 		d_gameEngine = p_gameEngine;
 	}
 
-	/**
-	 * Method that opens a file and writes the Game Data to that file.
-	 * 
-	 * @param p_fileName to .game file
-	 * @return true if map saved successfully else false
-	 */
 	public String saveGame(String p_fileName) {
+		d_gameMap = d_gameEngine.getGameMap();
 		int l_countryCtn = 0, l_continentCtn = 0;
 		try {
 			FileWriter l_fw = new FileWriter(
@@ -53,7 +49,7 @@ public class SaveGame {
 				d_writer.write(p_continents + " " + l_continents.get(p_continents).getControlValue());
 				d_writer.newLine();
 			}
-
+			System.out.println(l_continents.keySet());
 //			 Writing countries
 			d_writer.write("\n");
 			d_writer.write("[countries]");
@@ -84,13 +80,23 @@ public class SaveGame {
 				d_writer.write(l_sb.toString());
 				d_writer.newLine();
 			}
+
+			d_writer.newLine();
+//			d_writer.write("[PlayerName|Strategy|#Continents|#Countries|NumArmies|[ContinentId]|[CountryId CountryArmies]|[Airlift,Bomb,Blockade,Diplomacy]]");
+			d_writer.write("[PlayerName]");
+			d_writer.newLine();
+			for(Player l_currentPlayer : d_gameEngine.d_players.values()) {
+				d_writer.write(l_currentPlayer.getName());
+				d_writer.newLine();
+			}
+			
 			d_writer.close();
 			l_fw.close();
-			return null;   //to be implemented
+			return "Saved the game map, playername.";
 		} catch (Exception p_e) {
 			System.out.println("Exception " + p_e.getMessage());
 			p_e.printStackTrace();
-			return null;
+			return "Saving Game Unsuccessful..";
 		}
 	} 
 }

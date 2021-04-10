@@ -44,7 +44,6 @@ public class GameEngine {
 		d_logWriter = new LogWriter(d_logEntryBuffer);
 		d_neutralPlayer = new Player("neutralPlayer#1");
 		d_random = new Random();
-		d_saveGame = new SaveGame(this);
 	}
 
 	/**
