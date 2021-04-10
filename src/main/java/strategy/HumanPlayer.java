@@ -13,13 +13,31 @@ import entities.orders.Diplomacy;
 import entities.orders.Exit;
 import entities.orders.Orders;
 
+/**
+ * concrete strategy class of Human player.
+ * A human computer player strategy that deploys, attacks, moves armies according to his need.
+ * this player also plays with all types of cards
+ */
 public class HumanPlayer extends PlayerStrategy {
 
+	/**
+	 * constructor method for the class
+	 * @param p_player name of the aggressive player
+	 * @param p_gameEngine object of GameEngine class
+	 */
 	public HumanPlayer(Player p_player, GameEngine p_gameEngine) {
 		super(p_player, p_gameEngine);
 		// TODO Auto-generated constructor stub
 	}
 
+	/**
+	 * this function creates orders keeping in mind how the human player plays.
+	 * it uses a switch case to create any random order(move armies, deploy armies, advance armies, cards)
+	 * deploys on a country
+	 * attacks neighboring countries
+	 * moves armies between its countries
+	 * plays cards according to its needs
+	 */
 	@Override
 	public Orders createOrder() {
 		// TODO Auto-generated method stub
