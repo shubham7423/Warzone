@@ -17,6 +17,6 @@
 4 2 3 5 
 5 3 4 
 
-[PlayerName|Strategy|#Continents|#Countries|NumArmies|[ContinentId]]
-a|humanPlayer|1|3|5|[2]
-b|randomPlayer|1|2|4|[3]
+[PlayerName|Strategy|#Continents|#Countries|NumArmies|[ContinentId]|[CountryId CountryArmies]]
+a|humanPlayer|1|3|5|[3]|[1 2,4 2,5 1]
+b|aggressivePlayer|0|2|3|[]|[2 3,3 0]

@@ -89,7 +89,7 @@ public class SaveGame {
 
 			d_writer.newLine();
 //			d_writer.write("[PlayerName|Strategy|#Continents|#Countries|NumArmies|[ContinentId]|[CountryId CountryArmies]|[Airlift,Bomb,Blockade,Diplomacy]]");
-			d_writer.write("[PlayerName|Strategy|#Continents|#Countries|NumArmies|[ContinentId]]");
+			d_writer.write("[PlayerName|Strategy|#Continents|#Countries|NumArmies|[ContinentId]|[CountryId CountryArmies]]");
 			d_writer.newLine();
 			for(Player l_currentPlayer : d_gameEngine.d_players.values()) {
 				d_writer.write(l_currentPlayer.getName());
@@ -122,6 +122,17 @@ public class SaveGame {
 					}
 					l_tempFlag = true;
 					d_writer.write(l_continent.getId()+"");
+				}
+				d_writer.write("]");
+				d_writer.write("|");
+				d_writer.write("[");
+				l_tempFlag = false;
+				for(Country l_country: l_currentPlayer.getCountries().values()) {
+					if(l_tempFlag) {
+						d_writer.write(",");
+					}
+					l_tempFlag = true;
+					d_writer.write(l_country.getId()+" "+l_country.getNumberOfArmiesPresent());
 				}
 				d_writer.write("]");
 				d_writer.newLine();
