@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 import controller.GameEngine;
-import entities.GameMap;
 
 /**
  * Class to load a game from a ".game" file.
@@ -71,14 +70,31 @@ public class LoadGame {
 					}
 				}
 				
-				
+//				Read boundries
+				else if ("[borders]".equals(l_dataString)) {
+					while (d_reader.hasNextLine()) {
+						l_line = d_reader.nextLine();
+						if (l_line.length() > 0) {
+							String[] l_borders = l_line.split(" ");
+							int l_countryId = Integer.parseInt(l_borders[0]);
+							int l_neighborId;
+							for (int i = 1; i < l_borders.length; i++) {
+								l_neighborId = Integer.parseInt(l_borders[i]);
+								d_gameEngine.getGameMap().addNeighbor(l_countryId, l_neighborId);
+							}
+						} else {
+							break;
+						}
+
+					}
+				}
 			}
+			d_reader.close();
+			return null;//to be implemented
 		}catch (FileNotFoundException p_e) {
 			System.out.println("Exception " + p_e.getMessage());
 			p_e.printStackTrace();
 			return null;
 		}
-		
-		return null;
 	}
 }
