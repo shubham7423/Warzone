@@ -10314,3 +10314,14 @@ Winner:  a
 2021/04/07 11:15:20> Player a's turn
 2021/04/07 11:15:20> Attack from: 2, to:  3, armies: 0
 2021/04/07 11:15:20> Player b's turn
+2021/04/08 11:31:50> Game Started
+2021/04/08 11:32:08> Game Setup Phase Entered
+2021/04/08 11:32:08> Map "uk.map" loaded successfully
+2021/04/08 11:32:23> Player "a" added to game
+2021/04/08 11:32:23> Player "b" added to game
+2021/04/08 11:32:32> Countries Assigned
+2021/04/08 11:32:32> Assigned Reinforcements to players
+2021/04/08 11:32:32> Issue orders phase entered
+2021/04/08 11:32:32> Player a's turn
+2021/04/08 11:32:32> Advance from: 3, to: 1, armies:  0
+2021/04/08 11:32:32> Player b's turn
