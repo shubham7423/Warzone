@@ -7,11 +7,17 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Set;
 
+
 import controller.GameEngine;
 import entities.Continent;
 import entities.Country;
 import entities.GameMap;
 import entities.Player;
+import strategy.Cheater;
+import strategy.Aggresive;
+import strategy.Benevolent;
+import strategy.HumanPlayer;
+import strategy.RandomPlayer;
 
 /**
  * Class to save the game into a ".game" file.
@@ -49,7 +55,7 @@ public class SaveGame {
 				d_writer.write(p_continents + " " + l_continents.get(p_continents).getControlValue());
 				d_writer.newLine();
 			}
-			System.out.println(l_continents.keySet());
+			
 //			 Writing countries
 			d_writer.write("\n");
 			d_writer.write("[countries]");
@@ -83,10 +89,24 @@ public class SaveGame {
 
 			d_writer.newLine();
 //			d_writer.write("[PlayerName|Strategy|#Continents|#Countries|NumArmies|[ContinentId]|[CountryId CountryArmies]|[Airlift,Bomb,Blockade,Diplomacy]]");
-			d_writer.write("[PlayerName]");
+			d_writer.write("[PlayerName|Strategy]");
 			d_writer.newLine();
 			for(Player l_currentPlayer : d_gameEngine.d_players.values()) {
 				d_writer.write(l_currentPlayer.getName());
+				d_writer.write("|");
+				{
+					if(l_currentPlayer.getPlayerBehaviour() instanceof Aggresive) {
+						d_writer.write("aggressivePlayer");
+					} else if(l_currentPlayer.getPlayerBehaviour() instanceof Benevolent) {
+						d_writer.write("benevolentPlayer");						
+					} else if(l_currentPlayer.getPlayerBehaviour() instanceof Cheater) {
+						d_writer.write("cheaterPlayer");						
+					} else if(l_currentPlayer.getPlayerBehaviour() instanceof HumanPlayer) {
+						d_writer.write("humanPlayer");						
+					} else if(l_currentPlayer.getPlayerBehaviour() instanceof RandomPlayer) {
+						d_writer.write("randomPlayer");						
+					}
+				}
 				d_writer.newLine();
 			}
 			
