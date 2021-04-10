@@ -161,6 +161,38 @@ public class SaveGame {
 				d_writer.newLine();
 			}
 			
+			Player l_neutralPlayer = d_gameEngine.d_neutralPlayer;
+			d_writer.newLine();
+			d_writer.write("[neutralPlayer]");
+			d_writer.newLine();
+			d_writer.write("neutralPlayer#1|neutral|");
+			d_writer.write(l_neutralPlayer.getContinents().size()+"|"+
+					l_neutralPlayer.getCountries().size()+"|"+
+					l_neutralPlayer.getNumberOfArmies()+"|"
+					);
+
+			d_writer.write("[");
+			boolean l_tempFlag = false;
+			for(Continent l_continent: l_neutralPlayer.getContinents().values()) {
+				if(l_tempFlag) {
+					d_writer.write(",");
+				}
+				l_tempFlag = true;
+				d_writer.write(l_continent.getId()+"");
+			}
+			d_writer.write("]|[");
+			l_tempFlag = false;
+			for(Country l_country: l_neutralPlayer.getCountries().values()) {
+				if(l_tempFlag) {
+					d_writer.write(",");
+				}
+				l_tempFlag = true;
+				d_writer.write(l_country.getId()+" "+l_country.getNumberOfArmiesPresent());
+			}
+			d_writer.write("]|[airlift 0,blockade 0,bomb 0,diplomacy 0]");
+			d_writer.newLine();
+			
+			
 			d_writer.close();
 			l_fw.close();
 			return "Game saved successfully in "+p_fileName;

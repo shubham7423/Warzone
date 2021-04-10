@@ -18,5 +18,8 @@
 5 3 4 
 
 [PlayerName|Strategy|#Continents|#Countries|NumArmies|[ContinentId]|[CountryId CountryArmies]|[Airlift,Blockade,Bomb,Diplomacy]]
-a|humanPlayer|2|4|7|[1,3]|[1 4,2 1,3 0,5 7]|[airlift 1,blockade 0,bomb 0,diplomacy 1]
-b|randomPlayer|0|1|3|[]|[4 1]|[airlift 0,blockade 0,bomb 0,diplomacy 0]
+a|humanPlayer|0|2|3|[]|[1 0,3 0]|[airlift 52,blockade 13,bomb 11,diplomacy 9]
+b|randomPlayer|0|2|3|[]|[2 0,4 0]|[airlift 52,blockade 14,bomb 11,diplomacy 9]
+
+[neutralPlayer]
+neutralPlayer#1|neutral|0|1|0|[]|[5 0]|[airlift 0,blockade 0,bomb 0,diplomacy 0]
