@@ -127,12 +127,12 @@ public class ConquestReadMap {
 		return d_gameMap.getCountries().keySet();
 	}
 	
-	public static void main(String[] args)
+	/*public static void main(String[] args)
 	{
 		GameMap gameMap = new GameMap();
 		ConquestReadMap map = new ConquestReadMap(gameMap);
 		map.readFullMap("Africa.map");
 		System.out.println(map.getContinentIds());
 		System.out.println(map.getCountriesIds());
-	}
+	}*/
 }
