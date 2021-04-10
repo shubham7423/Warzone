@@ -33,7 +33,7 @@ public class SaveGame {
 	/**
 	 * Method that opens a file and writes the Game Data to that file.
 	 * 
-	 * @param p_filePath to .game file
+	 * @param p_fileName to .game file
 	 * @return true if map saved successfully else false
 	 */
 	public String saveGame(String p_fileName) {
