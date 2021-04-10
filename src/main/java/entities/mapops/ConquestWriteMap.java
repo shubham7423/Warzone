@@ -43,10 +43,13 @@ public class ConquestWriteMap {
 			HashMap<Integer, Continent> l_continents = new HashMap<>();
 			l_continents = d_gameMap.getContinents();
 			d_writer.write("[Continents]");
+			System.out.println(l_continents);
 			d_writer.newLine();
 			for (int p_continents : l_continents.keySet()) {
 				d_continentsMap.put(p_continents, ++l_continentCtn);
 				d_writer.write(p_continents + "=" + l_continents.get(p_continents).getControlValue());
+				System.out.println("[Continents]\n");
+				System.out.println(p_continents + "=" + l_continents.get(p_continents).getControlValue());
 				d_writer.newLine();
 			}
 
@@ -54,17 +57,28 @@ public class ConquestWriteMap {
 			d_writer.write("\n");
 			d_writer.write("[Territories]");
 			d_writer.newLine();
+			HashMap<Integer, Country> l_countries = new HashMap<>();
+			l_countries = d_gameMap.getCountries();
+			System.out.println(l_countries);
 			for (int p_continents : d_continentsMap.keySet()) {
 				Set<Integer> l_countriesId = l_continents.get(p_continents).getCountriesIds();
 				for (int p_countriesId : l_countriesId) {
+					Set<Integer> l_neighborIds = l_countries.get(p_countriesId).getNeighborIds();
+					StringBuilder l_sb = new StringBuilder("");
 					d_countriesMap.put(p_countriesId, ++l_countryCtn);
-					d_writer.write(l_countryCtn + " " + p_countriesId + " " + d_continentsMap.get(p_continents));
+					for (int p_neighborIds : l_neighborIds) {
+						l_sb.append(d_countriesMap.get(p_neighborIds).toString() + ",");
+					}
+					d_writer.write(l_sb.toString());
+					System.out.println("[Territories]\n");
+					d_writer.write(l_countryCtn + "," + "0,"+ "0," + p_countriesId + "," + d_continentsMap.get(p_continents) + "," + l_sb.toString());
+					System.out.println(l_countryCtn + "," + "0,"+ "0," + p_countriesId + "," + d_continentsMap.get(p_continents) + "," + l_sb.toString());
 					d_writer.newLine();
 				}
 			}
 
 //			 Writing borders
-			HashMap<Integer, Country> l_countries = new HashMap<>();
+			/*HashMap<Integer, Country> l_countries = new HashMap<>();
 			l_countries = d_gameMap.getCountries();
 			d_writer.write("\n");
 			d_writer.write("[borders]");
@@ -79,7 +93,7 @@ public class ConquestWriteMap {
 				}
 				d_writer.write(l_sb.toString());
 				d_writer.newLine();
-			}
+			}*/
 			d_writer.close();
 			l_fw.close();
 			return true;
@@ -89,4 +103,11 @@ public class ConquestWriteMap {
 			return false;
 		}
 	}
+	
+	/*public static void main(String[] args)
+	{
+		GameMap gameMap = new GameMap();
+		ConquestWriteMap map = new ConquestWriteMap(gameMap);
+		map.writeFullMap("conquestMapTest.map");
+	}*/
 }
