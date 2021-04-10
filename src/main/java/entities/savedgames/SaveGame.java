@@ -3,6 +3,8 @@ package entities.savedgames;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Set;
@@ -89,7 +91,7 @@ public class SaveGame {
 
 			d_writer.newLine();
 //			d_writer.write("[PlayerName|Strategy|#Continents|#Countries|NumArmies|[ContinentId]|[CountryId CountryArmies]|[Airlift,Bomb,Blockade,Diplomacy]]");
-			d_writer.write("[PlayerName|Strategy|#Continents|#Countries|NumArmies|[ContinentId]|[CountryId CountryArmies]|[Airlift,Blockade,Bomb,Diplomacy]]");
+			d_writer.write("[PlayerName|Strategy|#Continents|#Countries|NumArmies|[ContinentId]|[CountryId CountryArmies]|[Airlift,Blockade,Bomb,Diplomacy]|[NegotiatedPlayersList]]");
 			d_writer.newLine();
 			for(Player l_currentPlayer : d_gameEngine.d_players.values()) {
 				//player name
@@ -158,6 +160,17 @@ public class SaveGame {
 				d_writer.write(",bomb " +l_cardsOwned.get("bomb"));
 				d_writer.write(",diplomacy " +l_cardsOwned.get("diplomacy"));
 				d_writer.write("]");
+				d_writer.write("|");
+				d_writer.write("[");
+				l_tempFlag = false;
+				for(String l_negotiatedPlayer : l_currentPlayer.d_negotiatedPlayerNames) {
+					if(l_tempFlag) {
+						d_writer.write(",");
+					}
+					l_tempFlag = true;
+					d_writer.write(l_negotiatedPlayer);
+				}
+				d_writer.write("]");
 				d_writer.newLine();
 			}
 			
@@ -189,7 +202,7 @@ public class SaveGame {
 				l_tempFlag = true;
 				d_writer.write(l_country.getId()+" "+l_country.getNumberOfArmiesPresent());
 			}
-			d_writer.write("]|[airlift 0,blockade 0,bomb 0,diplomacy 0]");
+			d_writer.write("]|[airlift 0,blockade 0,bomb 0,diplomacy 0]|[]");
 			d_writer.newLine();
 			
 			

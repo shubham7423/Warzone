@@ -28,6 +28,15 @@ public class Diplomacy implements Orders {
 	}
 
 	/**
+	 * This method is used to get the order in String format.
+	 * 
+	 * @return command in String form.
+	 */
+	public String getOrder() {
+		return "negotiate "+ d_otherPlayerName;
+	}
+	
+	/**
 	 * method to execute diplomacy command
 	 * 
 	 * @param p_game gets the object of GameEngine class
