@@ -42,17 +42,17 @@ public class ConquestWriteMap {
 //			 Writing Continents
 			HashMap<Integer, Continent> l_continents = new HashMap<>();
 			l_continents = d_gameMap.getContinents();
-			d_writer.write("[continents]");
+			d_writer.write("[Continents]");
 			d_writer.newLine();
 			for (int p_continents : l_continents.keySet()) {
 				d_continentsMap.put(p_continents, ++l_continentCtn);
-				d_writer.write(p_continents + " " + l_continents.get(p_continents).getControlValue());
+				d_writer.write(p_continents + "=" + l_continents.get(p_continents).getControlValue());
 				d_writer.newLine();
 			}
 
 //			 Writing countries
 			d_writer.write("\n");
-			d_writer.write("[countries]");
+			d_writer.write("[Territories]");
 			d_writer.newLine();
 			for (int p_continents : d_continentsMap.keySet()) {
 				Set<Integer> l_countriesId = l_continents.get(p_continents).getCountriesIds();
