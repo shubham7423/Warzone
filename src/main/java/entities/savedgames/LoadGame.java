@@ -1,5 +1,8 @@
 package entities.savedgames;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -28,7 +31,18 @@ public class LoadGame {
 	 * @return 
 	 */
 	public String loadGame(String p_fileName){
-		
+		try {
+			File l_mapFile = new File(
+					Paths.get(Paths.get("").toAbsolutePath().toString() + "/games/" + p_fileName).toString());
+			String l_line, l_dataString;
+			int l_countryCtn = 0, l_continentCtn = 0;
+			
+			
+		}catch (FileNotFoundException p_e) {
+			System.out.println("Exception " + p_e.getMessage());
+			p_e.printStackTrace();
+			return null;
+		}
 		
 		return null;
 	}
