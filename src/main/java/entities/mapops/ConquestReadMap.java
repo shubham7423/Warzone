@@ -76,11 +76,11 @@ public class ConquestReadMap {
 						l_line = d_reader.nextLine();
 						if (l_line.length() > 0) {
 							String[] l_countries = l_line.split(",");
-							if(l_countries.length>2)
-							{
+						//	if(l_countries.length>1)
+						//	{
 								++l_countryCtn;
 								d_countriesMap.put(l_countries[0], l_countryCtn);
-							}
+						//	}
 						} else {
 							break;
 						}
@@ -90,16 +90,17 @@ public class ConquestReadMap {
 						l_line = d_reader.nextLine();
 						if (l_line.length() > 0) {
 							String[] l_countries = l_line.split(",");
-							if(l_countries.length>2) {
+							//if(l_countries.length>1) {
 								System.out.println(d_continentsMap);
 								System.out.println(d_countriesMap);
+								System.out.println(l_countries[0] + l_countries[3]);
 								d_gameMap.addCountry(d_countriesMap.get(l_countries[0]), d_continentsMap.get(l_countries[3]));
 								int l_neighborId;
 								for (int i = 4; i < l_countries.length; i++) {
 									l_neighborId = d_countriesMap.get(l_countries[i]);
 									d_gameMap.addNeighbor(d_countriesMap.get(l_countries[0]), l_neighborId);
 								}
-							}
+							//}
 						} else {
 							break;
 						}
@@ -137,7 +138,7 @@ public class ConquestReadMap {
 	{
 		GameMap gameMap = new GameMap();
 		ConquestReadMap map = new ConquestReadMap(gameMap);
-		map.readFullMap("Africa.map");
+		map.readFullMap("Canada.map");
 		System.out.println(map.getContinentIds());
 		System.out.println(map.getCountriesIds());
 	}*/
