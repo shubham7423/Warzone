@@ -24,14 +24,13 @@ public abstract class GameSetup extends GamePhase {
 	}
 	
 	/**
-	 * Function to print invalid command as the following command cannot be used in
-	 * this phase
+	 * Function to save whole game
 	 * 
 	 * @param p_fileName name of game file that is to be saved
-	 * @return string to print the invalid command message
+	 * @return string conveying that game has not yet been setup to use this command
 	 */
 	public String saveGame(String p_fileName) {
-		return printInvalidCommandMessage();
+		return String.format("Game not yet Setup");
 	}
 
 	/**
