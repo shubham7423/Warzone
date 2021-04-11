@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 import controller.GameEngine;
+import controller.state.gamephase.gameplay.AssignArmies;
 import controller.state.gamephase.gamesetup.PostLoad;
 import controller.state.gamephase.gamesetup.PreLoad;
 import entities.Player;
@@ -126,6 +127,22 @@ public class LoadGame {
 									break;
 							}
 							
+//							assign the countries to the Player
+							String l_countryInfoString = l_playerInfo[6].substring(1, l_playerInfo[6].length() - 1);
+							String []l_countries = l_countryInfoString.split(",");
+							for (String l_currentCountry: l_countries) {
+								String []l_temp = l_currentCountry.split("\\s");
+								l_currentPlayer.addCountry(d_gameEngine.getGameMap().getCountries().get(Integer.parseInt(l_temp[0])));
+								d_gameEngine.getGameMap().getCountries().get(Integer.parseInt(l_temp[0])).setNumberOfArmiesPresent(Integer.parseInt(l_temp[1]));
+								d_gameEngine.getGameMap().getCountries().get(Integer.parseInt(l_temp[0])).setPlayer(l_currentPlayer);
+							}
+							
+//							assign continents to the player
+							d_gameEngine.setPhase(new AssignArmies(d_gameEngine));
+							d_gameEngine.getPhase().checkContinentOwnership();
+							
+//							set number of armies to player
+							l_currentPlayer.setNumberOfArmies();
 						} else {
 							break;
 						}
