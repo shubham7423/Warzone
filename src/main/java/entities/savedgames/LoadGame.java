@@ -143,6 +143,15 @@ public class LoadGame {
 							
 //							set number of armies to player
 							l_currentPlayer.setNumberOfArmies();
+							
+//							giving cards to players
+							String l_cardsInfoString = l_playerInfo[7].substring(1, l_playerInfo[7].length() - 1);
+							String []l_cards = l_cardsInfoString.split(",");
+							for (String l_currentCard:l_cards) {
+								String []l_temp = l_currentCard.split("\\s");
+								l_currentPlayer.d_cardsOwned.put(l_temp[0], Integer.parseInt(l_temp[1]));
+							}
+							
 						} else {
 							break;
 						}
