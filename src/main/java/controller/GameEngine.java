@@ -31,7 +31,7 @@ public class GameEngine {
 	public LogEntryBuffer d_logEntryBuffer;
 	private LogWriter d_logWriter;
 	public Player d_neutralPlayer;
-	public Random d_random;
+	public Random d_random;	
 	
 	/**
 	 * Game Engine constructor which creates a neutral player when game is started
