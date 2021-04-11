@@ -131,6 +131,19 @@ public class IssueOrders extends GamePlay {
 	}
 
 	/**
+	 * Function to support savegame command for further processing
+	 * 
+	 * @param p_fileName is the Name of the File which will save the Game.
+	 * @return Output string message after saving the game
+	 */
+	public String saveGame(String p_fileName) {
+		StringBuilder l_sb = new StringBuilder();
+		l_sb.append("savegame ");
+		l_sb.append(p_fileName);
+		return l_sb.toString();
+	}
+	
+	/**
 	 * function that takes player's and that adds to them to the orders queue
 	 * 
 	 * @return string to output result of issue orders

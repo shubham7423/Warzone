@@ -25,6 +25,15 @@ public class Deploy implements Orders {
 	}
 
 	/**
+	 * This method is used to get the order in String format.
+	 * 
+	 * @return command in String form.
+	 */
+	public String getOrder() {
+		return "deploy "+ d_country + " " + d_armies;
+	}
+	
+	/**
 	 * method to execute deploy command
 	 * 
 	 * @param p_game object calling this function

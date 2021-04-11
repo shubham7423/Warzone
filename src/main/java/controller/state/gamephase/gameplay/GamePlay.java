@@ -22,16 +22,6 @@ public abstract class GamePlay extends GamePhase {
 	 * Function to print invalid command as the following command cannot be used in
 	 * this phase
 	 * 
-	 * @param p_fileName name of game file that is to be saved
-	 * @return string to print the invalid command message
-	 */
-	public String saveGame(String p_fileName) {
-		return null;
-	}
-	/**
-	 * Function to print invalid command as the following command cannot be used in
-	 * this phase
-	 * 
 	 * @param p_fileName name of game file that is to be loaded
 	 * @return string to print the invalid command message
 	 */
