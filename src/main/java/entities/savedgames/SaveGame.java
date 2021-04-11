@@ -6,7 +6,10 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Set;
 
 
@@ -15,6 +18,7 @@ import entities.Continent;
 import entities.Country;
 import entities.GameMap;
 import entities.Player;
+import entities.orders.Orders;
 import strategy.Cheater;
 import strategy.Aggresive;
 import strategy.Benevolent;
@@ -203,6 +207,59 @@ public class SaveGame {
 				d_writer.write(l_country.getId()+" "+l_country.getNumberOfArmiesPresent());
 			}
 			d_writer.write("]|[airlift 0,blockade 0,bomb 0,diplomacy 0]|[]");
+			d_writer.newLine();
+			
+
+			/*
+			Collection<Player> l_allPlayers = d_gameEngine.d_players.values();
+			boolean l_hasMoreOrders = false;
+			do {
+				l_hasMoreOrders = false;
+				for(Player l_currentPlayer : l_allPlayers) {
+					if(l_currentPlayer.d_orders.isEmpty()) {
+						l_hasMoreOrders = false;
+						continue;
+					}
+					l_hasMoreOrders = true;
+					String l_commandString = l_currentPlayer.d_orders.remove().getOrder();
+					d_writer.write(l_currentPlayer.getName() + " " + l_commandString);
+					d_writer.newLine();
+				}				
+			} while(l_hasMoreOrders);
+			 */
+			d_writer.newLine();
+			d_writer.write("[orders]");
+			d_writer.newLine();
+			
+			HashMap<String, Queue<String>> l_playerOrderHashMap = new HashMap<>(); 
+			for(Player l_currentPlayer : d_gameEngine.d_players.values()) {
+				Queue<String> l_currentPlayerQueue = new LinkedList<String>();
+				for(Orders l_tempOrders : l_currentPlayer.d_orders) {
+					l_currentPlayerQueue.add(l_tempOrders.getOrder());
+				}
+				l_playerOrderHashMap.put(l_currentPlayer.getName(), l_currentPlayerQueue);
+			}
+			
+			System.out.print(l_playerOrderHashMap);
+			
+			boolean l_hasMoreOrders = false;
+			do {
+				l_hasMoreOrders = false;
+				for(String l_currentPlayer : l_playerOrderHashMap.keySet()) {
+					if(l_playerOrderHashMap.get(l_currentPlayer).isEmpty()) {
+						l_hasMoreOrders = false;
+						continue;
+					}
+					
+					l_hasMoreOrders = true;
+					String l_commandString = l_playerOrderHashMap.get(l_currentPlayer).remove();
+					d_writer.write(l_currentPlayer + " " + l_commandString);
+					d_writer.newLine();
+				}	
+			} while(l_hasMoreOrders);
+			
+			
+			
 			d_writer.newLine();
 			
 			
