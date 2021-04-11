@@ -80,7 +80,18 @@ public class PostLoad extends GameSetup {
 		for(Player l_player: d_gameEngine.d_players.values()) {
 			boolean l_isCorrect = false;
 			if(l_player.d_strategy == null) {
-				System.out.println("1.Random Player \n2.Human Player \n3.Benevolent Player \n4.Aggresive Player \n5.Cheater Player");
+				System.out.println();
+				System.out.println();
+				System.out.println();
+				System.out.println(" _______________________________ ");
+				System.out.println("| Player Strategy Selection\t|");
+				System.out.println("|===============================|");
+				System.out.println("| 1. Random Player\t\t|");
+				System.out.println("| 2. Human Player\t\t|");
+				System.out.println("| 3. Benevolent Player\t\t|");
+				System.out.println("| 4. Aggresive Player\t\t|");
+				System.out.println("| 5. Cheater Player\t\t|");
+				System.out.println("|_______________________________|");
 				while(!l_isCorrect) {
 					System.out.print("Enter strategy for player " + l_player.getName() + ": ");
 					switch(new Scanner(System.in).nextInt()) {
