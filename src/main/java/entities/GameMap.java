@@ -162,7 +162,6 @@ public class GameMap {
 		ReadMap l_mapRead = new ReadMap(this);
 		ConquestReadMap l_conquestMapRead = new ConquestReadMap(this);
 		Boolean l_loadCheck;
-		//System.out.println(isConquestMap(p_fileName));
 		if(isConquestMap(p_fileName)) {
 			l_loadCheck = l_conquestMapRead.readFullMap(p_fileName);
 			if (!l_loadCheck) {
@@ -342,18 +341,9 @@ public class GameMap {
 	}
 	
 	/**
+	 * method that check map is of type Conquest or Domination
 	 * 
-	 */
-	/*public static boolean isConquestMap(String mapName) {
-		try {
-			List<String> lines = Files.readAllLines(Paths.get("").toAbsolutePath().toString() + "/maps/" + mapName)).toArray();
-			return lines.contains("[Territories]");
-		} catch (Exception ex) {
-			return false;
-		}
-	}*/
-	
-	/**
+	 * @return true if it is conquest map or false if it is domination map.
 	 */
 	public Boolean isConquestMap(String p_filePath) {
 		File l_mapFile = new File(
@@ -361,7 +351,6 @@ public class GameMap {
 		Scanner l_reader = null;
 		String l_dataString;
 		try {
-			System.out.println("I am reading");
 			l_reader = new Scanner(l_mapFile);
 			while (l_reader.hasNextLine()) {
 				l_dataString = l_reader.nextLine();
@@ -373,8 +362,6 @@ public class GameMap {
 		} catch (FileNotFoundException e) {
 			System.out.println("File not found");
 			e.printStackTrace();
-		} finally {
-			l_reader.close();
 		}
 		if (d_isConquestMap) {
 			return true;
