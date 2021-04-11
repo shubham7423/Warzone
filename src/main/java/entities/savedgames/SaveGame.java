@@ -274,6 +274,7 @@ public class SaveGame {
 		} catch (Exception p_e) {
 			System.out.println("Exception " + p_e.getMessage());
 			p_e.printStackTrace();
+			d_gameEngine.d_logEntryBuffer.setString("Saving Game Unsuccessful..");
 			return "Saving Game Unsuccessful..";
 		}
 	}
