@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 import controller.GameEngine;
 import controller.state.gamephase.gameplay.AssignArmies;
+import controller.state.gamephase.gameplay.IssueOrders;
 import controller.state.gamephase.gamesetup.PostLoad;
 import controller.state.gamephase.gamesetup.PreLoad;
 import entities.Player;
@@ -257,12 +258,16 @@ public class LoadGame {
 				}
 				
 			}
+			d_gameEngine.setPhase(new IssueOrders(d_gameEngine));
+			d_gameEngine.getPhase().issueOrders();
 			d_reader.close();
-			return "Map Loaded Successfully.";
+			d_gameEngine.d_logEntryBuffer.setString("Game loaded successfully.");
+			return "Game Loaded Successfully.";
 		}catch (FileNotFoundException p_e) {
 			System.out.println("Exception " + p_e.getMessage());
 			p_e.printStackTrace();
-			return "Map Loading Unsuccessful...";
+			d_gameEngine.d_logEntryBuffer.setString("Game cannot be loaded.");
+			return "Game Loading Unsuccessful...";
 		}
 	}
 }
