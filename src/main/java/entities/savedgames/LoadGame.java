@@ -258,10 +258,10 @@ public class LoadGame {
 				}
 				
 			}
+			d_gameEngine.d_logEntryBuffer.setString("Game loaded successfully.");
 			d_gameEngine.setPhase(new IssueOrders(d_gameEngine));
 			d_gameEngine.getPhase().issueOrders();
 			d_reader.close();
-			d_gameEngine.d_logEntryBuffer.setString("Game loaded successfully.");
 			return "Game Loaded Successfully.";
 		}catch (FileNotFoundException p_e) {
 			System.out.println("Exception " + p_e.getMessage());
