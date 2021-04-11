@@ -50,7 +50,7 @@ public class SaveGame {
 			FileWriter l_fw = new FileWriter(
 					Paths.get(Paths.get("").toAbsolutePath().toString() + "/games/" + p_fileName).toString());
 			d_writer = new BufferedWriter(l_fw);
-
+//			 Saving Map first for loading all components on it
 //			 Writing Continents
 			HashMap<Integer, Continent> l_continents = new HashMap<>();
 			l_continents = d_gameMap.getContinents();
@@ -94,7 +94,6 @@ public class SaveGame {
 			}
 
 			d_writer.newLine();
-//			d_writer.write("[PlayerName|Strategy|#Continents|#Countries|NumArmies|[ContinentId]|[CountryId CountryArmies]|[Airlift,Bomb,Blockade,Diplomacy]]");
 			d_writer.write("[PlayerName|Strategy|#Continents|#Countries|NumArmies|[ContinentId]|[CountryId CountryArmies]|[Airlift,Blockade,Bomb,Diplomacy]|[NegotiatedPlayersList]]");
 			d_writer.newLine();
 			for(Player l_currentPlayer : d_gameEngine.d_players.values()) {
@@ -209,28 +208,12 @@ public class SaveGame {
 			d_writer.write("]|[airlift 0,blockade 0,bomb 0,diplomacy 0]|[]");
 			d_writer.newLine();
 			
-
-			/*
-			Collection<Player> l_allPlayers = d_gameEngine.d_players.values();
-			boolean l_hasMoreOrders = false;
-			do {
-				l_hasMoreOrders = false;
-				for(Player l_currentPlayer : l_allPlayers) {
-					if(l_currentPlayer.d_orders.isEmpty()) {
-						l_hasMoreOrders = false;
-						continue;
-					}
-					l_hasMoreOrders = true;
-					String l_commandString = l_currentPlayer.d_orders.remove().getOrder();
-					d_writer.write(l_currentPlayer.getName() + " " + l_commandString);
-					d_writer.newLine();
-				}				
-			} while(l_hasMoreOrders);
-			 */
+			//Saving orders of all players in round robin fashion below
 			d_writer.newLine();
 			d_writer.write("[orders]");
 			d_writer.newLine();
 			
+			//saving commands in the list first before writing in the file
 			HashMap<String, Queue<String>> l_playerOrderHashMap = new HashMap<>(); 
 			for(Player l_currentPlayer : d_gameEngine.d_players.values()) {
 				Queue<String> l_currentPlayerQueue = new LinkedList<String>();
@@ -239,7 +222,8 @@ public class SaveGame {
 				}
 				l_playerOrderHashMap.put(l_currentPlayer.getName(), l_currentPlayerQueue);
 			}
-						
+			
+			//writing the orders/commands in file in round robin fashion
 			boolean l_hasMoreOrders = false;
 			do {
 				l_hasMoreOrders = false;
@@ -256,9 +240,19 @@ public class SaveGame {
 				}	
 			} while(l_hasMoreOrders);
 			
-			//todo committed player
+			//committed players
+			d_writer.newLine();
+			d_writer.write("[committedPlayer]");
+			d_writer.newLine();
+			for(Player l_currentPlayer : d_gameEngine.d_players.values()) {
+				if(l_currentPlayer.getIsCommit()) {
+					d_writer.write(l_currentPlayer.getName());
+					d_writer.newLine();
+				}
+			}
 			
 			//next player
+			d_writer.newLine();
 			d_writer.write("[nextPlayer]");
 			d_writer.newLine();
 			d_writer.write(p_callePlayer.getName());
@@ -269,7 +263,7 @@ public class SaveGame {
 			
 			d_writer.close();
 			l_fw.close();
-			return "Game saved successfully in "+p_fileName;
+			return "Game saved successfully in " + p_fileName;
 		} catch (Exception p_e) {
 			System.out.println("Exception " + p_e.getMessage());
 			p_e.printStackTrace();
