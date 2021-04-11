@@ -43,7 +43,7 @@ public class SaveGame {
 		d_gameEngine = p_gameEngine;
 	}
 
-	public String saveGame(String p_fileName) {
+	public String saveGame(String p_fileName, Player p_callePlayer) {
 		d_gameMap = d_gameEngine.getGameMap();
 		int l_countryCtn = 0, l_continentCtn = 0;
 		try {
@@ -239,9 +239,7 @@ public class SaveGame {
 				}
 				l_playerOrderHashMap.put(l_currentPlayer.getName(), l_currentPlayerQueue);
 			}
-			
-			System.out.print(l_playerOrderHashMap);
-			
+						
 			boolean l_hasMoreOrders = false;
 			do {
 				l_hasMoreOrders = false;
@@ -258,7 +256,13 @@ public class SaveGame {
 				}	
 			} while(l_hasMoreOrders);
 			
+			//todo committed player
 			
+			//next player
+			d_writer.write("[nextPlayer]");
+			d_writer.newLine();
+			d_writer.write(p_callePlayer.getName());
+			d_writer.newLine();
 			
 			d_writer.newLine();
 			

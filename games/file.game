@@ -95,14 +95,26 @@
 42 40 41 
 
 [PlayerName|Strategy|#Continents|#Countries|NumArmies|[ContinentId]|[CountryId CountryArmies]|[Airlift,Blockade,Bomb,Diplomacy]|[NegotiatedPlayersList]]
-a|randomPlayer|0|14|4|[]|[32 0,35 0,7 0,40 0,8 0,41 0,9 0,10 0,13 0,15 0,23 0,24 0,26 0,30 0]|[airlift 0,blockade 0,bomb 0,diplomacy 0]|[]
-b|randomPlayer|0|14|4|[]|[33 0,34 0,3 0,4 0,37 0,6 0,39 0,42 0,11 0,14 0,18 0,22 0,29 0,31 0]|[airlift 0,blockade 0,bomb 0,diplomacy 0]|[]
-c|humanPlayer|0|14|4|[]|[1 0,2 3,36 0,5 0,38 0,12 0,16 0,17 0,19 0,20 0,21 0,25 0,27 0,28 0]|[airlift 0,blockade 0,bomb 0,diplomacy 0]|[]
+bot1|randomPlayer|0|11|3|[]|[16 0,35 0,36 0,37 0,38 0,23 0,25 0,12 0,13 0,31 0,15 0]|[airlift 0,blockade 0,bomb 0,diplomacy 0]|[]
+virag|humanPlayer|0|11|3|[]|[17 0,33 0,1 0,34 0,20 0,6 0,9 0,42 0,11 0,14 0,30 0]|[airlift 0,blockade 0,bomb 0,diplomacy 0]|[]
+bot2|randomPlayer|0|10|3|[]|[32 0,18 0,3 0,21 0,39 0,7 0,24 0,41 0,27 0,29 0]|[airlift 0,blockade 0,bomb 0,diplomacy 0]|[]
+vora|humanPlayer|0|10|3|[]|[2 0,19 0,4 0,5 0,22 0,40 0,8 0,10 0,26 0,28 0]|[airlift 0,blockade 0,bomb 0,diplomacy 0]|[]
 
 [neutralPlayer]
 neutralPlayer#1|neutral|0|0|0|[]|[]|[airlift 0,blockade 0,bomb 0,diplomacy 0]|[]
 
 [orders]
-a advance 23 24 0
-b advance 37 36 0
+bot1 advance 31 22 0
+virag deploy 2 1
+bot2 advance 27 38 0
+vora deploy 1 1
+vora deploy 3 3
+vora advance 1 2 3
+vora advance 1 2 3
+vora airlift 1 2 3
+vora bomb 2
+vora blockade 2
+vora negotiate virag
+[nextPlayer]
+vora
 
