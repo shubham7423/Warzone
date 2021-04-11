@@ -12,7 +12,6 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Set;
 
-
 import controller.GameEngine;
 import entities.Continent;
 import entities.Country;
@@ -35,7 +34,12 @@ public class SaveGame {
 	private LinkedHashMap<Integer, Integer> d_countriesMap;
 	private BufferedWriter d_writer;
 	private GameEngine d_gameEngine;
-	
+
+	/**
+	 * Constructor of Save Game class.
+	 * 
+	 * @param p_gameEngine Object of Game Engine to access other resources of the games.
+	 */
 	public SaveGame(GameEngine p_gameEngine) {
 		d_gameMap = new GameMap();
 		d_continentsMap = new LinkedHashMap<>();
@@ -43,6 +47,14 @@ public class SaveGame {
 		d_gameEngine = p_gameEngine;
 	}
 
+	/**
+	 * This function is used to save the game in a formatted manner that can be used
+	 * to load afterwards.
+	 * 
+	 * @param p_fileName Name of File which will save the game.
+	 * @param p_callePlayer Player Name who wants to save the game.
+	 * @return Return the message regarding the status of save game.
+	 */
 	public String saveGame(String p_fileName, Player p_callePlayer) {
 		d_gameMap = d_gameEngine.getGameMap();
 		int l_countryCtn = 0, l_continentCtn = 0;
@@ -61,7 +73,7 @@ public class SaveGame {
 				d_writer.write(p_continents + " " + l_continents.get(p_continents).getControlValue());
 				d_writer.newLine();
 			}
-			
+
 //			 Writing countries
 			d_writer.write("\n");
 			d_writer.write("[countries]");
@@ -99,69 +111,69 @@ public class SaveGame {
 			for(Player l_currentPlayer : d_gameEngine.d_players.values()) {
 				//player name
 				d_writer.write(l_currentPlayer.getName());
-				
+
 				//behavior of the player
 				d_writer.write("|");
 				{
 					if(l_currentPlayer.getPlayerBehaviour() instanceof Aggresive) {
 						d_writer.write("aggressivePlayer");
-					} else if(l_currentPlayer.getPlayerBehaviour() instanceof Benevolent) {
-						d_writer.write("benevolentPlayer");						
-					} else if(l_currentPlayer.getPlayerBehaviour() instanceof Cheater) {
-						d_writer.write("cheaterPlayer");						
-					} else if(l_currentPlayer.getPlayerBehaviour() instanceof HumanPlayer) {
-						d_writer.write("humanPlayer");						
-					} else if(l_currentPlayer.getPlayerBehaviour() instanceof RandomPlayer) {
-						d_writer.write("randomPlayer");						
+					} else if (l_currentPlayer.getPlayerBehaviour() instanceof Benevolent) {
+						d_writer.write("benevolentPlayer");
+					} else if (l_currentPlayer.getPlayerBehaviour() instanceof Cheater) {
+						d_writer.write("cheaterPlayer");
+					} else if (l_currentPlayer.getPlayerBehaviour() instanceof HumanPlayer) {
+						d_writer.write("humanPlayer");
+					} else if (l_currentPlayer.getPlayerBehaviour() instanceof RandomPlayer) {
+						d_writer.write("randomPlayer");
 					}
 				}
-				
+
 				//number of continents owned by the player
 				d_writer.write("|");
-				d_writer.write(l_currentPlayer.getContinents().size()+"");
-				
+				d_writer.write(l_currentPlayer.getContinents().size() + "");
+
 				//number of countries owned by the player
 				d_writer.write("|");
-				d_writer.write(l_currentPlayer.getCountries().size()+"");
-				
+				d_writer.write(l_currentPlayer.getCountries().size() + "");
+
 				//number of armies owned by the player
 				d_writer.write("|");
-				d_writer.write(l_currentPlayer.getNumberOfArmies()+"");
-				
+				d_writer.write(l_currentPlayer.getNumberOfArmies() + "");
+
 				//all continents owned by the player
 				d_writer.write("|");
 				d_writer.write("[");
 				boolean l_tempFlag = false;
-				for(Continent l_continent: l_currentPlayer.getContinents().values()) {
+				for(Continent l_continent : l_currentPlayer.getContinents().values()) {
 					if(l_tempFlag) {
 						d_writer.write(",");
 					}
 					l_tempFlag = true;
-					d_writer.write(l_continent.getId()+"");
-				}
-				d_writer.write("]");
-				
-				//all countries owned by the player and it's armies placed in each country
-				d_writer.write("|");
-				d_writer.write("[");
-				l_tempFlag = false;
-				for(Country l_country: l_currentPlayer.getCountries().values()) {
-					if(l_tempFlag) {
-						d_writer.write(",");
-					}
-					l_tempFlag = true;
-					d_writer.write(l_country.getId()+" "+l_country.getNumberOfArmiesPresent());
+					d_writer.write(l_continent.getId() + "");
 				}
 				d_writer.write("]");
 
-				//cards owned by the player
+				// all countries owned by the player and it's armies placed in each country
+				d_writer.write("|");
+				d_writer.write("[");
+				l_tempFlag = false;
+				for(Country l_country : l_currentPlayer.getCountries().values()) {
+					if(l_tempFlag) {
+						d_writer.write(",");
+					}
+					l_tempFlag = true;
+					d_writer.write(l_country.getId() + " " + l_country.getNumberOfArmiesPresent());
+				}
+				d_writer.write("]");
+
+				// cards owned by the player
 				d_writer.write("|");
 				d_writer.write("[");
 				HashMap<String, Integer> l_cardsOwned = l_currentPlayer.d_cardsOwned;
-				d_writer.write("airlift " +l_cardsOwned.get("airlift"));
-				d_writer.write(",blockade " +l_cardsOwned.get("blockade"));
-				d_writer.write(",bomb " +l_cardsOwned.get("bomb"));
-				d_writer.write(",diplomacy " +l_cardsOwned.get("diplomacy"));
+				d_writer.write("airlift " + l_cardsOwned.get("airlift"));
+				d_writer.write(",blockade " + l_cardsOwned.get("blockade"));
+				d_writer.write(",bomb " + l_cardsOwned.get("bomb"));
+				d_writer.write(",diplomacy " + l_cardsOwned.get("diplomacy"));
 				d_writer.write("]");
 				d_writer.write("|");
 				d_writer.write("[");
@@ -176,16 +188,14 @@ public class SaveGame {
 				d_writer.write("]");
 				d_writer.newLine();
 			}
-			
+
 			Player l_neutralPlayer = d_gameEngine.d_neutralPlayer;
 			d_writer.newLine();
 			d_writer.write("[neutralPlayer]");
 			d_writer.newLine();
 			d_writer.write("neutralPlayer#1|neutral|");
-			d_writer.write(l_neutralPlayer.getContinents().size()+"|"+
-					l_neutralPlayer.getCountries().size()+"|"+
-					l_neutralPlayer.getNumberOfArmies()+"|"
-					);
+			d_writer.write(l_neutralPlayer.getContinents().size() + "|" + l_neutralPlayer.getCountries().size() + "|"
+					+ l_neutralPlayer.getNumberOfArmies() + "|");
 
 			d_writer.write("[");
 			boolean l_tempFlag = false;
@@ -194,27 +204,27 @@ public class SaveGame {
 					d_writer.write(",");
 				}
 				l_tempFlag = true;
-				d_writer.write(l_continent.getId()+"");
+				d_writer.write(l_continent.getId() + "");
 			}
 			d_writer.write("]|[");
 			l_tempFlag = false;
-			for(Country l_country: l_neutralPlayer.getCountries().values()) {
+			for(Country l_country : l_neutralPlayer.getCountries().values()) {
 				if(l_tempFlag) {
 					d_writer.write(",");
 				}
 				l_tempFlag = true;
-				d_writer.write(l_country.getId()+" "+l_country.getNumberOfArmiesPresent());
+				d_writer.write(l_country.getId() + " " + l_country.getNumberOfArmiesPresent());
 			}
 			d_writer.write("]|[airlift 0,blockade 0,bomb 0,diplomacy 0]|[]");
 			d_writer.newLine();
-			
-			//Saving orders of all players in round robin fashion below
+
+			// Saving orders of all players in round robin fashion below
 			d_writer.newLine();
 			d_writer.write("[orders]");
 			d_writer.newLine();
-			
-			//saving commands in the list first before writing in the file
-			HashMap<String, Queue<String>> l_playerOrderHashMap = new HashMap<>(); 
+
+			// saving commands in the list first before writing in the file
+			HashMap<String, Queue<String>> l_playerOrderHashMap = new HashMap<>();
 			for(Player l_currentPlayer : d_gameEngine.d_players.values()) {
 				Queue<String> l_currentPlayerQueue = new LinkedList<String>();
 				for(Orders l_tempOrders : l_currentPlayer.d_orders) {
@@ -222,8 +232,8 @@ public class SaveGame {
 				}
 				l_playerOrderHashMap.put(l_currentPlayer.getName(), l_currentPlayerQueue);
 			}
-			
-			//writing the orders/commands in file in round robin fashion
+
+			// writing the orders/commands in file in round robin fashion
 			boolean l_hasMoreOrders = false;
 			do {
 				l_hasMoreOrders = false;
@@ -232,15 +242,15 @@ public class SaveGame {
 						l_hasMoreOrders = false;
 						continue;
 					}
-					
+
 					l_hasMoreOrders = true;
 					String l_commandString = l_playerOrderHashMap.get(l_currentPlayer).remove();
 					d_writer.write(l_currentPlayer + " " + l_commandString);
 					d_writer.newLine();
-				}	
+				}
 			} while(l_hasMoreOrders);
-			
-			//committed players
+
+			// committed players
 			d_writer.newLine();
 			d_writer.write("[committedPlayer]");
 			d_writer.newLine();
@@ -250,17 +260,14 @@ public class SaveGame {
 					d_writer.newLine();
 				}
 			}
-			
-			//next player
+
+			// next player
 			d_writer.newLine();
 			d_writer.write("[nextPlayer]");
 			d_writer.newLine();
 			d_writer.write(p_callePlayer.getName());
 			d_writer.newLine();
-			
-			d_writer.newLine();
-			
-			
+
 			d_writer.close();
 			l_fw.close();
 			return "Game saved successfully in " + p_fileName;
@@ -269,5 +276,5 @@ public class SaveGame {
 			p_e.printStackTrace();
 			return "Saving Game Unsuccessful..";
 		}
-	} 
+	}
 }

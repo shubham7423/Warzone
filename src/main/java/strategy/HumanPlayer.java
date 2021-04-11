@@ -172,6 +172,7 @@ public class HumanPlayer extends PlayerStrategy {
 						} else {
 							String l_saveGameResult = l_saveGame.saveGame(l_splittedOrder[1], d_player);
 							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_saveGameResult);
+							System.out.println(l_saveGameResult);
 						}
 						break;
 					default:
