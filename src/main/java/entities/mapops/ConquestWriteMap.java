@@ -68,37 +68,27 @@ public class ConquestWriteMap {
 			for (int p_continents : d_continentsMap.keySet()) {
 				Set<Integer> l_countriesId = l_continents.get(p_continents).getCountriesIds();
 				for (int p_countriesId : l_countriesId) {
-					Set<Integer> l_neighborIds = l_countries.get(p_countriesId).getNeighborIds();
+//					Set<Integer> l_neighborIds = l_countries.get(p_countriesId).getNeighborIds();
 					StringBuilder l_sb = new StringBuilder("");
-					d_countriesMap.put(p_countriesId, ++l_countryCtn);
-					for (int p_neighborIds : l_neighborIds) {
-						//System.out.println(p_neighborIds);
-						l_sb.append("," + d_countriesMap.get(p_neighborIds).toString());
+//					d_countriesMap.put(p_countriesId, ++l_countryCtn);
+//					for (int p_neighborIds : l_neighborIds) {
+////						System.out.println(d_countriesMap);
+//						l_sb.append("," + d_countriesMap.get(p_neighborIds).toString());
+//					}
+//					d_writer.write(p_countriesId + "," + "0,"+ "0," + d_continentsMap.get(p_continents) + l_sb.toString());
+//					System.out.println(p_countriesId + "," + "0,"+ "0," + d_continentsMap.get(p_continents) + l_sb.toString());
+//					d_writer.newLine();
+//					System.out.println(p_countriesId);
+					
+					for(Country l_neighbor: l_countries.get(p_countriesId).getNeighborCountries()) {
+						l_sb.append("," + l_neighbor.getId());
 					}
 					d_writer.write(p_countriesId + "," + "0,"+ "0," + d_continentsMap.get(p_continents) + l_sb.toString());
-					System.out.println(p_countriesId + "," + "0,"+ "0," + d_continentsMap.get(p_continents) + l_sb.toString());
 					d_writer.newLine();
 				}
 				d_writer.newLine();
 			}
 
-//			 Writing borders
-			/*HashMap<Integer, Country> l_countries = new HashMap<>();
-			l_countries = d_gameMap.getCountries();
-			d_writer.write("\n");
-			d_writer.write("[borders]");
-			d_writer.newLine();
-			for (int p_countries : d_countriesMap.keySet()) {
-				Set<Integer> l_neighborIds = l_countries.get(p_countries).getNeighborIds();
-				StringBuilder l_sb = new StringBuilder("");
-				l_sb.append(d_countriesMap.get(p_countries).toString() + " ");
-
-				for (int p_neighborIds : l_neighborIds) {
-					l_sb.append(d_countriesMap.get(p_neighborIds).toString() + " ");
-				}
-				d_writer.write(l_sb.toString());
-				d_writer.newLine();
-			}*/
 			d_writer.close();
 			l_fw.close();
 			return true;
@@ -109,12 +99,12 @@ public class ConquestWriteMap {
 		}
 	}
 	
-	/*public static void main(String[] args)
+	public static void main(String[] args)
 	{
 		GameMap gameMap = new GameMap();
 		ConquestReadMap rmap = new ConquestReadMap(gameMap);
 		ConquestWriteMap wmap = new ConquestWriteMap(gameMap);
-		rmap.readFullMap("Africa.map");
+		rmap.readFullMap("Canada.map");
 		wmap.writeFullMap("conquestMapTest.map");
-	}*/
+	}
 }
