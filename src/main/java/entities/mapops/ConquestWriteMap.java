@@ -99,12 +99,12 @@ public class ConquestWriteMap {
 		}
 	}
 	
-	public static void main(String[] args)
+	/*public static void main(String[] args)
 	{
 		GameMap gameMap = new GameMap();
 		ConquestReadMap rmap = new ConquestReadMap(gameMap);
 		ConquestWriteMap wmap = new ConquestWriteMap(gameMap);
 		rmap.readFullMap("Canada.map");
 		wmap.writeFullMap("conquestMapTest.map");
-	}
+	}*/
 }
