@@ -129,6 +129,9 @@ public class LoadGame {
 							
 //							assign the countries to the Player
 							String l_countryInfoString = l_playerInfo[6].substring(1, l_playerInfo[6].length() - 1);
+							if (l_countryInfoString.equals("")) {
+								continue;
+							}
 							String []l_countries = l_countryInfoString.split(",");
 							for (String l_currentCountry: l_countries) {
 								String []l_temp = l_currentCountry.split("\\s");
@@ -167,6 +170,9 @@ public class LoadGame {
 							
 //							assign the countries to the Player
 							String l_countryInfoString = l_playerInfo[6].substring(1, l_playerInfo[6].length() - 1);
+							if (l_countryInfoString.equals("")) {
+								continue;
+							}
 							String []l_countries = l_countryInfoString.split(",");
 							for (String l_currentCountry: l_countries) {
 								String []l_temp = l_currentCountry.split("\\s");
@@ -174,6 +180,39 @@ public class LoadGame {
 								d_gameEngine.getGameMap().getCountries().get(Integer.parseInt(l_temp[0])).setNumberOfArmiesPresent(Integer.parseInt(l_temp[1]));
 								d_gameEngine.getGameMap().getCountries().get(Integer.parseInt(l_temp[0])).setPlayer(l_currentPlayer);
 							}
+						} else {
+							break;
+						}
+					}
+				}
+				
+				else if ("[orders]".equals(l_dataString)) {
+					while (d_reader.hasNextLine()) {
+						l_line = d_reader.nextLine();
+						if (l_line.length() > 0) {
+							
+						} else {
+							break;
+						}
+					}
+				}
+				
+				else if ("[committedPlayer]".equals(l_dataString)) {
+					while (d_reader.hasNextLine()) {
+						l_line = d_reader.nextLine();
+						if (l_line.length() > 0) {
+							
+						} else {
+							break;
+						}
+					}
+				}
+				
+				else if ("[nextPlayer]".equals(l_dataString)) {
+					while (d_reader.hasNextLine()) {
+						l_line = d_reader.nextLine();
+						if (l_line.length() > 0) {
+							System.out.println(l_line);
 						} else {
 							break;
 						}
