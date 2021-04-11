@@ -2,6 +2,7 @@ package controller.state.gamephase.gamesetup;
 
 import controller.GameEngine;
 import entities.GameMap;
+import entities.savedgames.LoadGame;
 
 /**
  * Phase entered after map is saved successfully or at the start of the game, it
@@ -18,6 +19,13 @@ public class PreLoad extends GameSetup {
 		super(p_gameEngine);
 	}
 
+	public String loadGame(String p_fileName) {
+		String l_result;
+		d_gameEngine.setGameMap(new GameMap());
+		LoadGame l_loadGame = new LoadGame(d_gameEngine);
+		return l_loadGame.loadGame(p_fileName);
+	}
+	
 	/**
 	 * function to load the map file that will be used to play the game
 	 * 

@@ -16,7 +16,7 @@ public class LoadGame {
 	private HashMap<String, Integer> d_continentsMap;
 	private HashMap<Integer, String> d_countriesMap;
 	Scanner d_reader;
-
+	
 	public LoadGame(GameEngine p_gameEngine) {
 		d_gameEngine = p_gameEngine;
 		d_continentsMap = new HashMap<>();
@@ -29,6 +29,7 @@ public class LoadGame {
 	 * @param p_fileName from .game file
 	 * @return 
 	 */
+	
 	public String loadGame(String p_fileName){
 		try {
 			File l_mapFile = new File(
@@ -88,6 +89,8 @@ public class LoadGame {
 
 					}
 				}
+				
+				
 			}
 			d_reader.close();
 			return null;//to be implemented

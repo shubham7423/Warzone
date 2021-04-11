@@ -678,6 +678,9 @@ public class GameEngine {
 	 * @return the result of executing the loadgame command
 	 */
 	public String loadGame(String[] p_splittedCommand) {
+		if (d_phase instanceof EditPhase) {
+			setPhase(new PreLoad(this));
+		}
 		if (p_splittedCommand.length != 2) {
 			return "Please enter valid command. Valid command is : \"loadgame filename.game\"";
 		}

@@ -19,10 +19,6 @@ public abstract class GameSetup extends GamePhase {
 		super(p_gameEngine);
 	}
 	
-	public String loadGame(String p_fileName) {
-		return null;
-	}
-	
 	/**
 	 * Function to save whole game
 	 * 

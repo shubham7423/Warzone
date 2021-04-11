@@ -30,6 +30,14 @@ public class PostLoad extends GameSetup {
 	public PostLoad(GameEngine p_gameEngine) {
 		super(p_gameEngine);
 	}
+	
+	
+	public String loadGame(String p_fileName) {
+		StringBuilder l_sb = new StringBuilder();
+		l_sb.append("loadgame ");
+		l_sb.append(p_fileName);
+		return l_sb.toString();
+	}
 
 	/**
 	 * function to load the map for playing the game
