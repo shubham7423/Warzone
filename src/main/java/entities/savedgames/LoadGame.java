@@ -157,6 +157,29 @@ public class LoadGame {
 						}
 					}
 				}
+				
+				else if ("[neutralPlayer]".equals(l_dataString)) {
+					while (d_reader.hasNextLine()) {
+						l_line = d_reader.nextLine();
+						if (l_line.length() > 0) {
+							String[] l_playerInfo = l_line.split("[|]");
+							Player l_currentPlayer = d_gameEngine.d_neutralPlayer;
+							
+//							assign the countries to the Player
+							String l_countryInfoString = l_playerInfo[6].substring(1, l_playerInfo[6].length() - 1);
+							String []l_countries = l_countryInfoString.split(",");
+							for (String l_currentCountry: l_countries) {
+								String []l_temp = l_currentCountry.split("\\s");
+								l_currentPlayer.addCountry(d_gameEngine.getGameMap().getCountries().get(Integer.parseInt(l_temp[0])));
+								d_gameEngine.getGameMap().getCountries().get(Integer.parseInt(l_temp[0])).setNumberOfArmiesPresent(Integer.parseInt(l_temp[1]));
+								d_gameEngine.getGameMap().getCountries().get(Integer.parseInt(l_temp[0])).setPlayer(l_currentPlayer);
+							}
+						} else {
+							break;
+						}
+					}
+				}
+				
 			}
 			d_reader.close();
 			return "kaik return thay che";//to be implemented
