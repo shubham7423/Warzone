@@ -11,6 +11,7 @@ import controller.state.gamephase.gameplay.AssignArmies;
 import controller.state.gamephase.gamesetup.PostLoad;
 import controller.state.gamephase.gamesetup.PreLoad;
 import entities.Player;
+import entities.orders.*;
 import strategy.*;
 
 /**
@@ -190,7 +191,41 @@ public class LoadGame {
 					while (d_reader.hasNextLine()) {
 						l_line = d_reader.nextLine();
 						if (l_line.length() > 0) {
-							
+							String [] l_orderInfoStrings = l_line.split("\\s");
+							Orders l_currentOrders = null;
+							Player l_currentPlayer = d_gameEngine.d_players.get(l_orderInfoStrings[0]);
+							switch(l_orderInfoStrings[1]) {							
+								case "advance":
+									l_currentOrders = new Advance(l_currentPlayer, Integer.parseInt(l_orderInfoStrings[2]),  Integer.parseInt(l_orderInfoStrings[3]),  Integer.parseInt(l_orderInfoStrings[4]));
+									l_currentPlayer.d_orders.add(l_currentOrders);
+									break;
+									
+								case "airlift":
+									l_currentOrders = new Airlift(l_currentPlayer, Integer.parseInt(l_orderInfoStrings[2]),  Integer.parseInt(l_orderInfoStrings[3]),  Integer.parseInt(l_orderInfoStrings[4]));
+									l_currentPlayer.d_orders.add(l_currentOrders);
+									break;
+									
+								case "bomb":
+									l_currentOrders = new Bomb(l_currentPlayer, Integer.parseInt(l_orderInfoStrings[2]));
+									l_currentPlayer.d_orders.add(l_currentOrders);
+									break;
+									
+								case "blockade":
+									l_currentOrders = new Blockade(l_currentPlayer, Integer.parseInt(l_orderInfoStrings[2]));
+									l_currentPlayer.d_orders.add(l_currentOrders);
+									break;
+									
+								case "deploy":
+									l_currentOrders = new Deploy(l_currentPlayer, Integer.parseInt(l_orderInfoStrings[2]),  Integer.parseInt(l_orderInfoStrings[3]));
+									l_currentPlayer.d_orders.add(l_currentOrders);
+									break;
+									
+								case "negotiate":
+									l_currentOrders = new Diplomacy(l_currentPlayer, l_orderInfoStrings[2]);
+									l_currentPlayer.d_orders.add(l_currentOrders);
+									break;
+							}
+							d_gameEngine.addPlayerOrder(l_currentPlayer);
 						} else {
 							break;
 						}
@@ -201,7 +236,9 @@ public class LoadGame {
 					while (d_reader.hasNextLine()) {
 						l_line = d_reader.nextLine();
 						if (l_line.length() > 0) {
-							
+							String [] l_committedPlayerInfoStrings = l_line.split("//s");
+							Player l_currentPlayer = d_gameEngine.d_players.get(l_committedPlayerInfoStrings[0]);
+							l_currentPlayer.setIsCommit(true);
 						} else {
 							break;
 						}
@@ -221,11 +258,11 @@ public class LoadGame {
 				
 			}
 			d_reader.close();
-			return "kaik return thay che";//to be implemented
+			return "Map Loaded Successfully.";
 		}catch (FileNotFoundException p_e) {
 			System.out.println("Exception " + p_e.getMessage());
 			p_e.printStackTrace();
-			return "kaik return nthi thtu";
+			return "Map Loading Unsuccessful...";
 		}
 	}
 }
