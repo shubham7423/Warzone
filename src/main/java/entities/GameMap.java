@@ -159,8 +159,8 @@ public class GameMap {
 		ReadMap l_mapRead = new ReadMap(this);
 		ConquestReadMap l_conquestMapRead = new ConquestReadMap(this);
 		Boolean l_loadCheck;
-		
-		if(isConquestMap(p_fileName)==true) {
+		System.out.println(isConquestMap(p_fileName));
+		if(isConquestMap(p_fileName)) {
 			l_loadCheck = l_conquestMapRead.readFullMap(p_fileName);
 			if (!l_loadCheck) {
 				return String.format("Map \"%s\" cannot be loaded", p_fileName);
