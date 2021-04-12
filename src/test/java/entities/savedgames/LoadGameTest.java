@@ -76,13 +76,13 @@ public class LoadGameTest {
 		l_countries.add(40);
 		assertTrue(l_countries.equals(l_countriesRead));
 		
-		/*l_continents.add(1);
+		l_continents.add(1);
 		l_continents.add(2);
 		l_continents.add(3);
 		l_continents.add(4);
 		l_continents.add(5);
 		l_continents.add(6);
-		assertTrue(l_continents.equals(l_continentsRead));*/
+		assertTrue(l_continents.equals(l_continentsRead));
 	}
 	
 	@Test
