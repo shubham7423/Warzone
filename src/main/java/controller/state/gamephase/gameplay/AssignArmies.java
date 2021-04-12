@@ -69,6 +69,18 @@ public class AssignArmies extends GamePlay {
 	public String showMap() {
 		return printInvalidCommandMessage();
 	}
+	
+	/**
+	 * Function to print invalid command as the following command cannot be used in
+	 * this phase
+	 * 
+	 * @param p_fileName File that saves the game.
+	 * @return string to print the invalid command message
+	 */
+	@Override
+	public String saveGame(String p_fileName) {
+		return printInvalidCommandMessage();
+	}
 
 	/**
 	 * function to print invalid command as the following command cannot be used in

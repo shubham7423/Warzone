@@ -12,6 +12,7 @@ import entities.orders.Deploy;
 import entities.orders.Diplomacy;
 import entities.orders.Exit;
 import entities.orders.Orders;
+import entities.savedgames.SaveGame;
 
 /**
  * concrete strategy class of Human player.
@@ -39,6 +40,7 @@ public class HumanPlayer extends PlayerStrategy {
 	 */
 	@Override
 	public Orders createOrder() {
+		SaveGame l_saveGame= new SaveGame(d_gameEngine);
 		UserCommand l_userCommand = new UserCommand();
 		l_userCommand.setPhase(new IssueOrders(null));
 		String[] l_splittedOrder = null;
@@ -175,6 +177,18 @@ public class HumanPlayer extends PlayerStrategy {
 							String l_temp = "negotiate " + l_splittedOrder[1];
 							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
 							l_isCorrect = true;
+						}
+						break;
+					case "savegame":
+						if (l_splittedOrder.length != 2) {
+							String l_temp = "Invalid command. Correct command is - savegame fileName.game";
+							System.out.println(l_temp);
+							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
+							continue;
+						} else {
+							String l_saveGameResult = l_saveGame.saveGame(l_splittedOrder[1], d_player);
+							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_saveGameResult);
+							System.out.println(l_saveGameResult);
 						}
 						break;
 					default:

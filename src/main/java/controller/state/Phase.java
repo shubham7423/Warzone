@@ -22,9 +22,15 @@ public abstract class Phase {
 		d_gameEngine = p_gameEngine;
 	}
 	
-	abstract public String saveGame();
+	/**
+	 * Abstract function to save the game.
+	 * 
+	 * @param p_fileName name of game file that is to be saved
+	 * @return output string of execution of command.
+	 */
+	abstract public String saveGame(String p_fileName);
 	
-	abstract public String loadGame();
+	abstract public String loadGame(String p_fileName);
 	
 	abstract public String tournament(ArrayList<String> p_maps, ArrayList<String> p_players, int p_games, int p_turns);
 	

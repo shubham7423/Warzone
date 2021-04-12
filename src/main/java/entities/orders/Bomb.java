@@ -33,6 +33,16 @@ public class Bomb implements Orders {
 		d_player = p_player;
 		d_country = p_country;
 	}
+	
+	/**
+	 * This method is used to get the order in String format.
+	 * 
+	 * @return command in String form.
+	 */
+	public String getOrder() {
+		return "bomb "+ d_country;
+	}
+	
 
 	/**
 	 * method to execute bomb command

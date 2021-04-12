@@ -131,6 +131,19 @@ public class IssueOrders extends GamePlay {
 	}
 
 	/**
+	 * Function to support savegame command for further processing
+	 * 
+	 * @param p_fileName is the Name of the File which will save the Game.
+	 * @return Output string message after saving the game
+	 */
+	public String saveGame(String p_fileName) {
+		StringBuilder l_sb = new StringBuilder();
+		l_sb.append("savegame ");
+		l_sb.append(p_fileName);
+		return l_sb.toString();
+	}
+	
+	/**
 	 * function that takes player's and that adds to them to the orders queue
 	 * 
 	 * @return string to output result of issue orders
@@ -142,11 +155,6 @@ public class IssueOrders extends GamePlay {
 		System.out.println("\nIssue orders phase entered");
 		d_gameEngine.d_logEntryBuffer.setString("Issue orders phase entered");
 		System.out.println(org.apache.commons.lang3.StringUtils.repeat("-", 20));
-		for (Player l_player : d_gameEngine.d_players.values()) {
-			l_player.setIsCommit(false);
-			l_player.d_negotiatedPlayerNames = new ArrayList<String>();
-			l_player.d_isConquered = false;
-		}
 		
 		while (l_playersCompleted.size() < d_gameEngine.d_playerName.size()) {
 			if (!d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).getIsCommit()) {
@@ -178,6 +186,11 @@ public class IssueOrders extends GamePlay {
 			if (l_currentPlayer == d_gameEngine.d_playerName.size()) {
 				l_currentPlayer = 0;
 			}
+		}
+		for (Player l_player : d_gameEngine.d_players.values()) {
+			l_player.setIsCommit(false);
+			l_player.d_negotiatedPlayerNames = new ArrayList<String>();
+			l_player.d_isConquered = false;
 		}
 		next();
 		d_gameEngine.d_logEntryBuffer.setString("Issue orders phase completed");

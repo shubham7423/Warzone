@@ -20,12 +20,26 @@ public class EndPhase extends GamePhase {
 	public EndPhase(GameEngine p_gameEngine) {
 		super(p_gameEngine);
 	}
-	
-	public String saveGame() {
+
+	/**
+	 * Function to print invalid command as the following command cannot be used in
+	 * this phase
+	 * 
+	 * @param p_fileName name of game file that is to be saved
+	 * @return string to print the invalid command message
+	 */
+	public String saveGame(String p_fileName) {
 		return printInvalidCommandMessage();
 	}
-	
-	public String loadGame() {
+
+	/**
+	 * Function to print invalid command as the following command cannot be used in
+	 * this phase
+	 * 
+	 * @param p_fileName name of game file that is to be loaded
+	 * @return string to print the invalid command message
+	 */
+	public String loadGame(String p_fileName) {
 		return printInvalidCommandMessage();
 	}
 	
@@ -37,7 +51,7 @@ public class EndPhase extends GamePhase {
 	 * function to print invalid command as the following command cannot be used in
 	 * this phase
 	 * 
-	 * @param p_fileName name of the file used to laod
+	 * @param p_fileName name of the file used to load
 	 * @return string to print the invalid command message
 	 */
 	@Override

@@ -27,13 +27,15 @@ public abstract class GameSetup extends GamePhase {
 	public GameSetup(GameEngine p_gameEngine) {
 		super(p_gameEngine);
 	}
-
-	public String loadGame() {
-		return null;
-	}
-
-	public String saveGame() {
-		return null;
+	
+	/**
+	 * Function to save whole game
+	 * 
+	 * @param p_fileName name of game file that is to be saved
+	 * @return string conveying that game has not yet been setup to use this command
+	 */
+	public String saveGame(String p_fileName) {
+		return String.format("Game not yet Setup");
 	}
 
 	public String returnWinner() {

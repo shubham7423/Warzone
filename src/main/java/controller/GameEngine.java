@@ -16,6 +16,7 @@ import controller.state.gamephase.gamesetup.PreLoad;
 import entities.GameMap;
 import entities.Player;
 import entities.orders.Deploy;
+import entities.savedgames.*;
 
 /**
  * Game Engine class is the starting point of the game where commands are
@@ -121,6 +122,14 @@ public class GameEngine {
 
 		case "blockade":
 			l_result = blockade(p_splittedCommand);
+			break;
+			
+		case "savegame":
+			l_result = saveGame(p_splittedCommand);
+			break;
+
+		case "loadgame":
+			l_result = loadGame(p_splittedCommand);
 			break;
 
 		case "tournament":
@@ -685,6 +694,49 @@ public class GameEngine {
 		return l_result;
 	}
 
+	/**
+	 * Function to allow saving of game to the directory
+	 * 
+	 * @param p_splittedCommand the command that has been splitted into multiple
+	 *                          parts for further processing
+	 * @return the result of executing the savegame command
+	 */
+	public String saveGame(String[] p_splittedCommand) {
+		if (p_splittedCommand.length != 2) {
+			return "Please enter valid command. Valid command is : \"savegame filename.game\"";
+		}
+		if (p_splittedCommand[1].split("\\.").length <= 1) {
+			return "File extension should be .game";
+		}
+		if (!"game".equals(p_splittedCommand[1].split("\\.")[1])) {
+			return "File extension should be .game";
+		}
+		return d_phase.saveGame(p_splittedCommand[1]);
+	}
+	
+	/**
+	 * Function to allow loading the game from the directory
+	 * 
+	 * @param p_splittedCommand the command that has been splitted into multiple
+	 *                          parts for further processing
+	 * @return the result of executing the loadgame command
+	 */
+	public String loadGame(String[] p_splittedCommand) {
+		if (d_phase instanceof EditPhase) {
+			setPhase(new PreLoad(this));
+		}
+		if (p_splittedCommand.length != 2) {
+			return "Please enter valid command. Valid command is : \"loadgame filename.game\"";
+		}
+		if (p_splittedCommand[1].split("\\.").length <= 1) {
+			return "File extension should be .map";
+		}
+		if (!"game".equals(p_splittedCommand[1].split("\\.")[1])) {
+			return "File extension should be .game";
+		}
+		return d_phase.loadGame(p_splittedCommand[1]);
+	}
+	
 	/**
 	 * function to allow saving of map to the directory
 	 * 

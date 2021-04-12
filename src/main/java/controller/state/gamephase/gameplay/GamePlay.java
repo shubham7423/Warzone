@@ -20,11 +20,14 @@ public abstract class GamePlay extends GamePhase {
 		super(p_gameEngine);
 	}
 	
-	public String saveGame() {
-		return null;
-	}
-	
-	public String loadGame() {
+	/**
+	 * Function to print invalid command as the following command cannot be used in
+	 * this phase
+	 * 
+	 * @param p_fileName name of game file that is to be loaded
+	 * @return string to print the invalid command message
+	 */
+	public String loadGame(String p_fileName) {
 		return printInvalidCommandMessage();
 	}
 	

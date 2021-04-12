@@ -34,6 +34,16 @@ public class Airlift implements Orders {
 		d_armies = p_armies;
 	}
 
+	
+	/**
+	 * This method is used to get the order in String format.
+	 * 
+	 * @return command in String form.
+	 */
+	public String getOrder() {
+		return "airlift "+ d_countryNameFrom + " " + d_countryNameTo + " " + d_armies;
+	}
+	
 	/**
 	 * Method to execute the Airlift command
 	 * 
