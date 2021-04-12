@@ -358,8 +358,7 @@ public class GameMap {
 				}
 			}
 		} catch (FileNotFoundException e) {
-			System.out.println("File not found");
-			e.printStackTrace();
+			return false;
 		}
 		if (d_isConquestMap) {
 			return true;
