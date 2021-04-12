@@ -912,8 +912,18 @@ public class GameEngine {
 			}
 		}
 		
-		
-		
+		//max number of turns
+		if(p_splittedCommand.length -2 == l_indexD) {
+			String l_temp = "You should insert exactly One argument after -D which signifies maximum number of turns allowed per game.\nAfter that decision/winner must be declared.";
+			l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
+			return l_temp;
+		} else {
+			if(!isNumeric(p_splittedCommand[l_indexM +1 ])) {
+				String l_temp = "After -D, you can not use integer to represent the maximum number of turns allowed per game to be played.";
+				l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
+				return l_temp;
+			}
+		}
 		
 		int l_i = 2;
 		ArrayList<String> l_maps = new ArrayList<>();
