@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.Set;
 
 import controller.GameEngine;
 import controller.state.gamephase.gameplay.AssignArmies;
@@ -269,5 +270,12 @@ public class LoadGame {
 			d_gameEngine.d_logEntryBuffer.setString("Game cannot be loaded.");
 			return "Game Loading Unsuccessful...";
 		}
+	}
+	public Set<Integer> getContinentIds() {
+		return d_gameEngine.getGameMap().getContinents().keySet();
+	}
+
+	public Set<Integer> getCountriesIds() {
+		return d_gameEngine.getGameMap().getCountries().keySet();
 	}
 }
