@@ -866,18 +866,19 @@ public class GameEngine {
 			return l_temp;
 		} else {
 			for(int l_index = l_indexM+1 ; l_index <l_indexP ; l_index++) {
-				if (p_splittedCommand[l_index].split("\\.").length <= 1) {
-					return "File extension should be .map";
-				}
-				if (!"map".equals(p_splittedCommand[l_index].split("\\.")[1])) {
-					return "File extension should be .map";
+				if ((p_splittedCommand[l_index].split("\\.").length <= 1 )) {
+					return "Please add file extension .map to the map files.";
+				} else if (!"map".equals(p_splittedCommand[l_index].split("\\.")[1])) {
+					return "After -M, The map file(s) extension should be .map";
+				} else if ("".equals(p_splittedCommand[l_index].split("\\.")[0])) {
+					return "After -M, File name missing for the Map files(.map)";
 				}
 			}
 		}
 		
 		//Player Strategy checking
 		if(l_indexG - l_indexP < 3) {
-			String l_temp = "There should be atleast Two Players Strategy inserted in the command.\n";
+			String l_temp = "There should be atleast Two Players Strategy inserted in the command.";
 			l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
 			return l_temp;
 		} else {
@@ -900,31 +901,32 @@ public class GameEngine {
 		}
 		
 		//number of games attribute
-		if(l_indexD - l_indexM != 2) {
+		if(l_indexD - l_indexG != 2) {
 			String l_temp = "You should insert exactly One argument after -G which signifies number of games to be played in the tournament.";
 			l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
 			return l_temp;
 		} else {
-			if(!isNumeric(p_splittedCommand[l_indexM +1 ])) {
-				String l_temp = "After -G, you can not use integer to represent the Number of Games to be Played.";
+			if(!isNumeric(p_splittedCommand[l_indexG +1 ])) {
+				String l_temp = "After -G, you can only use integer to represent the Number of Games to be Played.";
 				l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
 				return l_temp;
 			}
 		}
 		
+		
 		//max number of turns
-		if(p_splittedCommand.length -2 == l_indexD) {
+		if((p_splittedCommand.length - 2) != l_indexD) {
 			String l_temp = "You should insert exactly One argument after -D which signifies maximum number of turns allowed per game.\nAfter that decision/winner must be declared.";
 			l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
 			return l_temp;
 		} else {
-			if(!isNumeric(p_splittedCommand[l_indexM +1 ])) {
+			if(!isNumeric(p_splittedCommand[l_indexD +1 ])) {
 				String l_temp = "After -D, you can not use integer to represent the maximum number of turns allowed per game to be played.";
 				l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
 				return l_temp;
 			}
 		}
-		
+				
 		int l_i = 2;
 		ArrayList<String> l_maps = new ArrayList<>();
 		ArrayList<String> l_players = new ArrayList<>();
