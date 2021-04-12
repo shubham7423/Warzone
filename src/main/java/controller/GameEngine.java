@@ -825,6 +825,7 @@ public class GameEngine {
 	 */
 	public String tournament(String[] p_splittedCommand) {
 		
+		ArrayList<String> l_playerStrategy = new ArrayList<>(Arrays.asList("Random", "Aggresive", "Benevolent", "Cheater"));
 		int l_indexM = 0;
 		int l_indexP = 0;
 		int l_indexG = 0;
@@ -874,12 +875,35 @@ public class GameEngine {
 			}
 		}
 		
+		//Player Strategy checking
+		if(l_indexG - l_indexP < 3) {
+			String l_temp = "There should be atleast Two Players Strategy inserted in the command.\n";
+			l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
+			return l_temp;			
+		} else {
+			HashSet<String> l_tempPlayerStrategies = new HashSet<String>(); 
+			for(int l_index = l_indexP+1; l_index < l_indexG; l_index++) {
+				if(l_tempPlayerStrategies.contains(p_splittedCommand[l_index])){
+					return "Duplicate players not allowed.";
+				} else {
+					if(!l_playerStrategy.contains(p_splittedCommand[l_index])) {
+						return "Strategies allowed for Player are :\" Aggresive, Benevolent, Cheater and Random\".";
+					}
+					l_tempPlayerStrategies.add(p_splittedCommand[l_index]);
+				}
+			}
+			if(l_tempPlayerStrategies.size()<2) {
+				String l_temp = "There should be atleast Two Players Strategy inserted in the command.\n";
+				l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
+				return l_temp;
+			}
+		}
 		
 		
 		
 		
 		
-		ArrayList<String> l_playerStrategy = new ArrayList<>(Arrays.asList("Random", "Aggresive", "Benevolent", "Cheater"));
+		
 		int l_i = 2;
 		ArrayList<String> l_maps = new ArrayList<>();
 		ArrayList<String> l_players = new ArrayList<>();
