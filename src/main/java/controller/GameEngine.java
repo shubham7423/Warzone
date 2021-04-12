@@ -1,15 +1,17 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
 
-
 import controller.state.Phase;
 import controller.state.edit.EditPhase;
 import controller.state.edit.PreEdit;
+import controller.state.gamephase.GamePhase;
 import controller.state.gamephase.gamesetup.PreLoad;
 import entities.GameMap;
 import entities.Player;
@@ -31,8 +33,10 @@ public class GameEngine {
 	public LogEntryBuffer d_logEntryBuffer;
 	private LogWriter d_logWriter;
 	public Player d_neutralPlayer;
-	public Random d_random;	
-	
+	public Random d_random;
+	private int d_turnNumber = 0;
+	private int d_maxTurn = 500;
+
 	/**
 	 * Game Engine constructor which creates a neutral player when game is started
 	 * and also initializes LogEntryBuffer which is observable and attaches it to
@@ -128,6 +132,10 @@ public class GameEngine {
 			l_result = loadGame(p_splittedCommand);
 			break;
 
+		case "tournament":
+			l_result = tournament(p_splittedCommand);
+			break;
+
 		default:
 			l_result = "Command not found";
 		}
@@ -178,6 +186,42 @@ public class GameEngine {
 	 */
 	public GameMap getGameMap() {
 		return d_gameMap;
+	}
+
+	/**
+	 * function to return the maximum turns in a game. Game is draw when maximum.
+	 * turns reached.
+	 * 
+	 * @return maximum turns in game
+	 */
+	public int getMaxTurns() {
+		return d_maxTurn;
+	}
+
+	/**
+	 * function to set maximum turns per game.
+	 * 
+	 * @param p_maxTurn number of turns.
+	 */
+	public void setMaxTurns(int p_maxTurn) {
+		d_maxTurn = p_maxTurn;
+	}
+
+	/**
+	 * function to return current turn in game play.
+	 * 
+	 * @return return current turn number
+	 */
+	public int getCurrentTurn() {
+		return d_turnNumber;
+	}
+
+	/**
+	 * function to increment the value of current turn, incremented when one
+	 * execution phase is completed.
+	 */
+	public void incrementTurn() {
+		++d_turnNumber;
 	}
 
 	/**
@@ -714,8 +758,8 @@ public class GameEngine {
 	}
 
 	/**
-	 * function to allow validation of map to check connectivity of the graph of
-	 * the map
+	 * function to allow validation of map to check connectivity of the graph of the
+	 * map
 	 * 
 	 * @param p_splittedCommand the command that has been splitted into multiple
 	 *                          parts for further processing
@@ -737,7 +781,7 @@ public class GameEngine {
 	 * @return the result of loading of map
 	 */
 	public String loadMap(String[] p_splittedCommand) {
-		try {			
+		try {
 			if (d_phase instanceof EditPhase) {
 				setPhase(new PreLoad(this));
 			}
@@ -768,6 +812,46 @@ public class GameEngine {
 			return String.format("Invalid Command");
 		}
 		return d_phase.assignCountries();
+	}
+
+	/**
+	 * function to start tournament, user provides list of maps, players strategies,
+	 * number of games per map and the maximum turns per game.
+	 * 
+	 * @param p_splittedCommand splitted command that contains list of maps, players
+	 *                          strategies, number of games per map and the maximum
+	 *                          turns per game.
+	 * @return String which contains winners of each games played on each maps.
+	 */
+	public String tournament(String[] p_splittedCommand) {
+		ArrayList<String> l_playerStrategy = new ArrayList<>(Arrays.asList("Random", "Aggresive", "Benevolent", "Cheater"));
+		int l_i = 2;
+		ArrayList<String> l_maps = new ArrayList<>();
+		ArrayList<String> l_players = new ArrayList<>();
+		int l_numGames;
+		int l_numTurns;
+		while (!p_splittedCommand[l_i].equals("-P")) {
+			l_maps.add(p_splittedCommand[l_i]);
+			++l_i;
+		}
+		++l_i;
+		while (!p_splittedCommand[l_i].equals("-G")) {
+			if(!l_playerStrategy.contains(p_splittedCommand[l_i])) {
+				return "Only strategies Random, Aggresive, Benevolent and Cheater are allowed.";
+			}
+			l_players.add(p_splittedCommand[l_i]);
+			++l_i;
+		}
+		if (l_players.size() > new HashSet<String>(l_players).size()) {
+			return "Duplicate players not permitted.";
+		}
+		++l_i;
+		l_numGames = Integer.parseInt(p_splittedCommand[l_i]);
+		++l_i;
+		++l_i;
+		l_numTurns = Integer.parseInt(p_splittedCommand[l_i]);
+		setPhase(new PreLoad(this));
+		return d_phase.tournament(l_maps, l_players, l_numGames, l_numTurns);
 	}
 
 	/**

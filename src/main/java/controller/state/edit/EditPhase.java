@@ -1,5 +1,7 @@
 package controller.state.edit;
 
+import java.util.ArrayList;
+
 import controller.GameEngine;
 import controller.GameEngine;
 import controller.state.Phase;
@@ -38,6 +40,14 @@ public abstract class EditPhase extends Phase {
 	 * @return string to print the invalid command message
 	 */
 	public String loadGame(String p_fileName) {
+		return printInvalidCommandMessage();
+	}
+	
+	public String tournament(ArrayList<String> p_maps, ArrayList<String> p_players, int p_games, int p_turns) {
+		return printInvalidCommandMessage();
+	}
+	
+	public String returnWinner() {
 		return printInvalidCommandMessage();
 	}
 

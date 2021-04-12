@@ -1,7 +1,6 @@
 package strategy;
 
 import controller.GameEngine;
-import entities.Country;
 import entities.Player;
 import entities.orders.Orders;
 
@@ -29,8 +28,4 @@ public abstract class PlayerStrategy {
 	 * @return order of a strategy type to be executed
 	 */
 	public abstract Orders createOrder();
-//	public abstract Country toAttack(); 
-//	public abstract Country toAttackFrom(); 
-//	public abstract Country toMoveFrom(); 
-//	public abstract Country toDefend();
 }

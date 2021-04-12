@@ -1,5 +1,8 @@
 package controller.state.gamephase.endphase;
 
+import java.util.ArrayList;
+
+
 import controller.GameEngine;
 import controller.state.gamephase.GamePhase;
 
@@ -8,7 +11,7 @@ import controller.state.gamephase.GamePhase;
  * the winner of the game
  */
 public class EndPhase extends GamePhase {
-
+	private String d_winner;
 	/**
 	 * constructor method for the class that takes in the object of GameEngine
 	 * 
@@ -37,6 +40,10 @@ public class EndPhase extends GamePhase {
 	 * @return string to print the invalid command message
 	 */
 	public String loadGame(String p_fileName) {
+		return printInvalidCommandMessage();
+	}
+	
+	public String tournament(ArrayList<String> p_maps, ArrayList<String> p_players, int p_games, int p_turns) {
 		return printInvalidCommandMessage();
 	}
 
@@ -200,7 +207,12 @@ public class EndPhase extends GamePhase {
 	 * @return string to print winner of the game
 	 */
 	public String printWinner(String p_playerName) {
+		d_winner = p_playerName;
 		return "\nWinner:  " + p_playerName;
+	}
+	
+	public String returnWinner() {
+		return d_winner;
 	}
 
 	/**

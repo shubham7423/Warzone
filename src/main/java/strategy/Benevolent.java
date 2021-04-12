@@ -1,17 +1,14 @@
 package strategy;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Random;
 
 import controller.GameEngine;
 import entities.Country;
 import entities.Player;
 import entities.orders.Advance;
 import entities.orders.Airlift;
-import entities.orders.Bomb;
 import entities.orders.Deploy;
 import entities.orders.Dummy;
 import entities.orders.Orders;
@@ -42,7 +39,6 @@ public class Benevolent extends PlayerStrategy{
 	public Orders createOrder() {
 		Orders l_order = null;
 		int l_randomOrder;
-		List<Integer> l_randCountries = new ArrayList<>(d_gameEngine.getGameMap().getCountries().keySet());
 		List<Integer> l_playerCountries = new ArrayList<>(d_player.getCountries().keySet());
 		int l_randomArmies;
 		int l_randomOwnCountry;

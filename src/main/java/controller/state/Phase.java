@@ -2,6 +2,8 @@ package controller.state;
 
 import entities.GameMap;
 
+import java.util.ArrayList;
+
 import controller.GameEngine;
 import controller.GameEngine;
 
@@ -29,6 +31,10 @@ public abstract class Phase {
 	abstract public String saveGame(String p_fileName);
 	
 	abstract public String loadGame(String p_fileName);
+	
+	abstract public String tournament(ArrayList<String> p_maps, ArrayList<String> p_players, int p_games, int p_turns);
+	
+	abstract public String returnWinner();
 
 	/**
 	 * abstract function to support editMap command

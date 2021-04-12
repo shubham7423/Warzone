@@ -1,10 +1,8 @@
 package strategy;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Random;
 
 import controller.GameEngine;
 import entities.Country;
@@ -42,7 +40,6 @@ public class Aggresive extends PlayerStrategy{
 	public Orders createOrder() {
 		Orders l_order = null;
 		int l_randomOrder;
-		List<Integer> l_randCountries = new ArrayList<>(d_gameEngine.getGameMap().getCountries().keySet());
 		List<Integer> l_playerCountries = new ArrayList<>(d_player.getCountries().keySet());
 		List<Integer> l_neighborCountries = new ArrayList<>(getNeighborCountries());
 		int l_randomArmies;
@@ -223,6 +220,11 @@ public class Aggresive extends PlayerStrategy{
 		return l_neighbours;
 	}
 	
+	/**
+	 * function to get all the strong neighboring countries of the strongest country the player holds
+	 * @param l_strongCountry the strongest country of the player
+	 * @return all the strong neighboring countries
+	 */
 	public List<Integer> getStrongNeighbors(Country l_strongCountry) {
 		List<Integer> l_strongNeighbors = new ArrayList<>();
 		for(Country l_country: l_strongCountry.getNeighborCountries()) {
