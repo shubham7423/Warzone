@@ -879,7 +879,7 @@ public class GameEngine {
 		if(l_indexG - l_indexP < 3) {
 			String l_temp = "There should be atleast Two Players Strategy inserted in the command.\n";
 			l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
-			return l_temp;			
+			return l_temp;
 		} else {
 			HashSet<String> l_tempPlayerStrategies = new HashSet<String>(); 
 			for(int l_index = l_indexP+1; l_index < l_indexG; l_index++) {
@@ -899,7 +899,18 @@ public class GameEngine {
 			}
 		}
 		
-		
+		//number of games attribute
+		if(l_indexD - l_indexM != 2) {
+			String l_temp = "You should insert exactly One argument after -G which signifies number of games to be played in the tournament.";
+			l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
+			return l_temp;
+		} else {
+			if(!isNumeric(p_splittedCommand[l_indexM +1 ])) {
+				String l_temp = "After -G, you can not use integer to represent the Number of Games to be Played.";
+				l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
+				return l_temp;
+			}
+		}
 		
 		
 		
