@@ -831,6 +831,7 @@ public class GameEngine {
 		int l_indexD = 0;
 		String l_tournamentCommand = "tournament -M listofmapfiles -P listofplayerstrategies -G numberofgames -D maxnumberofturns";
 		
+		//getting index of all attributes -M -P -G -D from the command
 		for(int l_index = 0; l_index < p_splittedCommand.length; l_index++) {
 			if(p_splittedCommand[l_index].equals("-M")) {
 				l_indexM = l_index;
@@ -856,7 +857,24 @@ public class GameEngine {
 			l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
 			return l_temp;
 		}
-
+		
+		//map files inclusion
+		if(l_indexP - l_indexM < 2) {
+			String l_temp = "There should be atleast one Map file inserted in command.\n";
+			l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
+			return l_temp;
+		} else {
+			for(int l_index = l_indexM+1 ; l_index <l_indexP ; l_index++) {
+				if (p_splittedCommand[l_index].split("\\.").length <= 1) {
+					return "File extension should be .map";
+				}
+				if (!"map".equals(p_splittedCommand[l_index].split("\\.")[1])) {
+					return "File extension should be .map";
+				}
+			}
+		}
+		
+		
 		
 		
 		
