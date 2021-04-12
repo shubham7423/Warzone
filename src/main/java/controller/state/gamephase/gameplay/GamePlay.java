@@ -1,5 +1,7 @@
 package controller.state.gamephase.gameplay;
 
+import java.util.ArrayList;
+
 import controller.GameEngine;
 import controller.state.gamephase.GamePhase;
 
@@ -23,6 +25,14 @@ public abstract class GamePlay extends GamePhase {
 	}
 	
 	public String loadGame() {
+		return printInvalidCommandMessage();
+	}
+	
+	public String tournament(ArrayList<String> p_maps, ArrayList<String> p_players, int p_games, int p_turns) {
+		return printInvalidCommandMessage();
+	}
+	
+	public String returnWinner() {
 		return printInvalidCommandMessage();
 	}
 

@@ -1,7 +1,16 @@
 package controller.state.gamephase.gamesetup;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import controller.GameEngine;
 import controller.state.gamephase.GamePhase;
+import entities.Player;
+import strategy.Aggresive;
+import strategy.Benevolent;
+import strategy.Cheater;
+import strategy.PlayerStrategy;
+import strategy.RandomPlayer;
 
 /**
  * Abstract class of game setup the represents the initial process of enetering
@@ -18,13 +27,57 @@ public abstract class GameSetup extends GamePhase {
 	public GameSetup(GameEngine p_gameEngine) {
 		super(p_gameEngine);
 	}
-	
+
 	public String loadGame() {
 		return null;
 	}
-	
+
 	public String saveGame() {
 		return null;
+	}
+
+	public String returnWinner() {
+		return printInvalidCommandMessage();
+	}
+
+	public String tournament(ArrayList<String> p_maps, ArrayList<String> p_players, int p_games, int p_turns) {
+		HashMap<String, ArrayList<String>> l_winnersMap = new HashMap<>();
+		ArrayList<String> l_gameWinner;
+		for (String l_map : p_maps) {
+			l_gameWinner = new ArrayList<>();
+			for (int l_i = 0; l_i < p_games; l_i++) {
+				d_gameEngine.setMaxTurns(p_turns);
+				d_gameEngine.setPhase(new PreLoad(d_gameEngine));
+				d_gameEngine.getPhase().loadMap(l_map);
+				for (String l_player : p_players) {
+					d_gameEngine.getPhase().addPlayer(l_player);
+					Player l_playerObj = d_gameEngine.d_players.get(l_player);
+					switch (l_player) {
+					case "Random":
+						l_playerObj.setStrategy(new RandomPlayer(l_playerObj, d_gameEngine));
+						break;
+
+					case "Aggresive":
+						l_playerObj.setStrategy(new Aggresive(l_playerObj, d_gameEngine));
+						break;
+
+					case "Benevolent":
+						l_playerObj.setStrategy(new Benevolent(l_playerObj, d_gameEngine));
+						break;
+
+					case "Cheater":
+						l_playerObj.setStrategy(new Cheater(l_playerObj, d_gameEngine));
+						break;
+					}
+				}
+				d_gameEngine.getPhase().assignCountries();
+				l_gameWinner.add(d_gameEngine.getPhase().returnWinner());
+				d_gameEngine = new GameEngine();
+			}
+			l_winnersMap.put(l_map, l_gameWinner);
+		}
+		
+		return l_winnersMap.toString();
 	}
 
 	/**
