@@ -824,6 +824,43 @@ public class GameEngine {
 	 * @return String which contains winners of each games played on each maps.
 	 */
 	public String tournament(String[] p_splittedCommand) {
+		
+		int l_indexM = 0;
+		int l_indexP = 0;
+		int l_indexG = 0;
+		int l_indexD = 0;
+		String l_tournamentCommand = "tournament -M listofmapfiles -P listofplayerstrategies -G numberofgames -D maxnumberofturns";
+		
+		for(int l_index = 0; l_index < p_splittedCommand.length; l_index++) {
+			if(p_splittedCommand[l_index].equals("-M")) {
+				l_indexM = l_index;
+			} else if (p_splittedCommand[l_index].equals("-P")) {
+				l_indexP = l_index;
+			} else if (p_splittedCommand[l_index].equals("-G")) {
+				l_indexG = l_index;
+			} else if (p_splittedCommand[l_index].equals("-D")) {
+				l_indexD = l_index;
+			}
+		}
+		
+		//missing attributes in command.
+		if(l_indexM ==0 || l_indexP ==0 || l_indexG == 0 || l_indexD ==0) {
+			String l_temp = "Incomplete Tournament Command found.\nYou must supply with all the attributes \"-M -P -G -D\" in this sequence with their respective arguments.";
+			l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
+			return l_temp;			
+		}
+		
+		//check sequence of -M -P -G -D
+		if((l_indexM >= l_indexP) || (l_indexP >= l_indexG) || (l_indexG >= l_indexD)) {
+			String l_temp = "Sequence of attributes not maintained in command or arguments missing for any attribute -M -P -G -D.";
+			l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
+			return l_temp;
+		}
+
+		
+		
+		
+		
 		ArrayList<String> l_playerStrategy = new ArrayList<>(Arrays.asList("Random", "Aggresive", "Benevolent", "Cheater"));
 		int l_i = 2;
 		ArrayList<String> l_maps = new ArrayList<>();
