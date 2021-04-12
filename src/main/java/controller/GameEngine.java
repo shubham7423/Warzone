@@ -1,5 +1,7 @@
 package controller;
 
+import java.io.File;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -872,6 +874,12 @@ public class GameEngine {
 					return "After -M, The map file(s) extension should be .map";
 				} else if ("".equals(p_splittedCommand[l_index].split("\\.")[0])) {
 					return "After -M, File name missing for the Map files(.map)";
+				} else {
+					//check if the file is present or not 
+					File l_file = new File(Paths.get(Paths.get("").toAbsolutePath().toString() + "/maps/" + p_splittedCommand[l_index]).toString());
+					if(!l_file.exists()) {
+						return "Map file : \""+ p_splittedCommand[l_index] +"\" does not exist.";
+					}
 				}
 			}
 		}
@@ -913,7 +921,6 @@ public class GameEngine {
 			}
 		}
 		
-		
 		//max number of turns
 		if((p_splittedCommand.length - 2) != l_indexD) {
 			String l_temp = "You should insert exactly One argument after -D which signifies maximum number of turns allowed per game.\nAfter that decision/winner must be declared.";
@@ -924,9 +931,13 @@ public class GameEngine {
 				String l_temp = "After -D, you can not use integer to represent the maximum number of turns allowed per game to be played.";
 				l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
 				return l_temp;
+			} else {
+				if(Integer.parseInt(p_splittedCommand[l_indexD + 1]) > 900) {
+					return "Please enter Less number of turns per game to avoid Memory Stack Overflow.";
+				}
 			}
 		}
-				
+			
 		int l_i = 2;
 		ArrayList<String> l_maps = new ArrayList<>();
 		ArrayList<String> l_players = new ArrayList<>();
