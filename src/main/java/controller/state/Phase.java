@@ -30,10 +30,28 @@ public abstract class Phase {
 	 */
 	abstract public String saveGame(String p_fileName);
 	
+	/**
+	 * function to load game from save file
+	 * @param p_fileName name of the save file
+	 * @return result string of the function
+	 */
 	abstract public String loadGame(String p_fileName);
 	
+	/**
+	 * function to implement tournament mode of the game
+	 * @param p_maps list of maps
+	 * @param p_players list of players
+	 * @param p_games nmber of games to play
+	 * @param p_turns number of turns
+	 * @return the final map representing the current state of the map
+	 */
+
 	abstract public String tournament(ArrayList<String> p_maps, ArrayList<String> p_players, int p_games, int p_turns);
 	
+	/**
+	 * function to display winner
+	 * @return winner of the game
+	 */
 	abstract public String returnWinner();
 
 	/**
