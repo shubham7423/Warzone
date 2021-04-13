@@ -31,10 +31,20 @@ public abstract class GamePlay extends GamePhase {
 		return printInvalidCommandMessage();
 	}
 	
+	/**
+	 * function to print invalid command message as this cannot be used in this phase
+	 * @param p_maps list of maps
+	 * @param p_players list of players
+	 * @param p_games number of games to be played
+	 * @param p_turns number of turns allowed
+	 */
 	public String tournament(ArrayList<String> p_maps, ArrayList<String> p_players, int p_games, int p_turns) {
 		return printInvalidCommandMessage();
 	}
 	
+	/**
+	 * function to print invalid command message as this cannot be used in this phase
+	 */
 	public String returnWinner() {
 		return printInvalidCommandMessage();
 	}
