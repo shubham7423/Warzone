@@ -36,6 +36,7 @@ public class Benevolent extends PlayerStrategy{
 	 * never attacks
 	 * moves its armies in order to reinforce its weaker country
 	 */
+	@Override
 	public Orders createOrder() {
 		Orders l_order = null;
 		int l_randomOrder;

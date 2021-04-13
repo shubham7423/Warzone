@@ -27,6 +27,7 @@ public abstract class GamePlay extends GamePhase {
 	 * @param p_fileName name of game file that is to be loaded
 	 * @return string to print the invalid command message
 	 */
+	@Override
 	public String loadGame(String p_fileName) {
 		return printInvalidCommandMessage();
 	}
@@ -39,6 +40,7 @@ public abstract class GamePlay extends GamePhase {
 	 * @param p_turns number of turns allowed
 	 * @return string to print the invalid command message
 	 */
+	@Override
 	public String tournament(ArrayList<String> p_maps, ArrayList<String> p_players, int p_games, int p_turns) {
 		return printInvalidCommandMessage();
 	}
@@ -47,6 +49,7 @@ public abstract class GamePlay extends GamePhase {
 	 * function to print invalid command message as this cannot be used in this phase
 	 * @return string to print the invalid command message
 	 */
+	@Override
 	public String returnWinner() {
 		return printInvalidCommandMessage();
 	}

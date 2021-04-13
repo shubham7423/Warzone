@@ -53,6 +53,7 @@ public class PreEdit extends EditPhase {
 	 * 
 	 * @return string to output the result
 	 */
+	@Override
 	public String validateMap() {
 		return String.format("Map not loaded yet.");
 	}
