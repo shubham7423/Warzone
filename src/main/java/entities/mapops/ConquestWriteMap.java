@@ -30,11 +30,6 @@ public class ConquestWriteMap {
 	 * 
 	 * @param p_filePath to .map file
 	 * @return true if map saved successfully else false
-	 * 
-	 */
-	/**
-	 * @param p_filePath
-	 * @return
 	 */
 	public boolean writeFullMap(String p_filePath) {
 		int l_countryCtn = 0, l_continentCtn = 0;
