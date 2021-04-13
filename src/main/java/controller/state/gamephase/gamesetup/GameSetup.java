@@ -1,10 +1,16 @@
 package controller.state.gamephase.gamesetup;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import controller.GameEngine;
 import controller.state.gamephase.GamePhase;
+import dnl.utils.text.table.TextTable;
+import entities.Country;
 import entities.Player;
 import strategy.Aggresive;
 import strategy.Benevolent;
@@ -90,6 +96,39 @@ public abstract class GameSetup extends GamePhase {
 			}
 			l_winnersMap.put(l_map, l_gameWinner);
 		}
+		
+		String[] l_column = {"Map"};
+		String l_row1 = "Map";
+		for(int l_index = 1; l_index<=p_games;l_index++) {
+			l_row1+=",Game"+l_index;
+		}
+		l_column = l_row1.split(",");
+
+		Object[][] l_data = new Object[p_maps.size()][l_column.length];
+		TextTable l_tt;
+		final ByteArrayOutputStream l_baos = new ByteArrayOutputStream();
+		String l_finalData;
+		int l_count = 0;
+		
+		for(l_count = 0; l_count<l_winnersMap.keySet().size();l_count++) {
+			ArrayList<String> l_result = new ArrayList<String>();
+			l_result.add(p_maps.get(l_count));
+			for(int l_innerCount = 0; l_innerCount<p_games;l_innerCount++) {				
+				l_result.add(l_winnersMap.get(p_maps.get(l_count)).get(l_innerCount));
+			}
+			l_data[l_count] = l_result.toArray();
+		}
+		l_tt = new TextTable(l_column, l_data);
+		l_tt.setAddRowNumbering(false);
+
+		try (PrintStream l_ps = new PrintStream(l_baos, true, "UTF-8")) {
+			l_tt.printTable(l_ps, 0);
+		} catch (UnsupportedEncodingException p_e) {
+			p_e.printStackTrace();
+		}
+
+		l_finalData = new String(l_baos.toByteArray(), StandardCharsets.UTF_8);
+		System.out.println(l_finalData);
 		
 		return l_winnersMap.toString();
 	}
