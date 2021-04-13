@@ -21,7 +21,7 @@ public abstract class Phase {
 	public Phase(GameEngine p_gameEngine) {
 		d_gameEngine = p_gameEngine;
 	}
-	
+
 	/**
 	 * Abstract function to save the game.
 	 * 
@@ -29,27 +29,30 @@ public abstract class Phase {
 	 * @return output string of execution of command.
 	 */
 	abstract public String saveGame(String p_fileName);
-	
+
 	/**
 	 * function to load game from save file
+	 * 
 	 * @param p_fileName name of the save file
 	 * @return result string of the function
 	 */
 	abstract public String loadGame(String p_fileName);
-	
+
 	/**
-	 * function to implement tournament mode of the game
-	 * @param p_maps list of maps
+	 * abstract function to implement tournament mode of the game
+	 * 
+	 * @param p_maps    list of maps
 	 * @param p_players list of players
-	 * @param p_games nmber of games to play
-	 * @param p_turns number of turns
+	 * @param p_games   number of games to play
+	 * @param p_turns   number of turns
 	 * @return the final map representing the current state of the map
 	 */
 
 	abstract public String tournament(ArrayList<String> p_maps, ArrayList<String> p_players, int p_games, int p_turns);
-	
+
 	/**
-	 * function to display winner
+	 * abstract function to display winner
+	 * 
 	 * @return winner of the game
 	 */
 	abstract public String returnWinner();

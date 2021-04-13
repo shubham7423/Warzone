@@ -20,7 +20,7 @@ public abstract class EditPhase extends Phase {
 	public EditPhase(GameEngine p_gameEngine) {
 		super(p_gameEngine);
 	}
-	
+
 	/**
 	 * Function to print invalid command as the following command cannot be used in
 	 * this phase
@@ -31,7 +31,7 @@ public abstract class EditPhase extends Phase {
 	public String saveGame(String p_fileName) {
 		return printInvalidCommandMessage();
 	}
-	
+
 	/**
 	 * Function to print invalid command as the following command cannot be used in
 	 * this phase
@@ -42,11 +42,27 @@ public abstract class EditPhase extends Phase {
 	public String loadGame(String p_fileName) {
 		return printInvalidCommandMessage();
 	}
-	
+
+	/**
+	 * Function to print invalid command as the following command cannot be used in
+	 * this phase
+	 * 
+	 * @param p_maps    list of maps in the tournament
+	 * @param p_players list of players in the tournament
+	 * @param p_games   number of games in the tournament
+	 * @param p_turns   number of turns in the tournament
+	 * @return string to print the invalid message
+	 */
 	public String tournament(ArrayList<String> p_maps, ArrayList<String> p_players, int p_games, int p_turns) {
 		return printInvalidCommandMessage();
 	}
-	
+
+	/**
+	 * Function to print invalid command as the following command cannot be used in
+	 * this place
+	 * 
+	 * @return string to print the invalid message
+	 */
 	public String returnWinner() {
 		return printInvalidCommandMessage();
 	}

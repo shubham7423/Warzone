@@ -143,7 +143,7 @@ public class IssueOrders extends GamePlay {
 		l_sb.append(p_fileName);
 		return l_sb.toString();
 	}
-	
+
 	/**
 	 * function that takes player's and that adds to them to the orders queue
 	 * 
@@ -156,7 +156,7 @@ public class IssueOrders extends GamePlay {
 		System.out.println("\nIssue orders phase entered");
 		d_gameEngine.d_logEntryBuffer.setString("Issue orders phase entered");
 		System.out.println(org.apache.commons.lang3.StringUtils.repeat("-", 20));
-		
+
 		while (l_playersCompleted.size() < d_gameEngine.d_playerName.size()) {
 			if (!d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).getIsCommit()) {
 				System.out.println(d_gameEngine.getGameMap().showMapPlay());
@@ -168,16 +168,13 @@ public class IssueOrders extends GamePlay {
 				System.out.println("Cards: "
 						+ d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).d_cardsOwned);
 				d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).issueOrder();
-//				if (!d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).getIsCommit()) {
-//					if(!(d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).getPlayerBehaviour() instanceof Cheater)) {
-//						d_gameEngine.addPlayerOrder(d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)));
-//					}
-//				}
-				if(!d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).getIsCommit()) {
-					d_gameEngine.addPlayerOrder(d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)));
+				if (!d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).getIsCommit()) {
+					d_gameEngine
+							.addPlayerOrder(d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)));
 				}
-				
-				if(!(d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).getPlayerBehaviour() instanceof HumanPlayer)) {
+
+				if (!(d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer))
+						.getPlayerBehaviour() instanceof HumanPlayer)) {
 					d_gameEngine.d_players.get(d_gameEngine.d_playerName.get(l_currentPlayer)).setIsCommit(true);
 				}
 			} else {

@@ -15,15 +15,16 @@ import entities.orders.Orders;
 import entities.savedgames.SaveGame;
 
 /**
- * concrete strategy class of Human player.
- * A human computer player strategy that deploys, attacks, moves armies according to his need.
- * this player also plays with all types of cards
+ * concrete strategy class of Human player. A human computer player strategy
+ * that deploys, attacks, moves armies according to his need. this player also
+ * plays with all types of cards
  */
 public class HumanPlayer extends PlayerStrategy {
 
 	/**
 	 * constructor method for the class
-	 * @param p_player name of the aggressive player
+	 * 
+	 * @param p_player     name of the aggressive player
 	 * @param p_gameEngine object of GameEngine class
 	 */
 	public HumanPlayer(Player p_player, GameEngine p_gameEngine) {
@@ -31,16 +32,16 @@ public class HumanPlayer extends PlayerStrategy {
 	}
 
 	/**
-	 * this function creates orders keeping in mind how the human player plays.
-	 * it uses a switch case to create any random order(move armies, deploy armies, advance armies, cards)
-	 * deploys on a country
-	 * attacks neighboring countries
-	 * moves armies between its countries
-	 * plays cards according to its needs
+	 * this function creates orders keeping in mind how the human player plays. it
+	 * uses a switch case to create any random order(move armies, deploy armies,
+	 * advance armies, cards) deploys on a country attacks neighboring countries
+	 * moves armies between its countries plays cards according to its needs
+	 * 
+	 * @return l_orders Order object to the game as per the entered command
 	 */
 	@Override
 	public Orders createOrder() {
-		SaveGame l_saveGame= new SaveGame(d_gameEngine);
+		SaveGame l_saveGame = new SaveGame(d_gameEngine);
 		UserCommand l_userCommand = new UserCommand();
 		l_userCommand.setPhase(new IssueOrders(null));
 		String[] l_splittedOrder = null;
@@ -173,7 +174,8 @@ public class HumanPlayer extends PlayerStrategy {
 							continue;
 						} else {
 							Diplomacy l_diplomacy = new Diplomacy(d_player, l_splittedOrder[1]);
-							l_orders = l_diplomacy;;
+							l_orders = l_diplomacy;
+							;
 							String l_temp = "negotiate " + l_splittedOrder[1];
 							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
 							l_isCorrect = true;
@@ -203,7 +205,7 @@ public class HumanPlayer extends PlayerStrategy {
 		}
 		return l_orders;
 	}
-	
+
 	/**
 	 * This function is used to check if a string can be converted to integer or
 	 * not.

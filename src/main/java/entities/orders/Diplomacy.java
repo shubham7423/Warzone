@@ -33,9 +33,9 @@ public class Diplomacy implements Orders {
 	 * @return command in String form.
 	 */
 	public String getOrder() {
-		return "negotiate "+ d_otherPlayerName;
+		return "negotiate " + d_otherPlayerName;
 	}
-	
+
 	/**
 	 * method to execute diplomacy command
 	 * 

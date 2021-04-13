@@ -19,7 +19,7 @@ public abstract class GamePlay extends GamePhase {
 	public GamePlay(GameEngine p_gameEngine) {
 		super(p_gameEngine);
 	}
-	
+
 	/**
 	 * Function to print invalid command as the following command cannot be used in
 	 * this phase
@@ -31,22 +31,26 @@ public abstract class GamePlay extends GamePhase {
 	public String loadGame(String p_fileName) {
 		return printInvalidCommandMessage();
 	}
-	
+
 	/**
-	 * function to print invalid command message as this cannot be used in this phase
-	 * @param p_maps list of maps
+	 * function to print invalid command message as this cannot be used in this
+	 * phase
+	 * 
+	 * @param p_maps    list of maps
 	 * @param p_players list of players
-	 * @param p_games number of games to be played
-	 * @param p_turns number of turns allowed
+	 * @param p_games   number of games to be played
+	 * @param p_turns   number of turns allowed
 	 * @return string to print the invalid command message
 	 */
 	@Override
 	public String tournament(ArrayList<String> p_maps, ArrayList<String> p_players, int p_games, int p_turns) {
 		return printInvalidCommandMessage();
 	}
-	
+
 	/**
-	 * function to print invalid command message as this cannot be used in this phase
+	 * function to print invalid command message as this cannot be used in this
+	 * phase
+	 * 
 	 * @return string to print the invalid command message
 	 */
 	@Override

@@ -31,7 +31,6 @@ public class Player {
 	public ArrayList<String> d_negotiatedPlayerNames;
 	public boolean d_isConquered;
 	public PlayerStrategy d_strategy;
-		
 
 	/**
 	 * Constructor of player which sets initial values for player data
@@ -63,17 +62,19 @@ public class Player {
 	public String getName() {
 		return d_name;
 	}
-	
+
 	/**
 	 * function to set the strategy of the player
+	 * 
 	 * @param p_strat name of the strategy to be set
 	 */
 	public void setStrategy(PlayerStrategy p_strat) {
 		d_strategy = p_strat;
 	}
-	
+
 	/**
 	 * function to retrieve the strategy of the player
+	 * 
 	 * @return the strategy of the player
 	 */
 	public PlayerStrategy getPlayerBehaviour() {
@@ -168,7 +169,8 @@ public class Player {
 	}
 
 	/**
-	 * Get boolean value which depicts that player has no more orders in this turn.
+	 * method to get boolean value which depicts that player has no more orders in
+	 * this turn.
 	 * 
 	 * @return true if player has no more orders; else false
 	 */
@@ -177,9 +179,9 @@ public class Player {
 	}
 
 	/**
-	 * Used to set whenever player has no more values or when the turn has started.
-	 * Set to false at start of each turn and to true when player has no more
-	 * orders.
+	 * method used to set whenever player has no more values or when the turn has
+	 * started. Set to false at start of each turn and to true when player has no
+	 * more orders.
 	 * 
 	 * @param p_isCommit true if player has no more orders; else false.
 	 */
@@ -192,7 +194,7 @@ public class Player {
 	 */
 	public void issueOrder() {
 		Orders l_order = d_strategy.createOrder();
-		if(l_order instanceof Exit) {
+		if (l_order instanceof Exit) {
 			return;
 		} else {
 			d_orders.add(l_order);

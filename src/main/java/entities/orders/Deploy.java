@@ -30,9 +30,9 @@ public class Deploy implements Orders {
 	 * @return command in String form.
 	 */
 	public String getOrder() {
-		return "deploy "+ d_country + " " + d_armies;
+		return "deploy " + d_country + " " + d_armies;
 	}
-	
+
 	/**
 	 * method to execute deploy command
 	 * 

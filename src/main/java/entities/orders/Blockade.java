@@ -30,14 +30,14 @@ public class Blockade implements Orders {
 	 * @return command in String form.
 	 */
 	public String getOrder() {
-		return "blockade "+ d_country;
+		return "blockade " + d_country;
 	}
-	
+
 	/**
 	 * method to execute blockade command
 	 * 
 	 * @param p_game gets the object of GameEngine class
-	 * @return string
+	 * @return string according to the order executed
 	 */
 	@Override
 	public String executeOrder(GameEngine p_game) {

@@ -69,7 +69,7 @@ public class AssignArmies extends GamePlay {
 	public String showMap() {
 		return printInvalidCommandMessage();
 	}
-	
+
 	/**
 	 * Function to print invalid command as the following command cannot be used in
 	 * this phase

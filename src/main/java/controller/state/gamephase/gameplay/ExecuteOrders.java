@@ -10,12 +10,14 @@ import entities.orders.Dummy;
 import entities.orders.Orders;
 
 /**
- * ExecuteOrder class that inherits GamePlay interface to support functions during this command
+ * ExecuteOrder class that inherits GamePlay interface to support functions
+ * during this command
  */
 public class ExecuteOrders extends GamePlay {
-	
+
 	/**
-	 * constructor method that takes game engine object from the parent class 
+	 * constructor method that takes game engine object from the parent class
+	 * 
 	 * @param p_gameEngine object of the game engine
 	 */
 	public ExecuteOrders(GameEngine p_gameEngine) {
@@ -33,9 +35,11 @@ public class ExecuteOrders extends GamePlay {
 	public String saveGame(String p_fileName) {
 		return printInvalidCommandMessage();
 	}
-	
+
 	/**
-	 * function to print invalid command as the following command cannot be used in this phase
+	 * function to print invalid command as the following command cannot be used in
+	 * this phase
+	 * 
 	 * @return string to print the invalid command message
 	 */
 	@Override
@@ -44,16 +48,20 @@ public class ExecuteOrders extends GamePlay {
 	}
 
 	/**
-	 * function to print invalid command as the following command cannot be used in this phase
+	 * function to print invalid command as the following command cannot be used in
+	 * this phase
+	 * 
 	 * @return string to print the invalid command message
 	 */
 	@Override
 	public String issueOrders() {
 		return printInvalidCommandMessage();
 	}
-	
+
 	/**
-	 * function to print invalid command as the following command cannot be used in this phase
+	 * function to print invalid command as the following command cannot be used in
+	 * this phase
+	 * 
 	 * @param p_commandSplitted splitted command parts used for execution of command
 	 * @return string to print the invalid command message
 	 */
@@ -61,9 +69,11 @@ public class ExecuteOrders extends GamePlay {
 	public String advance(String[] p_commandSplitted) {
 		return printInvalidCommandMessage();
 	}
-	
+
 	/**
-	 * function to print invalid command as the following command cannot be used in this phase
+	 * function to print invalid command as the following command cannot be used in
+	 * this phase
+	 * 
 	 * @param p_commandSplitted splitted command parts used for execution of command
 	 * @return string to print the invalid command message
 	 */
@@ -71,9 +81,11 @@ public class ExecuteOrders extends GamePlay {
 	public String airlift(String[] p_commandSplitted) {
 		return printInvalidCommandMessage();
 	}
-	
+
 	/**
-	 * function to print invalid command as the following command cannot be used in this phase
+	 * function to print invalid command as the following command cannot be used in
+	 * this phase
+	 * 
 	 * @param p_commandSplitted splitted command parts used for execution of command
 	 * @return string to print the invalid command message
 	 */
@@ -81,9 +93,11 @@ public class ExecuteOrders extends GamePlay {
 	public String bomb(String[] p_commandSplitted) {
 		return printInvalidCommandMessage();
 	}
-	
+
 	/**
-	 * function to print invalid command as the following command cannot be used in this phase
+	 * function to print invalid command as the following command cannot be used in
+	 * this phase
+	 * 
 	 * @param p_commandSplitted splitted command parts used for execution of command
 	 * @return string to print the invalid command message
 	 */
@@ -91,9 +105,11 @@ public class ExecuteOrders extends GamePlay {
 	public String blockade(String[] p_commandSplitted) {
 		return printInvalidCommandMessage();
 	}
-	
+
 	/**
-	 * function to print invalid command as the following command cannot be used in this phase
+	 * function to print invalid command as the following command cannot be used in
+	 * this phase
+	 * 
 	 * @param p_commandSplitted splitted command parts used for execution of command
 	 * @return string to print the invalid command message
 	 */
@@ -103,7 +119,9 @@ public class ExecuteOrders extends GamePlay {
 	}
 
 	/**
-	 * function to print invalid command as the following command cannot be used in this phase
+	 * function to print invalid command as the following command cannot be used in
+	 * this phase
+	 * 
 	 * @param p_commandSplitted splitted command parts used for execution of command
 	 * @return string to print the invalid command message
 	 */
@@ -111,18 +129,21 @@ public class ExecuteOrders extends GamePlay {
 	public String deploy(String[] p_commandSplitted) {
 		return printInvalidCommandMessage();
 	}
-	
+
 	/**
-	 * function to print invalid command as the following command cannot be used in this phase
+	 * function to print invalid command as the following command cannot be used in
+	 * this phase
+	 * 
 	 * @return string to print the invalid command message
 	 */
 	@Override
 	public String checkContinentOwnership() {
 		return printInvalidCommandMessage();
 	}
-	
+
 	/**
 	 * function to execute order given by the player
+	 * 
 	 * @return string to output result of execution of order
 	 */
 	@Override
@@ -130,7 +151,7 @@ public class ExecuteOrders extends GamePlay {
 		int l_numOrders = d_gameEngine.getPlayersOrderSize();
 		int l_i = 0;
 		String l_result;
-		if(d_gameEngine.getCurrentTurn() == d_gameEngine.getMaxTurns()) {
+		if (d_gameEngine.getCurrentTurn() == d_gameEngine.getMaxTurns()) {
 			d_gameEngine.setPhase(new EndPhase(d_gameEngine));
 			System.out.println(d_gameEngine.getPhase().printWinner("Draw"));
 			d_gameEngine.d_logEntryBuffer.setString("Execution Complete");
@@ -140,10 +161,10 @@ public class ExecuteOrders extends GamePlay {
 		System.out.println("\nExecution Phase Started");
 		System.out.println(org.apache.commons.lang3.StringUtils.repeat("-", 20));
 		d_gameEngine.d_logEntryBuffer.setString("Execution Phase Started");
-		while(l_i < l_numOrders) {
+		while (l_i < l_numOrders) {
 			Player l_currentPlayer = d_gameEngine.getPlayerOrder();
 			Orders l_order = l_currentPlayer.nextOrder();
-			if(l_order instanceof Dummy) {
+			if (l_order instanceof Dummy) {
 				++l_i;
 				continue;
 			}
@@ -153,21 +174,22 @@ public class ExecuteOrders extends GamePlay {
 			++l_i;
 		}
 		Set<Player> l_tempSet = new HashSet<>(d_gameEngine.d_players.values());
-		for(Player l_player: l_tempSet) {
-			if(l_player.getCountries().size() == 0) {
+		for (Player l_player : l_tempSet) {
+			if (l_player.getCountries().size() == 0) {
 				d_gameEngine.d_playerName.remove(l_player.getName());
 				d_gameEngine.d_players.remove(l_player.getName());
 			}
 		}
-		if(d_gameEngine.d_playerName.size() == 1) {
+		if (d_gameEngine.d_playerName.size() == 1) {
 			d_gameEngine.setPhase(new EndPhase(d_gameEngine));
 			System.out.println(d_gameEngine.getPhase().printWinner(d_gameEngine.d_playerName.get(0)));
 			d_gameEngine.d_logEntryBuffer.setString("Execution Complete");
-			d_gameEngine.d_logEntryBuffer.setString(d_gameEngine.getPhase().printWinner(d_gameEngine.d_playerName.get(0)));
+			d_gameEngine.d_logEntryBuffer
+					.setString(d_gameEngine.getPhase().printWinner(d_gameEngine.d_playerName.get(0)));
 			return d_gameEngine.getPhase().printWinner(d_gameEngine.d_playerName.get(0));
-		}
-		else {
-			d_gameEngine.incrementTurn();;
+		} else {
+			d_gameEngine.incrementTurn();
+			;
 			System.out.println("\nExecution Complete\n");
 			d_gameEngine.d_logEntryBuffer.setString("Execution Complete");
 			next();

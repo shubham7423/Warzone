@@ -30,9 +30,10 @@ public class PostLoad extends GameSetup {
 	public PostLoad(GameEngine p_gameEngine) {
 		super(p_gameEngine);
 	}
-	
+
 	/**
 	 * function to load a previously saved game
+	 * 
 	 * @param p_fileName name of the file to be loaded
 	 * @return string representing the result of loading the file
 	 */
@@ -83,9 +84,9 @@ public class PostLoad extends GameSetup {
 		if (d_gameEngine.d_players.size() < 2) {
 			return "There must be at least two player";
 		}
-		for(Player l_player: d_gameEngine.d_players.values()) {
+		for (Player l_player : d_gameEngine.d_players.values()) {
 			boolean l_isCorrect = false;
-			if(l_player.d_strategy == null) {
+			if (l_player.d_strategy == null) {
 				System.out.println();
 				System.out.println();
 				System.out.println();
@@ -98,39 +99,39 @@ public class PostLoad extends GameSetup {
 				System.out.println("| 4. Aggresive Player\t\t|");
 				System.out.println("| 5. Cheater Player\t\t|");
 				System.out.println("|_______________________________|");
-				while(!l_isCorrect) {
+				while (!l_isCorrect) {
 					System.out.print("Enter strategy for player " + l_player.getName() + ": ");
-					switch(new Scanner(System.in).nextInt()) {
-						case 1:
-							l_player.setStrategy(new RandomPlayer(l_player, d_gameEngine));
-							l_isCorrect = true;
-							break;
-						
-						case 2:
-							l_player.setStrategy(new HumanPlayer(l_player, d_gameEngine));
-							l_isCorrect = true;
-							break;
-							
-						case 3:
-							l_player.setStrategy(new Benevolent(l_player, d_gameEngine));
-							l_isCorrect = true;
-							break;
-							
-						case 4:
-							l_player.setStrategy(new Aggresive(l_player, d_gameEngine));
-							l_isCorrect = true;
-							break;
-							
-						case 5:
-							l_player.setStrategy(new Cheater(l_player, d_gameEngine));
-							l_isCorrect = true;
-							break;
-							
-						default:
-							System.out.println("Please enter valid behaviour");
+					switch (new Scanner(System.in).nextInt()) {
+					case 1:
+						l_player.setStrategy(new RandomPlayer(l_player, d_gameEngine));
+						l_isCorrect = true;
+						break;
+
+					case 2:
+						l_player.setStrategy(new HumanPlayer(l_player, d_gameEngine));
+						l_isCorrect = true;
+						break;
+
+					case 3:
+						l_player.setStrategy(new Benevolent(l_player, d_gameEngine));
+						l_isCorrect = true;
+						break;
+
+					case 4:
+						l_player.setStrategy(new Aggresive(l_player, d_gameEngine));
+						l_isCorrect = true;
+						break;
+
+					case 5:
+						l_player.setStrategy(new Cheater(l_player, d_gameEngine));
+						l_isCorrect = true;
+						break;
+
+					default:
+						System.out.println("Please enter valid behaviour");
 					}
 				}
-				
+
 			}
 		}
 		HashMap<Integer, Country> l_countries = d_gameEngine.getGameMap().getCountries();

@@ -31,7 +31,7 @@ public class LogWriter implements Observer {
 	 * places during execution
 	 * 
 	 * @param p_observableState the object of Observable that contains the current
-	 *                           state
+	 *                          state
 	 */
 	@Override
 	public void update(Observable p_observableState) {
