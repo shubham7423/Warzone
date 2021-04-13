@@ -11,7 +11,7 @@ public class MapWriterAdapter extends WriteMap {
 
 	/**
 	 * MapWriterAdapter constructor
-	 * @param p_conquestReader ConquestReader object
+	 * @param p_conquestWriter ConquestWriter object
 	 * @param p_gameMap GameMap object
 	 */
 	public MapWriterAdapter(ConquestWriteMap p_conquestWriter, GameMap p_gameMap) {
