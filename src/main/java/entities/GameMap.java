@@ -20,7 +20,9 @@ import entities.mapops.ReadMap;
 import entities.mapops.WriteMap;
 import entities.mapops.ConquestReadMap;
 import entities.mapops.ConquestWriteMap;
+import entities.mapops.MapReaderAdapter;
 import entities.mapops.MapValidation;
+import entities.mapops.MapWriterAdapter;
 
 /**
  * GameMap which holds variables which contains information continents,
@@ -159,11 +161,11 @@ public class GameMap {
 	 *         response if it isn't
 	 */
 	public String loadMap(String p_fileName) {
-		ReadMap l_mapRead = new ReadMap(this);
-		ConquestReadMap l_conquestMapRead = new ConquestReadMap(this);
+		ReadMap l_mapRead;
 		Boolean l_loadCheck;
 		if(isConquestMap(p_fileName)) {
-			l_loadCheck = l_conquestMapRead.readFullMap(p_fileName);
+			l_mapRead = new MapReaderAdapter(new ConquestReadMap(this), this);
+			l_loadCheck = l_mapRead.readFullMap(p_fileName);
 			if (!l_loadCheck) {
 				return String.format("Map \"%s\" cannot be loaded", p_fileName);
 			}else {
@@ -171,6 +173,7 @@ public class GameMap {
 			}
 		}
 		else {
+			l_mapRead = new ReadMap(this);
 			l_loadCheck = l_mapRead.readFullMap(p_fileName);
 			if (!l_loadCheck) {
 				return String.format("Map \"%s\" cannot be loaded", p_fileName);
@@ -280,20 +283,24 @@ public class GameMap {
 	 * @return Positive response if map written to file successfully
 	 */
 	public String saveMap(String p_fileName) {
-		WriteMap l_writeMap = new WriteMap(this);
-		ConquestWriteMap l_writeConquestMap = new ConquestWriteMap(this);
-		
+		WriteMap l_writeMap;
+		boolean l_result;
 		boolean l_isConquest = p_fileName.indexOf("conquest") !=-1? true: false;
 		
-		if (!l_writeMap.writeFullMap(p_fileName)) {
-			return String.format("Map file \"%s\" cannot be saved", p_fileName);
-		}
 		if(l_isConquest) {
-			l_writeConquestMap.writeFullMap(p_fileName);
+			l_writeMap = new MapWriterAdapter(new ConquestWriteMap(this), this);
+			l_result = l_writeMap.writeFullMap(p_fileName);
+			if (!l_result) {
+				return String.format("Map file \"%s\" cannot be saved", p_fileName);
+			}
 			return String.format("Conquest Map file \"%s\" saved successfully", p_fileName);
 		}
 		else {
-			l_writeMap.writeFullMap(p_fileName);
+			l_writeMap = new WriteMap(this);
+			l_result = l_writeMap.writeFullMap(p_fileName);
+			if (!l_result) {
+				return String.format("Map file \"%s\" cannot be saved", p_fileName);
+			}
 			return String.format("Domination Map file \"%s\" saved successfully", p_fileName);
 		}
 		
