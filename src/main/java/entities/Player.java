@@ -64,10 +64,18 @@ public class Player {
 		return d_name;
 	}
 	
+	/**
+	 * function to set the strategy of the player
+	 * @param p_strat name of the strategy to be set
+	 */
 	public void setStrategy(PlayerStrategy p_strat) {
 		d_strategy = p_strat;
 	}
 	
+	/**
+	 * function to retrieve the strategy of the player
+	 * @return the strategy of the player
+	 */
 	public PlayerStrategy getPlayerBehaviour() {
 		return d_strategy;
 	}
