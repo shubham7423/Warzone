@@ -47,6 +47,7 @@ public abstract class GameSetup extends GamePhase {
 
 	/**
 	 * function to print invalid command message as this cannot be used in this phase
+	 * 
 	 * @return string to print the invalid command message
 	 */
 	@Override
@@ -56,6 +57,7 @@ public abstract class GameSetup extends GamePhase {
 
 	/**
 	 * function to implement the tournament mode of the game
+	 * 
 	 * @param p_maps list of maps
 	 * @param p_players list of players
 	 * @param p_games number of games to be played

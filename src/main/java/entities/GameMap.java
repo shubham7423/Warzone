@@ -163,21 +163,20 @@ public class GameMap {
 	public String loadMap(String p_fileName) {
 		ReadMap l_mapRead;
 		Boolean l_loadCheck;
-		if(isConquestMap(p_fileName)) {
+		if (isConquestMap(p_fileName)) {
 			l_mapRead = new MapReaderAdapter(new ConquestReadMap(this), this);
 			l_loadCheck = l_mapRead.readFullMap(p_fileName);
 			if (!l_loadCheck) {
 				return String.format("Map \"%s\" cannot be loaded", p_fileName);
-			}else {
+			} else {
 				return String.format("Conquest Map \"%s\" loaded successfully", p_fileName);
 			}
-		}
-		else {
+		} else {
 			l_mapRead = new ReadMap(this);
 			l_loadCheck = l_mapRead.readFullMap(p_fileName);
 			if (!l_loadCheck) {
 				return String.format("Map \"%s\" cannot be loaded", p_fileName);
-			}else {
+			} else {
 				return String.format("Domination Map \"%s\" loaded successfully", p_fileName);
 			}
 		}
@@ -285,17 +284,16 @@ public class GameMap {
 	public String saveMap(String p_fileName) {
 		WriteMap l_writeMap;
 		boolean l_result;
-		boolean l_isConquest = p_fileName.indexOf("conquest") !=-1? true: false;
-		
-		if(l_isConquest) {
+		boolean l_isConquest = p_fileName.indexOf("conquest") != -1 ? true : false;
+
+		if (l_isConquest) {
 			l_writeMap = new MapWriterAdapter(new ConquestWriteMap(this), this);
 			l_result = l_writeMap.writeFullMap(p_fileName);
 			if (!l_result) {
 				return String.format("Map file \"%s\" cannot be saved", p_fileName);
 			}
 			return String.format("Conquest Map file \"%s\" saved successfully", p_fileName);
-		}
-		else {
+		} else {
 			l_writeMap = new WriteMap(this);
 			l_result = l_writeMap.writeFullMap(p_fileName);
 			if (!l_result) {
@@ -303,7 +301,7 @@ public class GameMap {
 			}
 			return String.format("Domination Map file \"%s\" saved successfully", p_fileName);
 		}
-		
+
 	}
 
 	/**
@@ -344,9 +342,10 @@ public class GameMap {
 	public HashMap<Integer, Country> getCountries() {
 		return d_countries;
 	}
-	
+
 	/**
 	 * method that check map is of type Conquest or Domination
+	 * 
 	 * @param p_filePath the file passed to the function
 	 * @return true if it is conquest map or false if it is domination map.
 	 */
@@ -369,9 +368,8 @@ public class GameMap {
 		}
 		if (d_isConquestMap) {
 			return true;
-		}
-		else {
-			return false;		
+		} else {
+			return false;
 		}
 	}
 }
