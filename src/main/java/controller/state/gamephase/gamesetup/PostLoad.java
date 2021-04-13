@@ -31,7 +31,11 @@ public class PostLoad extends GameSetup {
 		super(p_gameEngine);
 	}
 	
-	
+	/**
+	 * function to load a previously saved game
+	 * @param p_fileName name of the file to be loaded
+	 * @return string representing the result of loading the file
+	 */
 	public String loadGame(String p_fileName) {
 		StringBuilder l_sb = new StringBuilder();
 		l_sb.append("loadgame ");

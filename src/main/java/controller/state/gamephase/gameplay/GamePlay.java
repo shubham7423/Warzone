@@ -37,6 +37,7 @@ public abstract class GamePlay extends GamePhase {
 	 * @param p_players list of players
 	 * @param p_games number of games to be played
 	 * @param p_turns number of turns allowed
+	 * @return string to print the invalid command message
 	 */
 	public String tournament(ArrayList<String> p_maps, ArrayList<String> p_players, int p_games, int p_turns) {
 		return printInvalidCommandMessage();
@@ -44,6 +45,7 @@ public abstract class GamePlay extends GamePhase {
 	
 	/**
 	 * function to print invalid command message as this cannot be used in this phase
+	 * @return string to print the invalid command message
 	 */
 	public String returnWinner() {
 		return printInvalidCommandMessage();
