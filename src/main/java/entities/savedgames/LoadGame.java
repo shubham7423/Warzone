@@ -25,6 +25,10 @@ public class LoadGame {
 	private HashMap<Integer, String> d_countriesMap;
 	Scanner d_reader;
 	
+	/**
+	 * constructor method for load game class
+	 * @param p_gameEngine object of gameEngine class
+	 */
 	public LoadGame(GameEngine p_gameEngine) {
 		d_gameEngine = p_gameEngine;
 		d_continentsMap = new HashMap<>();
@@ -35,9 +39,8 @@ public class LoadGame {
 	 * Method that opens a file and reads the Game Data from that file.
 	 * 
 	 * @param p_fileName from .game file
-	 * @return 
+	 * @return string representing the result of loading the game from the saved file
 	 */
-	
 	public String loadGame(String p_fileName){
 		File l_file = new File(Paths.get(Paths.get("").toAbsolutePath().toString() + "/games/" + p_fileName).toString());
 		if(!l_file.exists()) {
@@ -275,10 +278,20 @@ public class LoadGame {
 			return "Game Loading Unsuccessful...";
 		}
 	}
+	/**
+	 * method to get continents ids
+	 * 
+	 * @return Set of continents ids read
+	 */
 	public Set<Integer> getContinentIds() {
 		return d_gameEngine.getGameMap().getContinents().keySet();
 	}
 
+	/**
+	 * method to get countries ids
+	 * 
+	 * @return Set of countries ids read
+	 */
 	public Set<Integer> getCountriesIds() {
 		return d_gameEngine.getGameMap().getCountries().keySet();
 	}
