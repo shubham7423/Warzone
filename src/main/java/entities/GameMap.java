@@ -340,7 +340,7 @@ public class GameMap {
 	
 	/**
 	 * method that check map is of type Conquest or Domination
-	 * 
+	 * @param p_filePath the file passed to the function
 	 * @return true if it is conquest map or false if it is domination map.
 	 */
 	public Boolean isConquestMap(String p_filePath) {
