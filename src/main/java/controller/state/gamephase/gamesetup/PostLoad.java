@@ -36,6 +36,7 @@ public class PostLoad extends GameSetup {
 	 * @param p_fileName name of the file to be loaded
 	 * @return string representing the result of loading the file
 	 */
+	@Override
 	public String loadGame(String p_fileName) {
 		StringBuilder l_sb = new StringBuilder();
 		l_sb.append("loadgame ");
@@ -77,6 +78,7 @@ public class PostLoad extends GameSetup {
 	 * 
 	 * @return string indicating that countries are assigned to the players
 	 */
+	@Override
 	public String assignCountries() {
 		if (d_gameEngine.d_players.size() < 2) {
 			return "There must be at least two player";

@@ -28,6 +28,7 @@ public class EndPhase extends GamePhase {
 	 * @param p_fileName name of game file that is to be saved
 	 * @return string to print the invalid command message
 	 */
+	@Override
 	public String saveGame(String p_fileName) {
 		return printInvalidCommandMessage();
 	}
@@ -39,10 +40,12 @@ public class EndPhase extends GamePhase {
 	 * @param p_fileName name of game file that is to be loaded
 	 * @return string to print the invalid command message
 	 */
+	@Override
 	public String loadGame(String p_fileName) {
 		return printInvalidCommandMessage();
 	}
 	
+	@Override
 	public String tournament(ArrayList<String> p_maps, ArrayList<String> p_players, int p_games, int p_turns) {
 		return printInvalidCommandMessage();
 	}
@@ -206,11 +209,13 @@ public class EndPhase extends GamePhase {
 	 * @param p_playerName name of the player that has won
 	 * @return string to print winner of the game
 	 */
+	@Override
 	public String printWinner(String p_playerName) {
 		d_winner = p_playerName;
 		return "\nWinner:  " + p_playerName;
 	}
 	
+	@Override
 	public String returnWinner() {
 		return d_winner;
 	}

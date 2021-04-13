@@ -39,10 +39,10 @@ public class RandomPlayer extends PlayerStrategy {
 	 * attacks random neighboring countries
 	 * moves armies randomly between its countries
 	 */
+	@Override
 	public Orders createOrder() {
 		Orders l_order = null;
 		int l_randomOrder;
-//		List<Integer> l_randCountries = new ArrayList<>(d_gameEngine.getGameMap().getCountries().keySet());
 		List<Integer> l_neighborCountries = new ArrayList<>(getNeighborCountries());
 		List<Integer> l_playerCountries = new ArrayList<>(d_player.getCountries().keySet());
 		int l_randomArmies;
@@ -51,7 +51,6 @@ public class RandomPlayer extends PlayerStrategy {
 		boolean l_isComplete = false;
 		
 		if(l_playerCountries.size() == 0) {
-			System.out.println("DUMMY RETURNED");
 			return new Dummy();
 		}
 		
@@ -62,8 +61,6 @@ public class RandomPlayer extends PlayerStrategy {
 			case 1:	
 				l_randomOwnCountry = d_gameEngine.d_random.nextInt(l_playerCountries.size());
 				
-				// l_randomOwnCountry = l_randomOwnCountry == 0 ? 1 : l_randomOwnCountry;
-				System.out.println("ARMIES: " + d_player.getNumberOfArmies());
 				l_randomArmies = d_gameEngine.d_random.nextInt(d_player.getNumberOfArmies());
 				l_randomArmies = l_randomArmies == 0 ? 1 : l_randomArmies;
 				l_order = new Deploy(d_player, l_playerCountries.get(l_randomOwnCountry), l_randomArmies);
@@ -75,9 +72,7 @@ public class RandomPlayer extends PlayerStrategy {
 	
 			case 2:
 				l_randomOwnCountry = d_gameEngine.d_random.nextInt(l_playerCountries.size());
-				// l_randomOwnCountry = l_randomOwnCountry == 0 ? 1 : l_randomOwnCountry;
 				l_randomEnemyCountry = d_gameEngine.d_random.nextInt(l_neighborCountries.size());
-				// l_randomEnemyCountry = l_randomEnemyCountry == 0 ? 1 : l_randomEnemyCountry;
 		 		if (d_gameEngine.getGameMap().getCountries().get(l_playerCountries.get(l_randomOwnCountry))
 						.getNumberOfArmiesPresent() <= 1) {
 					l_randomArmies = d_gameEngine.d_random.nextInt(1);
@@ -85,8 +80,6 @@ public class RandomPlayer extends PlayerStrategy {
 					l_randomArmies = d_gameEngine.d_random.nextInt(d_gameEngine.getGameMap().getCountries()
 							.get(l_playerCountries.get(l_randomOwnCountry)).getNumberOfArmiesPresent() - 1);
 				}
-				// l_randomArmies =
-				// d_gameEngine.d_random.nextInt(d_gameEngine.getGameMap().getCountries().get(l_playerCountries.get(l_randomOwnCountry)).getNumberOfArmiesPresent());
 				l_order = new Advance(d_player, l_playerCountries.get(l_randomOwnCountry),
 						l_neighborCountries.get(l_randomEnemyCountry), l_randomArmies);
 				System.out.println("Attack from: " + l_playerCountries.get(l_randomOwnCountry) + ", to:  "
@@ -94,16 +87,11 @@ public class RandomPlayer extends PlayerStrategy {
 				d_gameEngine.d_logEntryBuffer.setString("Attack from: " + l_playerCountries.get(l_randomOwnCountry)
 						+ ", to:  " + l_neighborCountries.get(l_randomEnemyCountry) + ", armies: " + l_randomArmies);
 				l_isComplete = true;
-				// l_randomOwnCountry = d_gameEngine.d_random.nextInt(l_playerCountries.size());
-				// l_randomEnemyCountry =
-				// d_gameEngine.d_random.nextInt(l_neighborCountries.size());
 				break;
 	
 			case 3:
 				l_randomOwnCountry = d_gameEngine.d_random.nextInt(l_playerCountries.size());
-				// l_randomOwnCountry = l_randomOwnCountry == 0 ? 1 : l_randomOwnCountry;
 				System.out.println(l_randomOwnCountry);
-				// System.out.println();
 				System.out.println("MOVE: "
 						+ d_gameEngine.getGameMap().getCountries().get(l_playerCountries.get(l_randomOwnCountry)).getId());
 				int l_randomNeighbor = d_gameEngine.d_random.nextInt(d_gameEngine.getGameMap().getCountries()
@@ -131,7 +119,6 @@ public class RandomPlayer extends PlayerStrategy {
 					continue;
 				}
 				l_randomEnemyCountry = d_gameEngine.d_random.nextInt(l_neighborCountries.size());
-				// l_randomEnemyCountry = l_randomEnemyCountry == 0 ? 1 : l_randomEnemyCountry;
 				l_order = new Bomb(d_player, l_neighborCountries.get(l_randomEnemyCountry));
 				System.out.println("Bomb " + l_neighborCountries.get(l_randomEnemyCountry));
 				d_gameEngine.d_logEntryBuffer.setString("Bomb " + l_neighborCountries.get(l_randomEnemyCountry));
@@ -142,7 +129,6 @@ public class RandomPlayer extends PlayerStrategy {
 					continue;
 				}
 				l_randomOwnCountry = d_gameEngine.d_random.nextInt(l_playerCountries.size());
-				// l_randomOwnCountry = l_randomOwnCountry == 0 ? 1 : l_randomOwnCountry;
 				l_randomArmies = d_gameEngine.d_random.nextInt(d_gameEngine.getGameMap().getCountries()
 						.get(l_playerCountries.get(l_randomOwnCountry)).getNumberOfArmiesPresent());
 				int l_randomToCountryId = l_playerCountries.get(d_gameEngine.d_random.nextInt(l_playerCountries.size()));

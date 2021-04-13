@@ -37,6 +37,7 @@ public class Aggresive extends PlayerStrategy{
 	 * attack with its strongest country
 	 * moves its armies in order to maximize aggregation of forces in one country
 	 */
+	@Override
 	public Orders createOrder() {
 		Orders l_order = null;
 		int l_randomOrder;

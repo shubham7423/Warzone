@@ -19,6 +19,12 @@ public class PreLoad extends GameSetup {
 		super(p_gameEngine);
 	}
 
+	/**
+	 * function to load map from the save file
+	 * @param p_fileName name of the file to load
+	 * @return result of the loading of the file
+	 */
+	@Override
 	public String loadGame(String p_fileName) {
 		String l_result;
 		d_gameEngine.setGameMap(new GameMap());

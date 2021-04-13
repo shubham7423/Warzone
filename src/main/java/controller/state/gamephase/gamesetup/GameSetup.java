@@ -40,6 +40,7 @@ public abstract class GameSetup extends GamePhase {
 	 * @param p_fileName name of game file that is to be saved
 	 * @return string conveying that game has not yet been setup to use this command
 	 */
+	@Override
 	public String saveGame(String p_fileName) {
 		return String.format("Game not yet Setup");
 	}
@@ -48,6 +49,7 @@ public abstract class GameSetup extends GamePhase {
 	 * function to print invalid command message as this cannot be used in this phase
 	 * @return string to print the invalid command message
 	 */
+	@Override
 	public String returnWinner() {
 		return printInvalidCommandMessage();
 	}
@@ -60,6 +62,7 @@ public abstract class GameSetup extends GamePhase {
 	 * @param p_turns number of turns allowed
 	 * @return the current state of the game as a map
 	 */
+	@Override
 	public String tournament(ArrayList<String> p_maps, ArrayList<String> p_players, int p_games, int p_turns) {
 		HashMap<String, ArrayList<String>> l_winnersMap = new HashMap<>();
 		ArrayList<String> l_gameWinner;
@@ -171,6 +174,7 @@ public abstract class GameSetup extends GamePhase {
 	 * @param p_commandSplitted splitted command parts used for execution of command
 	 * @return string to print the invalid command message
 	 */
+	@Override
 	public String deploy(String[] p_commandSplitted) {
 		return printInvalidCommandMessage();
 	}
@@ -182,6 +186,7 @@ public abstract class GameSetup extends GamePhase {
 	 * @param p_commandSplitted splitted command parts used for execution of command
 	 * @return string to print the invalid command message
 	 */
+	@Override
 	public String advance(String[] p_commandSplitted) {
 		return printInvalidCommandMessage();
 	}
@@ -193,6 +198,7 @@ public abstract class GameSetup extends GamePhase {
 	 * @param p_commandSplitted splitted command parts used for execution of command
 	 * @return string to print the invalid command message
 	 */
+	@Override
 	public String airlift(String[] p_commandSplitted) {
 		return printInvalidCommandMessage();
 	}
@@ -204,6 +210,7 @@ public abstract class GameSetup extends GamePhase {
 	 * @param p_commandSplitted splitted command parts used for execution of command
 	 * @return string to print the invalid command message
 	 */
+	@Override
 	public String bomb(String[] p_commandSplitted) {
 		return printInvalidCommandMessage();
 	}
@@ -215,6 +222,7 @@ public abstract class GameSetup extends GamePhase {
 	 * @param p_commandSplitted splitted command parts used for execution of command
 	 * @return string to print the invalid command message
 	 */
+	@Override
 	public String blockade(String[] p_commandSplitted) {
 		return printInvalidCommandMessage();
 	}
@@ -226,6 +234,7 @@ public abstract class GameSetup extends GamePhase {
 	 * @param p_commandSplitted splitted command parts used for execution of command
 	 * @return string to print the invalid command message
 	 */
+	@Override
 	public String diplomacy(String[] p_commandSplitted) {
 		return printInvalidCommandMessage();
 	}
@@ -236,6 +245,7 @@ public abstract class GameSetup extends GamePhase {
 	 * 
 	 * @return string to print the invalid command message
 	 */
+	@Override
 	public String executeOrders() {
 		return printInvalidCommandMessage();
 	}
@@ -246,6 +256,7 @@ public abstract class GameSetup extends GamePhase {
 	 * 
 	 * @return string to print the invalid command message
 	 */
+	@Override
 	public String checkContinentOwnership() {
 		return printInvalidCommandMessage();
 	}
@@ -257,6 +268,7 @@ public abstract class GameSetup extends GamePhase {
 	 * @param p_playerName name of the winner of the game
 	 * @return string to print the invalid command message
 	 */
+	@Override
 	public String printWinner(String p_playerName) {
 		return printInvalidCommandMessage();
 	}
