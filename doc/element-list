@@ -9,4 +9,5 @@ controller.state.gamephase.gamesetup
 entities
 entities.mapops
 entities.orders
+entities.savedgames
 strategy

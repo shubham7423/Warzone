@@ -7,7 +7,7 @@ import controller.GameEngine;
 import controller.state.gamephase.GamePhase;
 
 /**
- * This is the class that inherits GamePhase class whose fucntion is to print
+ * This is the class that inherits GamePhase class whose function is to print
  * the winner of the game
  */
 public class EndPhase extends GamePhase {

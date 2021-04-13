@@ -2,7 +2,6 @@ package controller.state.edit;
 
 import controller.GameEngine;
 import controller.state.gamephase.gamesetup.PreLoad;
-import controller.GameEngine;
 
 /**
  * PostEdit is inherited from the EditPhase class to support commands valid in post editing phase
