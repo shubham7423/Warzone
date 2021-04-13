@@ -39,6 +39,10 @@ public class LoadGame {
 	 */
 	
 	public String loadGame(String p_fileName){
+		File l_file = new File(Paths.get(Paths.get("").toAbsolutePath().toString() + "/games/" + p_fileName).toString());
+		if(!l_file.exists()) {
+			return "Game file : \""+ p_fileName +"\" does not exist.";
+		}
 		try {
 			File l_mapFile = new File(
 					Paths.get(Paths.get("").toAbsolutePath().toString() + "/games/" + p_fileName).toString());
