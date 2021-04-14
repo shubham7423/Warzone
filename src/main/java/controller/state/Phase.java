@@ -11,6 +11,10 @@ import controller.GameEngine;
  * An abstract class for the Phase implementation of state pattern
  */
 public abstract class Phase {
+
+	/**
+	 * This is the object of GameEngine class.
+	 */
 	public GameEngine d_gameEngine;
 
 	/**

@@ -2,6 +2,10 @@ package entities.orders;
 
 import controller.GameEngine;
 
+/**
+ * This is the exit class order, while in IssueOrder phase, if the player types exit() to commit its command
+ * then, this class is used.
+ */
 public class Exit implements Orders {
 
 	/**

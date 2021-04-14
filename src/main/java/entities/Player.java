@@ -24,12 +24,36 @@ public class Player {
 	private String d_name;
 	private HashMap<Integer, Country> d_countries;
 	private HashMap<Integer, Continent> d_continents;
+	
+	/**
+	 * This Queue stores the object of type Orders for each Player 
+	 * to be executed in FIFO pattern later.
+	 */
 	public Queue<Orders> d_orders;
 	private int d_numberOfArmies;
 	private boolean d_isCommit;
+	
+	/**
+	 * This hashmap stores the number of cards owned in key value format where key is 
+	 * name of card and value is number of cards available to the player.
+	 * Example: (bomb, 2), i.e. player owns 2 bomb cards.
+	 */
 	public HashMap<String, Integer> d_cardsOwned;
+	
+	/**
+	 * This array list stores the name of players for which 
+	 * diplomacy card is used for negotiation.
+	 */
 	public ArrayList<String> d_negotiatedPlayerNames;
+	
+	/**
+	 * This boolean stores if the country is conquered or not by the player.
+	 */
 	public boolean d_isConquered;
+	
+	/**
+	 * This is the type of Strategy that the player possess.
+	 */
 	public PlayerStrategy d_strategy;
 
 	/**

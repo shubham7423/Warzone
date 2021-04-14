@@ -2,6 +2,10 @@ package entities.orders;
 
 import controller.GameEngine;
 
+/**
+ * This class is dummy order class, in order to return something of Order type in 
+ * command which does all the processing itself and not done by Orders object, then this class is used. 
+ */
 public class Dummy implements Orders {
 
 	/**
@@ -12,7 +16,6 @@ public class Dummy implements Orders {
 	 */
 	@Override
 	public String executeOrder(GameEngine p_game) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 	

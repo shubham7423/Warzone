@@ -28,13 +28,44 @@ import entities.savedgames.*;
 public class GameEngine {
 	private Phase d_phase;
 	private GameMap d_gameMap = new GameMap();
+	
+	/**
+	 * This queue stores all the available player in the Game.
+	 */
 	public Queue<Player> d_playersOrder = new LinkedList<>();
+	
+	/**
+	 * This hash map stores the player name with respective player
+	 * in key value pair, key represents Player Name and value represents Player object.
+	 * Example: ("john", playerObjectOfJohn) 
+	 */
 	public HashMap<String, Player> d_players = new HashMap<>();
+	
+	/**
+	 * This arraylist stores names of all the players present in the game.
+	 */
 	public ArrayList<String> d_playerName = new ArrayList<>();
+	
+	/**
+	 * This is the UserCommand Object.
+	 */
 	public UserCommand d_userCommand;
+	
+	/**
+	 * This is is LogEntryBuffer Object to write all the logs in the log file.
+	 */
 	public LogEntryBuffer d_logEntryBuffer;
 	private LogWriter d_logWriter;
+	
+	/**
+	 * This is the object of Neutral Player.
+	 */
 	public Player d_neutralPlayer;
+	
+	/**
+	 * This is the random object which 
+	 * can be used by all the class.
+	 */
 	public Random d_random;
 	private int d_turnNumber = 0;
 	private int d_maxTurn = 500;

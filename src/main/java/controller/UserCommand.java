@@ -11,6 +11,9 @@ import controller.state.edit.PreEdit;
 public class UserCommand {
 	Scanner d_scannerScanner = new Scanner(System.in);
 
+	/**
+	 * This is the object of GameEngine class.
+	 */
 	public GameEngine d_gameEngine;
 
 	/**
