@@ -14,7 +14,8 @@ public class Observable {
 	/**
 	 * Method to attach a view to the model.
 	 * 
-	 * @param p_observer: view to be added to the list of observers that are to be notified.
+	 * @param p_observer: view to be added to the list of observers that are to be
+	 *                    notified.
 	 */
 	public void attach(Observer p_observer) {
 		this.d_observers.add(p_observer);

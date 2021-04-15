@@ -5,13 +5,14 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import controller.GameEngine;
 import controller.UserCommand;
 
 import controller.state.gamephase.gameplay.IssueOrders;
 import entities.orders.Advance;
 import entities.orders.Deploy;
 import entities.orders.Orders;
-
+import strategy.PlayerStrategy;
 import entities.orders.*;
 
 /**
@@ -23,12 +24,37 @@ public class Player {
 	private String d_name;
 	private HashMap<Integer, Country> d_countries;
 	private HashMap<Integer, Continent> d_continents;
+	
+	/**
+	 * This Queue stores the object of type Orders for each Player 
+	 * to be executed in FIFO pattern later.
+	 */
 	public Queue<Orders> d_orders;
 	private int d_numberOfArmies;
 	private boolean d_isCommit;
+	
+	/**
+	 * This hashmap stores the number of cards owned in key value format where key is 
+	 * name of card and value is number of cards available to the player.
+	 * Example: (bomb, 2), i.e. player owns 2 bomb cards.
+	 */
 	public HashMap<String, Integer> d_cardsOwned;
+	
+	/**
+	 * This array list stores the name of players for which 
+	 * diplomacy card is used for negotiation.
+	 */
 	public ArrayList<String> d_negotiatedPlayerNames;
+	
+	/**
+	 * This boolean stores if the country is conquered or not by the player.
+	 */
 	public boolean d_isConquered;
+	
+	/**
+	 * This is the type of Strategy that the player possess.
+	 */
+	public PlayerStrategy d_strategy;
 
 	/**
 	 * Constructor of player which sets initial values for player data
@@ -49,6 +75,7 @@ public class Player {
 		d_cardsOwned.put("diplomacy", 0);
 		d_negotiatedPlayerNames = new ArrayList<String>();
 		d_isConquered = false;
+		d_strategy = null;
 	}
 
 	/**
@@ -58,6 +85,24 @@ public class Player {
 	 */
 	public String getName() {
 		return d_name;
+	}
+
+	/**
+	 * function to set the strategy of the player
+	 * 
+	 * @param p_strat name of the strategy to be set
+	 */
+	public void setStrategy(PlayerStrategy p_strat) {
+		d_strategy = p_strat;
+	}
+
+	/**
+	 * function to retrieve the strategy of the player
+	 * 
+	 * @return the strategy of the player
+	 */
+	public PlayerStrategy getPlayerBehaviour() {
+		return d_strategy;
 	}
 
 	/**
@@ -148,7 +193,8 @@ public class Player {
 	}
 
 	/**
-	 * Get boolean value which depicts that player has no more orders in this turn.
+	 * method to get boolean value which depicts that player has no more orders in
+	 * this turn.
 	 * 
 	 * @return true if player has no more orders; else false
 	 */
@@ -157,9 +203,9 @@ public class Player {
 	}
 
 	/**
-	 * Used to set whenever player has no more values or when the turn has started.
-	 * Set to false at start of each turn and to true when player has no more
-	 * orders.
+	 * method used to set whenever player has no more values or when the turn has
+	 * started. Set to false at start of each turn and to true when player has no
+	 * more orders.
 	 * 
 	 * @param p_isCommit true if player has no more orders; else false.
 	 */
@@ -171,170 +217,11 @@ public class Player {
 	 * method to issue order called by Game engine
 	 */
 	public void issueOrder() {
-		UserCommand l_userCommand = new UserCommand();
-		l_userCommand.setPhase(new IssueOrders(null));
-		String[] l_splittedOrder = null;
-		boolean l_isCorrect = false;
-		while (!l_isCorrect) {
-			try {
-				String l_result = l_userCommand.getCommand();
-				if ("exit()".equals(l_result)) {
-					l_isCorrect = true;
-					d_isCommit = true;
-					return;
-				} else {
-					l_splittedOrder = l_result.split(" ");
-
-					switch (l_splittedOrder[0]) {
-					case "deploy":
-						if (l_splittedOrder.length != 3) {
-							String l_temp = "Invalid command. Correct command is - deploy countryId numarmies";
-							System.out.println(l_temp);
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
-							continue;
-						} else if (!isNumeric(l_splittedOrder[1]) || !isNumeric(l_splittedOrder[2])) {
-							String l_temp = "After deploy keyword, you can only use integer to represent the countryId and numarmies";
-							System.out.println(l_temp);
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
-							continue;
-						} else {
-							Deploy l_deploy = new Deploy(this, Integer.parseInt(l_splittedOrder[1]),
-									Integer.parseInt(l_splittedOrder[2]));
-							d_orders.add(l_deploy);
-							String l_temp = "deploy " + Integer.parseInt(l_splittedOrder[1]) + " "
-									+ Integer.parseInt(l_splittedOrder[2]);
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
-							l_isCorrect = true;
-						}
-						break;
-					case "advance":
-						if (l_splittedOrder.length != 4) {
-							String l_temp = "Invalid command. Correct command is - advance countryFrom countryTo numarmies";
-							System.out.println(l_temp);
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
-							continue;
-						} else if (!isNumeric(l_splittedOrder[1]) || !isNumeric(l_splittedOrder[2])
-								|| !isNumeric(l_splittedOrder[3])) {
-							String l_temp = "After advance keyword, you can only use integer to represent the countryFrom, countryTo and numarmies";
-							System.out.println(l_temp);
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
-							continue;
-						} else {
-							Advance l_advance = new Advance(this, Integer.parseInt(l_splittedOrder[1]),
-									Integer.parseInt(l_splittedOrder[2]), Integer.parseInt(l_splittedOrder[3]));
-							d_orders.add(l_advance);
-							String l_temp = "advance " + Integer.parseInt(l_splittedOrder[1]) + " "
-									+ Integer.parseInt(l_splittedOrder[2]) + " " + Integer.parseInt(l_splittedOrder[3]);
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
-							l_isCorrect = true;
-						}
-						break;
-					case "bomb":
-						if (l_splittedOrder.length != 2) {
-							String l_temp = "Invalid command. Correct command is - bomb countryId";
-							System.out.println(l_temp);
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
-							continue;
-						} else if (!isNumeric(l_splittedOrder[1])) {
-							String l_temp = "After bomb keyword, you can only use integer to represent the countryId";
-							System.out.println(l_temp);
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
-							continue;
-						} else {
-							Bomb l_bomb = new Bomb(this, Integer.parseInt(l_splittedOrder[1]));
-							d_orders.add(l_bomb);
-							String l_temp = "bomb " + Integer.parseInt(l_splittedOrder[1]);
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
-							l_isCorrect = true;
-						}
-						break;
-					case "blockade":
-						if (l_splittedOrder.length != 2) {
-							String l_temp = "Invalid command. Correct command is - blockade countryId";
-							System.out.println(l_temp);
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
-							continue;
-						} else if (!isNumeric(l_splittedOrder[1])) {
-							String l_temp = "After blockade keyword, you can only use integer to represent the countryId";
-							System.out.println(l_temp);
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
-							continue;
-						} else {
-							Blockade l_blockade = new Blockade(this, Integer.parseInt(l_splittedOrder[1]));
-							d_orders.add(l_blockade);
-							String l_temp = "blockade " + Integer.parseInt(l_splittedOrder[1]);
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
-							l_isCorrect = true;
-						}
-						break;
-					case "airlift":
-						if (l_splittedOrder.length != 4) {
-							String l_temp = "Invalid command. Correct command is - airlift sourceCountryId targetCountryId numarmies";
-							System.out.println(l_temp);
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
-							continue;
-						} else if (!isNumeric(l_splittedOrder[1]) || !isNumeric(l_splittedOrder[2])
-								|| !isNumeric(l_splittedOrder[3])) {
-							String l_temp = "After airlift keyword, you can only use integer to represent the sourceCountryId, targetCountryId and numarmies";
-							System.out.println(l_temp);
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
-							continue;
-						} else {
-							Airlift l_airlift = new Airlift(this, Integer.parseInt(l_splittedOrder[1]),
-									Integer.parseInt(l_splittedOrder[2]), Integer.parseInt(l_splittedOrder[3]));
-							d_orders.add(l_airlift);
-							String l_temp = "airlift " + Integer.parseInt(l_splittedOrder[1]) + " "
-									+ Integer.parseInt(l_splittedOrder[2]) + " " + Integer.parseInt(l_splittedOrder[3]);
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
-							l_isCorrect = true;
-						}
-						break;
-					case "negotiate":
-						if (l_splittedOrder.length != 2) {
-							String l_temp = "Invalid command. Correct command is - negotiate playerId";
-							System.out.println(l_temp);
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
-							continue;
-						} else if (isNumeric(l_splittedOrder[1])) {
-							String l_temp = "After negotiate keyword, you can not use integer to represent the playerName";
-							System.out.println(l_temp);
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
-							continue;
-						} else {
-							Diplomacy l_diplomacy = new Diplomacy(this, l_splittedOrder[1]);
-							d_orders.add(l_diplomacy);
-							String l_temp = "negotiate " + l_splittedOrder[1];
-							l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_temp);
-							l_isCorrect = true;
-						}
-						break;
-					default:
-						System.out.println(l_result);
-						l_userCommand.d_gameEngine.d_logEntryBuffer.setString(l_result);
-						break;
-					}
-				}
-			} catch (Exception p_exception) {
-				System.out.println("Invalid command in phase IssueOrders.");
-			}
-		}
-	}
-
-	/**
-	 * This function is used to check if a string can be converted to integer or
-	 * not.
-	 * 
-	 * @param p_str represents the string to be casted to Integer value.
-	 * @return true if the string can be parsed to an Integer.
-	 */
-	public static boolean isNumeric(String p_str) {
-		try {
-			Integer.parseInt(p_str);
-			return true;
-		} catch (NumberFormatException p_e) {
-			return false;
-		} catch (Exception p_e) {
-			return false;
+		Orders l_order = d_strategy.createOrder();
+		if (l_order instanceof Exit) {
+			return;
+		} else {
+			d_orders.add(l_order);
 		}
 	}
 

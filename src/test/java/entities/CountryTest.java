@@ -28,6 +28,9 @@ public class CountryTest {
 		assertEquals(1, d_country.getId());
 	}
 
+	/**
+	 * Compares continent provided and continent stored in the game map.
+	 */
 	@Test
 	public void testContinent() {
 		assertEquals(d_continent, d_country.getContinent());

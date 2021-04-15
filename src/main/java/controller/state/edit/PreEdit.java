@@ -5,7 +5,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import controller.GameEngine;
-import controller.GameEngine;
 import entities.GameMap;
 
 /**
@@ -54,6 +53,7 @@ public class PreEdit extends EditPhase {
 	 * 
 	 * @return string to output the result
 	 */
+	@Override
 	public String validateMap() {
 		return String.format("Map not loaded yet.");
 	}

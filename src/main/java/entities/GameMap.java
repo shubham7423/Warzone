@@ -2,18 +2,27 @@ package entities;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Scanner;
 import java.util.stream.Collectors;
 
 import dnl.utils.text.table.TextTable;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import entities.mapops.ReadMap;
 import entities.mapops.WriteMap;
+import entities.mapops.ConquestReadMap;
+import entities.mapops.ConquestWriteMap;
+import entities.mapops.MapReaderAdapter;
 import entities.mapops.MapValidation;
+import entities.mapops.MapWriterAdapter;
 
 /**
  * GameMap which holds variables which contains information continents,
@@ -23,6 +32,7 @@ public class GameMap {
 	private HashMap<Integer, Continent> d_continents;
 	private HashMap<Integer, Country> d_countries;
 	private boolean d_isValid;
+	private boolean d_isConquestMap = false;
 
 	/**
 	 * Constructor for GameMap
@@ -151,12 +161,25 @@ public class GameMap {
 	 *         response if it isn't
 	 */
 	public String loadMap(String p_fileName) {
-		ReadMap l_mapRead = new ReadMap(this);
-		Boolean l_loadCheck = l_mapRead.readFullMap(p_fileName);
-		if (!l_loadCheck) {
-			return String.format("Map \"%s\" cannot be loaded", p_fileName);
+		ReadMap l_mapRead;
+		Boolean l_loadCheck;
+		if (isConquestMap(p_fileName)) {
+			l_mapRead = new MapReaderAdapter(new ConquestReadMap(this), this);
+			l_loadCheck = l_mapRead.readFullMap(p_fileName);
+			if (!l_loadCheck) {
+				return String.format("Map \"%s\" cannot be loaded", p_fileName);
+			} else {
+				return String.format("Conquest Map \"%s\" loaded successfully", p_fileName);
+			}
+		} else {
+			l_mapRead = new ReadMap(this);
+			l_loadCheck = l_mapRead.readFullMap(p_fileName);
+			if (!l_loadCheck) {
+				return String.format("Map \"%s\" cannot be loaded", p_fileName);
+			} else {
+				return String.format("Domination Map \"%s\" loaded successfully", p_fileName);
+			}
 		}
-		return String.format("Map \"%s\" loaded successfully", p_fileName);
 	}
 
 	/**
@@ -183,7 +206,6 @@ public class GameMap {
 
 		l_tt = new TextTable(l_column, l_data);
 		l_tt.setAddRowNumbering(false);
-		l_tt.setSort(0);
 
 		try (PrintStream l_ps = new PrintStream(l_baos, true, "UTF-8")) {
 			l_tt.printTable(l_ps, 0);
@@ -218,7 +240,6 @@ public class GameMap {
 		}
 		l_tt = new TextTable(l_column, l_data);
 		l_tt.setAddRowNumbering(false);
-		l_tt.setSort(0);
 		try (PrintStream l_ps = new PrintStream(l_baos, true, "UTF-8")) {
 			l_tt.printTable(l_ps, 0);
 		} catch (UnsupportedEncodingException p_e) {
@@ -261,11 +282,26 @@ public class GameMap {
 	 * @return Positive response if map written to file successfully
 	 */
 	public String saveMap(String p_fileName) {
-		WriteMap l_writeMap = new WriteMap(this);
-		if (!l_writeMap.writeFullMap(p_fileName)) {
-			return String.format("Map file \"%s\" cannot be saved", p_fileName);
+		WriteMap l_writeMap;
+		boolean l_result;
+		boolean l_isConquest = p_fileName.indexOf("conquest") != -1 ? true : false;
+
+		if (l_isConquest) {
+			l_writeMap = new MapWriterAdapter(new ConquestWriteMap(this), this);
+			l_result = l_writeMap.writeFullMap(p_fileName);
+			if (!l_result) {
+				return String.format("Map file \"%s\" cannot be saved", p_fileName);
+			}
+			return String.format("Conquest Map file \"%s\" saved successfully", p_fileName);
+		} else {
+			l_writeMap = new WriteMap(this);
+			l_result = l_writeMap.writeFullMap(p_fileName);
+			if (!l_result) {
+				return String.format("Map file \"%s\" cannot be saved", p_fileName);
+			}
+			return String.format("Domination Map file \"%s\" saved successfully", p_fileName);
 		}
-		return String.format("Map file \"%s\" saved successfully", p_fileName);
+
 	}
 
 	/**
@@ -305,5 +341,35 @@ public class GameMap {
 	 */
 	public HashMap<Integer, Country> getCountries() {
 		return d_countries;
+	}
+
+	/**
+	 * method that check map is of type Conquest or Domination
+	 * 
+	 * @param p_filePath the file passed to the function
+	 * @return true if it is conquest map or false if it is domination map.
+	 */
+	public Boolean isConquestMap(String p_filePath) {
+		File l_mapFile = new File(
+				Paths.get(Paths.get("").toAbsolutePath().toString() + "/maps/" + p_filePath).toString());
+		Scanner l_reader = null;
+		String l_dataString;
+		try {
+			l_reader = new Scanner(l_mapFile);
+			while (l_reader.hasNextLine()) {
+				l_dataString = l_reader.nextLine();
+				if ("[Territories]".equals(l_dataString)) {
+					d_isConquestMap = true;
+					break;
+				}
+			}
+		} catch (FileNotFoundException e) {
+			return false;
+		}
+		if (d_isConquestMap) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }

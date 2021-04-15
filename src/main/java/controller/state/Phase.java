@@ -2,6 +2,8 @@ package controller.state;
 
 import entities.GameMap;
 
+import java.util.ArrayList;
+
 import controller.GameEngine;
 import controller.GameEngine;
 
@@ -9,6 +11,10 @@ import controller.GameEngine;
  * An abstract class for the Phase implementation of state pattern
  */
 public abstract class Phase {
+
+	/**
+	 * This is the object of GameEngine class.
+	 */
 	public GameEngine d_gameEngine;
 
 	/**
@@ -19,6 +25,41 @@ public abstract class Phase {
 	public Phase(GameEngine p_gameEngine) {
 		d_gameEngine = p_gameEngine;
 	}
+
+	/**
+	 * Abstract function to save the game.
+	 * 
+	 * @param p_fileName name of game file that is to be saved
+	 * @return output string of execution of command.
+	 */
+	abstract public String saveGame(String p_fileName);
+
+	/**
+	 * function to load game from save file
+	 * 
+	 * @param p_fileName name of the save file
+	 * @return result string of the function
+	 */
+	abstract public String loadGame(String p_fileName);
+
+	/**
+	 * abstract function to implement tournament mode of the game
+	 * 
+	 * @param p_maps    list of maps
+	 * @param p_players list of players
+	 * @param p_games   number of games to play
+	 * @param p_turns   number of turns
+	 * @return the final map representing the current state of the map
+	 */
+
+	abstract public String tournament(ArrayList<String> p_maps, ArrayList<String> p_players, int p_games, int p_turns);
+
+	/**
+	 * abstract function to display winner
+	 * 
+	 * @return winner of the game
+	 */
+	abstract public String returnWinner();
 
 	/**
 	 * abstract function to support editMap command

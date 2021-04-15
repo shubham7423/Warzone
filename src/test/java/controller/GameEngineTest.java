@@ -10,6 +10,7 @@ import controller.state.edit.PostEdit;
 import controller.state.edit.PreEdit;
 import controller.state.gamephase.gameplay.ExecuteOrders;
 import controller.state.gamephase.gameplay.IssueOrders;
+import controller.state.gamephase.gamesetup.GameSetup;
 import controller.state.gamephase.gamesetup.PostLoad;
 import controller.state.gamephase.gamesetup.PreLoad;
 import entities.orders.Advance;
@@ -29,7 +30,7 @@ public class GameEngineTest {
 		d_gameEngine.setPhase(new PreLoad(d_gameEngine));
 		String[] l_newStrings = new String[] { "loadmap", "risk.map" };
 		String l_result = d_gameEngine.executeCommand(l_newStrings);
-		assertEquals("Map \"risk.map\" loaded successfully", l_result);
+		assertEquals("Domination Map \"risk.map\" loaded successfully", l_result);
 	}
 
 	/**
@@ -62,7 +63,12 @@ public class GameEngineTest {
 		d_gameEngine.setPhase(new PreLoad(d_gameEngine));
 		String[] l_loadCommand1 = new String[] { "loadmap", "risk.map" };
 		String l_loadResultString1 = d_gameEngine.executeCommand(l_loadCommand1);
-		assertEquals("Map \"risk.map\" loaded successfully", l_loadResultString1);
+		assertEquals("Domination Map \"risk.map\" loaded successfully", l_loadResultString1);
+
+		d_gameEngine.setPhase(new PreLoad(d_gameEngine));
+		String[] l_loadCommand = new String[] { "loadmap", "Canada.map" };
+		String l_loadResultString = d_gameEngine.executeCommand(l_loadCommand);
+		assertEquals("Conquest Map \"Canada.map\" loaded successfully", l_loadResultString);
 
 		d_gameEngine.setPhase(new PreLoad(d_gameEngine));
 		String[] l_loadCommand2 = new String[] { "loadmap", "xyzabc.map" };
@@ -210,7 +216,11 @@ public class GameEngineTest {
 
 		String[] l_saveCommand1 = new String[] { "savemap", "abc.map" };
 		String l_saveResultString1 = d_gameEngine.executeCommand(l_saveCommand1);
-		assertEquals("Map file \"abc.map\" saved successfully", l_saveResultString1);
+		assertEquals("Domination Map file \"abc.map\" saved successfully", l_saveResultString1);
+
+		String[] l_saveCommand3 = new String[] { "savemap", "conquestabc.map" };
+		String l_saveResultString3 = d_gameEngine.executeCommand(l_saveCommand3);
+		assertEquals("Conquest Map file \"conquestabc.map\" saved successfully", l_saveResultString3);
 
 		String[] l_saveCommand2 = new String[] { "savemap", "abc" };
 		String l_saveResultString2 = d_gameEngine.executeCommand(l_saveCommand2);
@@ -315,5 +325,20 @@ public class GameEngineTest {
 
 		HashMap<String, Integer> l_ordersAfter = l_gameEngine.d_players.get("Shubham").d_cardsOwned;
 		assertFalse(l_ordersBefore.equals(l_ordersAfter));
+	}
+
+	/**
+	 * Test to check the tournament mode works perfectly, tournament is held on two
+	 * maps with two games on each map and two players with random and cheater
+	 * behavior.
+	 */
+	@Test
+	public void tournamentTest() {
+		GameEngine l_gameEngine = new GameEngine();
+		l_gameEngine.setPhase(new PreLoad(l_gameEngine));
+		String[] l_newString1 = new String[] { "tournament", "-M", "uk.map", "risk.map", "-P", "Random", "Cheater",
+				"-G", "2", "-D", "50" };
+		assertEquals("{uk.map=[Cheater, Cheater], risk.map=[Cheater, Cheater]}",
+				l_gameEngine.executeCommand(l_newString1));
 	}
 }

@@ -97,7 +97,8 @@ public class GameMapTest {
 	 */
 	@Test
 	public void testLoadMap() {
-		assertEquals(String.format("Map \"uk.map\" loaded successfully"), d_map.loadMap("uk.map"));
+		assertEquals(String.format("Domination Map \"uk.map\" loaded successfully"), d_map.loadMap("uk.map"));
+		assertEquals(String.format("Conquest Map \"Canada.map\" loaded successfully"), d_map.loadMap("Canada.map"));
 		assertEquals(String.format("Map \"uk123.map\" cannot be loaded"), d_map.loadMap("uk123.map"));
 	}
 }

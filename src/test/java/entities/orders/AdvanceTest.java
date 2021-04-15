@@ -1,6 +1,3 @@
-/**
- * 
- */
 package entities.orders;
 
 import static org.junit.Assert.*;

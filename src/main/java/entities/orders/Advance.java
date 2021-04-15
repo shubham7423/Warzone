@@ -36,10 +36,19 @@ public class Advance implements Orders {
 	}
 
 	/**
+	 * This method is used to get the order in String format.
+	 * 
+	 * @return command in String form.
+	 */
+	public String getOrder() {
+		return "advance " + d_countryNameFrom + " " + d_countryNameTo + " " + d_armies;
+	}
+
+	/**
 	 * Method to execute advance command
 	 * 
 	 * @param p_game gets the object of GameEngine class
-	 * @return string
+	 * @return string according to the executed order
 	 */
 	@Override
 	public String executeOrder(GameEngine p_game) {

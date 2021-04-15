@@ -11,6 +11,9 @@ import controller.state.edit.PreEdit;
 public class UserCommand {
 	Scanner d_scannerScanner = new Scanner(System.in);
 
+	/**
+	 * This is the object of GameEngine class.
+	 */
 	public GameEngine d_gameEngine;
 
 	/**
@@ -74,6 +77,13 @@ public class UserCommand {
 	 * @param args argument to main
 	 */
 	public static void main(String[] args) {
-		new UserCommand().start();
+		try {
+			new UserCommand().start();
+		} catch (StackOverflowError e) {
+			System.out.println("Number of turns exceeded memory limit.");
+		} catch (Exception e) {
+			System.out.println("Exception");
+			e.printStackTrace();
+		}
 	}
 }

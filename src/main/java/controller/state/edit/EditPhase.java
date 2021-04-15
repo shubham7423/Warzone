@@ -1,5 +1,7 @@
 package controller.state.edit;
 
+import java.util.ArrayList;
+
 import controller.GameEngine;
 import controller.GameEngine;
 import controller.state.Phase;
@@ -17,6 +19,52 @@ public abstract class EditPhase extends Phase {
 	 */
 	public EditPhase(GameEngine p_gameEngine) {
 		super(p_gameEngine);
+	}
+
+	/**
+	 * Function to print invalid command as the following command cannot be used in
+	 * this phase
+	 * 
+	 * @param p_fileName name of game file that is to be saved
+	 * @return string to print the invalid command message
+	 */
+	public String saveGame(String p_fileName) {
+		return printInvalidCommandMessage();
+	}
+
+	/**
+	 * Function to print invalid command as the following command cannot be used in
+	 * this phase
+	 * 
+	 * @param p_fileName name of game file that is to be loaded
+	 * @return string to print the invalid command message
+	 */
+	public String loadGame(String p_fileName) {
+		return printInvalidCommandMessage();
+	}
+
+	/**
+	 * Function to print invalid command as the following command cannot be used in
+	 * this phase
+	 * 
+	 * @param p_maps    list of maps in the tournament
+	 * @param p_players list of players in the tournament
+	 * @param p_games   number of games in the tournament
+	 * @param p_turns   number of turns in the tournament
+	 * @return string to print the invalid message
+	 */
+	public String tournament(ArrayList<String> p_maps, ArrayList<String> p_players, int p_games, int p_turns) {
+		return printInvalidCommandMessage();
+	}
+
+	/**
+	 * Function to print invalid command as the following command cannot be used in
+	 * this place
+	 * 
+	 * @return string to print the invalid message
+	 */
+	public String returnWinner() {
+		return printInvalidCommandMessage();
 	}
 
 	/**

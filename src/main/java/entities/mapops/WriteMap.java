@@ -15,7 +15,7 @@ public class WriteMap {
 	private BufferedWriter d_writer;
 
 	/**
-	 * Constructor
+	 * Constructor for WriteMap
 	 * 
 	 * @param p_gameMap GameMap object
 	 */
@@ -30,7 +30,6 @@ public class WriteMap {
 	 * 
 	 * @param p_filePath to .map file
 	 * @return true if map saved successfully else false
-	 * 
 	 */
 	public boolean writeFullMap(String p_filePath) {
 		int l_countryCtn = 0, l_continentCtn = 0;

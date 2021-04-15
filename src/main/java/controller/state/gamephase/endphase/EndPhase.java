@@ -1,13 +1,16 @@
 package controller.state.gamephase.endphase;
 
+import java.util.ArrayList;
+
 import controller.GameEngine;
 import controller.state.gamephase.GamePhase;
 
 /**
- * This is the class that inherits GamePhase class whose fucntion is to print
+ * This is the class that inherits GamePhase class whose function is to print
  * the winner of the game
  */
 public class EndPhase extends GamePhase {
+	private String d_winner;
 
 	/**
 	 * constructor method for the class that takes in the object of GameEngine
@@ -19,10 +22,49 @@ public class EndPhase extends GamePhase {
 	}
 
 	/**
+	 * Function to print invalid command as the following command cannot be used in
+	 * this phase
+	 * 
+	 * @param p_fileName name of game file that is to be saved
+	 * @return string to print the invalid command message
+	 */
+	@Override
+	public String saveGame(String p_fileName) {
+		return printInvalidCommandMessage();
+	}
+
+	/**
+	 * Function to print invalid command as the following command cannot be used in
+	 * this phase
+	 * 
+	 * @param p_fileName name of game file that is to be loaded
+	 * @return string to print the invalid command message
+	 */
+	@Override
+	public String loadGame(String p_fileName) {
+		return printInvalidCommandMessage();
+	}
+
+	/**
+	 * Function to print invalid command as the following command cannot be used in
+	 * this phase
+	 * 
+	 * @param p_maps    list of maps in the tournament
+	 * @param p_players list of players in the tournament
+	 * @param p_games   number of games in the tournament
+	 * @param p_turns   number of turns in the tournament
+	 * @return string to print the invalid message
+	 */
+	@Override
+	public String tournament(ArrayList<String> p_maps, ArrayList<String> p_players, int p_games, int p_turns) {
+		return printInvalidCommandMessage();
+	}
+
+	/**
 	 * function to print invalid command as the following command cannot be used in
 	 * this phase
 	 * 
-	 * @param p_fileName name of the file used to laod
+	 * @param p_fileName name of the file used to load
 	 * @return string to print the invalid command message
 	 */
 	@Override
@@ -177,8 +219,20 @@ public class EndPhase extends GamePhase {
 	 * @param p_playerName name of the player that has won
 	 * @return string to print winner of the game
 	 */
+	@Override
 	public String printWinner(String p_playerName) {
-		return "\nWinner:  " + p_playerName;
+		d_winner = p_playerName;
+		return "Winner:  " + p_playerName;
+	}
+
+	/**
+	 * Function to return the winner of the game
+	 * 
+	 * @return d_winner returns the winner of the game
+	 */
+	@Override
+	public String returnWinner() {
+		return d_winner;
 	}
 
 	/**

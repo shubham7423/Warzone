@@ -1,19 +1,24 @@
 package controller;
 
+import java.io.File;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
 
-
 import controller.state.Phase;
 import controller.state.edit.EditPhase;
 import controller.state.edit.PreEdit;
+import controller.state.gamephase.GamePhase;
 import controller.state.gamephase.gamesetup.PreLoad;
 import entities.GameMap;
 import entities.Player;
 import entities.orders.Deploy;
+import entities.savedgames.*;
 
 /**
  * Game Engine class is the starting point of the game where commands are
@@ -23,14 +28,47 @@ import entities.orders.Deploy;
 public class GameEngine {
 	private Phase d_phase;
 	private GameMap d_gameMap = new GameMap();
-	private Queue<Player> d_playersOrder = new LinkedList<>();
+	
+	/**
+	 * This queue stores all the available player in the Game.
+	 */
+	public Queue<Player> d_playersOrder = new LinkedList<>();
+	
+	/**
+	 * This hash map stores the player name with respective player
+	 * in key value pair, key represents Player Name and value represents Player object.
+	 * Example: ("john", playerObjectOfJohn) 
+	 */
 	public HashMap<String, Player> d_players = new HashMap<>();
+	
+	/**
+	 * This arraylist stores names of all the players present in the game.
+	 */
 	public ArrayList<String> d_playerName = new ArrayList<>();
+	
+	/**
+	 * This is the UserCommand Object.
+	 */
 	public UserCommand d_userCommand;
+	
+	/**
+	 * This is is LogEntryBuffer Object to write all the logs in the log file.
+	 */
 	public LogEntryBuffer d_logEntryBuffer;
 	private LogWriter d_logWriter;
+	
+	/**
+	 * This is the object of Neutral Player.
+	 */
 	public Player d_neutralPlayer;
+	
+	/**
+	 * This is the random object which 
+	 * can be used by all the class.
+	 */
 	public Random d_random;
+	private int d_turnNumber = 0;
+	private int d_maxTurn = 500;
 
 	/**
 	 * Game Engine constructor which creates a neutral player when game is started
@@ -119,6 +157,18 @@ public class GameEngine {
 			l_result = blockade(p_splittedCommand);
 			break;
 
+		case "savegame":
+			l_result = saveGame(p_splittedCommand);
+			break;
+
+		case "loadgame":
+			l_result = loadGame(p_splittedCommand);
+			break;
+
+		case "tournament":
+			l_result = tournament(p_splittedCommand);
+			break;
+
 		default:
 			l_result = "Command not found";
 		}
@@ -169,6 +219,42 @@ public class GameEngine {
 	 */
 	public GameMap getGameMap() {
 		return d_gameMap;
+	}
+
+	/**
+	 * function to return the maximum turns in a game. Game is draw when maximum.
+	 * turns reached.
+	 * 
+	 * @return maximum turns in game
+	 */
+	public int getMaxTurns() {
+		return d_maxTurn;
+	}
+
+	/**
+	 * function to set maximum turns per game.
+	 * 
+	 * @param p_maxTurn number of turns.
+	 */
+	public void setMaxTurns(int p_maxTurn) {
+		d_maxTurn = p_maxTurn;
+	}
+
+	/**
+	 * function to return current turn in game play.
+	 * 
+	 * @return return current turn number
+	 */
+	public int getCurrentTurn() {
+		return d_turnNumber;
+	}
+
+	/**
+	 * function to increment the value of current turn, incremented when one
+	 * execution phase is completed.
+	 */
+	public void incrementTurn() {
+		++d_turnNumber;
 	}
 
 	/**
@@ -642,6 +728,49 @@ public class GameEngine {
 	}
 
 	/**
+	 * Function to allow saving of game to the directory
+	 * 
+	 * @param p_splittedCommand the command that has been splitted into multiple
+	 *                          parts for further processing
+	 * @return the result of executing the savegame command
+	 */
+	public String saveGame(String[] p_splittedCommand) {
+		if (p_splittedCommand.length != 2) {
+			return "Please enter valid command. Valid command is : \"savegame filename.game\"";
+		}
+		if (p_splittedCommand[1].split("\\.").length <= 1) {
+			return "File extension should be .game";
+		}
+		if (!"game".equals(p_splittedCommand[1].split("\\.")[1])) {
+			return "File extension should be .game";
+		}
+		return d_phase.saveGame(p_splittedCommand[1]);
+	}
+
+	/**
+	 * Function to allow loading the game from the directory
+	 * 
+	 * @param p_splittedCommand the command that has been splitted into multiple
+	 *                          parts for further processing
+	 * @return the result of executing the loadgame command
+	 */
+	public String loadGame(String[] p_splittedCommand) {
+		if (d_phase instanceof EditPhase) {
+			setPhase(new PreLoad(this));
+		}
+		if (p_splittedCommand.length != 2) {
+			return "Please enter valid command. Valid command is : \"loadgame filename.game\"";
+		}
+		if (p_splittedCommand[1].split("\\.").length <= 1) {
+			return "File extension should be .map";
+		}
+		if (!"game".equals(p_splittedCommand[1].split("\\.")[1])) {
+			return "File extension should be .game";
+		}
+		return d_phase.loadGame(p_splittedCommand[1]);
+	}
+
+	/**
 	 * function to allow saving of map to the directory
 	 * 
 	 * @param p_splittedCommand the command that has been splitted into multiple
@@ -662,8 +791,8 @@ public class GameEngine {
 	}
 
 	/**
-	 * function to allow validation of map to check connectivity of the graph of
-	 * the map
+	 * function to allow validation of map to check connectivity of the graph of the
+	 * map
 	 * 
 	 * @param p_splittedCommand the command that has been splitted into multiple
 	 *                          parts for further processing
@@ -685,7 +814,7 @@ public class GameEngine {
 	 * @return the result of loading of map
 	 */
 	public String loadMap(String[] p_splittedCommand) {
-		try {			
+		try {
 			if (d_phase instanceof EditPhase) {
 				setPhase(new PreLoad(this));
 			}
@@ -719,6 +848,160 @@ public class GameEngine {
 	}
 
 	/**
+	 * function to start tournament, user provides list of maps, players strategies,
+	 * number of games per map and the maximum turns per game.
+	 * 
+	 * @param p_splittedCommand splitted command that contains list of maps, players
+	 *                          strategies, number of games per map and the maximum
+	 *                          turns per game.
+	 * @return String which contains winners of each games played on each maps.
+	 */
+	public String tournament(String[] p_splittedCommand) {
+
+		ArrayList<String> l_playerStrategy = new ArrayList<>(
+				Arrays.asList("Random", "Aggresive", "Benevolent", "Cheater"));
+		int l_indexM = 0;
+		int l_indexP = 0;
+		int l_indexG = 0;
+		int l_indexD = 0;
+		String l_tournamentCommand = "tournament -M listofmapfiles -P listofplayerstrategies -G numberofgames -D maxnumberofturns";
+
+		// getting index of all attributes -M -P -G -D from the command
+		for (int l_index = 0; l_index < p_splittedCommand.length; l_index++) {
+			if (p_splittedCommand[l_index].equals("-M")) {
+				l_indexM = l_index;
+			} else if (p_splittedCommand[l_index].equals("-P")) {
+				l_indexP = l_index;
+			} else if (p_splittedCommand[l_index].equals("-G")) {
+				l_indexG = l_index;
+			} else if (p_splittedCommand[l_index].equals("-D")) {
+				l_indexD = l_index;
+			}
+		}
+
+		// missing attributes in command.
+		if (l_indexM == 0 || l_indexP == 0 || l_indexG == 0 || l_indexD == 0) {
+			String l_temp = "Incomplete Tournament Command found.\nYou must supply with all the attributes \"-M -P -G -D\" in this sequence with their respective arguments.";
+			l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
+			return l_temp;
+		}
+
+		// check sequence of -M -P -G -D
+		if ((l_indexM >= l_indexP) || (l_indexP >= l_indexG) || (l_indexG >= l_indexD)) {
+			String l_temp = "Sequence of attributes not maintained in command or arguments missing for any attribute -M -P -G -D.";
+			l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
+			return l_temp;
+		}
+
+		// map files inclusion
+		if (l_indexP - l_indexM < 2) {
+			String l_temp = "There should be atleast one Map file inserted in command.\n";
+			l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
+			return l_temp;
+		} else {
+			for (int l_index = l_indexM + 1; l_index < l_indexP; l_index++) {
+				if ((p_splittedCommand[l_index].split("\\.").length <= 1)) {
+					return "Please add file extension .map to the map files.";
+				} else if (!"map".equals(p_splittedCommand[l_index].split("\\.")[1])) {
+					return "After -M, The map file(s) extension should be .map";
+				} else if ("".equals(p_splittedCommand[l_index].split("\\.")[0])) {
+					return "After -M, File name missing for the Map files(.map)";
+				} else {
+					// check if the file is present or not
+					File l_file = new File(
+							Paths.get(Paths.get("").toAbsolutePath().toString() + "/maps/" + p_splittedCommand[l_index])
+									.toString());
+					if (!l_file.exists()) {
+						return "Map file : \"" + p_splittedCommand[l_index] + "\" does not exist.";
+					}
+				}
+			}
+		}
+
+		// Player Strategy checking
+		if (l_indexG - l_indexP < 3) {
+			String l_temp = "There should be atleast Two Players Strategy inserted in the command.";
+			l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
+			return l_temp;
+		} else {
+			HashSet<String> l_tempPlayerStrategies = new HashSet<String>();
+			for (int l_index = l_indexP + 1; l_index < l_indexG; l_index++) {
+				if (l_tempPlayerStrategies.contains(p_splittedCommand[l_index])) {
+					return "Duplicate players not allowed.";
+				} else {
+					if (!l_playerStrategy.contains(p_splittedCommand[l_index])) {
+						return "Strategies allowed for Player are :\" Aggresive, Benevolent, Cheater and Random\".";
+					}
+					l_tempPlayerStrategies.add(p_splittedCommand[l_index]);
+				}
+			}
+			if (l_tempPlayerStrategies.size() < 2) {
+				String l_temp = "There should be atleast Two Players Strategy inserted in the command.\n";
+				l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
+				return l_temp;
+			}
+		}
+
+		// number of games attribute
+		if (l_indexD - l_indexG != 2) {
+			String l_temp = "You should insert exactly One argument after -G which signifies number of games to be played in the tournament.";
+			l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
+			return l_temp;
+		} else {
+			if (!isNumeric(p_splittedCommand[l_indexG + 1])) {
+				String l_temp = "After -G, you can only use integer to represent the Number of Games to be Played.";
+				l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
+				return l_temp;
+			}
+		}
+
+		// max number of turns
+		if ((p_splittedCommand.length - 2) != l_indexD) {
+			String l_temp = "You should insert exactly One argument after -D which signifies maximum number of turns allowed per game.\nAfter that decision/winner must be declared.";
+			l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
+			return l_temp;
+		} else {
+			if (!isNumeric(p_splittedCommand[l_indexD + 1])) {
+				String l_temp = "After -D, you can not use integer to represent the maximum number of turns allowed per game to be played.";
+				l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
+				return l_temp;
+			} else {
+				if (Integer.parseInt(p_splittedCommand[l_indexD + 1]) > 900) {
+					return "Please enter Less number of turns per game to avoid Memory Stack Overflow.";
+				}
+			}
+		}
+
+		int l_i = 2;
+		ArrayList<String> l_maps = new ArrayList<>();
+		ArrayList<String> l_players = new ArrayList<>();
+		int l_numGames;
+		int l_numTurns;
+		while (!p_splittedCommand[l_i].equals("-P")) {
+			l_maps.add(p_splittedCommand[l_i]);
+			++l_i;
+		}
+		++l_i;
+		while (!p_splittedCommand[l_i].equals("-G")) {
+			if (!l_playerStrategy.contains(p_splittedCommand[l_i])) {
+				return "Only strategies Random, Aggresive, Benevolent and Cheater are allowed.";
+			}
+			l_players.add(p_splittedCommand[l_i]);
+			++l_i;
+		}
+		if (l_players.size() > new HashSet<String>(l_players).size()) {
+			return "Duplicate players not permitted.";
+		}
+		++l_i;
+		l_numGames = Integer.parseInt(p_splittedCommand[l_i]);
+		++l_i;
+		++l_i;
+		l_numTurns = Integer.parseInt(p_splittedCommand[l_i]);
+		setPhase(new PreLoad(this));
+		return d_phase.tournament(l_maps, l_players, l_numGames, l_numTurns);
+	}
+
+	/**
 	 * function to process the entire command provided by the user that will be
 	 * splitted for further processing
 	 * 
@@ -739,8 +1022,6 @@ public class GameEngine {
 		try {
 			Integer.parseInt(p_str);
 			return true;
-		} catch (NumberFormatException p_e) {
-			return false;
 		} catch (Exception p_e) {
 			return false;
 		}

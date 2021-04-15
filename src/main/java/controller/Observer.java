@@ -12,8 +12,8 @@ public interface Observer {
 	 * interrogating the model object and displaying its newly updated state.
 	 * 
 	 * @param p_observableState: Object that is passed by the subject (observable).
-	 *                            Very often, this object is the subject itself, but
-	 *                            not necessarily.
+	 *                           Very often, this object is the subject itself, but
+	 *                           not necessarily.
 	 */
-	public void update(Observable p_observableState);
+	void update(Observable p_observableState);
 }
