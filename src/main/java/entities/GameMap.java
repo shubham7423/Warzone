@@ -88,6 +88,9 @@ public class GameMap {
 		if (d_countries.containsKey(p_countryId)) {
 			return String.format("Country \"%d\" already present in map", p_countryId);
 		}
+		if(!d_continents.containsKey(p_continentId)) {
+			return "Continent not present";
+		}
 		Country l_newCountry = new Country(p_countryId, d_continents.get(p_continentId));
 		d_countries.put(p_countryId, l_newCountry);
 		d_continents.get(p_continentId).addCountry(l_newCountry);

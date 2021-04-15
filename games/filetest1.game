@@ -1,0 +1,39 @@
+[continents]
+1 2
+2 4
+3 4
+
+[countries]
+1 1 1
+2 2 1
+3 3 2
+4 4 2
+5 5 3
+
+[borders]
+1 2 3 
+2 1 3 4 
+3 1 2 4 5 
+4 2 3 5 
+5 3 4 
+
+[PlayerName|Strategy|#Continents|#Countries|NumArmies|[ContinentId]|[CountryId CountryArmies]|[Airlift,Blockade,Bomb,Diplomacy]|[NegotiatedPlayersList]]
+a1|aggressivePlayer|0|2|3|[]|[1 4,4 0]|[airlift 0,blockade 0,bomb 0,diplomacy 0]|[]
+h1|humanPlayer|0|2|3|[]|[2 4,3 0]|[airlift 0,blockade 0,bomb 0,diplomacy 0]|[]
+b1|benevolentPlayer|1|1|4|[3]|[5 4]|[airlift 0,blockade 0,bomb 0,diplomacy 0]|[]
+
+[neutralPlayer]
+neutralPlayer#1|neutral|0|0|0|[]|[]|[airlift 0,blockade 0,bomb 0,diplomacy 0]|[]
+
+[orders]
+a1 deploy 1 3
+h1 deploy 1 1
+b1 deploy 5 3
+h1 advance 1 2 3
+
+[committedPlayer]
+a1
+b1
+
+[nextPlayer]
+h1

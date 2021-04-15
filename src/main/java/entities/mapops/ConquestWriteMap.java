@@ -43,9 +43,9 @@ public class ConquestWriteMap {
 			l_continents = d_gameMap.getContinents();
 			d_writer.write("[Continents]");
 			d_writer.newLine();
-			for (int p_continents : l_continents.keySet()) {
-				d_continentsMap.put(p_continents, ++l_continentCtn);
-				d_writer.write(p_continents + "=" + l_continents.get(p_continents).getControlValue());
+			for (int l_continent : l_continents.keySet()) {
+				d_continentsMap.put(l_continent, ++l_continentCtn);
+				d_writer.write(l_continent + "=" + l_continents.get(l_continent).getControlValue());
 				d_writer.newLine();
 			}
 
@@ -56,15 +56,15 @@ public class ConquestWriteMap {
 			HashMap<Integer, Country> l_countries = new HashMap<>();
 			l_countries = d_gameMap.getCountries();
 
-			for (int p_continents : d_continentsMap.keySet()) {
-				Set<Integer> l_countriesId = l_continents.get(p_continents).getCountriesIds();
-				for (int p_countriesId : l_countriesId) {
+			for (int l_continent : d_continentsMap.keySet()) {
+				Set<Integer> l_countriesId = l_continents.get(l_continent).getCountriesIds();
+				for (int l_countryId : l_countriesId) {
 					StringBuilder l_sb = new StringBuilder("");
-					for (Country l_neighbor : l_countries.get(p_countriesId).getNeighborCountries()) {
+					for (Country l_neighbor : l_countries.get(l_countryId).getNeighborCountries()) {
 						l_sb.append("," + l_neighbor.getId());
 					}
 					d_writer.write(
-							p_countriesId + "," + "0," + "0," + d_continentsMap.get(p_continents) + l_sb.toString());
+							l_countryId + "," + "0," + "0," + l_continent + l_sb.toString());
 					d_writer.newLine();
 				}
 				d_writer.newLine();

@@ -43,9 +43,9 @@ public class WriteMap {
 			l_continents = d_gameMap.getContinents();
 			d_writer.write("[continents]");
 			d_writer.newLine();
-			for (int p_continents : l_continents.keySet()) {
-				d_continentsMap.put(p_continents, ++l_continentCtn);
-				d_writer.write(p_continents + " " + l_continents.get(p_continents).getControlValue());
+			for (int l_continent : l_continents.keySet()) {
+				d_continentsMap.put(l_continent, ++l_continentCtn);
+				d_writer.write(l_continent + " " + l_continents.get(l_continent).getControlValue());
 				d_writer.newLine();
 			}
 
@@ -53,11 +53,11 @@ public class WriteMap {
 			d_writer.write("\n");
 			d_writer.write("[countries]");
 			d_writer.newLine();
-			for (int p_continents : d_continentsMap.keySet()) {
-				Set<Integer> l_countriesId = l_continents.get(p_continents).getCountriesIds();
-				for (int p_countriesId : l_countriesId) {
-					d_countriesMap.put(p_countriesId, ++l_countryCtn);
-					d_writer.write(l_countryCtn + " " + p_countriesId + " " + d_continentsMap.get(p_continents));
+			for (int l_continent : d_continentsMap.keySet()) {
+				Set<Integer> l_countriesId = l_continents.get(l_continent).getCountriesIds();
+				for (int l_countryId : l_countriesId) {
+					d_countriesMap.put(l_countryId, ++l_countryCtn);
+					d_writer.write(l_countryCtn + " " + l_countryId + " " + d_continentsMap.get(l_continent));
 					d_writer.newLine();
 				}
 			}
@@ -68,13 +68,13 @@ public class WriteMap {
 			d_writer.write("\n");
 			d_writer.write("[borders]");
 			d_writer.newLine();
-			for (int p_countries : d_countriesMap.keySet()) {
-				Set<Integer> l_neighborIds = l_countries.get(p_countries).getNeighborIds();
+			for (int l_country : d_countriesMap.keySet()) {
+				Set<Integer> l_neighborIds = l_countries.get(l_country).getNeighborIds();
 				StringBuilder l_sb = new StringBuilder("");
-				l_sb.append(d_countriesMap.get(p_countries).toString() + " ");
+				l_sb.append(d_countriesMap.get(l_country).toString() + " ");
 
-				for (int p_neighborIds : l_neighborIds) {
-					l_sb.append(d_countriesMap.get(p_neighborIds).toString() + " ");
+				for (int l_neighborId : l_neighborIds) {
+					l_sb.append(d_countriesMap.get(l_neighborId).toString() + " ");
 				}
 				d_writer.write(l_sb.toString());
 				d_writer.newLine();

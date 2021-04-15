@@ -857,148 +857,152 @@ public class GameEngine {
 	 * @return String which contains winners of each games played on each maps.
 	 */
 	public String tournament(String[] p_splittedCommand) {
-
-		ArrayList<String> l_playerStrategy = new ArrayList<>(
-				Arrays.asList("Random", "Aggresive", "Benevolent", "Cheater"));
-		int l_indexM = 0;
-		int l_indexP = 0;
-		int l_indexG = 0;
-		int l_indexD = 0;
-		String l_tournamentCommand = "tournament -M listofmapfiles -P listofplayerstrategies -G numberofgames -D maxnumberofturns";
-
-		// getting index of all attributes -M -P -G -D from the command
-		for (int l_index = 0; l_index < p_splittedCommand.length; l_index++) {
-			if (p_splittedCommand[l_index].equals("-M")) {
-				l_indexM = l_index;
-			} else if (p_splittedCommand[l_index].equals("-P")) {
-				l_indexP = l_index;
-			} else if (p_splittedCommand[l_index].equals("-G")) {
-				l_indexG = l_index;
-			} else if (p_splittedCommand[l_index].equals("-D")) {
-				l_indexD = l_index;
-			}
-		}
-
-		// missing attributes in command.
-		if (l_indexM == 0 || l_indexP == 0 || l_indexG == 0 || l_indexD == 0) {
-			String l_temp = "Incomplete Tournament Command found.\nYou must supply with all the attributes \"-M -P -G -D\" in this sequence with their respective arguments.";
-			l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
-			return l_temp;
-		}
-
-		// check sequence of -M -P -G -D
-		if ((l_indexM >= l_indexP) || (l_indexP >= l_indexG) || (l_indexG >= l_indexD)) {
-			String l_temp = "Sequence of attributes not maintained in command or arguments missing for any attribute -M -P -G -D.";
-			l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
-			return l_temp;
-		}
-
-		// map files inclusion
-		if (l_indexP - l_indexM < 2) {
-			String l_temp = "There should be atleast one Map file inserted in command.\n";
-			l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
-			return l_temp;
-		} else {
-			for (int l_index = l_indexM + 1; l_index < l_indexP; l_index++) {
-				if ((p_splittedCommand[l_index].split("\\.").length <= 1)) {
-					return "Please add file extension .map to the map files.";
-				} else if (!"map".equals(p_splittedCommand[l_index].split("\\.")[1])) {
-					return "After -M, The map file(s) extension should be .map";
-				} else if ("".equals(p_splittedCommand[l_index].split("\\.")[0])) {
-					return "After -M, File name missing for the Map files(.map)";
-				} else {
-					// check if the file is present or not
-					File l_file = new File(
-							Paths.get(Paths.get("").toAbsolutePath().toString() + "/maps/" + p_splittedCommand[l_index])
-									.toString());
-					if (!l_file.exists()) {
-						return "Map file : \"" + p_splittedCommand[l_index] + "\" does not exist.";
-					}
+		try {
+			
+			ArrayList<String> l_playerStrategy = new ArrayList<>(
+					Arrays.asList("Random", "Aggresive", "Benevolent", "Cheater"));
+			int l_indexM = 0;
+			int l_indexP = 0;
+			int l_indexG = 0;
+			int l_indexD = 0;
+			String l_tournamentCommand = "tournament -M listofmapfiles -P listofplayerstrategies -G numberofgames -D maxnumberofturns";
+			
+			// getting index of all attributes -M -P -G -D from the command
+			for (int l_index = 0; l_index < p_splittedCommand.length; l_index++) {
+				if (p_splittedCommand[l_index].equals("-M")) {
+					l_indexM = l_index;
+				} else if (p_splittedCommand[l_index].equals("-P")) {
+					l_indexP = l_index;
+				} else if (p_splittedCommand[l_index].equals("-G")) {
+					l_indexG = l_index;
+				} else if (p_splittedCommand[l_index].equals("-D")) {
+					l_indexD = l_index;
 				}
 			}
-		}
-
-		// Player Strategy checking
-		if (l_indexG - l_indexP < 3) {
-			String l_temp = "There should be atleast Two Players Strategy inserted in the command.";
-			l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
-			return l_temp;
-		} else {
-			HashSet<String> l_tempPlayerStrategies = new HashSet<String>();
-			for (int l_index = l_indexP + 1; l_index < l_indexG; l_index++) {
-				if (l_tempPlayerStrategies.contains(p_splittedCommand[l_index])) {
-					return "Duplicate players not allowed.";
-				} else {
-					if (!l_playerStrategy.contains(p_splittedCommand[l_index])) {
-						return "Strategies allowed for Player are :\" Aggresive, Benevolent, Cheater and Random\".";
-					}
-					l_tempPlayerStrategies.add(p_splittedCommand[l_index]);
-				}
-			}
-			if (l_tempPlayerStrategies.size() < 2) {
-				String l_temp = "There should be atleast Two Players Strategy inserted in the command.\n";
+			
+			// missing attributes in command.
+			if (l_indexM == 0 || l_indexP == 0 || l_indexG == 0 || l_indexD == 0) {
+				String l_temp = "Incomplete Tournament Command found.\nYou must supply with all the attributes \"-M -P -G -D\" in this sequence with their respective arguments.";
 				l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
 				return l_temp;
 			}
-		}
-
-		// number of games attribute
-		if (l_indexD - l_indexG != 2) {
-			String l_temp = "You should insert exactly One argument after -G which signifies number of games to be played in the tournament.";
-			l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
-			return l_temp;
-		} else {
-			if (!isNumeric(p_splittedCommand[l_indexG + 1])) {
-				String l_temp = "After -G, you can only use integer to represent the Number of Games to be Played.";
+			
+			// check sequence of -M -P -G -D
+			if ((l_indexM >= l_indexP) || (l_indexP >= l_indexG) || (l_indexG >= l_indexD)) {
+				String l_temp = "Sequence of attributes not maintained in command or arguments missing for any attribute -M -P -G -D.";
 				l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
 				return l_temp;
 			}
-		}
-
-		// max number of turns
-		if ((p_splittedCommand.length - 2) != l_indexD) {
-			String l_temp = "You should insert exactly One argument after -D which signifies maximum number of turns allowed per game.\nAfter that decision/winner must be declared.";
-			l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
-			return l_temp;
-		} else {
-			if (!isNumeric(p_splittedCommand[l_indexD + 1])) {
-				String l_temp = "After -D, you can not use integer to represent the maximum number of turns allowed per game to be played.";
+			
+			// map files inclusion
+			if (l_indexP - l_indexM < 2) {
+				String l_temp = "There should be atleast one Map file inserted in command.\n";
 				l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
 				return l_temp;
 			} else {
-				if (Integer.parseInt(p_splittedCommand[l_indexD + 1]) > 900) {
-					return "Please enter Less number of turns per game to avoid Memory Stack Overflow.";
+				for (int l_index = l_indexM + 1; l_index < l_indexP; l_index++) {
+					if ((p_splittedCommand[l_index].split("\\.").length <= 1)) {
+						return "Please add file extension .map to the map files.";
+					} else if (!"map".equals(p_splittedCommand[l_index].split("\\.")[1])) {
+						return "After -M, The map file(s) extension should be .map";
+					} else if ("".equals(p_splittedCommand[l_index].split("\\.")[0])) {
+						return "After -M, File name missing for the Map files(.map)";
+					} else {
+						// check if the file is present or not
+						File l_file = new File(
+								Paths.get(Paths.get("").toAbsolutePath().toString() + "/maps/" + p_splittedCommand[l_index])
+								.toString());
+						if (!l_file.exists()) {
+							return "Map file : \"" + p_splittedCommand[l_index] + "\" does not exist.";
+						}
+					}
 				}
 			}
-		}
-
-		int l_i = 2;
-		ArrayList<String> l_maps = new ArrayList<>();
-		ArrayList<String> l_players = new ArrayList<>();
-		int l_numGames;
-		int l_numTurns;
-		while (!p_splittedCommand[l_i].equals("-P")) {
-			l_maps.add(p_splittedCommand[l_i]);
-			++l_i;
-		}
-		++l_i;
-		while (!p_splittedCommand[l_i].equals("-G")) {
-			if (!l_playerStrategy.contains(p_splittedCommand[l_i])) {
-				return "Only strategies Random, Aggresive, Benevolent and Cheater are allowed.";
+			
+			// Player Strategy checking
+			if (l_indexG - l_indexP < 3) {
+				String l_temp = "There should be atleast Two Players Strategy inserted in the command.";
+				l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
+				return l_temp;
+			} else {
+				HashSet<String> l_tempPlayerStrategies = new HashSet<String>();
+				for (int l_index = l_indexP + 1; l_index < l_indexG; l_index++) {
+					if (l_tempPlayerStrategies.contains(p_splittedCommand[l_index])) {
+						return "Duplicate players not allowed.";
+					} else {
+						if (!l_playerStrategy.contains(p_splittedCommand[l_index])) {
+							return "Strategies allowed for Player are :\" Aggresive, Benevolent, Cheater and Random\".";
+						}
+						l_tempPlayerStrategies.add(p_splittedCommand[l_index]);
+					}
+				}
+				if (l_tempPlayerStrategies.size() < 2) {
+					String l_temp = "There should be atleast Two Players Strategy inserted in the command.\n";
+					l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
+					return l_temp;
+				}
 			}
-			l_players.add(p_splittedCommand[l_i]);
+			
+			// number of games attribute
+			if (l_indexD - l_indexG != 2) {
+				String l_temp = "You should insert exactly One argument after -G which signifies number of games to be played in the tournament.";
+				l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
+				return l_temp;
+			} else {
+				if (!isNumeric(p_splittedCommand[l_indexG + 1])) {
+					String l_temp = "After -G, you can only use integer to represent the Number of Games to be Played.";
+					l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
+					return l_temp;
+				}
+			}
+			
+			// max number of turns
+			if ((p_splittedCommand.length - 2) != l_indexD) {
+				String l_temp = "You should insert exactly One argument after -D which signifies maximum number of turns allowed per game.\nAfter that decision/winner must be declared.";
+				l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
+				return l_temp;
+			} else {
+				if (!isNumeric(p_splittedCommand[l_indexD + 1])) {
+					String l_temp = "After -D, you can not use integer to represent the maximum number of turns allowed per game to be played.";
+					l_temp += "\nCorrect command is :\"" + l_tournamentCommand + "\"";
+					return l_temp;
+				} else {
+					if (Integer.parseInt(p_splittedCommand[l_indexD + 1]) > 900) {
+						return "Please enter Less number of turns per game to avoid Memory Stack Overflow.";
+					}
+				}
+			}
+			
+			int l_i = 2;
+			ArrayList<String> l_maps = new ArrayList<>();
+			ArrayList<String> l_players = new ArrayList<>();
+			int l_numGames;
+			int l_numTurns;
+			while (!p_splittedCommand[l_i].equals("-P")) {
+				l_maps.add(p_splittedCommand[l_i]);
+				++l_i;
+			}
 			++l_i;
+			while (!p_splittedCommand[l_i].equals("-G")) {
+				if (!l_playerStrategy.contains(p_splittedCommand[l_i])) {
+					return "Only strategies Random, Aggresive, Benevolent and Cheater are allowed.";
+				}
+				l_players.add(p_splittedCommand[l_i]);
+				++l_i;
+			}
+			if (l_players.size() > new HashSet<String>(l_players).size()) {
+				return "Duplicate players not permitted.";
+			}
+			++l_i;
+			l_numGames = Integer.parseInt(p_splittedCommand[l_i]);
+			++l_i;
+			++l_i;
+			l_numTurns = Integer.parseInt(p_splittedCommand[l_i]);
+			setPhase(new PreLoad(this));
+			return d_phase.tournament(l_maps, l_players, l_numGames, l_numTurns);
+		} catch (Exception p_e) {
+			return "Command invalid, check for special characters.";
 		}
-		if (l_players.size() > new HashSet<String>(l_players).size()) {
-			return "Duplicate players not permitted.";
-		}
-		++l_i;
-		l_numGames = Integer.parseInt(p_splittedCommand[l_i]);
-		++l_i;
-		++l_i;
-		l_numTurns = Integer.parseInt(p_splittedCommand[l_i]);
-		setPhase(new PreLoad(this));
-		return d_phase.tournament(l_maps, l_players, l_numGames, l_numTurns);
 	}
 
 	/**
