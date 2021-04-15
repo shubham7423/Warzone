@@ -93,9 +93,6 @@ public class RandomPlayer extends PlayerStrategy {
 
 			case 3:
 				l_randomOwnCountry = d_gameEngine.d_random.nextInt(l_playerCountries.size());
-				System.out.println(l_randomOwnCountry);
-				System.out.println("MOVE: " + d_gameEngine.getGameMap().getCountries()
-						.get(l_playerCountries.get(l_randomOwnCountry)).getId());
 				int l_randomNeighbor = d_gameEngine.d_random.nextInt(d_gameEngine.getGameMap().getCountries()
 						.get(l_playerCountries.get(l_randomOwnCountry)).getNeighborCountries().size());
 				int l_randomNeighborId = new ArrayList<>(d_gameEngine.getGameMap().getCountries()

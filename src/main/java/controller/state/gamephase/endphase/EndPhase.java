@@ -222,7 +222,7 @@ public class EndPhase extends GamePhase {
 	@Override
 	public String printWinner(String p_playerName) {
 		d_winner = p_playerName;
-		return "\nWinner:  " + p_playerName;
+		return "Winner:  " + p_playerName;
 	}
 
 	/**

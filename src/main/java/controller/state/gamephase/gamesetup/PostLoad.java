@@ -101,26 +101,31 @@ public class PostLoad extends GameSetup {
 					switch (new Scanner(System.in).nextInt()) {
 					case 1:
 						l_player.setStrategy(new RandomPlayer(l_player, d_gameEngine));
+						d_gameEngine.d_logEntryBuffer.setString(String.format("Player %s strategy set to %s.", l_player.getName(), "Random"));
 						l_isCorrect = true;
 						break;
 
 					case 2:
 						l_player.setStrategy(new HumanPlayer(l_player, d_gameEngine));
+						d_gameEngine.d_logEntryBuffer.setString(String.format("Player %s strategy set to %s.", l_player.getName(), "Human"));
 						l_isCorrect = true;
 						break;
 
 					case 3:
 						l_player.setStrategy(new Benevolent(l_player, d_gameEngine));
+						d_gameEngine.d_logEntryBuffer.setString(String.format("Player %s strategy set to %s.", l_player.getName(), "Benevolent"));
 						l_isCorrect = true;
 						break;
 
 					case 4:
 						l_player.setStrategy(new Aggresive(l_player, d_gameEngine));
+						d_gameEngine.d_logEntryBuffer.setString(String.format("Player %s strategy set to %s.", l_player.getName(), "Aggresive"));
 						l_isCorrect = true;
 						break;
 
 					case 5:
 						l_player.setStrategy(new Cheater(l_player, d_gameEngine));
+						d_gameEngine.d_logEntryBuffer.setString(String.format("Player %s strategy set to %s.", l_player.getName(), "Cheater"));
 						l_isCorrect = true;
 						break;
 

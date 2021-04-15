@@ -76,11 +76,8 @@ public class Aggresive extends PlayerStrategy {
 					}
 				}
 			}
-			System.out.println(
-					"Strongest: " + l_strongCountryWEnyNei.getId() + ": " + getStrongNeighbors(l_strongCountryWEnyNei));
 			switch (l_randomOrder) {
 			case 1:
-				System.out.println("DEPLOY");
 				l_randomArmies = d_player.getNumberOfArmies();
 				l_order = new Deploy(d_player, l_strongCountryWEnyNei.getId(), l_randomArmies);
 				System.out.println("Deploy " + l_strongCountryWEnyNei.getId() + ",armies:  " + l_randomArmies);
@@ -90,13 +87,11 @@ public class Aggresive extends PlayerStrategy {
 				break;
 
 			case 2:
-				System.out.println("ADVANCE1");
 				if (l_strongCountryWEnyNei.getNumberOfArmiesPresent() < 2) {
 					continue;
 				}
 
 				List<Integer> l_strongNeighbors = getStrongNeighbors(l_strongCountryWEnyNei);
-				System.out.println(l_strongCountryWEnyNei.getId() + "; " + l_strongNeighbors);
 				l_randomEnemyCountry = d_gameEngine.d_random.nextInt(l_strongNeighbors.size());
 
 				l_randomArmies = d_gameEngine.d_random.nextInt(l_strongCountryWEnyNei.getNumberOfArmiesPresent());
@@ -120,8 +115,6 @@ public class Aggresive extends PlayerStrategy {
 				break;
 
 			case 3:
-				System.out.println("ADVANCE2");
-
 				if (l_strongCountryWEnyNei.getNumberOfArmiesPresent() < 2) {
 					continue;
 				}
@@ -151,7 +144,6 @@ public class Aggresive extends PlayerStrategy {
 				break;
 
 			case 4:
-				System.out.println("BOMB");
 				if (d_player.d_cardsOwned.get("bomb") < 1) {
 					continue;
 				}
@@ -163,7 +155,6 @@ public class Aggresive extends PlayerStrategy {
 				break;
 
 			case 5:
-				System.out.println("AIRLIFT");
 				if (d_player.d_cardsOwned.get("airlift") < 1) {
 					continue;
 				}
